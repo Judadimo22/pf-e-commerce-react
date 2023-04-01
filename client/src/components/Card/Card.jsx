@@ -2,14 +2,14 @@ import React from 'react'
 import style from './CardProduct.module.css'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { getDog } from '../../Redux/Actions'
+
 
 export const ProductCard = (props) => {
   const dispatch = useDispatch()
   const history = useHistory();
 
   const goToProductDetails = () => {
-    dispatch(getDog(props.dog.id))
+    // dispatch(getDog(props.dog.id))
     history.push(`/dogs/${props.dog.id}`)
   }
   

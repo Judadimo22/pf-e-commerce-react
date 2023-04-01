@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import style from './SearchBar.module.css'
+import { GetClothe } from "../../redux/actions";
 
 const SearchBar = () => {
 
@@ -15,7 +16,7 @@ const SearchBar = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(GetGame(name))
+        dispatch(GetClothe(name))
         setName('')
     };
     return(
