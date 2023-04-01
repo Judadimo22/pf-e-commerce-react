@@ -2,22 +2,28 @@ import { useState } from 'react'
 import './App.css'
 import { LoginButton } from './components/Login/login'
 import { LogOutButton } from './components/Login/logOut'
-import { Profile } from './components/Profile/profile'
-import { useAuth0 } from '@auth0/auth0-react'
+import Home from './views/Home/Home'
+import { Route, Routes} from 'react-router-dom'
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const {isAuthenticated} = useAuth0();
+const [count, setCount] = useState(0)
+const {isAuthenticated} = useAuth0();
 
-  return (
+  
+    return (<>
     <div className="App">
-      <h1>Tienda Online</h1>
+      <LoginButton/>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route exact path="/nav" element={<NavBar />} />
+      </Routes>
       {isAuthenticated ?(<>
         <Profile/>
         <LogOutButton/>
       </>):<LoginButton/>}
-    </div>
-  )
+      </div>
+  </>);
 }
 
 export default App
