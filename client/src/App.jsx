@@ -5,6 +5,7 @@ import './App.css';
 import Home from './views/Home/Home'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
+import ProductAdminPage from './views/Detail/Detail';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/nav" element={<NavBar />} />
+        <Route exact path="/form" element={<ProductAdminPage />} />
       </Routes>
     </div>
   );
