@@ -1,11 +1,20 @@
 .containerNavBar{
     display: flex;
     justify-content: space-between;
-    margin: 0 1.25rem;
     align-items: center;
+    background-color: pink;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .containerSearch{
     display: flex;
     align-items: center;
+    margin-right: 1em;
+
+}
+.containerTitle h2{
+    margin-left: 1em;
+    text-align: -webkit-center;
+    font-size: 1.7em;
 }
