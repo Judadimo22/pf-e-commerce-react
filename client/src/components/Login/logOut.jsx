@@ -5,4 +5,3 @@ export const LogOutButton=()=> {
   const { isLoading, isAuthenticated, error, user, loginWithPopup, logout} = useAuth0();
   return <button onClick={() => logout()}>Log Out</button>;
 }
-

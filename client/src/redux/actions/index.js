@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const GET_CLOTHES = 'GET_CLOTHES';
 export const GET_CLOTH = 'GET_CLOTH';
+export const GET_BY_ID = 'GET_BY_ID';
 
 export function getClothes(){
     return async function (dispatch) {

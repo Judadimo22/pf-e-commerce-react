@@ -5,6 +5,7 @@ import { ListCard } from "../../components/ListCards/ListCards";
 const Home = () => {
     return(
         <div>
+            <div className={style.containerNavBar}>
             <NavBar/>
             <ListCard/>
         </div>
