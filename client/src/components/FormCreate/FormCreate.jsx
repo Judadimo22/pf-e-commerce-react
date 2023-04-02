@@ -34,9 +34,11 @@ const validSizes = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
 const ProductAdminPage = (props, { product }) => {
   const [errorName, setErrorName] = useState("");
   const [errorDescription, setErrorDescription] = useState("");
+  const [errorStock, setErrorStock] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [stock, setStock] = useState("");
   const [touched, setTouched] = useState(false);
   const regex = /^[a-zA-Z ]+$/;
 
@@ -101,6 +103,41 @@ const ProductAdminPage = (props, { product }) => {
     }
   };
 
+  //    STOCK VALIDATE
+  const validateStock = () => {
+    setTouched(true);
+    if (stock.trim().length === 0) {
+      setErrorStock("Este campo es requerido");
+      setIsValid(false);
+    } else if (stock == 0) {
+      setErrorStock("El stock debe ser mayor a cero");
+      setIsValid(false);
+    } else if (stock > 1000) {
+      setErrorStock("El stock no puede superar 1000 unidades");
+      setIsValid(false);
+    } else {
+      setErrorStock("");
+      setIsValid(true);
+    }
+  };
+
+  const handleStockChange = (event) => {
+    setStock(event.target.value);
+    if (event.target.value.trim().length === 0) {
+      setErrorStock("Este campo es requerido");
+      setIsValid(false);
+    } else if (event.target.value == 0) {
+      setErrorStock("El stock debe ser mayor a cero");
+      setIsValid(false);
+    } else if (event.target.value > 1000) {
+      setErrorStock("El stock no puede superar 1000 unidades");
+      setIsValid(false);
+    } else {
+      setErrorStock("");
+      setIsValid(true);
+    }
+  };
+
   return (
     <AdminLayout
       title={"Creacion de producto"}
@@ -161,6 +198,13 @@ const ProductAdminPage = (props, { product }) => {
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
+              inputProps={{ min: 1 }}
+              onBlur={validateStock}
+              onChange={handleStockChange}
+              value={stock}
+              error={errorStock !== "" && touched}
+              helperText={touched ? errorStock : ""}
+              required
             />
 
             <TextField
