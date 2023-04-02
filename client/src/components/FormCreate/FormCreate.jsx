@@ -6,6 +6,7 @@ import {
 } from "@mui/icons-material";
 import {
   Box,
+  Typography,
   Button,
   capitalize,
   Card,
@@ -36,11 +37,13 @@ const ProductAdminPage = (props, { product }) => {
   const [errorDescription, setErrorDescription] = useState("");
   const [errorStock, setErrorStock] = useState("");
   const [errorPrice, setErrorPrice] = useState("");
+  const [errorType, setErrorType] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [stock, setStock] = useState("");
   const [price, setPrice] = useState("");
+  const [type, setType] = useState("");
   const [touched, setTouched] = useState(false);
   const regex = /^[a-zA-Z ]+$/;
 
@@ -175,13 +178,34 @@ const ProductAdminPage = (props, { product }) => {
     }
   };
 
+  //  TYPE VALIDATION
+  const validateType = () => {
+    if (selectedType === "") {
+      setErrorType("Debe seleccionar un tipo");
+      return false;
+    } else {
+      setErrorType("");
+      return true;
+    }
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Validar campo Type
+    if (!type) {
+      setErrorType("Debe seleccionar un tipo");
+      return;
+    }
+    // Enviar formulario
+    // ...
+  };
+
   return (
     <AdminLayout
       title={"Creacion de producto"}
       /* subTitle={`Editando: ${product ? product.title : "producto"}`}
          icon={<DriveFileRenameOutline/>} */
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Box display="flex" justifyContent="end" sx={{ mb: 1 }}>
           <Button
             color="secondary"
@@ -266,6 +290,11 @@ const ProductAdminPage = (props, { product }) => {
               <RadioGroup
                 row
                 sx={{ alignSelf: "flex-start" }}
+                value={type}
+                onChange={(event) => {
+                  setType(event.target.value);
+                  setErrorType(null); // restablecer errorType cuando se selecciona una opción válida
+                }}
                 // value={ status }
                 // onChange={ onStatusChanged }
               >
@@ -278,6 +307,11 @@ const ProductAdminPage = (props, { product }) => {
                   />
                 ))}
               </RadioGroup>
+              {errorType && (
+                <Typography color="error" sx={{ mb: 1 }}>
+                  {errorType}
+                </Typography>
+              )}
             </FormControl>
 
             <FormControl sx={{ mb: 1, display: "flex" }}>
