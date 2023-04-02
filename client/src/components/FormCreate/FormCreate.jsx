@@ -32,33 +32,71 @@ const validGender = ["men", "women", "kid"];
 const validSizes = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
 
 const ProductAdminPage = (props, { product }) => {
-  const [errorText, setErrorText] = useState("");
+  const [errorName, setErrorName] = useState("");
+  const [errorDescription, setErrorDescription] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [touched, setTouched] = useState(false);
+  const regex = /^[a-zA-Z ]+$/;
 
-  const handleBlur = () => {
+  //    NAME VALIDATE
+  const validateName = () => {
     setTouched(true);
-    if (name.length < 3) {
-      setErrorText("El nombre debe tener al menos 3 caracteres");
+    if (name.trim().length === 0) {
+      setErrorName("Este campo es requerido");
+      setIsValid(false);
+    } else if (!regex.test(name)) {
+      setErrorName("El nombre solo puede contener letras y espacios");
+      setIsValid(false);
+    } else if (name.length < 3) {
+      setErrorName("El nombre debe tener al menos 3 caracteres");
       setIsValid(false);
     } else {
-      setErrorText("");
+      setErrorName("");
       setIsValid(true);
     }
   };
 
-  const handleInputChange = (event) => {
+  const handleNameChange = (event) => {
     setName(event.target.value);
-
     if (event.target.value.trim().length === 0) {
-      setErrorText("Este campo es requerido");
+      setErrorName("Este campo es requerido");
       setIsValid(false);
     } else if (event.target.value.trim().length < 3) {
-      setErrorText("El nombre debe tener al menos 3 caracteres");
+      setErrorName("El nombre debe tener al menos 3 caracteres");
       setIsValid(false);
     } else {
-      setErrorText("");
+      setErrorName("");
+      setIsValid(true);
+    }
+  };
+
+  //    DESCRIPTION VALIDATE
+  const validateDescription = () => {
+    setTouched(true);
+    if (description.trim().length === 0) {
+      setErrorDescription("Este campo es requerido");
+      setIsValid(false);
+    } else if (description.length < 5) {
+      setErrorDescription("La descripción debe tener al menos 5 caracteres");
+      setIsValid(false);
+    } else {
+      setErrorDescription("");
+      setIsValid(true);
+    }
+  };
+
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+    if (event.target.value.trim().length === 0) {
+      setErrorDescription("Este campo es requerido");
+      setIsValid(false);
+    } else if (event.target.value.trim().length < 5) {
+      setErrorDescription("La descripción debe tener al menos 5 caracteres");
+      setIsValid(false);
+    } else {
+      setErrorDescription("");
       setIsValid(true);
     }
   };
@@ -89,11 +127,11 @@ const ProductAdminPage = (props, { product }) => {
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
-              onBlur={handleBlur}
-              onChange={handleInputChange}
+              onBlur={validateName}
+              onChange={handleNameChange}
               value={name}
-              error={!isValid && touched}
-              helperText={touched ? errorText : ""}
+              error={errorName !== "" && touched}
+              helperText={touched ? errorName : ""}
               required
               // { ...register('name', {
               //     required: 'Este campo es requerido',
@@ -109,6 +147,12 @@ const ProductAdminPage = (props, { product }) => {
               fullWidth
               multiline
               sx={{ mb: 1 }}
+              onBlur={validateDescription}
+              onChange={handleDescriptionChange}
+              value={description}
+              error={errorDescription !== "" && touched}
+              helperText={touched ? errorDescription : ""}
+              required
             />
 
             <TextField
