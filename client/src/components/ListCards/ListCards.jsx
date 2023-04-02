@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import styles from './ListCard.module.css'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ProductCard } from '../Card/Card';
 import { Pagination } from '../Paginado/Paginado';
+import { getClothes } from '../../redux/actions';
 
 export const ListCard = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const filteredProducts = useSelector((state) => state.dogs)
+  const filteredProducts = useSelector((state) => state.Clothes)
   const resultsPerPage = 8
   const numberOfResults = filteredProducts.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
   const [pageNumber, setPageNumber] = useState(1)
   const pageSliceStart = pageNumber === 1 ? 0 : (pageNumber - 1) * resultsPerPage
   const pageSliceEnd = pageNumber * resultsPerPage
+
+  const dispatch = useDispatch()
   useEffect(() => {
     setPageNumber(1)
   }, [numberOfResults])
   useEffect(() => {
-    // código para obtener los datos de la base de datos y actualizar el estado de los productos
-    const data = [
-      { id: 1, name: "Producto 1", price: 10 },
-      { id: 2, name: "Producto 2", price: 20 },
-      { id: 3, name: "Producto 3", price: 5 },
-    ];
+    
+
+    const data = dispatch(getClothes())
+
+  
     setProducts(data);
   }, []);
 
