@@ -39,6 +39,7 @@ const ProductAdminPage = (props, { product }) => {
   const [errorPrice, setErrorPrice] = useState("");
   const [errorType, setErrorType] = useState("");
   const [errorCategorie, setErrorCategorie] = useState("");
+  const [errorSize, setErrorSize] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -46,6 +47,7 @@ const ProductAdminPage = (props, { product }) => {
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
   const [categorie, setCategorie] = useState("");
+  const [size, setSize] = useState("");
   const [touched, setTouched] = useState(false);
   const regex = /^[a-zA-Z ]+$/;
 
@@ -190,6 +192,8 @@ const ProductAdminPage = (props, { product }) => {
       return true;
     }
   };
+
+  // SUBMIT VALIDATION
   const handleSubmit = (event) => {
     event.preventDefault();
     // Validar campo Type
@@ -199,6 +203,10 @@ const ProductAdminPage = (props, { product }) => {
     }
     if (!categorie) {
       setErrorCategorie("Debe de seleccionar una categoria");
+      return;
+    }
+    if (!size) {
+      setErrorSize("Debe de seleccionar un talle");
       return;
     }
     // Enviar formulario
@@ -236,6 +244,7 @@ const ProductAdminPage = (props, { product }) => {
               value={name}
               error={errorName !== "" && touched}
               helperText={touched ? errorName : ""}
+              autoComplete="off"
               required
               // { ...register('name', {
               //     required: 'Este campo es requerido',
@@ -256,6 +265,7 @@ const ProductAdminPage = (props, { product }) => {
               value={description}
               error={errorDescription !== "" && touched}
               helperText={touched ? errorDescription : ""}
+              autoComplete="off"
               required
             />
 
@@ -271,6 +281,7 @@ const ProductAdminPage = (props, { product }) => {
               value={stock}
               error={errorStock !== "" && touched}
               helperText={touched ? errorStock : ""}
+              autoComplete="off"
               required
             />
 
@@ -286,6 +297,7 @@ const ProductAdminPage = (props, { product }) => {
               value={price}
               error={errorPrice !== "" && touched}
               helperText={touched ? errorPrice : ""}
+              autoComplete="off"
               required
             />
 
@@ -351,7 +363,14 @@ const ProductAdminPage = (props, { product }) => {
 
             <FormGroup>
               <FormLabel>Size</FormLabel>
-              <FormGroup row>
+              <FormGroup
+                row
+                value={size}
+                onChange={(event) => {
+                  setSize(event.target.value);
+                  setErrorSize(null);
+                }}
+              >
                 {validSizes.map((size) => (
                   <FormControlLabel
                     key={size}
@@ -361,6 +380,11 @@ const ProductAdminPage = (props, { product }) => {
                 ))}
               </FormGroup>
             </FormGroup>
+            {errorSize && (
+              <Typography color="error" sx={{ mb: 1 }}>
+                {errorSize}
+              </Typography>
+            )}
           </Grid>
 
           {/* Tags e imagenes */}
