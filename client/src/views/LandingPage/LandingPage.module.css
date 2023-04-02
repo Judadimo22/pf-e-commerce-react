@@ -1,0 +1,237 @@
+.container {
+  margin: 0px;
+  padding: 0px;
+
+  background-image: url("../../assets/fondocarrul2.png");
+  background-size: cover;
+  background-position: right;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.titulo {
+    padding: 15px;
+    margin-top: 65px;
+    margin-left: 30px;
+    width: 400px;
+  }
+.titulo h1 {
+    padding: 2px;
+    color: #fb8500;
+    font-size: 3.5em;
+    text-shadow: -5px 3px 5px black;
+  }
+  .boxBtn {
+    margin-top: 30px;
+    margin-left: 8%;
+    width: 274px;
+    height: 88px;
+  }
+  
+  .boxBtn button {
+    width: 235px;
+    font-size: 60px;
+    padding: 5px;
+    vertical-align: middle;
+    margin-bottom: 50px;
+    background-color: #fb8500;
+    color: rgb(88 58 18);
+    border: solid 1px;
+    box-shadow: 3px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  @media screen and (max-width: 1023px) {
+    .container {
+      margin-top: 60px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .titulo {
+      width: 300px;
+    }
+    h1 {
+      font-size: 2.5rem !important;
+    }
+    .container {
+      margin-top: 0px;
+      background-image: url("../../assets/fondo1.jpg");
+    }
+    .boxBtn button {
+      width: 150px;
+      font-size: 40px;
+    }
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-250px * 8));
+    }
+  }
+  .slider {
+    background: transparent;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+    height: 250px;
+    margin: 30px auto;
+    overflow: hidden;
+    position: relative;
+    width: 95%;
+  }
+  .slider::before,
+  .slider::after {
+    background: linear-gradient(to right, #f49d9d 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 250px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+  .slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+  .slider::before {
+    left: 0;
+    top: 0;
+  }
+  .slider .con {
+    padding: 10px;
+  }
+  .slider .slide_track {
+    animation: scroll 15s linear infinite;
+    display: flex;
+    width: calc(250px * 8);
+  }
+  .slider .slide {
+    height: 230px;
+    width: 230px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .slider img {
+    width: 201px;
+    height: 229px;
+  }
+
+  .slider :is(#img1, #img11) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img2, #img22) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img3, #img33) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img4, #img44) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img5, #img55) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img6, #img66) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img7, #img77) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+  .slider :is(#img8, #img88) {
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+  }
+
+.container_2 {
+    color: blanchedalmond;
+    background-color: #f49d9d;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .container_2 h2 {
+    margin-inline: 50px;
+    font-size: 3.5em;
+  }
+  .container_2 h2 span {
+    color: rgb(88 58 18);
+  }
+  .container_2 p {
+    margin: 30px 50px;
+    font-size: 25px;
+    width: 70%;
+    letter-spacing: 2px;
+    color: rgb(88 58 18);
+    font-weight: 700;
+  }
+  .container_2 .info {
+    display: flex;
+  }
+  .info a {
+    margin: auto;
+  }
+  .info button {
+    background: transparent;
+    text-decoration: underline;
+    letter-spacing: 5px;
+    font-size: 20px;
+    text-underline-offset: 10px;
+    transition: 0.5s;
+  }
+  .info button:hover {
+    background: transparent;
+    color: rgb(88 58 18);
+  }
+  
+  .container_3 {
+    display: flex;
+    background-color: chocolate;
+    color: blanchedalmond;
+    height: 350px;
+  }
+  .col1 {
+    width: 50%;
+    background-image: linear-gradient(to bottom, black, transparent), url("../../assets/carousel-landing/selection.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+  }
+  .col1 img {
+    height: 100%;
+  }
+  .col2 {
+    width: 60%;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+  }
+  .col2 h2 {
+    margin: 30px 50px;
+    font-size: 2.5em;
+  }
+  .col2 p {
+    margin-inline: 50px;
+  }
+  
+  @media screen and (max-width: 1120px) {
+    .container_3 {
+      height: 450px;
+    }
+  }
+  @media screen and (max-width: 910px) {
+    .container_3 {
+      height: 520px;
+    }
+  }
+  @media screen and (max-width: 720px) {
+    .container_3 {
+      height: 650px;
+    }
+  }
+  @media screen and (max-width: 630px) {
+    .container_3 {
+      height: 760px;
+    }
+  }
+  
