@@ -6,6 +6,7 @@ import Filtrers from "../../components/Filters/Filtrers"
 const Home = () => {
     return(
         <div>
+            <div className={style.containerNavBar}>
             <NavBar/>
             <Filtrers/>
             </div>

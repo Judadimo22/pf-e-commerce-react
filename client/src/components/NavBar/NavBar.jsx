@@ -1,7 +1,8 @@
 import React from "react";
 import style from './NavBar.module.css';
 import SearchBar from "../SearchBar/SearchBar";
-import {AiOutlineShoppingCart} from "react-icons/ai"
+import {AiOutlineShoppingCart, AiOutlineMenu} from "react-icons/ai";
+import { BiMenu} from "react-icons/bi";
 
 const NavBar = () => {
     return(
@@ -13,7 +14,8 @@ const NavBar = () => {
                 <div>
                     <SearchBar/>
                 </div>
-                <h2><AiOutlineShoppingCart/></h2>
+                <button className={style.cart}><AiOutlineShoppingCart/></button>
+                <button className={style.menu}><BiMenu/></button>
             </div>
         </div>
     )
