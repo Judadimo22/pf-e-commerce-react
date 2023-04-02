@@ -35,10 +35,12 @@ const ProductAdminPage = (props, { product }) => {
   const [errorName, setErrorName] = useState("");
   const [errorDescription, setErrorDescription] = useState("");
   const [errorStock, setErrorStock] = useState("");
+  const [errorPrice, setErrorPrice] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [stock, setStock] = useState("");
+  const [price, setPrice] = useState("");
   const [touched, setTouched] = useState(false);
   const regex = /^[a-zA-Z ]+$/;
 
@@ -138,6 +140,41 @@ const ProductAdminPage = (props, { product }) => {
     }
   };
 
+  //    PRICE VALIDATE
+  const validatePrice = () => {
+    setTouched(true);
+    if (price.trim().length === 0) {
+      setErrorPrice("Este campo es requerido");
+      setIsValid(false);
+    } else if (price == 0) {
+      setErrorPrice("El precio debe ser mayor a cero");
+      setIsValid(false);
+    } else if (price > 999999) {
+      setErrorPrice("El precio no puede superar un valor de $999999");
+      setIsValid(false);
+    } else {
+      setErrorPrice("");
+      setIsValid(true);
+    }
+  };
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+    if (event.target.value.trim().length === 0) {
+      setErrorPrice("Este campo es requerido");
+      setIsValid(false);
+    } else if (event.target.value == 0) {
+      setErrorPrice("El precio debe ser mayor a cero");
+      setIsValid(false);
+    } else if (event.target.value > 999999) {
+      setErrorPrice("El precio no puede superar un valor de $999999");
+      setIsValid(false);
+    } else {
+      setErrorPrice("");
+      setIsValid(true);
+    }
+  };
+
   return (
     <AdminLayout
       title={"Creacion de producto"}
@@ -213,6 +250,13 @@ const ProductAdminPage = (props, { product }) => {
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
+              inputProps={{ min: 1 }}
+              onBlur={validatePrice}
+              onChange={handlePriceChange}
+              value={price}
+              error={errorPrice !== "" && touched}
+              helperText={touched ? errorPrice : ""}
+              required
             />
 
             <Divider sx={{ my: 1 }} />
