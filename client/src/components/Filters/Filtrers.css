@@ -1,0 +1,11 @@
+.filters{
+    display: flex;
+    width: 480px;
+    justify-content: space-evenly;
+}
+.Filtrers-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

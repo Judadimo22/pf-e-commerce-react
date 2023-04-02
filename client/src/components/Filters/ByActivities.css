@@ -1,0 +1,33 @@
+.by-activity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: 35px;
+    width: 200px;
+    padding: 7px;    
+    cursor: pointer;
+    border-radius: 10px;
+    color: #334142;
+    background-color: #D6E4E5;
+}
+.select {
+    display: flex;
+}
+.option:hover {
+    color: #EB6440;
+  }
+.by-activity:hover{
+    background: #EB6440;
+    color: white;
+
+}
+.by-activity:focus{
+    outline: none;
+}
+
+.option{
+    cursor: pointer;
+    box-shadow: none;
+    border: none;
+} 
