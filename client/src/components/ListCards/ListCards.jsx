@@ -10,7 +10,7 @@ export const ListCard = () => {
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
   const filteredProducts = useSelector((state) => state.Clothes)
-  const resultsPerPage = 8
+  const resultsPerPage = 9
   const numberOfResults = filteredProducts.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
   const [pageNumber, setPageNumber] = useState(1)
@@ -52,11 +52,11 @@ export const ListCard = () => {
 
   return (
     <div>
-      <label>Ordenar por:</label>
+      {/* <label>Ordenar por:</label>
       <select onChange={handleSelectChange} value={sortType}>
         <option value="asc">Menor precio</option>
         <option value="desc">Mayor precio</option>
-      </select>
+      </select> */}
       <div className={styles.product}>
         {
           filteredProducts.length
@@ -69,13 +69,13 @@ export const ListCard = () => {
               </div>
             )
         }
-        <Pagination
+      </div>
+      <Pagination
           pageNumber={pageNumber}
           totalPages={numberOfPages}
           nextPageFn={() => setPageNumber(page => page + 1)}
           prevPageFn={() => setPageNumber(page => page - 1)}
         />
-      </div>
     </div>
   )
 }

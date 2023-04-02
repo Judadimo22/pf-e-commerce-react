@@ -1,29 +1,12 @@
-.containerInput{
+.containerSearch form{
     display: flex;
-    align-items: center;
-    color: gray;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    position: relative;
-    left: 1.25rem;
 }
 
-.containerInput input{
-    height: 1.875rem;
-    width: 15.625rem;
-    border: none;
-    border-bottom: 1px solid grey;
-    font-size: 1.125rem;
-    outline: none;
-}
-
-
-
-.containerInput button{
-    position: relative;
-    right: 1.5625rem;
-    top: .125rem;
-    font-size: 1.25rem;
-    border: none;
+.containerSearch button{
     background: none;
+    border: none;
+    font-size: 1.25rem;
     cursor: pointer;
+    position: relative;
+    top: .25rem;
 }

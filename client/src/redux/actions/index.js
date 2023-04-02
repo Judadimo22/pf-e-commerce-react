@@ -13,9 +13,9 @@ export function getClothes(){
       }
 }
 
-export function getCloth(trademark) {
+export function getCloth(name) {
     return async function (dispatch) {
-        let json = await axios.get("http://localhost:3001/cloth?trademark=" + trademark);
+        let json = await axios.get("http://localhost:3001/cloth?name=" + name);
         dispatch({
           type: GET_CLOTHES,
           payload: json.data,

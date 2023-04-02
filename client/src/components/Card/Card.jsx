@@ -13,16 +13,24 @@ export const ProductCard = (props) => {
   // }
   
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
-  const productName = props.product.type
+  const productType = props.product.type
+  const productTrademark = props.product.trademark
+  const productImage = props.product.image
+  const productName = props.product.name
 
 
   return (
     
-    <div>    
+    <div className={style.containerCard}>    
       {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
       {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
-      <p className={style.productName}>{productName}</p>
-      <p className={style.productHeight}>{productPrice}</p>
+      <img className={style.productImagen} src={productImage} alt="" />
+      <p className={style.productName}><strong>{productName}</strong></p>
+      <div className={style.containerPrice}>
+      <p className={style.productTrademark}><strong>{productTrademark}</strong></p>
+      <p className={style.productPrice}>{productPrice}</p>
+      </div>
+
      
       </div>
     // </div>
