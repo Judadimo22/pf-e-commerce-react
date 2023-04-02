@@ -8,12 +8,12 @@ export const ProductCard = (props) => {
   const history = useHistory();
 
   const goToProductDetails = () => {
-    dispatch(getProduct(props.product.id))
-    history.push(`/products/${props.product.id}`)
+    dispatch(getClothes(props.product.id))
+    history.push(`/cloth/${props.product.id}`)
   }
   
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
-  const productName = props.product.type
+  const productName = props.product.name
 
 
   return (

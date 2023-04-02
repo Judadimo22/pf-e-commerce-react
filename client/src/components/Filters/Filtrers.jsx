@@ -1,13 +1,13 @@
 import React from 'react'
 import "./Filtrers.css"
-import ByGenre from "./ByGenre"
+import ByCategorie from "./ByCategorie"
 import ByType from './ByType'
 
 const Filtrers = () => {
   return (
     <div className='Filtrers-container'>
         <div className='filters'>
-        <ByGenre/>
+        <ByCategorie/>
         <ByType/>
         </div>          
     </div>
