@@ -180,6 +180,7 @@
     font-size: 20px;
     text-underline-offset: 10px;
     transition: 0.5s;
+    cursor: pointer;
   }
   .info button:hover {
     background: transparent;
