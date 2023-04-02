@@ -40,7 +40,7 @@ const ProductAdminPage = (props, { product }) => {
   const [errorType, setErrorType] = useState("");
   const [errorCategorie, setErrorCategorie] = useState("");
   const [errorSize, setErrorSize] = useState("");
-  const [errorTrademark ,setErrorTrademark] = useState("")
+  const [errorTrademark, setErrorTrademark] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -49,9 +49,9 @@ const ProductAdminPage = (props, { product }) => {
   const [type, setType] = useState("");
   const [categorie, setCategorie] = useState("");
   const [size, setSize] = useState("");
-  const [trademark ,setTrademark] = useState("")
+  const [trademark, setTrademark] = useState("");
   const [touched, setTouched] = useState(false);
-  const regexTrademark = /^[A-Za-z0-9\s.-]+$/g
+  const regexTrademark = /^[A-Za-z0-9\s.-]+$/g;
   const regex = /^[a-zA-Z ]+$/;
 
   //    NAME VALIDATE
@@ -217,10 +217,35 @@ const ProductAdminPage = (props, { product }) => {
     }
   };
 
-  // SUBMIT VALIDATION
+  //  IMAGE VALIDATION
+  const validateImages = () => {
+    if (product?.images.length < 2) {
+      return "Debe subir al menos 2 imágenes";
+    }
+  };
+
+  //SUBMIT VALIDATION
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Validar campo Type
+    const error = validateImages();
+    // Validar text
+    if(!name) {
+      setErrorName("Este campo es requerido")
+      return
+    }
+    if(!description) {
+      setErrorDescription("Este campo es requerido")
+      return
+    }
+    if(!stock) {
+      setErrorStock("Este campo es requerido")
+      return
+    }
+    if(!price) {
+      setErrorPrice("Este campo es requerido")
+      return
+    }
+    // Validar checks
     if (!type) {
       setErrorType("Debe seleccionar un tipo");
       return;
@@ -231,6 +256,11 @@ const ProductAdminPage = (props, { product }) => {
     }
     if (!size) {
       setErrorSize("Debe de seleccionar un talle");
+      return;
+    }
+    // Validar image
+    if (error) {
+      setErrorImages(error);
       return;
     }
     // Enviar formulario
