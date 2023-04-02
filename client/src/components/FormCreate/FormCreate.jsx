@@ -38,12 +38,14 @@ const ProductAdminPage = (props, { product }) => {
   const [errorStock, setErrorStock] = useState("");
   const [errorPrice, setErrorPrice] = useState("");
   const [errorType, setErrorType] = useState("");
+  const [errorCategorie, setErrorCategorie] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [stock, setStock] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("");
+  const [categorie, setCategorie] = useState("");
   const [touched, setTouched] = useState(false);
   const regex = /^[a-zA-Z ]+$/;
 
@@ -195,6 +197,10 @@ const ProductAdminPage = (props, { product }) => {
       setErrorType("Debe seleccionar un tipo");
       return;
     }
+    if (!categorie) {
+      setErrorCategorie("Debe de seleccionar una categoria");
+      return;
+    }
     // Enviar formulario
     // ...
   };
@@ -319,6 +325,11 @@ const ProductAdminPage = (props, { product }) => {
               <RadioGroup
                 row
                 sx={{ alignSelf: "flex-start" }}
+                value={categorie}
+                onChange={(event) => {
+                  setCategorie(event.target.value);
+                  setErrorCategorie(null);
+                }}
                 // value={ status }
                 // onChange={ onStatusChanged }
               >
@@ -331,6 +342,11 @@ const ProductAdminPage = (props, { product }) => {
                   />
                 ))}
               </RadioGroup>
+              {errorCategorie && (
+                <Typography color="error" sx={{ mb: 1 }}>
+                  {errorCategorie}
+                </Typography>
+              )}
             </FormControl>
 
             <FormGroup>
