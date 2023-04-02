@@ -9,6 +9,7 @@ import  store  from "../src/redux/store/index"
 
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { lightTheme } from './themes/light-theme'
+import { Provider } from 'react-redux'
 
 
 
@@ -24,10 +25,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     authorizationParams={{
       redirect_uri: window.location.origin,
     }}
-    />
+    >
       <BrowserRouter>
          <App />
       </BrowserRouter>
+    </Auth0Provider>
     </React.StrictMode>
     </ThemeProvider>
   </Provider>

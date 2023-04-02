@@ -6,7 +6,11 @@ import{
 const initialState = {
     Clothes: [],
     ClothesCopy: [],
-    Details: []
+    Details: [],
+    filterInputs:{
+        byType:"",
+        byMale_female_kid:""
+    }
 };
 
 function rootReducer(state= initialState, action){

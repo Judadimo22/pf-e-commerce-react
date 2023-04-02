@@ -14,14 +14,7 @@
 .select {
     display: flex;
 }
-.option:hover {
-    color: #EB6440;
-  }
-.by-activity:hover{
-    background: #EB6440;
-    color: white;
 
-}
 .by-activity:focus{
     outline: none;
 }

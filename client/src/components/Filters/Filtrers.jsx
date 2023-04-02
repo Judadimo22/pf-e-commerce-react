@@ -1,14 +1,14 @@
 import React from 'react'
 import "./Filtrers.css"
-import ByActivities from "./ByActivities"
-import ByContinent from './ByContinent'
+import ByGenre from "./ByGenre"
+import ByType from './ByType'
 
 const Filtrers = () => {
   return (
     <div className='Filtrers-container'>
         <div className='filters'>
-        <ByActivities/>
-        <ByContinent/>
+        <ByGenre/>
+        <ByType/>
         </div>          
     </div>
   )
