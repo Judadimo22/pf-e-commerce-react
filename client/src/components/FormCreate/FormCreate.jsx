@@ -40,6 +40,7 @@ const ProductAdminPage = (props, { product }) => {
   const [errorType, setErrorType] = useState("");
   const [errorCategorie, setErrorCategorie] = useState("");
   const [errorSize, setErrorSize] = useState("");
+  const [errorTrademark ,setErrorTrademark] = useState("")
   const [isValid, setIsValid] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -48,7 +49,9 @@ const ProductAdminPage = (props, { product }) => {
   const [type, setType] = useState("");
   const [categorie, setCategorie] = useState("");
   const [size, setSize] = useState("");
+  const [trademark ,setTrademark] = useState("")
   const [touched, setTouched] = useState(false);
+  const regexTrademark = /^[A-Za-z0-9\s.-]+$/g
   const regex = /^[a-zA-Z ]+$/;
 
   //    NAME VALIDATE
@@ -182,14 +185,35 @@ const ProductAdminPage = (props, { product }) => {
     }
   };
 
-  //  TYPE VALIDATION
-  const validateType = () => {
-    if (selectedType === "") {
-      setErrorType("Debe seleccionar un tipo");
-      return false;
+  //  TRADEMARK VALIDATION
+  const validateTrademark = () => {
+    setTouched(true);
+    if (trademark.trim().length === 0) {
+      setErrorTrademark("Este campo es requerido");
+      setIsValid(false);
+    } else if (!regexTrademark.test(trademark)) {
+      setErrorTrademark("Introduzca una marca de ropa válida");
+      setIsValid(false);
+    } else if (trademark.length <= 1) {
+      setErrorTrademark("El nombre debe tener al menos 1 caracter");
+      setIsValid(false);
     } else {
-      setErrorType("");
-      return true;
+      setErrorTrademark("");
+      setIsValid(true);
+    }
+  };
+
+  const handleTrademarkChange = (event) => {
+    setTrademark(event.target.value);
+    if (event.target.value.trim().length === 0) {
+      setErrorTrademark("Este campo es requerido");
+      setIsValid(false);
+    } else if (event.target.value.trim().length <= 1) {
+      setErrorTrademark("El nombre debe tener al menos 1 caracter");
+      setIsValid(false);
+    } else {
+      setErrorTrademark("");
+      setIsValid(true);
     }
   };
 
@@ -394,6 +418,13 @@ const ProductAdminPage = (props, { product }) => {
               variant="filled"
               fullWidth
               sx={{ mb: 1 }}
+              onBlur={validateTrademark}
+              onChange={handleTrademarkChange}
+              value={trademark}
+              error={errorTrademark !== "" && touched}
+              helperText={touched ? errorTrademark : ""}
+              autoComplete="off"
+              required
             />
 
             <Box
