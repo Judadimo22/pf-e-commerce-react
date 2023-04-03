@@ -7,7 +7,8 @@ import { LogOutButton } from './components/Login/logOut'
 import Home from './views/Home/Home'
 import { Route, Routes} from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
-import ProductAdminPage from './views/Detail/Detail';
+import { Details } from './components/Detail/Detail'
+import ProductAdminPage from './components/FormCreate/FormCreate';
 
 function App() {
 const [count, setCount] = useState(0)
@@ -20,6 +21,7 @@ const {isAuthenticated} = useAuth0();
         <Route exact path="/" element={<Home />} />
         <Route exact path="/nav" element={<NavBar />} />
         <Route exact path="/form" element={<ProductAdminPage />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
       {isAuthenticated ?(<>
         <Profile/>

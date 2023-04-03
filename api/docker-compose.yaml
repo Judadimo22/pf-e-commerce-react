@@ -1,0 +1,9 @@
+services:
+  entriesdb:
+    image: mongo:5.0.0
+    container_name: ecommerce
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
+    command: tail -f /dev/null

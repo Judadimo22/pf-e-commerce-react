@@ -1,5 +1,6 @@
 .by-continent{
     display: flex;
+    align-self: center;
     justify-content: center;
     align-items: center;
     border: none;
@@ -14,11 +15,7 @@
 .select {
     display: flex;
 }
-.by-continent:hover{
-    background: #EB6440;
-    color: white;
 
-}
 
 .by-continent:focus{
     outline: none;
