@@ -18,6 +18,7 @@ const initialState = {
     }
 };
 
+
 function rootReducer(state= initialState, action){
     switch(action.type){
         case GET_CLOTHES:
@@ -55,19 +56,24 @@ function rootReducer(state= initialState, action){
         case FILTER_BY_CATEGORIE:
             let newArray = []
             if(state.filterInputs.byCategorie === "") {//----remplazar "" por el e.target.value de parametros
-                state.filterInputs.byCategorie = ""
                 if(state.filterInputs.byType.length){
-                    newArray = state.Clothes.filter((product=>product.categorie === state.filterInputs.byCategorie))
+                    newArray = state.Clothes.filter((product=>product.type === state.filterInputs.byType))
                     return{
                         //che , te comparto pantalla un segundo
                         ...state,
                         ClothesCopy: newArray.flat()  //dale
                     }
+                } else{
+                    return{
+                        //che , te comparto pantalla un segundo
+                        ...state,
+                        ClothesCopy: state.Clothes  //dale
+                    }
                 }
             }
             if(state.filterInputs.byCategorie.length && state.filterInputs.byType.length){
                 const filteredByCategorie = state.Clothes.filter(product=>product.categorie === state.filterInputs.byCategorie)
-                const lastArray= filteredByCategorie.flat().filter((product=>product.type === state.filterInputs.product))
+                const lastArray= filteredByCategorie.flat().filter((product=>product.type === state.filterInputs.byType))
                 return{
                     ...state,
                     ClothesCopy: lastArray.flat() 
@@ -83,22 +89,25 @@ function rootReducer(state= initialState, action){
 //---------------------------------------Filter by type---------------------------------
 
             case FILTER_BY_TYPE:
-                console.log(state.filterInputs);
                 let array = []
                 if(state.filterInputs.byType === "") {//----remplazar "" por el e.target.value de parametros
-                    state.filterInputs.byType = ""
                     if(state.filterInputs.byCategorie.length){
-                        array = state.Clothes.filter((product=>product.type === state.filterInputs.byType))
+                        array = state.Clothes.filter((product=>product.categorie === state.filterInputs.byCategorie))
+                        return{
+                            ...state,
+                            ClothesCopy: array.flat()
+                        }
+                    }else{
                         return{
                             //che , te comparto pantalla un segundo
                             ...state,
-                            ClothesCopy: array.flat()  //dale
+                            ClothesCopy: state.Clothes  //dale
                         }
                     }
                 }
                 if(state.filterInputs.byType.length && state.filterInputs.byCategorie.length){
                     const filteredByCategorie = state.Clothes.filter(product=>product.categorie === state.filterInputs.byCategorie)
-                    const lastArray= filteredByCategorie.flat().filter((product=>product.type === state.filterInputs.product))
+                    const lastArray= filteredByCategorie.flat().filter((product=>product.type === state.filterInputs.byType))
                     return{
                         ...state,
                         ClothesCopy: lastArray.flat() 

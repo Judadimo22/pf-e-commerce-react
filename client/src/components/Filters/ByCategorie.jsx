@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const ByCategorie = () => {
   const dispatch = useDispatch()
-  const categories = ["Man","Moman","Child"]
+  const categories = ["men","women","child"]
   
   const onChange = (e) => {
     dispatch(ChangefilterInputByCategorie(e.target.value))

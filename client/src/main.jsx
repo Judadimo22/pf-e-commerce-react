@@ -10,6 +10,9 @@ import  store  from "../src/redux/store/index"
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { lightTheme } from './themes/light-theme'
 import { Provider } from 'react-redux'
+import axios from "axios";
+
+
 
 
 
