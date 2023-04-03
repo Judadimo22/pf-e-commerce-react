@@ -1,16 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Home from './views/Home/Home'
+import { Route, Routes} from 'react-router-dom'
+import NavBar from './components/NavBar/NavBar';
+import LandingPage from './views/LandingPage/landingPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
+const [count, setCount] = useState(0)
+  
+    return (<>
     <div className="App">
-      <h1>E-Commerce</h1>
-    </div>
-  )
+      <Routes>
+        <Route exact path='/' element={<LandingPage/>}/>
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/nav" element={<NavBar />} />
+      </Routes>
+
+      </div>
+  </>);
 }
 
 export default App
