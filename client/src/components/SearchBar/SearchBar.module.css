@@ -1,5 +1,6 @@
 .containerSearch form{
     display: flex;
+    justify-content: center;
 }
 
 .containerSearch button{

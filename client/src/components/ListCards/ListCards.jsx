@@ -5,6 +5,7 @@ import { ProductCard } from '../Card/Card';
 import { Pagination } from '../Paginado/Paginado';
 import { getClothes } from '../../redux/actions';
 import SortByPrice from '../Filters/SortByPrice';
+import SearchBar from '../SearchBar/SearchBar'
 
 export const ListCard = () => {
 
@@ -53,7 +54,10 @@ export const ListCard = () => {
     setProducts(sortedProducts);
   }
   return (
-    <div>      
+    <div>
+      <div>
+        <SearchBar/>
+      </div>      
       <SortByPrice sortType={sortType} handleSelectChange={handleSelectChange}/>
       <div className={styles.product}>
         {

@@ -1,42 +1,20 @@
 .containerNavBar{
     display: flex;
     justify-content: space-between;
-    padding-left: .625rem;
-    padding-right: .3125rem;
     align-items: center;
-    position: relative;
-    bottom: .625rem;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-}
-
-.cart{
-    position: relative;
-    top: .1875rem;
-    color: black;
-    border:  none;
-    background: none;
-    cursor: pointer;
-    font-size: 1.5625rem;
-}
-
-.containerNavBar h3{
-    position: relative;
-    top: .3125rem;
-    margin: 0 .3125rem;
-    color: black;
+    background-color: pink;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .containerSearch{
     display: flex;
     align-items: center;
-}
+    margin-right: 1em;
 
-.menu{
-    font-size: 1.875rem;
-    position: relative;
-    top: .3125rem;
-    background: none;
-    border: none;
-    cursor: pointer;
+}
+.containerTitle h2{
+    margin-left: 1em;
+    text-align: -webkit-center;
+    font-size: 1.7em;
 }
