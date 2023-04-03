@@ -23,7 +23,7 @@ export const ListCard = () => {
     setPageNumber(1)
   }, [numberOfResults])
   useEffect(() => {
-    
+    getClothes()
     const getData = async ( ) => {
       return dispatch(getClothes())
     }

@@ -55,19 +55,17 @@ function rootReducer(state= initialState, action){
 
         case FILTER_BY_CATEGORIE:
             let newArray = []
-            if(state.filterInputs.byCategorie === "") {//----remplazar "" por el e.target.value de parametros
+            if(state.filterInputs.byCategorie === "") {
                 if(state.filterInputs.byType.length){
                     newArray = state.Clothes.filter((product=>product.type === state.filterInputs.byType))
                     return{
-                        //che , te comparto pantalla un segundo
                         ...state,
-                        ClothesCopy: newArray.flat()  //dale
+                        ClothesCopy: newArray.flat()  
                     }
                 } else{
                     return{
-                        //che , te comparto pantalla un segundo
                         ...state,
-                        ClothesCopy: state.Clothes  //dale
+                        ClothesCopy: state.Clothes  
                     }
                 }
             }
@@ -90,7 +88,7 @@ function rootReducer(state= initialState, action){
 
             case FILTER_BY_TYPE:
                 let array = []
-                if(state.filterInputs.byType === "") {//----remplazar "" por el e.target.value de parametros
+                if(state.filterInputs.byType === "") {
                     if(state.filterInputs.byCategorie.length){
                         array = state.Clothes.filter((product=>product.categorie === state.filterInputs.byCategorie))
                         return{
@@ -99,9 +97,8 @@ function rootReducer(state= initialState, action){
                         }
                     }else{
                         return{
-                            //che , te comparto pantalla un segundo
                             ...state,
-                            ClothesCopy: state.Clothes  //dale
+                            ClothesCopy: state.Clothes 
                         }
                     }
                 }
