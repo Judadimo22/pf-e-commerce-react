@@ -1,21 +1,26 @@
 import React from "react";
 import style from './NavBar.module.css';
-import SearchBar from "../SearchBar/SearchBar";
-import {AiOutlineShoppingCart, AiOutlineMenu} from "react-icons/ai";
-import { BiMenu} from "react-icons/bi";
+//import {BsBagCheckFill} from "react-icons/bs"
+import { useAuth0 } from '@auth0/auth0-react'
+import { LoginButton} from '../Login/login'
+import { LogOutButton } from '../Login/logOut'
+
+
 
 const NavBar = () => {
+    const {isAuthenticated} = useAuth0();
     return(
         <div className={style.containerNavBar}>
             <div className={style.containerTitle}>
-                <h2>Tienda online</h2>
+                <h2>Tu tienda favorita</h2>
             </div>
             <div className={style.containerSearch}>
                 <div>
-                    <SearchBar/>
+                {isAuthenticated ?(<>
+        <LogOutButton/>
+      </>):<LoginButton/>}
                 </div>
-                <button className={style.cart}><AiOutlineShoppingCart/></button>
-                <button className={style.menu}><BiMenu/></button>
+                {/*<h2 className={style.logoCarritoCompras}><BsBagCheckFill/></h2>*/}
             </div>
         </div>
     )
