@@ -5,6 +5,7 @@ import { Route, Routes} from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar';
 import { Details } from './components/Detail/Detail'
 import ProductAdminPage from './components/FormCreate/FormCreate';
+import LandingPage from './views/LandingPage/landingPage'
 
 function App() {
 const [count, setCount] = useState(0)

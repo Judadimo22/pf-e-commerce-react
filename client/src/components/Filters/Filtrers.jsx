@@ -2,6 +2,7 @@ import React from 'react'
 import "./Filtrers.css"
 import ByCategorie from "./ByCategorie"
 import ByType from './ByType'
+import ByTrademark from './ByTrademark'
 
 const Filtrers = () => {
   return (
@@ -9,6 +10,7 @@ const Filtrers = () => {
         <div className='filters'>
         <ByCategorie/>
         <ByType/>
+        <ByTrademark/>
         </div>          
     </div>
   )
