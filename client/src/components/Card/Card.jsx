@@ -1,15 +1,14 @@
 import React from 'react'
 import style from './CardProduct.module.css'
-// import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { getClothById } from '../../redux/actions'
 
 export const ProductCard = (props) => {
   const dispatch = useDispatch()
-  // const history = useHistory();
 
   const goToProductDetails = () => {
-    dispatch(getClothes(props.product.id))
-    history.push(`/cloth/${props.product.id}`)
+    dispatch(getClothById(props.product._id))
   }
   
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
@@ -20,7 +19,7 @@ export const ProductCard = (props) => {
 
 
   return (
-    
+    <Link onClick={goToProductDetails} style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
     <div className={style.containerCard}>    
       {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
       {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
@@ -33,6 +32,7 @@ export const ProductCard = (props) => {
 
      
       </div>
+    </Link>
     // </div>
     
   )

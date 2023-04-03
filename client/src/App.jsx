@@ -23,10 +23,6 @@ const {isAuthenticated} = useAuth0();
         <Route exact path="/form" element={<ProductAdminPage />} />
         <Route path="/details/:id" element={<Details />} />
       </Routes>
-      {isAuthenticated ?(<>
-        <Profile/>
-        <LogOutButton/>
-      </>):<LoginButton/>}
       </div>
   </>);
 }
