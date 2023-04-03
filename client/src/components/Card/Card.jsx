@@ -1,35 +1,45 @@
 import React from 'react'
 import style from './CardProduct.module.css'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { getDog } from '../../Redux/Actions'
+import { getClothById } from '../../redux/actions'
 
 export const ProductCard = (props) => {
   const dispatch = useDispatch()
-  const history = useHistory();
 
   const goToProductDetails = () => {
-    dispatch(getDog(props.dog.id))
-    history.push(`/dogs/${props.dog.id}`)
+    dispatch(getClothById(props.product._id))
   }
   
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
-  const productTitle = props.product.title ? props.dog.height_max : ''
+  const productType = props.product.type
+  const productTrademark = props.product.trademark
+  const productImage = props.product.image
+  const productName = props.product.name
 
-//   const dogWeightMin = props.dog.weight_min ? props.dog.weight_min + ' kg' : ''
-//   const dogWeightMax = props.dog.weight_max ? props.dog.weight_max + ' kg' : ''
-//   const dogWeight = dogWeightMin + (dogWeightMin && dogWeightMax && ' - ') + dogWeightMax
 
   return (
-    
-    <div className={style.productCardContainer} onClick={() => goToProductDetails()}>
-      { props.dog.image && <img className={style.productImage} src={props.dog.image}/>}
-      <div style={!props.product.image ? {paddingLeft: 20} : {}}>
-      <p className={style.productName}>{productTitle}</p>
-      <p className={style.productHeight}>{productPrice}</p>
+    <Link onClick={goToProductDetails} style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
+    <div className={style.containerCard}>    
+      {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
+      {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
+      <img className={style.productImagen} src={productImage} alt="" />
+      <p className={style.productName}><strong>{productName}</strong></p>
+      <div className={style.containerPrice}>
+      <p className={style.productTrademark}><strong>{productTrademark}</strong></p>
+      <p className={style.productPrice}>{productPrice}</p>
+      </div>
+
      
       </div>
-    </div>
+    </Link>
+    // </div>
     
   )
 }
+
+
+
+
+
+// className={style.productCardContainer} onClick={() => goToProductDetails()}

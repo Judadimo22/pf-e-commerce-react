@@ -1,0 +1,15 @@
+.containerPaginado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerPaginado button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.containerPaginado p{
+    margin: 0 1.25rem;
+}

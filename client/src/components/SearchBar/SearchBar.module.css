@@ -1,19 +1,12 @@
-.containerInput{
+.containerSearch form{
     display: flex;
-    align-items: center;
-    color: gray;
 }
 
-.containerInput input{
-    height: 1.875rem;
+.containerSearch button{
+    background: none;
     border: none;
-    border-bottom: 1px solid grey;
-    font-size: 1.125rem;
-}
-
-.containerInput h3{
-    position: relative;
-    right: 1.5625rem;
-    top: .125rem;
     font-size: 1.25rem;
+    cursor: pointer;
+    position: relative;
+    top: .25rem;
 }

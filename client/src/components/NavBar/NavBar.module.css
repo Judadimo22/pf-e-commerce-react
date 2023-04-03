@@ -1,11 +1,42 @@
 .containerNavBar{
     display: flex;
     justify-content: space-between;
-    margin: 0 1.25rem;
+    padding-left: .625rem;
+    padding-right: .3125rem;
     align-items: center;
+    position: relative;
+    bottom: .625rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.cart{
+    position: relative;
+    top: .1875rem;
+    color: black;
+    border:  none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.5625rem;
+}
+
+.containerNavBar h3{
+    position: relative;
+    top: .3125rem;
+    margin: 0 .3125rem;
+    color: black;
 }
 
 .containerSearch{
     display: flex;
     align-items: center;
+}
+
+.menu{
+    font-size: 1.875rem;
+    position: relative;
+    top: .3125rem;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
