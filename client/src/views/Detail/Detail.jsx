@@ -5,8 +5,7 @@ import { AdminLayout } from '../../components/Layout/AdminLayout';
 
 
 const validTypes  = ['shirts','pants','hoodies','hats']
-const validGender = ['men','women','kid','unisex']
-const validColors = ['red','white','black','blue']
+const validGender = ['men','women','kid']
 const validSizes = ['XS','S','M','L','XL','XXL','XXXL']
 
 
@@ -27,7 +26,7 @@ const ProductAdminPage = (props, {product}) => {
                         sx={{ width: '150px' }}
                         type="submit"
                         >
-                        Guardar
+                        Create
                     </Button>
                 </Box>
 
@@ -36,7 +35,7 @@ const ProductAdminPage = (props, {product}) => {
                     <Grid item xs={12} sm={ 6 }>
 
                         <TextField
-                            label="Título"
+                            label="Name"
                             variant="filled"
                             fullWidth 
                             sx={{ mb: 1 }}
@@ -49,7 +48,7 @@ const ProductAdminPage = (props, {product}) => {
                         />
 
                         <TextField
-                            label="Descripción"
+                            label="Description"
                             variant="filled"
                             fullWidth 
                             multiline
@@ -57,7 +56,7 @@ const ProductAdminPage = (props, {product}) => {
                         />
 
                         <TextField
-                            label="Inventario"
+                            label="Stock"
                             type='number'
                             variant="filled"
                             fullWidth 
@@ -65,7 +64,7 @@ const ProductAdminPage = (props, {product}) => {
                         />
                         
                         <TextField
-                            label="Precio"
+                            label="Price"
                             type='number'
                             variant="filled"
                             fullWidth 
@@ -75,7 +74,7 @@ const ProductAdminPage = (props, {product}) => {
                         <Divider sx={{ my: 1 }} />
                             
                         <FormControl sx={{ mb: 1,display:"flex"}} >
-                            <FormLabel>Tipo</FormLabel>
+                            <FormLabel>Type</FormLabel>
                             <RadioGroup
                                 row
                                 sx={{ alignSelf:"flex-start"}}
@@ -97,7 +96,7 @@ const ProductAdminPage = (props, {product}) => {
 
 
                         <FormControl sx={{ mb: 1,display:"flex" }}>
-                            <FormLabel>Género</FormLabel>
+                            <FormLabel>Categorie</FormLabel>
                             <RadioGroup
                                 row
                                 sx={{ alignSelf:"flex-start"}}
@@ -118,18 +117,7 @@ const ProductAdminPage = (props, {product}) => {
                         </FormControl>
 
                         <FormGroup >
-                            <FormLabel>Colores</FormLabel>
-                        <FormGroup row>
-                            {
-                                validColors.map(color => (
-                                    <FormControlLabel key={color} control={<Checkbox />} label={ capitalize(color) } />
-                                ))
-                            }
-                        </FormGroup>
-                        </FormGroup>
-
-                        <FormGroup >
-                            <FormLabel>Tallas</FormLabel>
+                            <FormLabel>Size</FormLabel>
                         <FormGroup row>
                             {
                                 validSizes.map(size => (
@@ -145,18 +133,10 @@ const ProductAdminPage = (props, {product}) => {
                     {/* Tags e imagenes */}
                     <Grid item xs={12} sm={ 6 }>
                         <TextField
-                            label="Slug - URL"
+                            label="Trademark"
                             variant="filled"
                             fullWidth
                             sx={{ mb: 1 }}
-                        />
-
-                        <TextField
-                            label="Etiquetas"
-                            variant="filled"
-                            fullWidth 
-                            sx={{ mb: 1 }}
-                            helperText="Presiona [spacebar] para agregar"
                         />
                         
                         <Box sx={{
@@ -186,14 +166,14 @@ const ProductAdminPage = (props, {product}) => {
                         <Divider sx={{ my: 2  }}/>
                         
                         <Box display='flex' flexDirection="column">
-                            <FormLabel sx={{ mb:1}}>Imágenes</FormLabel>
+                            <FormLabel sx={{ mb:1}}>Image</FormLabel>
                             <Button
                                 color="secondary"
                                 fullWidth
                                 startIcon={ <UploadOutlined /> }
                                 sx={{ mb: 3 }}
                             >
-                                Cargar imagen
+                                Load Image
                             </Button>
 
                             <Chip 
@@ -215,7 +195,7 @@ const ProductAdminPage = (props, {product}) => {
                                                 />
                                                 <CardActions>
                                                     <Button fullWidth color="error">
-                                                        Borrar
+                                                        Delete
                                                     </Button>
                                                 </CardActions>
                                             </Card>

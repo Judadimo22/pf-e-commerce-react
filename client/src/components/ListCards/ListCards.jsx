@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ProductCard } from '../Card/Card';
 import { Pagination } from '../Paginado/Paginado';
 import { getClothes } from '../../redux/actions';
+import SortByPrice from '../Filters/SortByPrice';
 
 export const ListCard = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const filteredProducts = useSelector((state) => state.Clothes)
+  const filteredProducts = useSelector((state) => state.ClothesCopy)
   const resultsPerPage = 9
   const numberOfResults = filteredProducts.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
@@ -22,16 +23,18 @@ export const ListCard = () => {
     setPageNumber(1)
   }, [numberOfResults])
   useEffect(() => {
+    getClothes()
+    const getData = async ( ) => {
+      return dispatch(getClothes())
+    }
     
-
-    const data = dispatch(getClothes())
-
   
-    setProducts(data);
+    setProducts(getData());
   }, []);
 
 
   function sortProducts(type, list) {
+    console.log(list);
     const sorted = list.sort((a, b) => {
       const isAsc = type === "asc";
       if (isAsc) {
@@ -45,22 +48,17 @@ export const ListCard = () => {
 
   function handleSelectChange(event) {
     const newSortType = event.target.value;
-    const sortedProducts = sortProducts(newSortType, products);
+    const sortedProducts = sortProducts(newSortType, filteredProducts);
     setSortType(newSortType);
     setProducts(sortedProducts);
   }
-
   return (
-    <div>
-      {/* <label>Ordenar por:</label>
-      <select onChange={handleSelectChange} value={sortType}>
-        <option value="asc">Menor precio</option>
-        <option value="desc">Mayor precio</option>
-      </select> */}
+    <div>      
+      <SortByPrice sortType={sortType} handleSelectChange={handleSelectChange}/>
       <div className={styles.product}>
         {
           filteredProducts.length
-            ? filteredProducts.slice(pageSliceStart, pageSliceEnd).map(product => (<ProductCard key={product.id} product={product} />))
+            ? filteredProducts.slice(pageSliceStart, pageSliceEnd).map(product => (<ProductCard key={product._id} product={product} />))
             : (
               <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                 <img className={styles.noResultImg} src={`https://images.unsplash.com/photo-1483392707171-cb3e4b1cb8b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80`} />

@@ -7,10 +7,10 @@ export const ProductCard = (props) => {
   const dispatch = useDispatch()
   // const history = useHistory();
 
-  // const goToProductDetails = () => {
-  //   dispatch(getDog(props.dog.id))
-  //   // history.push(`/dogs/${props.dog.id}`)
-  // }
+  const goToProductDetails = () => {
+    dispatch(getClothes(props.product.id))
+    history.push(`/cloth/${props.product.id}`)
+  }
   
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
   const productType = props.product.type
