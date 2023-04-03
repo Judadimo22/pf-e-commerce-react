@@ -1,8 +1,7 @@
 .container {
   margin: 0px;
   padding: 0px;
-
-  background-image: url("../../assets/fondocarrul2.png");
+  background-image: url("../../assets/logo/logoPf.png");
   background-size: cover;
   background-position: right;
   height: 550px;
@@ -41,6 +40,9 @@
     box-shadow: 3px;
     cursor: pointer;
     border-radius: 20px;
+  }
+  .boxBtn button:hover{
+    color: white;
   }
   @media screen and (max-width: 1023px) {
     .container {
@@ -184,7 +186,7 @@
   }
   .info button:hover {
     background: transparent;
-    color: rgb(88 58 18);
+    color: white;
   }
   
   .container_3 {
@@ -194,9 +196,9 @@
     height: 350px;
   }
   .col1 {
-    width: 50%;
-    background-image: linear-gradient(to bottom, black, transparent), url("../../assets/carousel-landing/selection.jpg");
-    background-position: center;
+    width: 25%;
+    background-image: linear-gradient(to bottom, #8349209c, transparent), url(/src/assets/carousel-landing/c1.avif);
+    background-position: right;
     background-size: cover;
     height: 100%;
   }
@@ -213,6 +215,7 @@
   }
   .col2 p {
     margin-inline: 50px;
+    font-size: 1.6em;
   }
   
   @media screen and (max-width: 1120px) {
@@ -235,4 +238,35 @@
       height: 760px;
     }
   }
+  .container_4{
+    text-align: center;
+    background-color: #a5832494;
+  }
+  .miembros{
+   font-size: 2em;
+  }
+  .descripcionGrupo{
+    font-size: 1.5em;
+  }
+  .cartasIntegrantes{
+    width: 20em;
+    border: solid 1px;
+    background-color: #fb850040;
+    margin-left: 3%;
+    padding: 1.25em;
+    border-radius: 26%;
+  }
+.develop{
+  color: rgb(74, 58, 255);
+    font-size: 22px;
+}
+.devAptitud{
+font-size: 18px;
+}
+.links{
+  font-size: 1.6em;
+}
+.contenedorOrdenador{
+  background-color: black;
+}
   

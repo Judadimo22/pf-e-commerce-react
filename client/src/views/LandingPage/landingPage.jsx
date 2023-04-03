@@ -10,21 +10,22 @@ import l5 from "../../assets/carousel-landing/c5.jpg"
 import l6 from "../../assets/carousel-landing/c6.jpg"
 import l7 from "../../assets/carousel-landing/c7.jpg"
 import l8 from "../../assets/carousel-landing/c8.jpg"
-
+import member from "../../assets/carousel-landing/t-member.png";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 
 function LandingPage() {
   return (
   <>
   <NavBar/>
   <div className={Style.container}>
-        <div className={Style.titulo}>
+        {/*<div className={Style.titulo}>
           <h1>El sitio que arma tus atuendos!</h1>
-        </div>
-        <div className={Style.boxBtn}>
+        </div>*/}
+       { /*<div className={Style.boxBtn}>
           <Link to="/home">
             <button>Vamos!</button>
           </Link>
-        </div>
+        </div>*/}
       </div>
 
       <div className={Style.container_2}>
@@ -125,6 +126,323 @@ function LandingPage() {
           </div>
         </div>
       </div>
+
+      <div className={Style.container_3}>
+        <div className={Style.col1}></div>
+        <div className={Style.col2}>
+          <h2>Explora nuestra nueva seccion </h2>
+          <p>
+          Aqui podras encontrar todo tipo de prenda exclusiva para completar y variar tu outfit.
+          Nuestro trabajo esta basado en darte la mejor experiencia al momento de comprar tu nueva ropa y acompañarte en cada paso, estas listo?
+          </p>
+          <div className={Style.boxBtn}>
+          <Link to="/home">
+            <button>Vamos!</button>
+          </Link>
+        </div>
+        </div>
+        <div className={Style.col1}></div>
+      </div>
+
+      <div className={Style.container_4}>
+        <h2 className={Style.miembros}>
+        Conoce a los miembros de nuestro equipo
+        </h2>
+        <p className={Style.descripcionGrupo}>
+        Este proyecto no hubiera sido posible sin estar 6 personas, siempre siguiendo la idea de hacer algo fuera de lo común.
+        </p>
+
+
+      <div className={Style.contenedorOrdenador}>
+        <div className={Style.cartasIntegrantes}>
+          <div className={Style.cartaIntegrante}>
+            <div className={Style.descripcionIntegrante}>
+              <div
+                className="rounded-full bg-slate-400"
+                style={{ height: "50px", width: "50px" }}
+              >
+                <img src={member} alt=""/>
+              </div>
+              <div className="text-left flex flex-col justify-center ml-3">
+                <h3>Franco Mafferra</h3>
+                <p className={Style.develop} >
+                  FULL-STACK DEVELOPER
+                </p>
+              </div>
+            </div>
+            <p className={Style.devAptitud}>
+              Buscando constantemente formas de mejorar la productividad.
+            </p>
+            <div className={Style.links}>
+              <a
+                className="m-3 ml-0"
+                href="https://github.com/FrancoMafferra"
+                target="_blank"
+              >
+                <div>
+                  <BsGithub></BsGithub>
+                </div>
+              </a>
+              <a
+                className="m-3"
+                href="https://www.linkedin.com/in/franco-mafferra-82a5a1248/"
+                target="_blank"
+              >
+                <div>
+                  <BsLinkedin></BsLinkedin>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      
+
+       <div className={Style.container_4}>
+        <div className={Style.cartasIntegrantes}>
+          <div className={Style.cartaIntegrante}>
+            <div className={Style.descripcionIntegrante}>
+              <div
+                className="rounded-full bg-slate-400"
+                style={{ height: "50px", width: "50px" }}
+              >
+                <img src={member} alt=""/>
+              </div>
+              <div className="text-left flex flex-col justify-center ml-3">
+                <h3>Mateo Villacreses</h3>
+                <p className={Style.develop} >
+                  FULL-STACK DEVELOPER
+                </p>
+              </div>
+            </div>
+            <p className={Style.devAptitud}>
+              Buscando constantemente formas de mejorar la productividad.
+            </p>
+            <div className={Style.links}>
+              <a
+                className="m-3 ml-0"
+                href="https://github.com/Bach16"
+                target="_blank"
+              >
+                <div>
+                  <BsGithub></BsGithub>
+                </div>
+              </a>
+              <a
+                className="m-3"
+                href="https://www.linkedin.com/in/mateo-rojas-villacreses-583438252/"
+                target="_blank"
+              >
+                <div>
+                  <BsLinkedin></BsLinkedin>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+
+
+
+       <div className={Style.container_4}>
+        <div className={Style.cartasIntegrantes}>
+          <div className={Style.cartaIntegrante}>
+            <div className={Style.descripcionIntegrante}>
+              <div
+                className="rounded-full bg-slate-400"
+                style={{ height: "50px", width: "50px" }}
+              >
+                <img src={member} alt=""/>
+              </div>
+              <div className="text-left flex flex-col justify-center ml-3">
+                <h3>Leandro Frette</h3>
+                <p className={Style.develop} >
+                  FULL-STACK DEVELOPER
+                </p>
+              </div>
+            </div>
+            <p className={Style.devAptitud}>
+              Buscando constantemente formas de mejorar la productividad.
+            </p>
+            <div className={Style.links}>
+              <a
+                className="m-3 ml-0"
+                href=" https://github.com/Lafsitoo"
+                target="_blank"
+              >
+                <div>
+                  <BsGithub></BsGithub>
+                </div>
+              </a>
+              <a
+                className="m-3"
+                href="https://www.linkedin.com/in/leandro-ariel-frette/"
+                target="_blank"
+              >
+                <div>
+                  <BsLinkedin></BsLinkedin>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+
+
+
+
+
+       <div className={Style.container_4}>
+        <div className={Style.cartasIntegrantes}>
+          <div className={Style.cartaIntegrante}>
+            <div className={Style.descripcionIntegrante}>
+              <div
+                className="rounded-full bg-slate-400"
+                style={{ height: "50px", width: "50px" }}
+              >
+                <img src={member} alt=""/>
+              </div>
+              <div className="text-left flex flex-col justify-center ml-3">
+                <h3>Martín Suárez</h3>
+                <p className={Style.develop} >
+                  FULL-STACK DEVELOPER
+                </p>
+              </div>
+            </div>
+            <p className={Style.devAptitud}>
+              Buscando constantemente formas de mejorar la productividad.
+            </p>
+            <div className={Style.links}>
+              <a
+                className="m-3 ml-0"
+                href="https://github.com/Mmartinn02"
+                target="_blank"
+              >
+                <div>
+                  <BsGithub></BsGithub>
+                </div>
+              </a>
+              <a
+                className="m-3"
+                href="https://www.linkedin.com/in/mmartinn02/"
+                target="_blank"
+              >
+                <div>
+                  <BsLinkedin></BsLinkedin>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+       </div>
+
+       <div className={Style.container_4}>
+        <div className={Style.cartasIntegrantes}>
+          <div className={Style.cartaIntegrante}>
+            <div className={Style.descripcionIntegrante}>
+              <div
+                className="rounded-full bg-slate-400"
+                style={{ height: "50px", width: "50px" }}
+              >
+                <img src={member} alt=""/>
+              </div>
+              <div className="text-left flex flex-col justify-center ml-3">
+                <h3>Juan David Díaz </h3>
+                <p className={Style.develop} >
+                  FULL-STACK DEVELOPER
+                </p>
+              </div>
+            </div>
+            <p className={Style.devAptitud}>
+              Buscando constantemente formas de mejorar la productividad.
+            </p>
+            <div className={Style.links}>
+              <a
+                className="m-3 ml-0"
+                href="https://github.com/Judadimo22"
+                target="_blank"
+              >
+                <div>
+                  <BsGithub></BsGithub>
+                </div>
+              </a>
+              <a
+                className="m-3"
+                href="https://www.linkedin.com/in/juan-david-d%C3%ADaz-a32a2a268"
+                target="_blank"
+              >
+                <div>
+                  <BsLinkedin></BsLinkedin>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <div className={Style.container_4}>
+        <div className={Style.cartasIntegrantes}>
+          <div className={Style.cartaIntegrante}>
+            <div className={Style.descripcionIntegrante}>
+              <div
+                className="rounded-full bg-slate-400"
+                style={{ height: "50px", width: "50px" }}
+              >
+                <img src={member} alt=""/>
+              </div>
+              <div className="text-left flex flex-col justify-center ml-3">
+                <h3>Dylan Gonzalez </h3>
+                <p className={Style.develop} >
+                  FULL-STACK DEVELOPER
+                </p>
+              </div>
+            </div>
+            <p className={Style.devAptitud}>
+              Buscando constantemente formas de mejorar la productividad.
+            </p>
+            <div className={Style.links}>
+              <a
+                className="m-3 ml-0"
+                href="https://github.com/Delamm"
+                target="_blank"
+              >
+                <div>
+                  <BsGithub></BsGithub>
+                </div>
+              </a>
+              <a
+                className="m-3"
+                href="https://www.linkedin.com/in/dylan-gonzalez-875117246/"
+                target="_blank"
+              >
+                <div>
+                  <BsLinkedin></BsLinkedin>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+       </div>
+
+
+      </div>
+  </div>
 
   </>
   )
