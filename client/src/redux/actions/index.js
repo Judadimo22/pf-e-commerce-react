@@ -31,6 +31,15 @@ export function getCloth(name) {
       };
 
 }
+export function getClothById(id) {
+    return async function (dispatch) {
+        let json = await axios.get(`http://localhost:3001/cloth/${id}`);
+        dispatch({
+          type: GET_BY_ID,
+          payload: json.data,
+        });
+      };
+}
 
 export const setSearch = (payload) => {
   return {

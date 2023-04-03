@@ -6,6 +6,8 @@ import NavBar from './components/NavBar/NavBar';
 import { Details } from './components/Detail/Detail'
 import ProductAdminPage from './components/FormCreate/FormCreate';
 import LandingPage from './views/LandingPage/landingPage'
+import Error404 from './views/Error/Error404'
+
 
 function App() {
 const [count, setCount] = useState(0)
@@ -15,10 +17,11 @@ const [count, setCount] = useState(0)
       <Routes>
         <Route exact path='/' element={<LandingPage/>}/>
         <Route exact path="/home" element={<Home />} />
-        <Route exact path="/nav" element={<NavBar />} />
         <Route exact path="/form" element={<ProductAdminPage />} />
         <Route path="/details/:id" element={<Details />} />
-      </Routes>
+        <Route exact path="/*" element={<Error404 />} />
+       </Routes>
+
 
       </div>
   </>);
