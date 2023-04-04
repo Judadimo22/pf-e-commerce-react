@@ -22,7 +22,7 @@ export default function SearchBar(){
     return(
         <div className={style.containerSearch}>
             <form onSubmit={(e) => handleCLick(e)}>
-                <input type="text" id="" placeholder="Search ..." onChange={(e) => handleInputChange(e)} />
+                <input type="text" id="" value={name} placeholder="Search ..." onChange={(e) => handleInputChange(e)} />
                 <button onClick={(e) => handleCLick(e)}><IoIosSearch/></button>
             </form>
         </div>

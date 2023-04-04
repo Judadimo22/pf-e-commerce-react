@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import styles from "./formCreate.css"
+import {Link} from "react-router-dom"
 import {
   DriveFileRenameOutline,
   SaveOutlined,
@@ -523,6 +525,16 @@ const ProductAdminPage = (props, { product }) => {
           </Grid>
         </Grid>
       </form>
+      <div className={styles.button_back}>
+                    <Link to={`/home`}> 
+                        <button>
+                          <span className={styles.icon}>
+                            ⬅️
+                          </span>
+                          <span className={styles.label}>atras</span>
+                        </button>
+                    </Link>
+                </div>
     </AdminLayout>
   );
 };

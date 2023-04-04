@@ -11,6 +11,7 @@ const Filtrers = () => {
         <ByCategorie/>
         <ByType/>
         <ByTrademark/>
+        <a href="/create"><button>Crear</button></a>
         </div>          
     </div>
   )
