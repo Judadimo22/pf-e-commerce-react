@@ -4,7 +4,7 @@ import style from './log.module.css';
 
 export const LoginButton=()=> {
   const { isLoading, isAuthenticated, error, user, loginWithPopup, logout} = useAuth0();
-  console.log(user)
+ // console.log(isAuthenticated, user)
   return <button className={style.buttonAuth} onClick={() => loginWithPopup()}>Login</button>;
 }
 

@@ -8,7 +8,8 @@ import { LogOutButton } from '../Login/logOut'
 
 
 const NavBar = () => {
-    const {isAuthenticated} = useAuth0();
+    const {isAuthenticated, user} = useAuth0();
+    console.log(user)
     return(
         <div className={style.containerNavBar}>
             <div className={style.containerTitle}>
@@ -17,6 +18,7 @@ const NavBar = () => {
             <div className={style.containerSearch}>
                 <div>
                 {isAuthenticated ?(<>
+                <div>Bienvenido!{user.name}</div>
         <LogOutButton/>
       </>):<LoginButton/>}
                 </div>
