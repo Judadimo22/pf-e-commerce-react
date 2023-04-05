@@ -4,7 +4,6 @@ import style from "./NavBar.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/login";
 import { LogOutButton } from "../Login/logOut";
-import MyProfile from "../UserProfile/MyProfile";
 
 const NavBar = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -19,10 +18,17 @@ const NavBar = () => {
           {isAuthenticated ? (
             <>
               <a href="/Profile"><button>MyProfile</button></a>
+              <a href="/home"><button>HOME</button></a>
+            <a href="/about"><button>ABOUT</button></a>
+            <a href="/contact"><button>CONTACT</button></a>
               <LogOutButton />
             </>
-          ) : (
+          ) : (<>
+            <a href="/home"><button>HOME</button></a>
+            <a href="/about"><button>ABOUT</button></a>
+            <a href="/contact"><button>CONTACT</button></a>
             <LoginButton />
+          </>
           )}
         </div>
         {/*<h2 className={style.logoCarritoCompras}><BsBagCheckFill/></h2>*/}
