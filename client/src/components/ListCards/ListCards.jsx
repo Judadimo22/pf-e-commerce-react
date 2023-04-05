@@ -54,11 +54,7 @@ export const ListCard = () => {
     setProducts(sortedProducts);
   }
   return (
-    <div>
-      <div>
-        <SearchBar/>
-      </div>      
-      <SortByPrice sortType={sortType} handleSelectChange={handleSelectChange}/>
+    <div>    
       <div className={styles.product}>
         {
           filteredProducts.length

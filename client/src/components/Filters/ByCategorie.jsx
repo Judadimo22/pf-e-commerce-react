@@ -12,11 +12,20 @@ const ByCategorie = () => {
     dispatch(filterByCategorie(e.target.value))
   }
   return (
-    <div className='select'>
-      <select name="activity" className='by-activity' onChange={onChange}>
-        <option className='option' value="">By Categorie</option>
-        {categories.map((a,index)=><option value={a} className="option" key={index}>{a}</option>)}
-      </select>
+    <div className='categorie'>
+      <h1>Category</h1>
+      <div>
+      <button onClick={onChange} value={'men'} className="option" key={'men'}>men</button>
+      </div>
+      <div>
+      <button onClick={onChange} value={'women'} className="option" key={'women'}>women</button>
+      </div>
+      <div>
+      <button onClick={onChange} value={'child'} className="option" key={'child'}>child</button>
+      </div>
+      
+
+
     </div>
   )
 }

@@ -6,12 +6,15 @@ import ByTrademark from './ByTrademark'
 
 const Filtrers = () => {
   return (
-    <div className='Filtrers-container'>
-        <div className='filters'>
-        <ByCategorie/>
-        <ByType/>
-        <ByTrademark/>
-        <a href="/create"><button>Crear</button></a>
+    <div className='Filters-container'>
+        <div>
+          <div>
+            <ByCategorie/>
+          </div>
+          <hr />
+          <div>
+            <ByTrademark/>
+          </div>
         </div>          
     </div>
   )

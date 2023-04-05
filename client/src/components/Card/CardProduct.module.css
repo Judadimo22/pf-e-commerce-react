@@ -1,22 +1,41 @@
 .containerCard{
-    margin: .625rem 1.25rem;
     justify-content: center;
     text-align: center;
-    border: 0.5px solid grey;
     padding: .625rem;
+
 }
 
 .productImagen{
     height: 18.75rem;
-    width: 12.5rem;
+    width: 13.75rem;
     object-fit: cover;
+    background-color: white;
+    border-radius: .625rem;
+    padding: .625rem;
 }
 
 .productName{
-    font-size: 1.25rem;
+    font-size: 1.125rem;
+    position: relative;
+    text-align: center;
 }
 
-.containerPrice{
-    display: flex;
-    justify-content: space-around;
+.productPrice{
+    position: relative;
+}
+
+.cart{
+    position: relative;
+    bottom: 1.25rem;
+    right: 3.125rem;
+    font-size: 1.5625rem;
+    background-color: #DAEB0F;
+    border-radius: 30%;
+    padding: 2px .3125rem;
+    border: none;
+}
+
+.containerName{
+    justify-content: center;
+    text-align: center;
 }

@@ -1,13 +1,10 @@
 .buttonAuth{
-    border-radius: 8px;
     padding: 1em 1.5.em;
-    font-size: 1.5em;
-    font-weight: 500;
+    font-size: 3.125rem;
     font-family: inherit;
-    background-color: #b78a0d6e;
-    color: #fff;
     cursor: pointer;
-}
-.buttonAuth:hover{
-    color:rgb(88 58 18)
+    background: none;
+    border: none;
+    position: relative;
+    top: .25rem;
 }

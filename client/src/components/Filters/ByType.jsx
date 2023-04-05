@@ -13,10 +13,7 @@ const ByType = () => {
 
   return (
     <div className='select'>
-      <select name="continent" className='by-continent' onChange={onChange}>
-        <option className='option' value="">By Type</option>
-        {type.map((a,index)=> <option value={a}  className="option" key={index}>{a}</option>)}
-      </select>
+        {type.map((a,index)=> <button onClick={onChange} value={a}  className="option" key={index}>{a}</button>)}
     </div>
   )
 }

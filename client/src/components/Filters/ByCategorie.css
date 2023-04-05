@@ -1,26 +1,13 @@
-.by-activity{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    height: 35px;
-    width: 200px;
-    padding: 7px;    
-    cursor: pointer;
-    border-radius: 10px;
-    color: #334142;
-    background-color: #D6E4E5;
-}
-.select {
-    display: flex;
+.categorie{
+    text-align: left;
+    padding: 0 1.25rem;
 }
 
-.by-activity:focus{
-    outline: none;
-}
-
-.option{
-    cursor: pointer;
-    box-shadow: none;
+.categorie button{
     border: none;
-} 
+    background: none;
+    margin: .3125rem 0;
+    font-size: 1.125rem;
+    position: relative;
+    bottom: .625rem;
+}

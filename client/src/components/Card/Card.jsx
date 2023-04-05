@@ -3,6 +3,8 @@ import style from './CardProduct.module.css'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getClothById } from '../../redux/actions'
+import { TbShoppingCartPlus } from "react-icons/tb";
+
 
 export const ProductCard = (props) => {
   const dispatch = useDispatch()
@@ -23,14 +25,16 @@ export const ProductCard = (props) => {
     <div className={style.containerCard}>    
       {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
       {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
+      <div>
       <img className={style.productImagen} src={productImage} alt="" />
+      <button className={style.cart}><TbShoppingCartPlus/></button>
+      </div>
+      <div className={style.containerName}>
       <p className={style.productName}><strong>{productName}</strong></p>
-      <div className={style.containerPrice}>
-      <p className={style.productTrademark}><strong>{productTrademark}</strong></p>
+      </div>
+      <div>
       <p className={style.productPrice}>{productPrice}</p>
       </div>
-
-     
       </div>
     </Link>
     // </div>

@@ -1,11 +1,6 @@
-.filters{
-    display: flex;
-    width: 480px;
-    justify-content: space-evenly;
-}
-.Filtrers-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.Filters-container hr{
+    width: 12.5rem;
+    position: relative;
+    left: 1.5625rem;
+    margin: 1.25rem 0;
 }

@@ -1,9 +1,13 @@
 .product{
    display: grid;
    justify-content: center;
-   grid-template-columns: 400px 400px 400px;
-   margin: .625rem auto;
+   grid-template-columns: 300px 300px 300px;
+   padding: 0 3.125rem;
    flex-wrap: wrap;
+   position: relative;
+   right: 6.25rem;
+   top: 2.5rem;
+
 }
 .by_continent{
    display: flex;
