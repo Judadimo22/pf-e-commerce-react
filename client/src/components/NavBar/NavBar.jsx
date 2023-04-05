@@ -4,6 +4,7 @@ import style from "./NavBar.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/login";
 import { LogOutButton } from "../Login/logOut";
+import MyProfile from "../UserProfile/MyProfile";
 
 const NavBar = () => {
   const { isAuthenticated, user } = useAuth0();
@@ -17,6 +18,7 @@ const NavBar = () => {
         <div>
           {isAuthenticated ? (
             <>
+              <a href="/Profile"><button>MyProfile</button></a>
               <LogOutButton />
             </>
           ) : (
