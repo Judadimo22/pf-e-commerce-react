@@ -19,7 +19,7 @@ export const Details = () => {
             <div className={styles.card}>
               <div className={styles.card_container}>
               <div className={styles.button_back}>
-                    <Link to={`/`}> 
+                    <Link to={`/home`}> 
                         <button>
                           <span className={styles.icon}>
                             ⬅️
