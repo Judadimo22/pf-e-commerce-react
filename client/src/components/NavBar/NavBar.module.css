@@ -1,20 +1,46 @@
 .containerNavBar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background-color: pink;
-    margin-left: 0px;
-    margin-right: 0px;
+    background-color: rgb(235, 231, 231);
+    padding: 0 3.75rem;
 }
 
 .containerSearch{
     display: flex;
     align-items: center;
     margin-right: 1em;
+    position: relative;
+    left: 1.25rem;
 
 }
+
+.containerSearch button{
+    font-size: 1.875rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    top: .25rem;
+}
+
+.containerTitle{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
 .containerTitle h2{
-    margin-left: 1em;
-    text-align: -webkit-center;
-    font-size: 1.7em;
+    margin: 0 .625rem;
+    margin-left: 1.875rem;
+    font-size: 3.125rem;
+    position: relative;
+    left: 3.125rem;
+    font-family: 'Alumni Sans', sans-serif;
+
+
+}
+
+.containerSearchBar{
+    position: relative;
+    left: 6.25rem;
 }

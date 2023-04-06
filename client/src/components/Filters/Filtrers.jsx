@@ -6,11 +6,17 @@ import ByTrademark from './ByTrademark'
 
 const Filtrers = () => {
   return (
-    <div className='Filtrers-container'>
-        <div className='filters'>
-        <ByCategorie/>
-        <ByType/>
-        <ByTrademark/>
+    <div className='Filters-container'>
+        <div>
+          <div>
+          </div>
+          <div>
+            <ByCategorie/>
+          </div>
+          <hr />
+          <div>
+            <ByTrademark/>
+          </div>
         </div>          
     </div>
   )

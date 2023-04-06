@@ -1,4 +1,4 @@
-.by-continent{
+/* .by-continent{
     display: flex;
     align-self: center;
     justify-content: center;
@@ -11,9 +11,18 @@
     border-radius: 10px;
     color: #334142;
     background-color: #D6E4E5;
-}
-.select {
+} */
+/* .select {
     display: flex;
+    background: none;
+} */
+
+.select button{
+    background: none;
+    margin: 0 .625rem;
+    font-size: 1.25rem;
+    font-family: 'Advent Pro', sans-serif;
+
 }
 
 

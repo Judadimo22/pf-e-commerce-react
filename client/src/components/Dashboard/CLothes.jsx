@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import styles from './ListCard.module.css'
+import styles from './Clothes.module.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { ProductCard } from '../Card/Card';
+import { Cloth } from './Cloth';
 import { Pagination } from '../Paginado/Paginado';
 import { getClothes } from '../../redux/actions';
-import SortByPrice from '../Filters/SortByPrice';
-import SearchBar from '../SearchBar/SearchBar'
 
-export const ListCard = () => {
+export const Clothes = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
@@ -58,7 +56,7 @@ export const ListCard = () => {
       <div className={styles.product}>
         {
           filteredProducts.length
-            ? filteredProducts.slice(pageSliceStart, pageSliceEnd).map(product => (<ProductCard key={product._id} product={product} />))
+            ? filteredProducts.slice(pageSliceStart, pageSliceEnd).map(product => (<Cloth key={product._id} product={product} />))
             : (
               <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
                 <img className={styles.noResultImg} src={`https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2c110454-5b33-4416-bf9b-72992c7cb56f/d60eb1v-79212624-e842-4e55-8d58-4ac7514ca8e4.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJjMTEwNDU0LTViMzMtNDQxNi1iZjliLTcyOTkyYzdjYjU2ZlwvZDYwZWIxdi03OTIxMjYyNC1lODQyLTRlNTUtOGQ1OC00YWM3NTE0Y2E4ZTQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.9LDpLmLlbA507H7fKa8aEDxFr8k3SlwCGC1zuJ13d1w`} />

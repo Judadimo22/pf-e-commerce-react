@@ -1,17 +1,23 @@
 import React from 'react'
-import style from './CardProduct.module.css'
-import { Link } from 'react-router-dom'
+import style from './Cloth.module.css'
 import { useDispatch } from 'react-redux'
 import { getClothById } from '../../redux/actions'
 import { TbShoppingCartPlus } from "react-icons/tb";
+import { AiFillEdit } from "react-icons/ai";
+import { AiFillDelete} from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 
-export const ProductCard = (props) => {
+
+
+export const Cloth = (props) => {
   const dispatch = useDispatch()
 
   const goToProductDetails = () => {
     dispatch(getClothById(props.product._id))
   }
+
+  
   
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
   const productType = props.product.type
@@ -21,13 +27,13 @@ export const ProductCard = (props) => {
 
 
   return (
-    <Link onClick={goToProductDetails} style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
-    <div className={style.containerCard}>    
+    <div className={style.containerCard}>  
       {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
       {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
       <div>
       <img className={style.productImagen} src={productImage} alt="" />
-      <button className={style.cart}><TbShoppingCartPlus/></button>
+      <button className={style.cart}><AiFillEdit/></button>
+      <button className={style.cart}><AiFillDelete/></button>
       </div>
       <div className={style.containerName}>
       <p className={style.productName}><strong>{productName}</strong></p>
@@ -36,14 +42,8 @@ export const ProductCard = (props) => {
       <p className={style.productPrice}>{productPrice}</p>
       </div>
       </div>
-    </Link>
+
     // </div>
     
   )
 }
-
-
-
-
-
-// className={style.productCardContainer} onClick={() => goToProductDetails()}

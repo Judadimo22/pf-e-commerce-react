@@ -41,7 +41,7 @@ export const Details = () => {
               </div>
             </div>
           
-        
+        <a href='/mercadopago'><button>Comprar!</button></a>
       
     </div>
     </>

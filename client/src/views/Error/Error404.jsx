@@ -22,7 +22,7 @@ const Error404 = () => {
         variant="contained"
         color="primary"
         component={Link}
-        to="/"
+        to="/home"
         style={{ marginTop: '16px' }}
       >
         Go to homepage
