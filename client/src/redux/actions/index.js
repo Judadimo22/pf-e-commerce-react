@@ -9,6 +9,8 @@ export const CHANGE_FILTER_INPUT_BY_TYPE = 'CHANGE_FILTER_INPUT_BY_TYPE';
 export const CHANGE_FILTER_INPUT_BY_CATEGORIE = 'CHANGE_FILTER_INPUT_BY_CATEGORIE';
 export const CHANGE_FILTER_INPUT_BY_TRADEMARK = 'CHANGE_FILTER_INPUT_BY_TRADEMARK';
 export const SEARCH = 'SEARCH'
+export const POST_CLOTH = 'POST_CLOTH'
+export const UPDATE_CLOTH = 'UPDATE_CLOTH'
 
 export function getClothes(){
     return async function (dispatch) {
@@ -104,3 +106,26 @@ export function filterByTrademark() {
     })
   }
 }
+
+
+
+export function PostCloth(payload) {
+  var json = axios.post(`http://localhost:3001/cloth`, payload);
+  return { type: POST_CLOTH, payload: json };
+}
+
+export function DeleteCloth(idCloth){
+  return async function(dispatch){
+      return axios.delete(`http://localhost:3001/cloth/${idCloth}`)
+  }
+}
+
+export function UpdateCloth(id, payload) {
+  return async function(dispatch) {
+      const json = await axios.put(`http://localhost:3001/cloth/${id}`, payload);
+      return dispatch({
+          type: UPDATE_CLOTH,
+          payload: json.data
+      });
+  };
+};
