@@ -7,7 +7,9 @@ import{
     FILTER_BY_CATEGORIE,
     FILTER_BY_TYPE,
     FILTER_BY_TRADEMARK,
-    SEARCH
+    SEARCH,
+    PUT_USERS,
+    POST_USERS
 
 
 } from '../actions/index'
@@ -20,7 +22,9 @@ const initialState = {
         byType:"",
         byCategorie:"",
         byTrademark:""
-    }
+    },
+    allUsers: [],
+
 };
 
 
@@ -171,9 +175,20 @@ function rootReducer(state= initialState, action){
                             ClothesCopy: newerArray.flat() 
                         }
                     }
-        default: {
-            return state;
-        }
+                    case PUT_USERS:
+                     return {
+                     ...state,
+                     // allUsers: action.action.payload
+                   };
+                   case POST_USERS:
+                          return {
+                            ...state,
+                            allUsers: action.payload,
+                          };
+                        default: {
+                          return state;
+                        }
+                      
     }
 };
 

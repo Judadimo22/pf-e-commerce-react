@@ -17,10 +17,10 @@ const NavBar = () => {
         <div>
           {isAuthenticated ? (
             <>
-              <a href="/Profile"><button>MyProfile</button></a>
               <a href="/home"><button>HOME</button></a>
             <a href="/about"><button>ABOUT</button></a>
             <a href="/contact"><button>CONTACT</button></a>
+            <a href="/Profile"><button>MyProfile</button></a>
               <LogOutButton />
             </>
           ) : (<>
