@@ -12,6 +12,9 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 
 
+
+
+
 const NavBar = () => {
     const {isAuthenticated, user} = useAuth0();
     console.log(user)
@@ -21,9 +24,9 @@ const NavBar = () => {
                 <ByType/>
             </div>
             <div className={style.containerTitle}>
-                <h2>E-Commerce</h2>
+                <h2 style={{fontFamily: 'Alumni Sans'}}>Ecommerce</h2>
             </div>
-            <div>
+            <div className={style.containerSearchBar}>
             <SearchBar/>
             </div>
             <div className={style.containerSearch}>

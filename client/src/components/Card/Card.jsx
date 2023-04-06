@@ -32,7 +32,7 @@ export const ProductCard = (props) => {
       <div className={style.containerName}>
       <p className={style.productName}><strong>{productName}</strong></p>
       </div>
-      <div>
+      <div className={style.containerPrice}>
       <p className={style.productPrice}>{productPrice}</p>
       </div>
       </div>

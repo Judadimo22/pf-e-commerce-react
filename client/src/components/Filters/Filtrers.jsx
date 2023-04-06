@@ -9,6 +9,8 @@ const Filtrers = () => {
     <div className='Filters-container'>
         <div>
           <div>
+          </div>
+          <div>
             <ByCategorie/>
           </div>
           <hr />

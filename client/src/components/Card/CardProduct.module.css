@@ -38,4 +38,15 @@
 .containerName{
     justify-content: center;
     text-align: center;
+    position: relative;
+    right: 1.25rem;
+    bottom: .625rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.containerPrice{
+    position: relative;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    font-family: 'Inter', sans-serif;
 }
