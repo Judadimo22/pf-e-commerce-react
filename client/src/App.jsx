@@ -7,9 +7,9 @@ import { Details } from './components/Detail/Detail'
 import ProductAdminPage from './components/FormCreate/FormCreate';
 import LandingPage from './views/LandingPage/landingPage'
 import Error404 from './views/Error/Error404'
-import OrderTrackingContainer from './components/Dashboard/AdmOrders';
-import Dashboard from './views/Dashboard/Dashboard';
-import AdmProduct from './components/Dashboard/AdmProduct';
+import OrdersPage from './views/Admin/Orders';
+import Dashboard from './views/Admin/Dashboard';
+import UsersPage from './views/Admin/Users';
 
 
 function App() {
@@ -24,8 +24,9 @@ const [count, setCount] = useState(0)
         <Route exact path="/details/:id" element={<Details />} />
         <Route exact path="/*" element={<Error404 />} />
         <Route exact path="/admin" element={<Dashboard />} />
-        <Route exact path="/admin/products" element={<AdmProduct />} />
-        <Route exact path="/admin/users" element={<OrderTrackingContainer />} />
+        <Route exact path="/admin/products" element={<OrdersPage />} />
+        <Route exact path="/admin/orders" element={<OrdersPage />} />
+        <Route exact path="/admin/users" element={<UsersPage />} />
        </Routes>
 
 
