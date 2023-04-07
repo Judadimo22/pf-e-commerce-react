@@ -4,6 +4,7 @@
     align-items: center;
     position: relative;
     right: 6.25rem;
+    margin: 80px;
 }
 
 .containerPaginado button{
