@@ -1,16 +1,21 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import {Link} from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {Link, useLocation, useParams} from 'react-router-dom'
 import styles from "./ProductDetailsPage.module.css";
 import NavBar from '../NavBar/NavBar';
+import { getClothById } from '../../redux/actions';
 
 export const Details = () => {
-  
-  const productDetails = useSelector(state => state.Details) //hay que comprobar esta info nomas o ver como la vamos a traer
+  const dispatch = useDispatch()
+  const productDetails = useSelector(state => state.Details)
+  const { id } = useParams();
 
   const { name, trademark, description, image,} = productDetails;
+  console.log(id);
 
-  //hay que mover este componente a una page , xd
+  useEffect(()=>{
+    dispatch(getClothById(id))
+  },[])
 
   return (
     <>
