@@ -8,6 +8,7 @@ import ByCategorie from "../Filters/ByCategorie";
 import ByType from "../Filters/ByType";
 import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Text } from "@chakra-ui/react";
 
 
 
@@ -24,7 +25,7 @@ const NavBar = () => {
                 <ByType/>
             </div>
             <div className={style.containerTitle}>
-                <h2 style={{fontFamily: 'Alumni Sans'}}>Ecommerce</h2>
+                <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
             </div>
             <div className={style.containerSearchBar}>
             <SearchBar/>
