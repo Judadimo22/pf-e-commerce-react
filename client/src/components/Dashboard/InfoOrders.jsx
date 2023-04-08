@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Td } from "@chakra-ui/react";
+import { Table, Td, Tr } from "@chakra-ui/react";
 import { Button } from '@chakra-ui/react';
 
 /* const useStyles = makeStyles({
@@ -17,17 +17,17 @@ function OrderTracking(props) {
   };
 
   return (
-          <>
-          {/* -------------------> user artibutes */}
-          
-
-
-          {/* ----------------------------------->*/}
-            <Td>{email}</Td>
-            <Td>{name}</Td>
-            <Td>{totalAmount}</Td>
-            <Td>{status}</Td>
-          </>
+    <Tr>
+            {/* -------------------> user artibutes */}
+            
+  
+  
+            {/* ----------------------------------->*/}
+      <Td>{email}</Td>
+      <Td>{name}</Td>
+      <Td>{totalAmount}</Td>
+      <Td>{status}</Td>
+    </Tr>
   );
 }
 

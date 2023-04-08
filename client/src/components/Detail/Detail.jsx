@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {Link, useLocation, useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import styles from "./ProductDetailsPage.module.css";
-import NavBar from '../NavBar/NavBar';
 import { getClothById } from '../../redux/actions';
+import HomeNavBar from '../NavBar/HomeNavbar';
 
 export const Details = () => {
   const dispatch = useDispatch()
@@ -19,7 +19,7 @@ export const Details = () => {
 
   return (
     <>
-      <NavBar/>
+      <HomeNavBar/>
     <div className={styles.container}>
             <div className={styles.card}>
               <div className={styles.card_container}>

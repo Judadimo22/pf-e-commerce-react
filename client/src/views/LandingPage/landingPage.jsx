@@ -1,6 +1,5 @@
 import React from 'react'
 import Style from "../LandingPage/LandingPage.module.css";
-import NavBar from '../../components/NavBar/NavBar'
 import { Link } from "react-router-dom";
 import l1 from "../../assets/carousel-landing/c1.avif"
 import l2 from "../../assets/carousel-landing/c2.jpg"
@@ -12,11 +11,12 @@ import l7 from "../../assets/carousel-landing/c7.jpg"
 import l8 from "../../assets/carousel-landing/c8.jpg"
 import member from "../../assets/carousel-landing/t-member.png";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
+import HomeNavBar from '../../components/NavBar/HomeNavbar';
 
 function LandingPage() {
   return (
   <>
-  <NavBar/>
+  <HomeNavBar/>
   <div className={Style.container}>
         {/*<div className={Style.titulo}>
           <h1>El sitio que arma tus atuendos!</h1>

@@ -7,7 +7,7 @@ import { Table, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
 
 const orders = [
 {
-    key:1,
+  _id:1,
     email:"asdasd@gmail.com",
     name:"asdasd",
     totalAmount:8,
@@ -15,7 +15,7 @@ const orders = [
     orderId:1566
 },
 {
-    key:2,
+  _id:2,
     email:"asdasd@gmail.com",
     name:"asdasd",
     totalAmount:8,
@@ -23,7 +23,7 @@ const orders = [
     orderId:5656561
 },
 {
-    key:3,
+  _id:3,
     email:"asdasd@gmail.com",
     name:"asdasd",
     totalAmount:8,
@@ -72,8 +72,8 @@ function OrderTrackingContainer() {
             <Th>Estado</Th>
           </Tr>
         </Thead>
-      {orders.map(order => (
         <Tbody>
+      {orders.map(order => (
         <OrderTracking
           key={order._id}
           email={order.email}
@@ -83,8 +83,8 @@ function OrderTrackingContainer() {
           orderId={order._id}
           updateOrderStatus={handleUpdateOrderStatus}
         />
-     </Tbody>
-      ))}
+        ))}
+        </Tbody>
     </Table>  
   );
 }

@@ -1,9 +1,14 @@
 import { Flex, Icon, Menu, MenuButton, Text } from '@chakra-ui/react'
 import React from 'react'
 import { TbDeviceDesktopAnalytics } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-const NavItem = ({title,icon}) => {
+const NavItem = ({title,icon,redirect}) => {
+
+    const location =  useLocation().pathname
+
+    console.log(location);
+  
   return (
     <Flex
         mt={30}
@@ -14,14 +19,17 @@ const NavItem = ({title,icon}) => {
         <Menu
         
         >
-            <Link>
+            <Link to={redirect}>
                 <MenuButton>
                     <Flex 
-                        color="#ffffff"
-                        width="150px"
+                        color={location===redirect ? "#272727" : "#ffffff"}
+                        bgColor={location===redirect ? "#DAEB0F" : "#272727"}
+                        width="135px"
+                        height="35px"
                         alignItems="center"
+                        borderRadius={15}
                     >
-                        <Icon as={icon} mr={5}/>
+                        <Icon marginLeft="12px" as={icon} mr={4}/>
                         <Text>{title}</Text>
                     </Flex>
                 </MenuButton>

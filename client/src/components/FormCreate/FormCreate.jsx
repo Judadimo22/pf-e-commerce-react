@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./formCreate.css?inline"
+import styles from "./formCreate.css/?inline"
 import {Link} from "react-router-dom"
 import {
   DriveFileRenameOutline,
@@ -29,6 +29,7 @@ import {
   TextField,
 } from "@mui/material";
 import { AdminLayout } from "../../components/Layout/AdminLayout";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 const validTypes = ["shirts", "pants", "hoodies", "hats"];
 const validGender = ["men", "women", "kid"];
@@ -504,7 +505,7 @@ const ProductAdminPage = (props, { product }) => {
 
               <Grid container spacing={2}>
                 {product?.images.map((img) => (
-                  <Grid item xs={4} sm={3} key={img}>
+                  <Grid2 item xs={4} sm={3} key={img}>
                     <Card>
                       <CardMedia
                         component="img"
@@ -518,7 +519,7 @@ const ProductAdminPage = (props, { product }) => {
                         </Button>
                       </CardActions>
                     </Card>
-                  </Grid>
+                  </Grid2>
                 ))}
               </Grid>
             </Box>

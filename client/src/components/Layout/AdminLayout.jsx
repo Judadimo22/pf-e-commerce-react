@@ -1,4 +1,4 @@
-import NavBar from "../NavBar/NavBar";
+import AdminNavBar from "../NavBar/AdminNavBar";
 import { Box,Typography } from "@mui/material"
 
 
@@ -7,7 +7,7 @@ export const AdminLayout = ({children, title, subTitle, icon }) => {
   return (
     <>
         <nav>
-        <NavBar/>
+        <AdminNavBar/>
         </nav>
 
 
