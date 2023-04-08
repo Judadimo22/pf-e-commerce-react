@@ -8,6 +8,8 @@ import ByCategorie from "../Filters/ByCategorie";
 import ByType from "../Filters/ByType";
 import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Flex, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 
 
@@ -15,31 +17,21 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 
 
-const NavBar = () => {
+const AdminNavBar = () => {
     const {isAuthenticated, user} = useAuth0();
     console.log(user)
     return(
-        <div className={style.containerNavBar}>
-            <div>
-                <ByType/>
-            </div>
-            <div className={style.containerTitle}>
-                <h2 style={{fontFamily: 'Alumni Sans'}}>Ecommerce</h2>
-            </div>
+        <Flex className={style.containerNavBar}>            
+            <Link to="/home">
+                <div className={style.containerTitle}>
+                    <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
+                </div>
+            </Link>
             <div className={style.containerSearchBar}>
             <SearchBar/>
             </div>
-            <div className={style.containerSearch}>
-                <div>
-                {isAuthenticated ?(<>
-                <div>Bienvenido!{user.name}</div>
-        <LogOutButton/>
-      </>):<LoginButton/>}
-                </div>
-                <button><AiOutlineShoppingCart/></button>
-            </div>
-        </div>
+        </Flex>
     )
 };
 
-export default NavBar;
+export default AdminNavBar;

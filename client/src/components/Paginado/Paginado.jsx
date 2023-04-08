@@ -6,7 +6,7 @@ import style from './Paginado.module.css'
 
 export const Pagination = ({pageNumber, prevPageFn, nextPageFn, totalPages}) => {
   return (
-    totalPages > 0 ?
+    totalPages > 1 ?
     <div className={style.containerPaginado}>
       <button
         
@@ -24,6 +24,6 @@ export const Pagination = ({pageNumber, prevPageFn, nextPageFn, totalPages}) => 
       </button>
     </div>
     :
-    null
+    <></>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./formCreate.css"
+import styles from "./formCreate.css/?inline"
 import {Link} from "react-router-dom"
 import {
   DriveFileRenameOutline,
@@ -28,7 +28,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { AdminLayout } from "../../components/Layout/AdminLayout";
+import AdminNavBar from "../NavBar/AdminNavBar";
 
 const validTypes = ["shirts", "pants", "hoodies", "hats"];
 const validGender = ["men", "women", "kid"];
@@ -270,11 +270,9 @@ const ProductAdminPage = (props, { product }) => {
   };
 
   return (
-    <AdminLayout
-      title={"Creacion de producto"}
-      /* subTitle={`Editando: ${product ? product.title : "producto"}`}
-         icon={<DriveFileRenameOutline/>} */
-    >
+    <>
+
+    <AdminNavBar/>
       <form onSubmit={handleSubmit}>
         <Box display="flex" justifyContent="end" sx={{ mb: 1 }}>
           <Button
@@ -535,7 +533,7 @@ const ProductAdminPage = (props, { product }) => {
                         </button>
                     </Link>
                 </div>
-    </AdminLayout>
+    </>
   );
 };
 

@@ -12,17 +12,19 @@
     color: #334142;
     background-color: #D6E4E5;
 } */
-/* .select {
+ .select {
     display: flex;
-    background: none;
-} */
+    justify-content: space-between;
+    width: 350px;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Advent Pro', sans-serif;
+    margin-left: 70px;
+} 
 
 .select button{
     background: none;
-    margin: 0 .625rem;
     font-size: 1.25rem;
-    font-family: 'Advent Pro', sans-serif;
-
 }
 
 

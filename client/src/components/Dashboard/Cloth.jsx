@@ -6,11 +6,12 @@ import { TbShoppingCartPlus } from "react-icons/tb";
 import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete} from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import { Button, Flex, Icon, Image, Td, Tr } from '@chakra-ui/react';
 
 
 
 
-export const Cloth = (props) => {
+export const Cloth = ({id,img,name,price,stock}) => {
   const dispatch = useDispatch()
 
   const goToProductDetails = () => {
@@ -19,31 +20,24 @@ export const Cloth = (props) => {
 
   
   
-  const productPrice = props.product.price ?  '$' + props.product.price  : ''
-  const productType = props.product.type
-  const productTrademark = props.product.trademark
-  const productImage = props.product.image
-  const productName = props.product.name
 
 
   return (
-    <div className={style.containerCard}>  
-      {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
-      {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
-      <div>
-      <img className={style.productImagen} src={productImage} alt="" />
-      <button className={style.cart}><AiFillEdit/></button>
-      <button className={style.cart}><AiFillDelete/></button>
-      </div>
-      <div className={style.containerName}>
-      <p className={style.productName}><strong>{productName}</strong></p>
-      </div>
-      <div className={style.containerPrice}>
-      <p className={style.productPrice}>{productPrice}</p>
-      </div>
-      </div>
-
-    // </div>
     
+    <Tr >
+      <Link to={`/details/${id}`}>
+        <Td as='u'>{name}</Td>
+      </Link>
+      <Td>${price}</Td>
+      <Td>{stock}</Td>
+      <Flex height="50px" alignItems="center" justifyContent="center" >
+        <AiFillEdit/>
+        <AiFillDelete/>
+      </Flex>
+    </Tr>
   )
 }
+
+/*       <button className={style.cart}><AiFillEdit/></button>
+      <button className={style.cart}><AiFillDelete/></button>
+ */

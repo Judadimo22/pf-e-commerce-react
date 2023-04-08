@@ -2,8 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    right: 6.25rem;
+    margin: 40px 0 20px 0;
 }
 
 .containerPaginado button{
