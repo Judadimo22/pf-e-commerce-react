@@ -1,16 +1,18 @@
 import React from 'react'
 import style from './CardProduct.module.css'
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { getClothById } from '../../redux/actions'
+import { TbShoppingCartPlus } from "react-icons/tb";
+import { Box,  Button,  Flex, Image, Text } from '@chakra-ui/react'
+
 
 export const ProductCard = (props) => {
-  const dispatch = useDispatch()
 
-  const goToProductDetails = () => {
-    dispatch(getClothById(props.product._id))
-  }
+ 
   
+  const onClick = (event) => {
+    alert("alguien que añada el carrito o rompo development")
+  }
+
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
   const productType = props.product.type
   const productTrademark = props.product.trademark
@@ -19,22 +21,41 @@ export const ProductCard = (props) => {
 
 
   return (
-    <Link onClick={goToProductDetails} style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
-    <div className={style.containerCard}>    
-      {/* { props.dog.image && <img className={style.productImage} src={props.dog.image}/>} */}
-      {/* <div style={!props.product.image ? {paddingLeft: 20} : {}}> */}
-      <img className={style.productImagen} src={productImage} alt="" />
-      <p className={style.productName}><strong>{productName}</strong></p>
-      <div className={style.containerPrice}>
-      <p className={style.productTrademark}><strong>{productTrademark}</strong></p>
-      <p className={style.productPrice}>{productPrice}</p>
-      </div>
+    <Flex flexDirection="column"  className={style.containerCard}>    
 
-     
-      </div>
-    </Link>
-    // </div>
-    
+
+      <Box className={style.boxContainer} backgroundImage={productImage} minH="320px">
+
+        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
+          <Box  height="260px" />
+        </Link>    
+
+        <Flex flexDir="row" >
+
+          <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
+            <Box width="190px" height="60px" />
+          </Link>    
+
+          <Button className={style.cartContainer} onClick={onClick} backgroundColor="#DAEB0F" padding="0">
+            <TbShoppingCartPlus className={style.cart}/>
+          </Button>
+
+        </Flex>
+
+      </Box>
+
+
+      <Flex flexDir="column" margin="10px 0" textAlign="center">
+
+        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/details/${props.product._id}`}>
+          <Text className={style.productName} sx={{fontFamily:"Inter, sans-serif",fontWeight:"700"}} >{productName}</Text>
+        </Link>
+
+        <Text className={style.productPrice}>{productPrice}</Text>
+
+      </Flex>
+
+    </Flex>
   )
 }
 
