@@ -2,10 +2,6 @@ import { Box } from '@chakra-ui/react';
 
 function SizeSelector({ sizes, selectedSize, onSizeSelect }) {
   return (
-    <Box mb={4}>
-      <Box as="label" fontWeight="bold" htmlFor="size-select">
-        Tamaño
-      </Box>
       <Box mt={2}>
         {sizes.map((size) => (
           <Box
@@ -23,7 +19,6 @@ function SizeSelector({ sizes, selectedSize, onSizeSelect }) {
           </Box>
         ))}
       </Box>
-    </Box>
   );
 }
 
