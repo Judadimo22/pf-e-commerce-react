@@ -17,7 +17,7 @@ const axiosInstance = axios.create({
 
 export function getClothes(){
     return async function (dispatch) {
-        let json = await axiosInstance.get(`/cloth`);
+        let json = await axios.get(`${baseUrl}/cloth`);
         dispatch({
           type: GET_CLOTHES,
           payload: json.data,
