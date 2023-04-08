@@ -28,8 +28,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { AdminLayout } from "../../components/Layout/AdminLayout";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import AdminNavBar from "../NavBar/AdminNavBar";
 
 const validTypes = ["shirts", "pants", "hoodies", "hats"];
 const validGender = ["men", "women", "kid"];
@@ -271,11 +270,9 @@ const ProductAdminPage = (props, { product }) => {
   };
 
   return (
-    <AdminLayout
-      title={"Creacion de producto"}
-      /* subTitle={`Editando: ${product ? product.title : "producto"}`}
-         icon={<DriveFileRenameOutline/>} */
-    >
+    <>
+
+    <AdminNavBar/>
       <form onSubmit={handleSubmit}>
         <Box display="flex" justifyContent="end" sx={{ mb: 1 }}>
           <Button
@@ -505,7 +502,7 @@ const ProductAdminPage = (props, { product }) => {
 
               <Grid container spacing={2}>
                 {product?.images.map((img) => (
-                  <Grid2 item xs={4} sm={3} key={img}>
+                  <Grid item xs={4} sm={3} key={img}>
                     <Card>
                       <CardMedia
                         component="img"
@@ -519,7 +516,7 @@ const ProductAdminPage = (props, { product }) => {
                         </Button>
                       </CardActions>
                     </Card>
-                  </Grid2>
+                  </Grid>
                 ))}
               </Grid>
             </Box>
@@ -536,7 +533,7 @@ const ProductAdminPage = (props, { product }) => {
                         </button>
                     </Link>
                 </div>
-    </AdminLayout>
+    </>
   );
 };
 

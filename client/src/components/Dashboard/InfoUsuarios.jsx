@@ -1,14 +1,10 @@
 import React from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
+
 
 function UserTable({ users }) {
-  const classes = useStyles();
+  //const classes = useStyles();
 
   return (
     <Table variant="simple">

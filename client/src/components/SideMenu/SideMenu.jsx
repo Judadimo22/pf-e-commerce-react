@@ -17,10 +17,16 @@ export function DashboardLeftMenu() {
   const navigate  = useNavigate()
   if ("admin" === "admin") {
     return (
+      <>
       <Flex
+      minW="350px"
+      bgColor="#272727"
       pos="sticky"
+      />
+      <Flex
+      pos="fixed"
       h="710px"
-      boxShadow="0 4px 12px 0 rgb(0,0,0,0.5)" 
+      boxShadow="0 0px 0 0 rgb(0,0,0,0.5)" 
       w="350px"
       flexDir="column"
       justifyContent="space-between"
@@ -76,6 +82,7 @@ export function DashboardLeftMenu() {
         </Flex>
 
       </Flex>
+      </>
     );
   } else {
     return (

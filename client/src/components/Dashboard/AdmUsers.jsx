@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import UserTable from './InfoUsuarios';
 
-function App() {
+function TableUsersContainer() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -20,4 +20,4 @@ function App() {
   );
 }
 
-export default App;
+export default TableUsersContainer;

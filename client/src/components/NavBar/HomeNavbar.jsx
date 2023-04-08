@@ -7,7 +7,7 @@ import { LogOutButton } from '../Login/logOut'
 import ByType from "../Filters/ByType";
 import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 
@@ -20,7 +20,9 @@ const HomeNavBar = () => {
     const {isAuthenticated, user} = useAuth0();
     console.log(user)
     return(
-        <div className={style.containerNavBar}>
+        <>
+        <Flex h="75px" width="100%"/>
+        <Flex className={style.containerNavBar} position="fixed" zIndex="9999">
             <div>
                 <ByType/>
             </div>
@@ -41,7 +43,8 @@ const HomeNavBar = () => {
                 </div>
                 <button><AiOutlineShoppingCart/></button>
             </div>
-        </div>
+        </Flex>
+        </>
     )
 };
 

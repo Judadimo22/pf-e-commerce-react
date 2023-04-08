@@ -6,8 +6,6 @@ import { Link, useLocation } from 'react-router-dom'
 const NavItem = ({title,icon,redirect}) => {
 
     const location =  useLocation().pathname
-
-    console.log(location);
   
   return (
     <Flex

@@ -30,7 +30,6 @@ const orders = [
     status:"Pagada",
     orderId:456456
 }
-
 ]
 
 function OrderTrackingContainer() {
@@ -67,9 +66,9 @@ function OrderTrackingContainer() {
         <Thead>
           <Tr>
             <Th>Email</Th>
-            <Th>Nombre</Th>
-            <Th>Monto total</Th>
-            <Th>Estado</Th>
+            <Th>Name</Th>
+            <Th>Total amount</Th>
+            <Th>State</Th>
           </Tr>
         </Thead>
         <Tbody>
