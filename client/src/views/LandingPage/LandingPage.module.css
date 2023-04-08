@@ -193,7 +193,7 @@
     display: flex;
     background-color: chocolate;
     color: blanchedalmond;
-    height: 350px;
+    height: 400px;
   }
   .col1 {
     width: 25%;
@@ -240,7 +240,8 @@
   }
   .container_4{
     text-align: center;
-    background-color: #a5832494;
+    background-color: rgb(88 58 18);
+    
   }
   .miembros{
    font-size: 2em;
@@ -251,7 +252,7 @@
   .cartasIntegrantes{
     width: 20em;
     border: solid 1px;
-    background-color: #fb850040;
+    background-color: #a58324;
     margin-left: 3%;
     padding: 1.25em;
     border-radius: 26%;
@@ -266,7 +267,10 @@ font-size: 18px;
 .links{
   font-size: 1.6em;
 }
-/*.contenedorOrdenador{
-  background-color: black;
-}*/
+.contenedorOrdenador{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 400px 400px 400px;
+  margin: 0.625rem auto;
+}
   

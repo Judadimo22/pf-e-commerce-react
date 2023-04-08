@@ -1,19 +1,26 @@
-.containerInput{
+.containerSearch{
+    color: #565656;
+}
+.containerSearch form{
     display: flex;
-    align-items: center;
-    color: gray;
+    justify-content: center;
 }
 
-.containerInput input{
-    height: 1.875rem;
+.containerSearch input{
+    padding-left: 3.125rem;
+    border-radius: 20px;
+    height: 35px;
+    width: 250px;
+    font-size: 16px;
     border: none;
-    border-bottom: 1px solid grey;
-    font-size: 1.125rem;
+    background-color: #F2F2F2;
 }
 
-.containerInput h3{
+.containerSearch button{
+    background: none;
+    border: none;
+    font-size: 1.5625rem;
+    cursor: pointer;
     position: relative;
-    right: 1.5625rem;
-    top: .125rem;
-    font-size: 1.25rem;
+    left: 2.5rem;
 }
