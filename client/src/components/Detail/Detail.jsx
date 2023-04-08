@@ -1,28 +1,28 @@
-import {useEffect,useState} from 'react'
-import { useDispatch,useSelector } from 'react-redux'
-import {Link, useParams} from 'react-router-dom'
-import { getClothById } from '../../redux/actions';
-import HomeNavBar from '../NavBar/HomeNavBar';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { getClothById } from "../../redux/actions";
+import HomeNavBar from "../NavBar/HomeNavBar";
 import * as Chakra from "@chakra-ui/react";
 import StarRating from "../StarRating/StarRating";
 import SizeSelector from "../SizeSelector/SizeSelector";
 import ColorSelector from "../ColorSelector/ColorSelector";
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart } from "react-icons/fa";
 
 export const Details = () => {
-  const dispatch = useDispatch()
-  const productDetails = useSelector(state => state.Details)
+  const dispatch = useDispatch();
+  const productDetails = useSelector((state) => state.Details);
   const { id } = useParams();
 
-  const { name, trademark, description, image, price} = productDetails;
+  const { name, trademark, description, image, price, size, review } =
+    productDetails;
   console.log(id);
 
-  useEffect(()=>{
-    dispatch(getClothById(id))
-  },[])
+  useEffect(() => {
+    dispatch(getClothById(id));
+  }, []);
 
   const [selectedSize, setSelectedSize] = useState("");
-  const sizes = ["S", "M", "L", "XL", "XXL"];
 
   const handleSizeSelect = (size) => {
     setSelectedSize(size);
@@ -37,7 +37,7 @@ export const Details = () => {
 
   const handleAddToCart = () => {
     // Aquí iría la lógica para agregar el producto al carrito
-    console.log(
+    alert(
       `Agregaste el producto en talla ${selectedSize} y color ${selectedColor} al carrito.`
     );
   };
@@ -49,9 +49,7 @@ export const Details = () => {
         <Chakra.HStack spacing={4}>
           <Link to={`/home`}>
             <Chakra.Button>
-              <Chakra.Box>
-                  Home
-              </Chakra.Box>
+              <Chakra.Box>Home</Chakra.Box>
             </Chakra.Button>
           </Link>
         </Chakra.HStack>
@@ -67,10 +65,14 @@ export const Details = () => {
               ${price}.00
             </Chakra.Text>
             <Chakra.Box h="3px" w="100%" bg="#DAEB0F" borderRadius="full" />
-            <StarRating rating={4.5} />
+            <Chakra.Flex>
+              <StarRating rating={4.5} />
+              <Chakra.Text ml={1}>({review}1 review)</Chakra.Text>
+            </Chakra.Flex>
+
             <Chakra.Text fontWeight="bold">Seleccionar Talle</Chakra.Text>
             <SizeSelector
-              sizes={sizes}
+              sizes={size}
               selectedSize={selectedSize}
               onSizeSelect={handleSizeSelect}
             />
