@@ -14,7 +14,7 @@ export const Details = () => {
   const productDetails = useSelector(state => state.Details)
   const { id } = useParams();
 
-  const { name, trademark, description, image,} = productDetails;
+  const { name, trademark, description, image, price} = productDetails;
   console.log(id);
 
   useEffect(()=>{
