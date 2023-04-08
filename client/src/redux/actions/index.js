@@ -15,7 +15,7 @@ const baseURL = 'https://backend-pf-uh1o.onrender.com'
 
 export function getClothes(){
     return async function (dispatch) {
-        let json = await axios.get(`${baseURL}/cloth`);
+        let json = await axios.get('https://backend-pf-uh1o.onrender.com/cloth');
         dispatch({
           type: GET_CLOTHES,
           payload: json.data,
