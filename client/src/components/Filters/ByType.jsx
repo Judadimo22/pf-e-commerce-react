@@ -2,6 +2,8 @@ import React from 'react'
 import "./ByType.css"
 import {filterByType,ChangefilterInputByType} from "../../redux/actions/index"
 import { useDispatch } from 'react-redux'
+import { Text } from '@chakra-ui/react'
+import { capitalize } from '@mui/material'
 
 const ByType = () => {
   const type = ["shirts","pants","hoodies","hats"]
@@ -13,10 +15,7 @@ const ByType = () => {
 
   return (
     <div className='select'>
-      <select name="continent" className='by-continent' onChange={onChange}>
-        <option className='option' value="">By Type</option>
-        {type.map((a,index)=> <option value={a}  className="option" key={index}>{a}</option>)}
-      </select>
+        {type.map((a,index)=> <Text onClick={onChange} value={a}  className="option" key={index}>{capitalize(a)}</Text>)}
     </div>
   )
 }

@@ -1,20 +1,40 @@
 .containerNavBar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    background-color: pink;
-    margin-left: 0px;
-    margin-right: 0px;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
+    height: 75px;
+    width: 100%;
+    top: 0;
 }
 
 .containerSearch{
     display: flex;
     align-items: center;
     margin-right: 1em;
+    position: relative;
+    left: 1.25rem;
 
 }
-.containerTitle h2{
-    margin-left: 1em;
-    text-align: -webkit-center;
-    font-size: 1.7em;
+
+.containerSearch button{
+    font-size: 1.875rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    top: .25rem;
+}
+
+.containerTitle{
+    display: flex;
+    align-items: center;
+}
+
+.containerSearchBar{
+    position: relative;
+    left: 6.25rem;
 }

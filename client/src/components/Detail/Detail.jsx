@@ -1,16 +1,25 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import {useEffect,useState} from 'react'
+import { useDispatch,useSelector } from 'react-redux'
+import {Link, useParams} from 'react-router-dom'
+import { getClothById } from '../../redux/actions';
+import HomeNavBar from '../NavBar/HomeNavBar';
 import * as Chakra from "@chakra-ui/react";
-import NavBar from "../NavBar/NavBar";
 import StarRating from "../StarRating/StarRating";
 import SizeSelector from "../SizeSelector/SizeSelector";
 import ColorSelector from "../ColorSelector/ColorSelector";
 import { FaShoppingCart } from 'react-icons/fa';
 
 export const Details = () => {
-  const productDetails = useSelector((state) => state.Details);
-  const { name, trademark, description, image, price } = productDetails;
+  const dispatch = useDispatch()
+  const productDetails = useSelector(state => state.Details)
+  const { id } = useParams();
+
+  const { name, trademark, description, image,} = productDetails;
+  console.log(id);
+
+  useEffect(()=>{
+    dispatch(getClothById(id))
+  },[])
 
   const [selectedSize, setSelectedSize] = useState("");
   const sizes = ["S", "M", "L", "XL", "XXL"];
@@ -35,7 +44,7 @@ export const Details = () => {
 
   return (
     <>
-      <NavBar />
+      <HomeNavBar />
       <Chakra.Box p={8}>
         <Chakra.HStack spacing={4}>
           <Link to={`/home`}>

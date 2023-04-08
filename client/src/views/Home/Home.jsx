@@ -1,14 +1,21 @@
 import React from "react";
-import NavBar from "../../components/NavBar/NavBar";
 import { ListCard } from "../../components/ListCards/ListCards";
 import Filtrers from "../../components/Filters/Filtrers";
+import style from './Home.module.css'
+import HomeNavBar from "../../components/NavBar/HomeNavbar";
 
 const Home = () => {
     return(
-        <div>
-            <NavBar/>
-            <Filtrers/>
-            <ListCard/>
+        <div className={style.containerHome}>
+            <HomeNavBar/>
+            <div className={style.containerFilters}>
+                <div className={style.filters}>
+                <Filtrers/>
+                </div>
+                <div className={style.cards}>
+                <ListCard/>
+                </div>
+            </div>
         </div>
     )
 };

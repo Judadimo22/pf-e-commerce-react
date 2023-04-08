@@ -7,7 +7,9 @@ import{
     FILTER_BY_CATEGORIE,
     FILTER_BY_TYPE,
     FILTER_BY_TRADEMARK,
-    SEARCH
+    SEARCH,
+    UPDATE_CLOTH,
+    POST_CLOTH
 
 
 } from '../actions/index'
@@ -171,6 +173,18 @@ function rootReducer(state= initialState, action){
                             ClothesCopy: newerArray.flat() 
                         }
                     }
+
+                    case UPDATE_CLOTH:
+                        return {
+                            ...state
+                        }
+                
+                    case POST_CLOTH:
+                      return {
+                        ...state,
+                        Clothes: action.payload,
+                        ClothesCopy: action.payload,
+                      };
         default: {
             return state;
         }

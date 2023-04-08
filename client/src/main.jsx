@@ -5,8 +5,6 @@ import App from './App'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import  store  from "../src/redux/store/index"
-
-
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { lightTheme } from './themes/light-theme'
 import { Provider } from 'react-redux'
