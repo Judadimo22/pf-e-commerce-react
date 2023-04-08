@@ -11,6 +11,10 @@ import { Provider } from 'react-redux'
 import axios from "axios";
 import { ChakraProvider } from '@chakra-ui/react'
 
+const axiosInstance = axios.create({
+  baseURL: process.env.VITE_PUBLIC_API_URL,
+})
+
 
 
 
