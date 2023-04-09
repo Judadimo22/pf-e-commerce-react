@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Button, Flex, Text, Grid } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import HomeNavBar from "../../components/NavBar/HomeNavBar";
+import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
 
 const CartPage = () => {

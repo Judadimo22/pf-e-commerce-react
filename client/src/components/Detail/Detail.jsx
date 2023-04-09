@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getClothById } from "../../redux/actions";
-import HomeNavBar from "../NavBar/HomeNavBar";
+import HomeNavBar from "../NavBar/HomeNavbar";
 import * as Chakra from "@chakra-ui/react";
 import StarRating from "../StarRating/StarRating";
 import SizeSelector from "../SizeSelector/SizeSelector";
