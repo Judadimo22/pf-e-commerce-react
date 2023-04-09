@@ -36,10 +36,42 @@ export const Details = () => {
   };
 
   const handleAddToCart = () => {
-    // Aquí iría la lógica para agregar el producto al carrito
-    alert(
-      `Agregaste el producto en talla ${selectedSize} y color ${selectedColor} al carrito.`
+    // Obtener los datos del producto seleccionado
+    const product = {
+      id: productDetails.id,
+      name: productDetails.name,
+      price: productDetails.price,
+      size: selectedSize,
+      color: selectedColor,
+      image: productDetails.image,
+      quantity: 1,
+    };
+
+    // Obtener el carrito actual desde el localStorage
+    let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Verificar si el producto ya está en el carrito
+    const existingProductIndex = cart.findIndex(
+      (item) =>
+        item.id === product.id &&
+        item.size === product.size &&
+        item.color === product.color &&
+        item.image === product.image
     );
+
+    if (existingProductIndex >= 0) {
+      // Si el producto ya está en el carrito, aumentar la cantidad
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      // Si el producto no está en el carrito, agregarlo
+      cart.push(product);
+    }
+
+    // Actualizar el carrito en el localStorage
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+    
+    // Actualizar el estado del número de productos en el carrito
+    setNumCartItems(cart.length);
   };
 
   return (
@@ -82,10 +114,14 @@ export const Details = () => {
               selectedColor={selectedColor}
               onColorSelect={handleColorSelect}
             />
-            <Chakra.Box mt={8}>
+            <Chakra.Box mt={8} mb={4}>
               <Chakra.Button
-                colorScheme="blue"
+                borderRadius="100px"
+                colorScheme="#DAEB0F"
+                bg="#DAEB0F"
                 size="lg"
+                _hover="white"
+                color="#272727"
                 disabled={!selectedSize || !selectedColor}
                 onClick={handleAddToCart}
                 leftIcon={<FaShoppingCart />}
