@@ -9,9 +9,12 @@ import{
     FILTER_BY_TRADEMARK,
     SEARCH,
     UPDATE_CLOTH,
-    POST_CLOTH
-
-
+    POST_CLOTH,
+    PUT_USERS,
+    POST_USERS,
+    GET_USERS,
+    GET_ORDERS,
+    GET_USER_BY_ID
 } from '../actions/index'
 
 const initialState = {
@@ -22,7 +25,12 @@ const initialState = {
         byType:"",
         byCategorie:"",
         byTrademark:""
-    }
+    },
+    allUsers: [],
+    Users: [],
+    UsersCopy: [],
+    orders: [],
+    user:{}
 };
 
 
@@ -34,6 +42,18 @@ function rootReducer(state= initialState, action){
                 Clothes: action.payload,
                 ClothesCopy: action.payload,
             };
+        case GET_USER_BY_ID:
+            return{
+                ...state,
+                user: action.payload,
+            };
+
+            case GET_USERS:
+                return{
+                    ...state,
+                    Users: action.payload,
+                    UsersCopy: action.payload
+                }
 
             case SEARCH: {
                 let search = [];
@@ -58,6 +78,11 @@ function rootReducer(state= initialState, action){
                     ...state.filterInputs,
                     byType: action.payload
                 }
+            }
+        case GET_ORDERS:
+            return{
+                ...state,
+                orders:action.payload
             }
         case CHANGE_FILTER_INPUT_BY_CATEGORIE:
             return{
@@ -185,9 +210,20 @@ function rootReducer(state= initialState, action){
                         Clothes: action.payload,
                         ClothesCopy: action.payload,
                       };
-        default: {
-            return state;
-        }
+                    case PUT_USERS:
+                     return {
+                     ...state,
+                     // allUsers: action.action.payload
+                   };
+                   case POST_USERS:
+                          return {
+                            ...state,
+                            allUsers: action.payload,
+                          };
+                        default: {
+                          return state;
+                        }
+                      
     }
 };
 

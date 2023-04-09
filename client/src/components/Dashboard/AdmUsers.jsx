@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import UserTable from './InfoUsuarios';
+import React, { useEffect } from "react";
+import Users from "./Users";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../redux/actions";
 
-function TableUsersContainer() {
-  const [users, setUsers] = useState([]);
+const AdmUsers = () => {
+    const dispatch = useDispatch()
+    const users = useSelector((state) => state.Users)
+    useEffect(()=>{
+        dispatch(getUsers())
+    },[])
+    return(
+            <Users users={users}/>
+    )
+};
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const response = await axios.get('https://my-api.com/users'); // Cambia esto por la URL de tu API que devuelve la lista de usuarios de la base de datos en MongoDB
-      setUsers(response.data);
-    }
-    fetchUsers();
-  }, []);
-
-  return (
-    <div>
-      <UserTable users={users} />
-    </div>
-  );
-}
-
-export default TableUsersContainer;
+export default AdmUsers;

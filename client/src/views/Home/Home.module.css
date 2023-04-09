@@ -1,13 +1,13 @@
 .containerHome{
     background-color: #f2f2f2;
-    min-height: 100vh;
+    min-height: 100%;
 }
 
 .containerFilters{
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     background-color: #f2f2f2;
-    margin: 30px 3.125rem;
+    margin: 30px 3.125rem 0;
     
 }
 

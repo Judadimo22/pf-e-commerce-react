@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import OrderTracking from './InfoOrders';
 import { Table, Thead, Tbody, Tr, Th } from "@chakra-ui/react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrders } from '../../redux/actions';
 
 
 
-const orders = [
+/* const orders = [
 {
   _id:1,
     email:"asdasd@gmail.com",
@@ -30,9 +32,15 @@ const orders = [
     status:"Pagada",
     orderId:456456
 }
-]
+] */
 
 function OrderTrackingContainer() {
+
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getOrders())
+  },[])
+
   /* const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -60,6 +68,8 @@ function OrderTrackingContainer() {
       console.error(error);
     } */
   };
+  const orders = useSelector((state) => state.orders)
+  console.log(orders);
 
   return ( 
        <Table variant='simple' colorScheme="blackAlpha" >
@@ -72,7 +82,7 @@ function OrderTrackingContainer() {
           </Tr>
         </Thead>
         <Tbody>
-      {orders.map(order => (
+      {orders && orders?.map(order => (
         <OrderTracking
           key={order._id}
           email={order.email}
