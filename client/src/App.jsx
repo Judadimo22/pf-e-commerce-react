@@ -9,6 +9,7 @@ import OrdersPage from './views/Admin/Orders';
 import Dashboard from './views/Admin/Dashboard';
 import UsersPage from './views/Admin/Users';
 import ProductsAdmin from './views/Admin/Product'
+import CartPage from './views/Cart/CartPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/admin/products" element={<ProductsAdmin />} />
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage />} />
+        <Route exact path='/cart' element={<CartPage />} />
        </Routes>
 
 
