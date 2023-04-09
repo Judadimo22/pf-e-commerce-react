@@ -3,6 +3,7 @@ import { Box, Button, Flex, Text, Grid } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
+import Footer from "../../components/Footer/Footer";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -51,51 +52,54 @@ const CartPage = () => {
   const handleCheckout = () => {};
 
   return (
-    <Box bgColor="#F2F2F2">
-      <HomeNavBar />
-      <Box mt={4} mb={1} mx="auto" maxW="800px">
-        <Flex justify="space-between" alignItems="center" mb="6">
-          <Text fontSize="3xl" fontWeight="bold">
-            Carrito de Compras
-          </Text>
-          <Link to="/home">
-            <Button variant="solid" colorScheme="blue">
-              Seguir comprando
-            </Button>
-          </Link>
-        </Flex>
-        {cartItems.length === 0 ? (
-          <Text>No hay productos en el carrito</Text>
-        ) : (
-          <>
-            {cartItems.map((item, index) => (
-              <CartItem
-                key={index}
-                item={item}
-                handleRemoveItem={handleRemoveItem}
-                handleQuantityChange={(newQuantity) =>
-                  handleQuantityChange(index, newQuantity)
-                }
-              />
-            ))}
-            <Text fontSize="xl" fontWeight="bold">
-              Total: ${totalPrice}.00
+    <>
+      <Box bgColor="#F2F2F2" pt="5rem" pb="12rem">
+        <HomeNavBar />
+        <Box mt={4} mb={1} mx="auto" maxW="800px">
+          <Flex justify="space-between" alignItems="center" mb="6">
+            <Text fontSize="3xl" fontWeight="bold">
+              Carrito de Compras
             </Text>
-            <Grid mt="6">
-              <Button
-                mt={2}
-                mb={5}
-                variant="solid"
-                colorScheme="green"
-                onClick={handleCheckout}
-              >
-                Comprar
+            <Link to="/home">
+              <Button variant="solid" colorScheme="blue">
+                Seguir comprando
               </Button>
-            </Grid>
-          </>
-        )}
+            </Link>
+          </Flex>
+          {cartItems.length === 0 ? (
+            <Text>No hay productos en el carrito</Text>
+          ) : (
+            <>
+              {cartItems.map((item, index) => (
+                <CartItem
+                  key={index}
+                  item={item}
+                  handleRemoveItem={handleRemoveItem}
+                  handleQuantityChange={(newQuantity) =>
+                    handleQuantityChange(index, newQuantity)
+                  }
+                />
+              ))}
+              <Text fontSize="xl" fontWeight="bold">
+                Total: ${totalPrice}.00
+              </Text>
+              <Grid mt="6">
+                <Button
+                  mt={2}
+                  mb={5}
+                  variant="solid"
+                  colorScheme="green"
+                  onClick={handleCheckout}
+                >
+                  Comprar
+                </Button>
+              </Grid>
+            </>
+          )}
+        </Box>
       </Box>
-    </Box>
+      <Footer />
+    </>
   );
 };
 
