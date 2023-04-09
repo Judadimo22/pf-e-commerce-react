@@ -2,11 +2,9 @@ import { Avatar, Box, Button, Divider, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import NavItem from "./NavItem";
-import { TbDeviceDesktopAnalytics, TbShirt, TbTruck } from "react-icons/tb";
-import { FiUsers } from "react-icons/fi";
 
 
-export function DashboardLeftMenu() {
+export function DashboardLeftMenu({ nav }) {
   // Verifica el token de autenticación y el rol del usuario
   //como lo hago? xd
   //que dios me guie
@@ -60,10 +58,11 @@ export function DashboardLeftMenu() {
             flexDir="column"
             mb={20}
         >
-            <NavItem icon={TbDeviceDesktopAnalytics} title="Dashboard" redirect="/admin"/>
-            <NavItem icon={TbShirt} title="Products" redirect="/admin/products"/>
-            <NavItem icon={FiUsers} title="Users" redirect="/admin/users"/>
-            <NavItem icon={TbTruck} title="Orders" redirect="/admin/orders"/>
+          {
+            nav.map(item=>(
+              <NavItem key={item.title} icon={item.icon} title={item.title} redirect={item.redirect}/>
+            ))
+          }
         </Flex>
         <Flex
             justifyContent="center"

@@ -16,9 +16,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  <Provider store={store}>
     <ThemeProvider theme={lightTheme}>
       <CssBaseline/>
+  <Provider store={store}>
       <React.StrictMode>
         <Auth0Provider 
         domain='dev-2llhwpnt06dhuqy3.us.auth0.com' 
@@ -34,7 +34,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </BrowserRouter>
         </Auth0Provider>
       </React.StrictMode>
-    </ThemeProvider>
   </Provider>
+    </ThemeProvider>
 
 )

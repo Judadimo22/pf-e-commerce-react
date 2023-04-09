@@ -110,7 +110,7 @@ export function filterByTrademark() {
 
 
 export function PostCloth(payload) {
-  var json = axios.post(`http://localhost:3001/cloth`, payload);
+  let json = axios.post(`http://localhost:3001/cloth`, payload);
   return { type: POST_CLOTH, payload: json };
 }
 
