@@ -12,13 +12,13 @@ function SizeSelector(props) {
       {Object.keys(sizes).map((sizeKey) => (
         <Button
           key={sizeKey}
-          size="sm"
+          size="md"
           variant="outline"
-          borderRadius="25px"
-          borderColor={selectedSize === sizeKey ? "blue.500" : "gray.300"}
-          color={selectedSize === sizeKey ? "white" : "gray.500"}
-          bg={selectedSize === sizeKey ? "blue.500" : "white"}
-          _hover={{ bg: "blue.500", color: "white" }}
+          borderRadius="10px"
+          borderColor={selectedSize === sizeKey ? "#DAEB0F" : "#D9D9D9"}
+          color={selectedSize === sizeKey ? "#272727" : "#565656"}
+          bg={selectedSize === sizeKey ? "#DAEB0F" : "null"}
+          _hover={{ bg: "#DAEB0F", color: "white" }}
           marginRight="1rem"
           onClick={() => onSizeSelect(sizeKey)}
         >
