@@ -9,7 +9,8 @@ import{
     FILTER_BY_TRADEMARK,
     SEARCH,
     UPDATE_CLOTH,
-    POST_CLOTH
+    POST_CLOTH,
+    GET_USERS
 
 
 } from '../actions/index'
@@ -22,7 +23,9 @@ const initialState = {
         byType:"",
         byCategorie:"",
         byTrademark:""
-    }
+    },
+    Users: [],
+    UsersCopy: []
 };
 
 
@@ -34,6 +37,13 @@ function rootReducer(state= initialState, action){
                 Clothes: action.payload,
                 ClothesCopy: action.payload,
             };
+
+            case GET_USERS:
+                return{
+                    ...state,
+                    Users: action.payload,
+                    UsersCopy: action.payload
+                }
 
             case SEARCH: {
                 let search = [];

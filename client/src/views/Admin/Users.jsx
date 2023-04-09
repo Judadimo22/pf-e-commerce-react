@@ -3,6 +3,7 @@ import { DashboardLeftMenu } from '../../components/SideMenu/SideMenu'
 import AdminNavBar from '../../components/NavBar/AdminNavBar'
 import { Flex, TableContainer } from '@chakra-ui/react'
 import TableUsersContainer from '../../components/Dashboard/AdmUsers'
+import AdmUsers from '../../components/Dashboard/AdmUsers'
 
 const UsersPage = () => {
   return (
@@ -23,7 +24,7 @@ const UsersPage = () => {
         box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);"
         >
           <TableContainer w="100%" >
-              <TableUsersContainer/>
+              <AdmUsers/>
           </TableContainer>
         </Flex>
         </Flex>

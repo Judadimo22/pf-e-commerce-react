@@ -12,6 +12,8 @@ import UsersPage from './views/Admin/Users';
 import ProductsAdmin from './views/Admin/Product'
 import Upload from './components/AddFiles/AddFiles'
 import ImageUpload from './components/AddFiles/AddFiles'
+import TableUsersContainer from './components/Dashboard/AdmUsers'
+import AdmUsers from './components/Dashboard/AdmUsers'
 
 
 
@@ -30,7 +32,7 @@ const [count, setCount] = useState(0)
         <Route exact path="/admin/create" element={<ProductAdminPage />} />
         <Route exact path="/admin/products" element={<ProductsAdmin />} />
         <Route exact path="/admin/orders" element={<OrdersPage />} />
-        <Route exact path="/admin/users" element={<UsersPage />} />
+        <Route exact path="/admin/users" element={<UsersPage/>} />
         <Route exact path="/add" element={<Upload/>} />
        </Routes>
 

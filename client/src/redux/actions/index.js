@@ -11,17 +11,28 @@ export const CHANGE_FILTER_INPUT_BY_TRADEMARK = 'CHANGE_FILTER_INPUT_BY_TRADEMAR
 export const SEARCH = 'SEARCH'
 export const POST_CLOTH = 'POST_CLOTH'
 export const UPDATE_CLOTH = 'UPDATE_CLOTH'
+export const GET_USERS = 'GET_USERS'
 
 
 
 export function getClothes(){
     return async function (dispatch) {
-        let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth`);
+        let json = await axios.get(`http://localhost:3001/cloth`);
         dispatch({
           type: GET_CLOTHES,
           payload: json.data,
         });
       }
+}
+
+export function getUsers(){
+  return async function (dispatch) {
+      let json = await axios.get(`http://localhost:3001/users`);
+      dispatch({
+        type: GET_USERS,
+        payload: json.data,
+      });
+    }
 }
 
 export function getCloth(name) {
