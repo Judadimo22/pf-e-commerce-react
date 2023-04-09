@@ -11,6 +11,8 @@ import Dashboard from './views/Admin/Dashboard';
 import UsersPage from './views/Admin/Users';
 import ProductsAdmin from './views/Admin/Product'
 import UserPage from './views/User/UserPage'
+import Playmet from "./views/Playmet/Playmet";
+import MyProfile from "./components/UserProfile/MyProfile";
 
 
 function App() {
@@ -29,9 +31,12 @@ const [count, setCount] = useState(0)
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage />} />
         <Route exact path="/user/:id" element={<UserPage />} />
+        <Route exact path="/playmet" element={<Playmet />} />
+        <Route exact path="/Profile" element={<MyProfile />} />
        </Routes>
       </div>
-  </>);
+    </>
+  );
 }
 
-export default App
+export default App;

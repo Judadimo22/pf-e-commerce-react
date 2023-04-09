@@ -9,7 +9,9 @@ import{
     FILTER_BY_TRADEMARK,
     SEARCH,
     UPDATE_CLOTH,
-    POST_CLOTH
+    POST_CLOTH,
+    PUT_USERS,
+    POST_USERS
 
 
 } from '../actions/index'
@@ -22,7 +24,9 @@ const initialState = {
         byType:"",
         byCategorie:"",
         byTrademark:""
-    }
+    },
+    allUsers: [],
+
 };
 
 
@@ -185,9 +189,20 @@ function rootReducer(state= initialState, action){
                         Clothes: action.payload,
                         ClothesCopy: action.payload,
                       };
-        default: {
-            return state;
-        }
+                    case PUT_USERS:
+                     return {
+                     ...state,
+                     // allUsers: action.action.payload
+                   };
+                   case POST_USERS:
+                          return {
+                            ...state,
+                            allUsers: action.payload,
+                          };
+                        default: {
+                          return state;
+                        }
+                      
     }
 };
 

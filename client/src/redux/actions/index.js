@@ -11,6 +11,9 @@ export const CHANGE_FILTER_INPUT_BY_TRADEMARK = 'CHANGE_FILTER_INPUT_BY_TRADEMAR
 export const SEARCH = 'SEARCH'
 export const POST_CLOTH = 'POST_CLOTH'
 export const UPDATE_CLOTH = 'UPDATE_CLOTH'
+export const PUT_USERS = "PUT_USERS"
+export const POST_USERS = "POST_USERS"
+
 
 export function getClothes(){
     return async function (dispatch) {
@@ -129,3 +132,33 @@ export function UpdateCloth(id, payload) {
       });
   };
 };
+///---------------------USERS-----------------------
+export const putUser = (id, payload) => async (dispatch) => {
+  console.log(id, payload)
+  try {
+    const putCreate = await axios.put(`/users/${id}`, payload);
+
+    return dispatch({
+      type: "PUT_USERS",
+      // payload: putCreate,
+
+    });
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+
+export const createUser = (payload) => async (dispatch) => {
+  try {
+    const userCreate = await axios.post("/users", payload);
+    return dispatch({
+      type: "POST_USERS",
+      payload: userCreate,
+
+    });
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
