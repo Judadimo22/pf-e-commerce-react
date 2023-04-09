@@ -5,6 +5,7 @@ import { Flex, TableContainer } from '@chakra-ui/react'
 import TableUsersContainer from '../../components/Dashboard/AdmUsers'
 import { TbDeviceDesktopAnalytics, TbShirt, TbTruck } from 'react-icons/tb'
 import { FiUsers } from 'react-icons/fi'
+import AdmUsers from '../../components/Dashboard/AdmUsers'
 
 const UsersPage = () => {
   const nav= [
@@ -48,7 +49,7 @@ const UsersPage = () => {
         box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);"
         >
           <TableContainer w="100%" >
-              <TableUsersContainer/>
+              <AdmUsers/>
           </TableContainer>
         </Flex>
         </Flex>

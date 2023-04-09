@@ -13,6 +13,8 @@ export const POST_CLOTH = 'POST_CLOTH'
 export const UPDATE_CLOTH = 'UPDATE_CLOTH'
 export const PUT_USERS = "PUT_USERS"
 export const POST_USERS = "POST_USERS"
+export const GET_USERS = 'GET_USERS'
+
 
 
 export function getClothes(){
@@ -25,10 +27,20 @@ export function getClothes(){
       }
 }
 
+export function getUsers(){
+  return async function (dispatch) {
+      let json = await axios.get(`http://localhost:3001/users`);
+      dispatch({
+        type: GET_USERS,
+        payload: json.data,
+      });
+    }
+}
+
 export function getCloth(name) {
   console.log(name)
     return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/cloth?name=${name}`);
+        let json = await axios.get(`${process.env.BACKEND_URL}/cloth?name=${name}`);
         dispatch({
           type: GET_CLOTHES,
           payload: json.data,
@@ -38,7 +50,7 @@ export function getCloth(name) {
 }
 export function getClothById(id) {
     return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/cloth/${id}`);
+        let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth/${id}`);
         dispatch({
           type: GET_BY_ID,
           payload: json.data,
