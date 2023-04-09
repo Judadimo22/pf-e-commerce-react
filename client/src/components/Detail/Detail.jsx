@@ -80,9 +80,10 @@ export const Details = () => {
       <Chakra.Box p={8}>
         <Chakra.HStack spacing={4}>
           <Link to={`/home`}>
-            <Chakra.Button>
-              <Chakra.Box>Home</Chakra.Box>
-            </Chakra.Button>
+            <Chakra.Box m={3}>
+              <Chakra.Text>Home</Chakra.Text>
+              <Chakra.Box h="3px" w="100%" bg="#DAEB0F" borderRadius="full" />
+            </Chakra.Box>
           </Link>
         </Chakra.HStack>
         <Chakra.Grid templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} gap={6}>
