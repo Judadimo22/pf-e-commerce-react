@@ -1,0 +1,11 @@
+.containerUpload{
+    justify-content: center;
+    text-align: center;
+}
+
+.containerUpload img{
+    justify-content: center;
+    margin: auto;
+    width: 31.25rem;
+    height: auto;
+}
