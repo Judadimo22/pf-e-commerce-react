@@ -9,11 +9,14 @@ const Footer = () => {
         align="center"
         justify="space-between"
         wrap="wrap"
-        padding="1.5rem"
+        pl="6.5rem"
+        pr="10.5rem"
+        pt="6rem"
+        pb={12}
       >
         <Chakra.Box mt={8} mb={8}>
-          <Chakra.Text fontWeight="bold">MARCA</Chakra.Text>
-          <Chakra.Grid>
+          <Chakra.Text fontWeight="bold" fontSize={20}>MARCA</Chakra.Text>
+          <Chakra.Grid mt={1} fontSize={15}>
             <Chakra.Link href="#" fontWeight="100">
               Sobre nosotros
             </Chakra.Link>
@@ -31,10 +34,9 @@ const Footer = () => {
             </Chakra.Link>
           </Chakra.Grid>
         </Chakra.Box>
-
-        <Chakra.Box>
-          <Chakra.Text fontWeight="bold">AYUDA</Chakra.Text>
-          <Chakra.Grid>
+        <Chakra.Box pr="10.5rem">
+          <Chakra.Text fontWeight="bold" fontSize={20} mt={-12}>AYUDA</Chakra.Text>
+          <Chakra.Grid mt={1} fontSize={15}>
             <Chakra.Link href="#" fontWeight="100">
               Mis pedidos
             </Chakra.Link>
@@ -46,9 +48,9 @@ const Footer = () => {
             </Chakra.Link>
           </Chakra.Grid>
         </Chakra.Box>
-        <Chakra.Box>
-          <Chakra.Text fontWeight="bold">SE PARTE DE NUESTRO VIAJE</Chakra.Text>
-          <Chakra.Flex justify="center" align="center" py="4" mt="8">
+        <Chakra.Box mt={-12}>
+          <Chakra.Text fontWeight="bold" fontSize={20}>SE PARTE DE NUESTRO VIAJE</Chakra.Text>
+          <Chakra.Flex justify="center" align="center" py="4" mt="4" gap={3} pr="1rem">
             <Chakra.Link href="#">
               <Chakra.Box as={FaFacebook} size="24px" color="#DAEB0F" mx="2" />
             </Chakra.Link>
@@ -61,7 +63,7 @@ const Footer = () => {
           </Chakra.Flex>
         </Chakra.Box>
       </Chakra.Flex>
-      <Chakra.Box>
+      <Chakra.Box ml={2} fontSize={13} fontWeight="200">
         <span>
           &copy; {new Date().getFullYear()} Reservados todos los derechos.
         </span>
