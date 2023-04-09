@@ -26,10 +26,6 @@ const User = ({name, lastname, country, addres}) => {
       <Td>{lastname}</Td>
       <Td>{country}</Td>
       <Td>{addres}</Td>
-      <Flex height="50px" alignItems="center" justifyContent="center" >
-        <AiFillEdit/>
-        <AiFillDelete/>
-      </Flex>
     </Tr>
   )
 };

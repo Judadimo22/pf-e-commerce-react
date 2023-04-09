@@ -38,6 +38,8 @@ const [count, setCount] = useState(0)
         <Route exact path="/admin/users" element={<UsersPage/>} />
         <Route exact path="/add" element={<Upload/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
+        <Route exact path="/user/:id/orders" element={<UserPage />} />
+        <Route exact path="/user/:id/notifications" element={<UserPage />} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
        </Routes>

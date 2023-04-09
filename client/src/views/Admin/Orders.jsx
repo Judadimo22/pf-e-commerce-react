@@ -35,7 +35,7 @@ const OrdersPage = () => {
     <>
       <AdminNavBar/>
       <Flex>
-        <DashboardLeftMenu nav={nav}/>
+        <DashboardLeftMenu nav={nav} />
       <Flex width="100%" justifyContent="center" >
         <Flex 
         width="80%"

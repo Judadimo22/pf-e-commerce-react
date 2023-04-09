@@ -6,15 +6,12 @@ const productSchema = new Schema(
   {
     trademark: { type: String, required: true },
     image: { type: String, required: true },
-    stock: { type: Number, required: true, default: 0 },
+    //stock: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
-    size: [
+    tallas: [
       {
-        type: String,
-        enum: {
-          values: ["XS", "S", "M", "L", "XL", "XXL", "XXXL"],
-          message: "{VALUE} no es un tamaño valido",
-        },
+        talla: { type: String, ref: "Talla" },
+        stock: { type: Number, required: true },
       },
     ],
     description: { type: String, required: true },
@@ -37,6 +34,10 @@ const productSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    review: {
+      type: Array,
+      ref: "Review",
     },
   },
   { timestamps: true }

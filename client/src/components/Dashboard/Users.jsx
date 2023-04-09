@@ -46,8 +46,8 @@ const Users = ({users}) => {
           </Thead>
           <Tbody>
         {
-          Users.length
-            && Users.slice(pageSliceStart, pageSliceEnd).map(product => (<User name={product.name} lastname={product.lastname} country={product.country} addres={product.addres} />))  
+          Users.length ?
+             Users.slice(pageSliceStart, pageSliceEnd).map(product => (<User key={product.name} name={product.name} lastname={product.lastname} country={product.country} addres={product.addres} />)) : null 
         }
           </Tbody>
 

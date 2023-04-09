@@ -12,9 +12,9 @@ import{
     POST_CLOTH,
     PUT_USERS,
     POST_USERS,
-    GET_USERS
-
-
+    GET_USERS,
+    GET_ORDERS,
+    GET_USER_BY_ID
 } from '../actions/index'
 
 const initialState = {
@@ -28,7 +28,9 @@ const initialState = {
     },
     allUsers: [],
     Users: [],
-    UsersCopy: []
+    UsersCopy: [],
+    orders: [],
+    user:{}
 };
 
 
@@ -39,6 +41,11 @@ function rootReducer(state= initialState, action){
                 ...state,
                 Clothes: action.payload,
                 ClothesCopy: action.payload,
+            };
+        case GET_USER_BY_ID:
+            return{
+                ...state,
+                user: action.payload,
             };
 
             case GET_USERS:
@@ -71,6 +78,11 @@ function rootReducer(state= initialState, action){
                     ...state.filterInputs,
                     byType: action.payload
                 }
+            }
+        case GET_ORDERS:
+            return{
+                ...state,
+                orders:action.payload
             }
         case CHANGE_FILTER_INPUT_BY_CATEGORIE:
             return{

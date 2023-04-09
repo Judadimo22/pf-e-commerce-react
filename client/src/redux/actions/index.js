@@ -14,6 +14,8 @@ export const UPDATE_CLOTH = 'UPDATE_CLOTH'
 export const PUT_USERS = "PUT_USERS"
 export const POST_USERS = "POST_USERS"
 export const GET_USERS = 'GET_USERS'
+export const GET_ORDERS = 'GET_ORDERS'
+export const GET_USER_BY_ID = 'GET_USER_BY_ID'
 
 
 
@@ -168,6 +170,30 @@ export const createUser = (payload) => async (dispatch) => {
       type: "POST_USERS",
       payload: userCreate,
 
+    });
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+export const getOrders = () => async (dispatch) => {
+  try {
+    const Orders = await axios.get("http://localhost:3001/feedback");
+    return dispatch({
+      type: GET_ORDERS,
+      payload: Orders.data,
+    });
+  }
+  catch (e) {
+    console.log(e);
+  }
+}
+export const getUserById = (id) => async (dispatch) => {
+  try {
+    const user = await axios.get(`http://localhost:3001/users/${id}`);
+    return dispatch({
+      type: GET_USER_BY_ID,
+      payload: user.data,
     });
   }
   catch (e) {

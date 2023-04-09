@@ -4,13 +4,12 @@ import { Link, useLocation, useNavigate  } from "react-router-dom";
 import NavItem from "./NavItem";
 
 
-export function DashboardLeftMenu({ nav }) {
+export function DashboardLeftMenu({ nav,edit,user }) {
   // Verifica el token de autenticación y el rol del usuario
   //como lo hago? xd
   //que dios me guie
 
 
-  const name = "Mateo Rojas"
   
   const navigate  = useNavigate()
   if ("admin" === "admin") {
@@ -37,9 +36,9 @@ export function DashboardLeftMenu({ nav }) {
         alignItems="flex-start"
         >
             <Flex mt={4} align="center" alignSelf="center" flexDir="column" >
-                <Avatar size="md" m={2}/>
-                <Heading as="h3" color="#ffffff" m={2} size="md">{name}</Heading>
-                <Button
+                <Avatar size="md" m={2} /* as={user.image} *//>
+                <Heading as="h3" color="#ffffff" m={2} size="md">{user.name} {user.lastname}</Heading>
+               <Button
                 bgColor="#272727"
                 color="#f2f2f2"
                 border="1px solid #f2f2f2"
@@ -48,6 +47,7 @@ export function DashboardLeftMenu({ nav }) {
                 w="100px"
                 borderRadius={15}
                 m={2}
+                visibility={edit === true ? "visible":"hidden"}
                 >Edit</Button>
             </Flex>
 
