@@ -2,7 +2,7 @@ import React from "react";
 import { ListCard } from "../../components/ListCards/ListCards";
 import Filtrers from "../../components/Filters/Filtrers";
 import style from './Home.module.css'
-import HomeNavBar from "../../components/NavBar/HomeNavbar";
+import HomeNavBar from "../../components/NavBar/HomeNavBar";
 
 const Home = () => {
     return(
