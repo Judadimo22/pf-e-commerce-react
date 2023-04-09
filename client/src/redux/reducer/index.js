@@ -27,7 +27,6 @@ const initialState = {
         byTrademark:""
     },
     allUsers: [],
-,
     Users: [],
     UsersCopy: []
 };

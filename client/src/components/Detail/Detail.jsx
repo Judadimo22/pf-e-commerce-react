@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {Link, useParams} from 'react-router-dom'
 import styles from "./ProductDetailsPage.module.css";
@@ -8,7 +7,7 @@ import { MPButton } from "../MPButton/MPButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { useParams } from "react-router-dom";
+import NavBar from '../NavBar/NavBar';
 
 export const Details = () => {
   const dispatch = useDispatch()
@@ -36,7 +35,7 @@ export const Details = () => {
 
   return (
     <>
-      <NavBar />
+      <HomeNavBar />
       <div className={styles.container}>
         <div className={styles.card}>
           <div className={styles.card_container}>

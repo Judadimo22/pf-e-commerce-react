@@ -10,7 +10,7 @@ export const LoginButton = () => {
   console.log(isAuthenticated, user);
   return (
     <button className={style.buttonAuth} onClick={() => loginWithPopup()}>
-      Login
+      <AiOutlineUser/>
     </button>
   );
 };
