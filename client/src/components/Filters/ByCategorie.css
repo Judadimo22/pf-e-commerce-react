@@ -1,21 +1,13 @@
-.categorie{
-    text-align: left;
-    padding: 0 1.25rem;
-
+.categorie h1 {
+  font-family: "Jaldi";
+  font-size: 1.95rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
-
-.categorie h1{
-    font-family: 'Jaldi', sans-serif;
-    font-size: 2.5rem
-}
-
-.categorie button{
-    border: none;
-    background: none;
-    margin:  0;
-    font-size: 1.5625rem;
-    position: relative;
-    bottom: 1.25rem;
-    font-family: 'Jaldi', sans-serif;
-
+.categorie button {
+  border: none;
+  background: none;
+  padding-top: 1px;
+  position: relative;
+  bottom: 1.25rem;
 }

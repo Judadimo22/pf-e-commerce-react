@@ -6,6 +6,12 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    lastname: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
     email: {
       type: String,
       required: true,
@@ -13,11 +19,28 @@ const userSchema = mongoose.Schema(
     },
     country: {
       type: String,
-      ref: "Location",
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
     },
     addres: {
       type: String,
       required: true,
+    },
+    review: {
+      type: Array,
+      ref: "Review",
+    },
+    userOrder: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "userOrderSchema",
+      },
+    ],
+    order: {
+      type: Array,
     },
     phone: {
       type: String,
@@ -28,6 +51,11 @@ const userSchema = mongoose.Schema(
       type: String,
       enum: ["admin", "user", "superAdmin"],
       default: "user",
+    },
+    loading: {
+      type: String,
+      enum: ["valid", "invalid"],
+      default: "invalid",
     },
   },
   { timestamps: true }

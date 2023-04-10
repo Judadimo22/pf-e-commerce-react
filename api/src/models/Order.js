@@ -1,36 +1,41 @@
 const mongoose = require("mongoose");
 
-module.exports = (sequelize) => {
-    sequelize.define(
-        "order",
-        {
-            id: {
-                type: DataTypes.UUID,
-                defaultValue: DataTypes.UUIDV4,
-                allowNull: false,
-                primaryKey: true,
-              },
-            amount: {
-                type: DataTypes.INTEGER,
-                allowNull: false
-            },
-            email_address: {
-                type: DataTypes.STRING,
-                allowNull: false,
-                validate: {
-                    isEmail: true
-                },
-            },
-            shipping_address: {
-                type: DataTypes.STRING,
-                allowNull: false,
+const orderSchema = mongoose.Schema({
+  id_pay: {
+    type: String,
+  },
+  items: {
+    type: Array,
+  },
+  date_approved: {
+    type: String,
+  },
+  operation_type: {
+    type: String,
+  },
+  order: {
+    type: Array,
+  },
+  payer: {
+    type: Array,
+  },
+  status: {
+    type: String,
+  },
+  status_detail: {
+    type: String,
+  },
+  statusProduct: {
+    type: String,
+    enum: ["delivered", "undelivered"],
+    default: "undelivered",
+  },
+  email: {
+    type: String,
+  },
+  transaction_amount: {
+    type: Number,
+  },
+});
 
-            },
-            date: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            state: {
-                type: DataTypes.STRING,
-                allowNull: false
-            },
+module.exports = mongoose.model("Order", orderSchema);

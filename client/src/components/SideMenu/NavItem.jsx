@@ -27,7 +27,7 @@ const NavItem = ({title,icon,redirect}) => {
                         alignItems="center"
                         borderRadius={15}
                     >
-                        <Icon marginLeft="12px" as={icon} mr={4}/>
+                        <Icon marginLeft="12px" as={icon} mr={3.5}/>
                         <Text>{title}</Text>
                     </Flex>
                 </MenuButton>

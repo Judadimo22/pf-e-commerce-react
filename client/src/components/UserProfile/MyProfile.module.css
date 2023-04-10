@@ -1,0 +1,11 @@
+.imagen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:10px; 
+    margin: 5px;
+
+}
+.btn{
+    margin: 10px;
+}
