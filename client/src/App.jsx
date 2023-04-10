@@ -17,6 +17,8 @@ import Upload from './components/AddFiles/AddFiles'
 import ImageUpload from './components/AddFiles/AddFiles'
 import TableUsersContainer from './components/Dashboard/AdmUsers'
 import AdmUsers from './components/Dashboard/AdmUsers'
+import UserEdit from './components/UserEdit/UserEdit'
+import UserEditPage from './views/Admin/UserEdit'
 
 
 
@@ -42,6 +44,8 @@ const [count, setCount] = useState(0)
         <Route exact path="/user/:id/notifications" element={<UserPage />} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
+        <Route exact path="/user/edit" element={<UserEditPage />} />
+        <Route exact path="/Update/:id" element={<UserEditPage/>} />
        </Routes>
       </div>
     </>

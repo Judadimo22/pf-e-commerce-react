@@ -47,7 +47,7 @@ const Users = ({users}) => {
           <Tbody>
         {
           Users.length ?
-             Users.slice(pageSliceStart, pageSliceEnd).map(product => (<User key={product.name} name={product.name} lastname={product.lastname} country={product.country} addres={product.addres} />)) : null 
+             Users.slice(pageSliceStart, pageSliceEnd).map(user => (<User key={user._id} user={user} />)) : null 
         }
           </Tbody>
 

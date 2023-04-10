@@ -14,7 +14,8 @@ import{
     POST_USERS,
     GET_USERS,
     GET_ORDERS,
-    GET_USER_BY_ID
+    GET_USER_BY_ID,
+    UPDATE_USER
 } from '../actions/index'
 
 const initialState = {
@@ -30,7 +31,8 @@ const initialState = {
     Users: [],
     UsersCopy: [],
     orders: [],
-    user:{}
+    user:{},
+    DetailUser: []
 };
 
 
@@ -45,7 +47,7 @@ function rootReducer(state= initialState, action){
         case GET_USER_BY_ID:
             return{
                 ...state,
-                user: action.payload,
+                DetailUser: action.payload,
             };
 
             case GET_USERS:
@@ -215,6 +217,10 @@ function rootReducer(state= initialState, action){
                      ...state,
                      // allUsers: action.action.payload
                    };
+                   case UPDATE_USER:
+                    return {
+                        ...state          
+                    }
                    case POST_USERS:
                           return {
                             ...state,
