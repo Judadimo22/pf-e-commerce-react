@@ -59,12 +59,27 @@ const NewLanding = () => {
 
       <Box display='flex' mx={300} justifyContent='center' borderRadius={10} backgroundColor='#272727' mb={50}>
         <Image  w='50%' src={imageRegister}></Image>
-        <Box w='50%' textAlign='left' alignItems='center' my='auto' mx={20} position='relative' bottom={8}>
-            <Text mb={5} fontSize={40} color='#DAEB0F'>The latest trends</Text>
-            <Text>Don’t miss all of our products and all our offers </Text>
-            <Button>Register</Button>
+        <Box w='50%' textAlign='left' alignItems='center' my='auto' mx={20}>
+            <Text mb={5} fontSize={40} color='#DAEB0F'><strong>The latest trends</strong></Text>
+            <Text color='#DAEB0F' fontSize={20} mb={10}>Don’t miss all of our products and <br /> all our offers </Text>
+            <Button backgroundColor='#DAEB0F'>Register</Button>
         </Box>
       </Box>
+
+      {/* <Box display='flex' px={100} justifyContent='space-around' backgroundColor='#272727' pb={20} pt={5}>
+        <Box>
+          <Text color='#FFFFFF' fontSize={20}><strong>BRAND</strong></Text>
+          <Text></Text>
+        </Box>
+
+        <Box>
+          <Text>HELP</Text>
+        </Box>
+
+        <Box>
+          <Text>BE PART OF OUR JOURNEY</Text>
+        </Box>
+      </Box> */}
         </Box>
     )
 };

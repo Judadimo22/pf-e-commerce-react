@@ -18,6 +18,8 @@ import ImageUpload from './components/AddFiles/AddFiles'
 import TableUsersContainer from './components/Dashboard/AdmUsers'
 import AdmUsers from './components/Dashboard/AdmUsers'
 import NewLanding from './components/NewLanding/NewLanding'
+import Contact from './components/Contact/Contact'
+import About from './components/About/About'
 
 
 
@@ -44,6 +46,8 @@ const [count, setCount] = useState(0)
         <Route exact path="/user/:id/notifications" element={<UserPage />} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={<About />} />
        </Routes>
       </div>
     </>
