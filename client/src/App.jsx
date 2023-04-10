@@ -19,6 +19,9 @@ import AdmUsers from './components/Dashboard/AdmUsers'
 
 
 import CartPage from './views/Cart/CartPage';
+import UserEditPage from './views/User/UserEdit';
+import Contact from './components/Contact/Contact';
+import About from './components/About/About';
 
 
 function App() {
@@ -36,12 +39,14 @@ function App() {
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage/>} />
         <Route exact path="/add" element={<Upload/>} />
-        <Route exact path="/user/edit" element={<UserPage />} />
+        <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
         <Route exact path="/user/:id/orders" element={<UserPage />} />
         <Route exact path="/user/:id/notifications" element={<UserPage />} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={<About/>} />
         <Route exact path='/cart' element={<CartPage />} />
        </Routes>
       </div>

@@ -1,0 +1,21 @@
+.containerCard{
+    width: 250px;
+    height: 400px;
+    margin-bottom: 50px;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+}
+.boxContainer{
+    background-color: white;
+    width: 250px;
+    height: 320px;
+    border-radius: 20px;
+    background-size:contain;
+    background-repeat: no-repeat ;
+    background-position: center ;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+}

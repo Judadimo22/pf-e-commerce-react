@@ -13,11 +13,12 @@ import MyProfile from '../../components/UserProfile/MyProfile'
 import { useAuth0 } from '@auth0/auth0-react'
 
 const UserPage = () => {
+  const userState = useSelector(state=>state.user)
   const dispatch = useDispatch()
   const { id } = useParams();
   const { user } = useAuth0()
   useEffect(()=>{
-   //if(!user.length) dispatch(getUserById(id))
+   if(!userState.length) dispatch(getUserById(id))
   },[])
 
     const nav= [
@@ -37,12 +38,12 @@ const UserPage = () => {
             redirect:`/user/${id}/notifications`
         },
     ]
-    console.log(user);
+
   return (
     <>
     <HomeNavBar/>
     <Flex>
-      <DashboardLeftMenu nav={nav} edit={true} user={user}/>
+      <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
     <Flex width="100%" justifyContent="center" >
       </Flex>
     </Flex>

@@ -1,14 +1,4 @@
-.container {
-  margin: 0px;
-  padding: 0px;
-  background-image: url("../../assets/logo/logoPf.png");
-  background-size: cover;
-  background-position: right;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+
 .titulo {
     padding: 15px;
     margin-top: 65px;
@@ -85,7 +75,7 @@
   }
   .slider::before,
   .slider::after {
-    background: linear-gradient(to right, #f49d9d 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to right, #c2c2c2 0%, rgba(192, 189, 189, 0) 100%);
     content: "";
     height: 250px;
     position: absolute;
@@ -124,28 +114,28 @@
   }
 
   .slider :is(#img1, #img11) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
   .slider :is(#img2, #img22) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)),;
   }
   .slider :is(#img3, #img33) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
   .slider :is(#img4, #img44) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
   .slider :is(#img5, #img55) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
   .slider :is(#img6, #img66) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
   .slider :is(#img7, #img77) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
   .slider :is(#img8, #img88) {
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), url("../../assets/fondocarrul2.png");
+    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.199)), ;
   }
 
 .container_2 {
@@ -191,7 +181,6 @@
   
   .container_3 {
     display: flex;
-    background-color: chocolate;
     color: blanchedalmond;
     height: 400px;
   }
@@ -240,7 +229,6 @@
   }
   .container_4{
     text-align: center;
-    background-color: rgb(88 58 18);
     
   }
   .miembros{
@@ -248,14 +236,16 @@
   }
   .descripcionGrupo{
     font-size: 1.5em;
+    margin-bottom: 3.125rem;
   }
   .cartasIntegrantes{
     width: 20em;
     border: solid 1px;
-    background-color: #a58324;
+    background-color: #D9D9D9;
     margin-left: 3%;
     padding: 1.25em;
-    border-radius: 26%;
+    border-radius: 10%;
+    margin-bottom: .3125rem;
   }
 .develop{
   color: rgb(74, 58, 255);
