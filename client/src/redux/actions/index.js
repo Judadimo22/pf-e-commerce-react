@@ -20,6 +20,8 @@ export const GET_ORDERS = "GET_ORDERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const SORT_ASCENDING = "SORT_ASCENDING";
 export const SORT_DESCENDING = "SORT_DESCENDING";
+export const CACHIMBA = "CACHIMBA";
+
 
 export const sortAscending = () => {
   return {
@@ -55,7 +57,7 @@ export function getUsers() {
 export function getCloth(name) {
   console.log(name);
   return async function (dispatch) {
-    let json = await axios.get(`${process.env.BACKEND_URL}/cloth?name=${name}`);
+    let json = await axios.get(`http://localhost:3001/cloth?name=${name}`);
     dispatch({
       type: GET_CLOTHES,
       payload: json.data,
@@ -64,9 +66,7 @@ export function getCloth(name) {
 }
 export function getClothById(id) {
   return async function (dispatch) {
-    let json = await axios.get(
-      `https://backend-pf-uh1o.onrender.com/cloth/${id}`
-    );
+    let json = await axios.get(`http://localhost:3001/cloth/${id}`);
     dispatch({
       type: GET_BY_ID,
       payload: json.data,
@@ -89,6 +89,12 @@ export function ChangefilterInputByType(fliter) {
       payload: fliter,
     });
   };
+  return async function (dispatch) {
+    dispatch({
+      type: CHANGE_FILTER_INPUT_BY_TYPE,
+      payload: fliter,
+    });
+  };
 }
 export function ChangefilterInputByCategorie(fliter) {
   return async function (dispatch) {
@@ -97,12 +103,21 @@ export function ChangefilterInputByCategorie(fliter) {
       payload: fliter,
     });
   };
-}
-
-export function ChangeFilterInputByTradeMark(fliter) {
   return async function (dispatch) {
     dispatch({
+      type: CHANGE_FILTER_INPUT_BY_CATEGORIE,
+      payload: fliter,
+    });
+  };
+}
+
+export function ChangeFilterInputByTradeMark(fliter)  {
+  return async function (dispatch)  {
+    dispatch({
       type: CHANGE_FILTER_INPUT_BY_TRADEMARK,
+      payload: fliter,
+    });
+  };
       payload: fliter,
     });
   };
@@ -124,10 +139,17 @@ export function filterByType() {
       type: FILTER_BY_TYPE,
     });
   };
+  return async function (dispatch) {
+    dispatch({
+      type: FILTER_BY_TYPE,
+    });
+  };
 
+  //------------------------------------------------------------------------------
   //------------------------------------------------------------------------------
 }
 export function filterByTrademark() {
+  return async function (dispatch) {
   return async function (dispatch) {
     dispatch({
       type: FILTER_BY_TRADEMARK,
@@ -158,6 +180,7 @@ export function UpdateCloth(id, payload) {
 ///---------------------USERS-----------------------
 export const putUser = (id, payload) => async (dispatch) => {
   console.log(id, payload);
+  console.log(id, payload);
   try {
     const putCreate = await axios.put(`/users/${id}`, payload);
 
@@ -166,13 +189,14 @@ export const putUser = (id, payload) => async (dispatch) => {
       // payload: putCreate,
     });
   } catch (e) {
+  } catch (e) {
     console.log(e);
   }
 };
 
 export const createUser = (payload) => async (dispatch) => {
   try {
-    const userCreate = await axios.post("/users", payload);
+    const userCreate = await axios.post("http://localhost:3001/users", payload);
     return dispatch({
       type: "POST_USERS",
       payload: userCreate,
