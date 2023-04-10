@@ -8,13 +8,14 @@ import StarRating from "../StarRating/StarRating";
 import SizeSelector from "../SizeSelector/SizeSelector";
 import ColorSelector from "../ColorSelector/ColorSelector";
 import { FaShoppingCart } from "react-icons/fa";
+import Footer from "../Footer/Footer";
 
 export const Details = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.Details);
   const { id } = useParams();
 
-  const { name, trademark, description, image, price, size, review } =
+  const { name, trademark, description, image, price, size, review, stock } =
     productDetails;
   console.log(id);
 
@@ -69,7 +70,7 @@ export const Details = () => {
 
     // Actualizar el carrito en el localStorage
     localStorage.setItem("cartItems", JSON.stringify(cart));
-    
+
     // Actualizar el estado del número de productos en el carrito
     setNumCartItems(cart.length);
   };
@@ -77,70 +78,97 @@ export const Details = () => {
   return (
     <>
       <HomeNavBar />
-      <Chakra.Box p={8}>
+      <Chakra.Box minHeight="100vh" pt="1rem">
         <Chakra.HStack spacing={4}>
           <Link to={`/home`}>
-            <Chakra.Box m={3}>
-              <Chakra.Text>Home</Chakra.Text>
+            <Chakra.Box m={3} pl="2rem" pb=".5rem">
+              <Chakra.Text>Home {`>`}</Chakra.Text>
               <Chakra.Box h="3px" w="100%" bg="#DAEB0F" borderRadius="full" />
             </Chakra.Box>
           </Link>
         </Chakra.HStack>
         <Chakra.Grid templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} gap={6}>
           <Chakra.Box>
-            <Chakra.Image src={image} alt={name} borderRadius="10px" />
+            <Chakra.Image
+              src={image}
+              alt={name}
+              borderRadius="10px"
+              mx="auto"
+            />
           </Chakra.Box>
           <Chakra.Box>
-            <Chakra.Text fontSize="3xl" fontWeight="extrabold" mb={4}>
+            <Chakra.Text fontSize="4xl" fontWeight="extrabold" mb={3} mt={-4}>
               {name}
             </Chakra.Text>
-            <Chakra.Text fontSize="3xl" mb={4}>
+            <Chakra.Text fontSize="3xl" fontWeight="bold" pb="1.5rem">
               ${price}.00
             </Chakra.Text>
-            <Chakra.Box h="3px" w="100%" bg="#DAEB0F" borderRadius="full" />
-            <Chakra.Flex>
+            <Chakra.Box h="3px" w="95%" bg="#DAEB0F" borderRadius="full" />
+            <Chakra.Flex pt="1.5rem" pb="2rem">
               <StarRating rating={4.5} />
               <Chakra.Text ml={1}>({review}1 review)</Chakra.Text>
             </Chakra.Flex>
-
-            <Chakra.Text fontWeight="bold">Seleccionar Talle</Chakra.Text>
+            <Chakra.Text fontWeight="bold" fontSize="lg" pb="1rem">
+              Seleccionar Talle
+            </Chakra.Text>
             <SizeSelector
               sizes={size}
               selectedSize={selectedSize}
               onSizeSelect={handleSizeSelect}
             />
-            <Chakra.Text fontWeight="bold">Colores Disponibles</Chakra.Text>
+            <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem">
+              Colores Disponibles
+            </Chakra.Text>
             <ColorSelector
               colors={colors}
               selectedColor={selectedColor}
               onColorSelect={handleColorSelect}
             />
-            <Chakra.Box mt={8} mb={4}>
-              <Chakra.Button
-                borderRadius="100px"
-                colorScheme="#DAEB0F"
-                bg="#DAEB0F"
-                size="lg"
-                _hover="white"
-                color="#272727"
-                disabled={!selectedSize || !selectedColor}
-                onClick={handleAddToCart}
-                leftIcon={<FaShoppingCart />}
-              >
-                Agregar al carrito
-              </Chakra.Button>
+            <Chakra.Box pt="1.5rem" pb="1.5rem" mt={8} mb={4}>
+              <Chakra.Flex>
+                <Chakra.Button
+                  borderRadius="100px"
+                  colorScheme="#DAEB0F"
+                  bg="#DAEB0F"
+                  size="lg"
+                  pl="3rem"
+                  pr="3rem"
+                  _hover="white"
+                  color="#272727"
+                  disabled={!selectedSize || !selectedColor}
+                  onClick={handleAddToCart}
+                  leftIcon={<FaShoppingCart />}
+                >
+                  Agregar al carrito
+                </Chakra.Button>
+                <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
+                  {stock} Disponibles
+                </Chakra.Text>
+              </Chakra.Flex>
             </Chakra.Box>
-            <Chakra.Box h="3px" w="100%" bg="#DAEB0F" borderRadius="full" />
-            <Chakra.Text fontSize="lg" mb={4}>
-              Esta prenda marca: {trademark ? trademark : "N/A"} .
+            <Chakra.Box h="3px" w="95%" bg="#DAEB0F" borderRadius="full" />
+            <Chakra.Text
+              fontSize="md"
+              fontWeight="normal"
+              mb={1}
+              pt="1.5rem"
+              color="#565656"
+            >
+              Marca {trademark ? trademark : "N/A"}
             </Chakra.Text>
-            <Chakra.Text fontSize="lg" mb={4}>
-              Presenta las siguientes especificaciones:{" "}
-              {description ? description : "N/A"}.
+            <Chakra.Text
+              fontSize="md"
+              fontWeight="normal"
+              mb={1}
+              color="#565656"
+              pb="5rem"
+            >
+              {description ? description : "N/A"}
             </Chakra.Text>
           </Chakra.Box>
         </Chakra.Grid>
       </Chakra.Box>
+      <Footer />
     </>
   );
 };
