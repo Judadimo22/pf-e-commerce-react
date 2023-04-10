@@ -13,7 +13,6 @@ export const LoginButton = () => {
   );
 };
 
-
 /*import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./log.module.css";

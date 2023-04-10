@@ -1,47 +1,48 @@
-import axios from 'axios';
-export const GET_CLOTHES = 'GET_CLOTHES';
-export const GET_CLOTH = 'GET_CLOTH';
-export const GET_BY_ID = 'GET_BY_ID';
-export const FILTER_BY_TYPE = 'FILTER_BY_TYPE';
-export const FILTER_BY_CATEGORIE = 'FILTER_BY_CATEGORIE';
-export const FILTER_BY_TRADEMARK = 'FILTER_BY_TRADEMARK';
-export const CHANGE_FILTER_INPUT_BY_TYPE = 'CHANGE_FILTER_INPUT_BY_TYPE';
-export const CHANGE_FILTER_INPUT_BY_CATEGORIE = 'CHANGE_FILTER_INPUT_BY_CATEGORIE';
-export const CHANGE_FILTER_INPUT_BY_TRADEMARK = 'CHANGE_FILTER_INPUT_BY_TRADEMARK';
-export const SEARCH = 'SEARCH'
-export const PUT_USERS = "PUT_USERS"
-export const POST_USERS = "POST_USERS"
+import axios from "axios";
+export const GET_CLOTHES = "GET_CLOTHES";
+export const GET_CLOTH = "GET_CLOTH";
+export const GET_BY_ID = "GET_BY_ID";
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
+export const FILTER_BY_CATEGORIE = "FILTER_BY_CATEGORIE";
+export const FILTER_BY_TRADEMARK = "FILTER_BY_TRADEMARK";
+export const CHANGE_FILTER_INPUT_BY_TYPE = "CHANGE_FILTER_INPUT_BY_TYPE";
+export const CHANGE_FILTER_INPUT_BY_CATEGORIE =
+  "CHANGE_FILTER_INPUT_BY_CATEGORIE";
+export const CHANGE_FILTER_INPUT_BY_TRADEMARK =
+  "CHANGE_FILTER_INPUT_BY_TRADEMARK";
+export const SEARCH = "SEARCH";
+export const PUT_USERS = "PUT_USERS";
+export const POST_USERS = "POST_USERS";
+export const CACHIMBA = "CACHIMBA";
 
-
-export function getClothes(){
-    return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/cloth`);
-        dispatch({
-          type: GET_CLOTHES,
-          payload: json.data,
-        });
-      }
+export function getClothes() {
+  return async function (dispatch) {
+    let json = await axios.get(`http://localhost:3001/cloth`);
+    dispatch({
+      type: GET_CLOTHES,
+      payload: json.data,
+    });
+  };
 }
 
 export function getCloth(name) {
-  console.log(name)
-    return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/cloth?name=${name}`);
-        dispatch({
-          type: GET_CLOTHES,
-          payload: json.data,
-        });
-      };
-
+  console.log(name);
+  return async function (dispatch) {
+    let json = await axios.get(`http://localhost:3001/cloth?name=${name}`);
+    dispatch({
+      type: GET_CLOTHES,
+      payload: json.data,
+    });
+  };
 }
 export function getClothById(id) {
-    return async function (dispatch) {
-        let json = await axios.get(`http://localhost:3001/cloth/${id}`);
-        dispatch({
-          type: GET_BY_ID,
-          payload: json.data,
-        });
-      };
+  return async function (dispatch) {
+    let json = await axios.get(`http://localhost:3001/cloth/${id}`);
+    dispatch({
+      type: GET_BY_ID,
+      payload: json.data,
+    });
+  };
 }
 
 export const setSearch = (payload) => {
@@ -53,87 +54,80 @@ export const setSearch = (payload) => {
 
 //-----------------------------------Change Input----------------------------------
 export function ChangefilterInputByType(fliter) {
-    return async function (dispatch) {
-        dispatch({
-          type: CHANGE_FILTER_INPUT_BY_TYPE,
-          payload:fliter
-        });
-      };
+  return async function (dispatch) {
+    dispatch({
+      type: CHANGE_FILTER_INPUT_BY_TYPE,
+      payload: fliter,
+    });
+  };
 }
 export function ChangefilterInputByCategorie(fliter) {
-    return async function (dispatch) {
-        dispatch({
-          type: CHANGE_FILTER_INPUT_BY_CATEGORIE,
-          payload:fliter
-        });
-      };
+  return async function (dispatch) {
+    dispatch({
+      type: CHANGE_FILTER_INPUT_BY_CATEGORIE,
+      payload: fliter,
+    });
+  };
 }
 
-export function ChangeFilterInputByTradeMark(fliter){
-  return async function (dispatch){
+export function ChangeFilterInputByTradeMark(fliter) {
+  return async function (dispatch) {
     dispatch({
       type: CHANGE_FILTER_INPUT_BY_TRADEMARK,
-      payload: fliter
-    })
-  }
+      payload: fliter,
+    });
+  };
 }
 //-----------------------------------------------------------------------------
-
-
 
 //-----------------------Filter render-----------------------------------------
 
 export function filterByCategorie() {
-    return async function (dispatch) {
-        dispatch({
-          type: FILTER_BY_CATEGORIE,
-        });
-      };
+  return async function (dispatch) {
+    dispatch({
+      type: FILTER_BY_CATEGORIE,
+    });
+  };
 }
 export function filterByType() {
-    return async function (dispatch) {
-        dispatch({
-          type: FILTER_BY_TYPE,
-        });
-      };
+  return async function (dispatch) {
+    dispatch({
+      type: FILTER_BY_TYPE,
+    });
+  };
 
-//------------------------------------------------------------------------------
-
+  //------------------------------------------------------------------------------
 }
 export function filterByTrademark() {
-  return async function (dispatch){
+  return async function (dispatch) {
     dispatch({
-      type: FILTER_BY_TRADEMARK
-    })
-  }
+      type: FILTER_BY_TRADEMARK,
+    });
+  };
 }
 ///---------------------USERS-----------------------
 export const putUser = (id, payload) => async (dispatch) => {
-  console.log(id, payload)
+  console.log(id, payload);
   try {
     const putCreate = await axios.put(`/users/${id}`, payload);
 
     return dispatch({
       type: "PUT_USERS",
       // payload: putCreate,
-
     });
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e);
   }
-}
+};
 
 export const createUser = (payload) => async (dispatch) => {
   try {
-    const userCreate = await axios.post("/users", payload);
+    const userCreate = await axios.post("http://localhost:3001/users", payload);
     return dispatch({
       type: "POST_USERS",
       payload: userCreate,
-
     });
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e);
   }
-}
+};
