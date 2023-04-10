@@ -17,6 +17,8 @@ import Upload from './components/AddFiles/AddFiles'
 import ImageUpload from './components/AddFiles/AddFiles'
 import TableUsersContainer from './components/Dashboard/AdmUsers'
 import AdmUsers from './components/Dashboard/AdmUsers'
+import NewLanding from './components/NewLanding/NewLanding'
+
 
 
 
@@ -27,7 +29,7 @@ const [count, setCount] = useState(0)
     return (<>
     <div className="App">
       <Routes>
-        <Route exact path='/' element={<LandingPage/>}/>
+        <Route exact path='/' element={<NewLanding/>}/>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/details/:id" element={<Details />} />
         <Route exact path="/*" element={<Error404 />} />
