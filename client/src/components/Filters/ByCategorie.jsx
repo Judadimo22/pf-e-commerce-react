@@ -1,33 +1,48 @@
-import React, { useEffect, useState } from 'react'
-import "./ByCategorie.css"
-import {filterByCategorie,ChangefilterInputByCategorie} from "../../redux/actions/index"
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect, useState } from "react";
+import "./ByCategorie.css";
+import {
+  filterByCategorie,
+  ChangefilterInputByCategorie,
+} from "../../redux/actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { Text, VStack } from "@chakra-ui/react";
 
 const ByCategorie = () => {
-  const dispatch = useDispatch()
-  const categories = ["men","women","child"]
-  
+  const dispatch = useDispatch();
+  const categories = ["men", "women", "child"];
+
   const onChange = (e) => {
-    dispatch(ChangefilterInputByCategorie(e.target.value))
-    dispatch(filterByCategorie(e.target.value))
-  }
+    dispatch(ChangefilterInputByCategorie(e.target.value));
+    dispatch(filterByCategorie(e.target.value));
+  };
   return (
-    <div className='categorie'>
-      <h1>Category</h1>
-      <div>
-      <button onClick={onChange} value={'men'} className="option" key={'men'}>men</button>
-      </div>
-      <div>
-      <button onClick={onChange} value={'women'} className="option" key={'women'}>women</button>
-      </div>
-      <div>
-      <button onClick={onChange} value={'child'} className="option" key={'child'}>child</button>
-      </div>
-      
+    <>
+      <Text fontFamily="Jaldi" fontSize="1.95rem" fontWeight="bold">
+        Category
+      </Text>
+      <VStack alignItems="flex-start" pb="1rem" fontFamily="'Jaldi', sans-serif" fontSize="1.2rem" spacing={1}>
+        <button onClick={onChange} value={"men"} className="option" key={"men"}>
+          Men
+        </button>
+        <button
+          onClick={onChange}
+          value={"women"}
+          className="option"
+          key={"women"}
+        >
+          Women
+        </button>
+        <button
+          onClick={onChange}
+          value={"child"}
+          className="option"
+          key={"child"}
+        >
+          Child
+        </button>
+      </VStack>
+    </>
+  );
+};
 
-
-    </div>
-  )
-}
-
-export default ByCategorie
+export default ByCategorie;
