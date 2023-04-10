@@ -9,12 +9,13 @@ import SizeSelector from "../SizeSelector/SizeSelector";
 import ColorSelector from "../ColorSelector/ColorSelector";
 import { FaShoppingCart } from "react-icons/fa";
 import Footer from "../Footer/Footer";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const Details = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.Details);
   const { id } = useParams();
-  const { name, trademark, description, image } = productDetails;
+  const {  name, trademark, description, image, price, size, review, stock } = productDetails;
 
   const { isAuthenticated, user } = useAuth0();
   const [pay, setPay] = useState(false);
@@ -89,12 +90,12 @@ export const Details = () => {
   return (
     <>
       <HomeNavBar />
-      <Chakra.Box minHeight="100vh" pt="1rem">
+      <Chakra.Box h="100%" pt="1rem">
         <Chakra.HStack spacing={4}>
           <Link to={`/home`}>
             <Chakra.Box m={3} pl="2rem" pb=".5rem">
               <Chakra.Text>Home {`>`}</Chakra.Text>
-              <Chakra.Box h="3px" w="100%" bg="#DAEB0F" borderRadius="full" />
+              <Chakra.Box h="1px" w="100%" bg="gray" borderRadius="full" />
             </Chakra.Box>
           </Link>
         </Chakra.HStack>
@@ -114,10 +115,10 @@ export const Details = () => {
             <Chakra.Text fontSize="3xl" fontWeight="bold" pb="1.5rem">
               ${price}.00
             </Chakra.Text>
-            <Chakra.Box h="3px" w="95%" bg="#DAEB0F" borderRadius="full" />
+            <Chakra.Box h="1px" w="95%" bg="gray" borderRadius="full" />
             <Chakra.Flex pt="1.5rem" pb="2rem">
               <StarRating rating={4.5} />
-              <Chakra.Text ml={1}>({review}1 review)</Chakra.Text>
+              <Chakra.Text ml={1}>(1 review)</Chakra.Text> {/* que alguien añada reviews o rompo development */}
             </Chakra.Flex>
             <Chakra.Text fontWeight="bold" fontSize="lg" pb="1rem">
               Seleccionar Talle
@@ -157,7 +158,7 @@ export const Details = () => {
                 </Chakra.Text>
               </Chakra.Flex>
             </Chakra.Box>
-            <Chakra.Box h="3px" w="95%" bg="#DAEB0F" borderRadius="full" />
+            <Chakra.Box h="1px" w="95%" bg="gray" borderRadius="full" />
             <Chakra.Text
               fontSize="md"
               fontWeight="normal"

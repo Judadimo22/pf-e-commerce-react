@@ -10,14 +10,14 @@ import { getUserById } from '../../redux/actions'
 import UserInfo from '../../components/UserInfo/userInfo'
 import MyCloth from '../../components/UserProfile/MyCloth'
 import MyProfile from '../../components/UserProfile/MyProfile'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const UserPage = () => {
-  const user = useSelector(state=>state.user)
   const dispatch = useDispatch()
   const { id } = useParams();
-
+  const { user } = useAuth0()
   useEffect(()=>{
-   if(!user.length) dispatch(getUserById(id))
+   //if(!user.length) dispatch(getUserById(id))
   },[])
 
     const nav= [
@@ -37,7 +37,7 @@ const UserPage = () => {
             redirect:`/user/${id}/notifications`
         },
     ]
-
+    console.log(user);
   return (
     <>
     <HomeNavBar/>

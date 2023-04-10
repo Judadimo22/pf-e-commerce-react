@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Divider, Flex, Heading } from "@chakra-ui/react";
+import { Avatar, Box, Button, Divider, Flex, Heading, Image } from "@chakra-ui/react";
 import React from "react";
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import NavItem from "./NavItem";
@@ -36,7 +36,9 @@ export function DashboardLeftMenu({ nav,edit,user }) {
         alignItems="flex-start"
         >
             <Flex mt={4} align="center" alignSelf="center" flexDir="column" >
-                <Avatar size="md" m={2} /* as={user.image} *//>
+                <Avatar size="md" m={2} >
+                  <Image src={user?.picture} />
+                </Avatar>
                 <Heading as="h3" color="#ffffff" m={2} size="md">{user?.name} {user?.lastname}</Heading>
                <Button
                 bgColor="#272727"
