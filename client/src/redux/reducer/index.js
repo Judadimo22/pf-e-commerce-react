@@ -17,6 +17,7 @@ import {
   GET_USER_BY_ID,
   SORT_ASCENDING,
   SORT_DESCENDING,
+  CACHIMBA
 } from "../actions/index";
 
 const initialState = {
@@ -102,6 +103,7 @@ function rootReducer(state = initialState, action) {
       };
 
     //---------------------------------------Filter by category-----------------------------------
+    //---------------------------------------Filter by category-----------------------------------
 
     case FILTER_BY_CATEGORIE:
       let newArray = [];
@@ -144,9 +146,92 @@ function rootReducer(state = initialState, action) {
           ClothesCopy: newerArray.flat(),
         };
       }
+ /*    case FILTER_BY_CATEGORIE:
+      let newArray = [];
+      if (state.filterInputs.byCategorie === "") {
+        if (state.filterInputs.byType.length) {
+          newArray = state.Clothes.filter(
+            (product) => product.type === state.filterInputs.byType
+          );
+          return {
+            ...state,
+            ClothesCopy: newArray.flat(),
+          };
+        } else {
+          return {
+            ...state,
+            ClothesCopy: state.Clothes,
+          };
+        }
+      }
+      if (
+        state.filterInputs.byCategorie.length &&
+        state.filterInputs.byType.length
+      ) {
+        const filteredByCategorie = state.Clothes.filter(
+          (product) => product.categorie === state.filterInputs.byCategorie
+        );
+        const lastArray = filteredByCategorie
+          .flat()
+          .filter((product) => product.type === state.filterInputs.byType);
+        return {
+          ...state,
+          ClothesCopy: lastArray.flat(),
+        };
+      } else {
+        const newerArray = state.Clothes.filter(
+          (product) => product.categorie === state.filterInputs.byCategorie
+        );
+        return {
+          ...state,
+          ClothesCopy: newerArray.flat(),
+        };
+      } */
 
     //---------------------------------------Filter by type---------------------------------
+    //---------------------------------------Filter by type---------------------------------
 
+    /* case FILTER_BY_TYPE:
+      let array = [];
+      if (state.filterInputs.byType === "") {
+        if (state.filterInputs.byCategorie.length) {
+          array = state.Clothes.filter(
+            (product) => product.categorie === state.filterInputs.byCategorie
+          );
+          return {
+            ...state,
+            ClothesCopy: array.flat(),
+          };
+        } else {
+          return {
+            ...state,
+            ClothesCopy: state.Clothes,
+          };
+        }
+      }
+      if (
+        state.filterInputs.byType.length &&
+        state.filterInputs.byCategorie.length
+      ) {
+        const filteredByCategorie = state.Clothes.filter(
+          (product) => product.categorie === state.filterInputs.byCategorie
+        );
+        const lastArray = filteredByCategorie
+          .flat()
+          .filter((product) => product.type === state.filterInputs.byType);
+        return {
+          ...state,
+          ClothesCopy: lastArray.flat(),
+        };
+      } else {
+        const newerArray = state.Clothes.filter(
+          (product) => product.type === state.filterInputs.byType
+        );
+        return {
+          ...state,
+          ClothesCopy: newerArray.flat(),
+        };
+      } */
     case FILTER_BY_TYPE:
       let array = [];
       if (state.filterInputs.byType === "") {
@@ -273,3 +358,4 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer;
+

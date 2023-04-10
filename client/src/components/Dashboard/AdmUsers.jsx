@@ -9,6 +9,7 @@ const AdmUsers = () => {
     useEffect(()=>{
         dispatch(getUsers())
     },[])
+    console.log(users);
     return(
             <Users users={users}/>
     )

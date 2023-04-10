@@ -2,13 +2,13 @@ import React, {useState, useEffect} from "react";
 import style from './NavBar.module.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton} from '../Login/login'
-import { createUser } from "../../redux/actions";
+import { createUser, getUserById } from "../../redux/actions";
 import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Avatar, Box, Button, Flex, Icon, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
@@ -20,6 +20,8 @@ const HomeNavBar = () => {
     const dispatch = useDispatch(); 
     const {isAuthenticated, user,logout} = useAuth0();
       const [infoUser, setInfoUser] = useState({});
+      const userState = useSelector(state=>state.user)
+
     
       useEffect(() => {
         if (user && isAuthenticated) {
@@ -38,11 +40,13 @@ const HomeNavBar = () => {
               dispatch(createUser(newUser));
             } else {
               setInfoUser(userDb);
-              return false;
             }
+            if(!userState.length) dispatch(getUserById(userDb._id))
           });
         }
+
       }, [user]);
+      console.log(userState.roll);
     
     return(
         <>
@@ -70,25 +74,32 @@ const HomeNavBar = () => {
             <SearchBar/>
             <Flex w="8%" justifyContent="space-between">
                 {isAuthenticated ?(
-                <Menu>
-                    <MenuButton>
-                        <Avatar src={user?.picture} size="md"/>
+                <Menu cursor="pointer">
+                    <MenuButton >
+                        <Avatar src={user?.picture}  size="md"/>
                     </MenuButton>
                 <MenuList >
-                    <Link to={`/user/${ user.id ? user.id:"642e55eb8debb5e04fd0ff37"}`}>
+                    <Link to={`/user/${infoUser._id}`}>
                         <MenuItem>Profile</MenuItem>
                     </Link>
-                    <Link to={`/user/${ user.id ? user.id:"642e55eb8debb5e04fd0ff37"}/orders`}>
+                    <Link to={`/user/${infoUser._id}/orders`}>
                         <MenuItem>My orders</MenuItem>
                     </Link>
-                    <Link to={`/user/${ user.id ? user.id:"642e55eb8debb5e04fd0ff37"}/notifications`}>
+                    <Link to={`/user/${infoUser._id}/notifications`}>
                         <MenuItem>Notifications</MenuItem>
                     </Link>
+                    {
+                      userState.roll === "admin" ? 
+                      (<Link to={`/admin`}>
+                        <MenuItem>Dashboard</MenuItem>
+                    </Link>) : null
+                    }
+
                     <MenuItem onClick={()=>logout()}>Logout</MenuItem>
                 </MenuList>
                 </Menu>
                 ):<LoginButton/>}
-                <Icon bgColor="#f2f2f2" cursor={"pointer"} boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
+                <Icon bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
             </Flex>
         </Flex>
         </>

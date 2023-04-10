@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import Home from './views/Home/Home'
 import { Route, Routes} from 'react-router-dom'
@@ -17,16 +16,13 @@ import Upload from './components/AddFiles/AddFiles'
 import ImageUpload from './components/AddFiles/AddFiles'
 import TableUsersContainer from './components/Dashboard/AdmUsers'
 import AdmUsers from './components/Dashboard/AdmUsers'
-import NewLanding from './components/NewLanding/NewLanding'
-import Contact from './components/Contact/Contact'
-import About from './components/About/About'
 
 
-
+import CartPage from './views/Cart/CartPage';
+import UserEditPage from './views/User/UserEdit';
 
 
 function App() {
-const [count, setCount] = useState(0)
   
     return (<>
     <div className="App">
@@ -41,6 +37,7 @@ const [count, setCount] = useState(0)
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage/>} />
         <Route exact path="/add" element={<Upload/>} />
+        <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
         <Route exact path="/user/:id/orders" element={<UserPage />} />
         <Route exact path="/user/:id/notifications" element={<UserPage />} />
@@ -48,6 +45,7 @@ const [count, setCount] = useState(0)
         <Route exact path="/Profile" element={<MyProfile />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About />} />
+        <Route exact path='/cart' element={<CartPage />} />
        </Routes>
       </div>
     </>
