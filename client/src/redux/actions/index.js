@@ -34,7 +34,7 @@ export const sortDescending = () => {
 
 export function getClothes() {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/cloth`);
+    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth`);
     dispatch({
       type: GET_CLOTHES,
       payload: json.data,
@@ -44,7 +44,7 @@ export function getClothes() {
 
 export function getUsers() {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/users`);
+    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/users`);
     dispatch({
       type: GET_USERS,
       payload: json.data,
@@ -55,7 +55,7 @@ export function getUsers() {
 export function getCloth(name) {
   console.log(name);
   return async function (dispatch) {
-    let json = await axios.get(`${process.env.BACKEND_URL}/cloth?name=${name}`);
+    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth?name=${name}`);
     dispatch({
       type: GET_CLOTHES,
       payload: json.data,
@@ -136,19 +136,19 @@ export function filterByTrademark() {
 }
 
 export function PostCloth(payload) {
-  let json = axios.post(`http://localhost:3001/cloth`, payload);
+  let json = axios.post(`https://backend-pf-uh1o.onrender.com/cloth`, payload);
   return { type: POST_CLOTH, payload: json };
 }
 
 export function DeleteCloth(idCloth) {
   return async function (dispatch) {
-    return axios.delete(`http://localhost:3001/cloth/${idCloth}`);
+    return axios.delete(`https://backend-pf-uh1o.onrender.com/cloth/${idCloth}`);
   };
 }
 
 export function UpdateCloth(id, payload) {
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/cloth/${id}`, payload);
+    const json = await axios.put(`https://backend-pf-uh1o.onrender.com/cloth/${id}`, payload);
     return dispatch({
       type: UPDATE_CLOTH,
       payload: json.data,

@@ -31,7 +31,7 @@ const [count, setCount] = useState(0)
     return (<>
     <div className="App">
       <Routes>
-        <Route exact path='/' element={<NewLanding/>}/>
+        <Route exact path='/' element={<LandingPage/>}/>
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/details/:id" element={<Details />} />
         <Route exact path="/*" element={<Error404 />} />

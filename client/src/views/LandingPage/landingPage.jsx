@@ -12,6 +12,9 @@ import l8 from "../../assets/carousel-landing/c8.jpg"
 import member from "../../assets/carousel-landing/t-member.png";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import HomeNavBar from '../../components/NavBar/HomeNavbar';
+import { Box, Image, Text, Button } from "@chakra-ui/react";
+import mainImage from '../../assets/main_landing.jpeg';
+import imageRegister from '../../assets/image_register.jpeg'
 
 function LandingPage() {
   return (
@@ -27,20 +30,19 @@ function LandingPage() {
           </Link>
         </div>*/}
       </div>
+        <Box h={800}>
+            <Image w='100' h={800} objectFit='cover' src={mainImage}/>
+            <Text textAlign='center' position='relative' bottom={500} fontSize={200} color='#DAEB0F' textShadow='2xl'>Be Yourself</Text>
+        </Box>
 
-      <div className={Style.container_2}>
-        <h2>
-          ELIJE TU <span>ROPA</span>
-        </h2>
-        <div className={Style.info}>
-          <p>
-          Brindamos un enfoque personalizado para adaptarse a sus requisitos y consideraciones únicas. Ofrecemos soporte y servicio completo en todas las etapas de compra y financiamiento de sus prendas.
-          </p>
-          <Link to="/home">
-            <button>EXPLORA MÁS</button>
-          </Link>
-        </div>
+        <Box>
+            <Text textAlign='center' fontSize={50} mt={10} mb={5}>Don’t miss our <strong>latest trends</strong></Text>
+            </Box>
+            <Box  textAlign='center'>
+                <Link to={'/home'}><Button  backgroundColor='#272727' color='#F2F2F2' mb={5} py={0} px={5} _hover={{color:'white'}}>See more</Button></Link>
+          </Box>
 
+        <Link to='/home'>
         <div className={Style.slider}>
           <div className={Style.slide_track}>
             <div className={Style.con}>
@@ -125,9 +127,19 @@ function LandingPage() {
             </div>
           </div>
         </div>
-      </div>
+        </Link>
 
-      <div className={Style.container_3}>
+        <Box display='flex' mx={300} justifyContent='center' borderRadius={10} backgroundColor='#272727' mb={50} mt={10}>
+        <Image  w='50%' src={imageRegister}></Image>
+        <Box w='50%' textAlign='left' alignItems='center' my='auto' mx={20}>
+            <Text mb={5} fontSize={40} color='#DAEB0F'><strong>The latest trends</strong></Text>
+            <Text color='#DAEB0F' fontSize={20} mb={10}>Don’t miss all of our products and <br /> all our offers </Text>
+            <Button backgroundColor='#DAEB0F'>Register</Button>
+        </Box>
+      </Box>
+
+
+      {/* <div className={Style.container_3}>
         <div className={Style.col1}></div>
         <div className={Style.col2}>
           <h2>Explora nuestra nueva seccion </h2>
@@ -142,7 +154,7 @@ function LandingPage() {
         </div>
         </div>
         <div className={Style.col1}></div>
-      </div>
+      </div> */}
 
       <div className={Style.container_4}>
         <h2 className={Style.miembros}>
