@@ -89,20 +89,8 @@ export function ChangefilterInputByType(fliter) {
       payload: fliter,
     });
   };
-  return async function (dispatch) {
-    dispatch({
-      type: CHANGE_FILTER_INPUT_BY_TYPE,
-      payload: fliter,
-    });
-  };
 }
 export function ChangefilterInputByCategorie(fliter) {
-  return async function (dispatch) {
-    dispatch({
-      type: CHANGE_FILTER_INPUT_BY_CATEGORIE,
-      payload: fliter,
-    });
-  };
   return async function (dispatch) {
     dispatch({
       type: CHANGE_FILTER_INPUT_BY_CATEGORIE,
@@ -115,9 +103,6 @@ export function ChangeFilterInputByTradeMark(fliter)  {
   return async function (dispatch)  {
     dispatch({
       type: CHANGE_FILTER_INPUT_BY_TRADEMARK,
-      payload: fliter,
-    });
-  };
       payload: fliter,
     });
   };
@@ -139,17 +124,11 @@ export function filterByType() {
       type: FILTER_BY_TYPE,
     });
   };
-  return async function (dispatch) {
-    dispatch({
-      type: FILTER_BY_TYPE,
-    });
-  };
 
   //------------------------------------------------------------------------------
   //------------------------------------------------------------------------------
 }
 export function filterByTrademark() {
-  return async function (dispatch) {
   return async function (dispatch) {
     dispatch({
       type: FILTER_BY_TRADEMARK,
@@ -180,7 +159,6 @@ export function UpdateCloth(id, payload) {
 ///---------------------USERS-----------------------
 export const putUser = (id, payload) => async (dispatch) => {
   console.log(id, payload);
-  console.log(id, payload);
   try {
     const putCreate = await axios.put(`/users/${id}`, payload);
 
@@ -188,7 +166,6 @@ export const putUser = (id, payload) => async (dispatch) => {
       type: "PUT_USERS",
       // payload: putCreate,
     });
-  } catch (e) {
   } catch (e) {
     console.log(e);
   }

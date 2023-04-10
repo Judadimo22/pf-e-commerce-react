@@ -70,9 +70,9 @@ const HomeNavBar = () => {
             <SearchBar/>
             <Flex w="8%" justifyContent="space-between">
                 {isAuthenticated ?(
-                <Menu>
-                    <MenuButton>
-                        <Avatar src={user?.picture} size="md"/>
+                <Menu cursor="pointer">
+                    <MenuButton >
+                        <Avatar src={user?.picture}  size="md"/>
                     </MenuButton>
                 <MenuList >
                     <Link to={`/user/${ user.id ? user.id:"642e55eb8debb5e04fd0ff37"}`}>
@@ -88,7 +88,7 @@ const HomeNavBar = () => {
                 </MenuList>
                 </Menu>
                 ):<LoginButton/>}
-                <Icon bgColor="#f2f2f2" cursor={"pointer"} boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
+                <Icon bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
             </Flex>
         </Flex>
         </>

@@ -11,7 +11,7 @@ export const LoginButton = () => {
     useAuth0();
   console.log(isAuthenticated, user);
   return (
-    <Avatar size="md" onClick={() => loginWithPopup()}/>
+    <Avatar cursor="pointer" size="md" onClick={() => loginWithPopup()}/>
   );
 };
 

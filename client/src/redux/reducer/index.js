@@ -146,7 +146,7 @@ function rootReducer(state = initialState, action) {
           ClothesCopy: newerArray.flat(),
         };
       }
-    case FILTER_BY_CATEGORIE:
+ /*    case FILTER_BY_CATEGORIE:
       let newArray = [];
       if (state.filterInputs.byCategorie === "") {
         if (state.filterInputs.byType.length) {
@@ -186,12 +186,12 @@ function rootReducer(state = initialState, action) {
           ...state,
           ClothesCopy: newerArray.flat(),
         };
-      }
+      } */
 
     //---------------------------------------Filter by type---------------------------------
     //---------------------------------------Filter by type---------------------------------
 
-    case FILTER_BY_TYPE:
+    /* case FILTER_BY_TYPE:
       let array = [];
       if (state.filterInputs.byType === "") {
         if (state.filterInputs.byCategorie.length) {
@@ -231,7 +231,7 @@ function rootReducer(state = initialState, action) {
           ...state,
           ClothesCopy: newerArray.flat(),
         };
-      }
+      } */
     case FILTER_BY_TYPE:
       let array = [];
       if (state.filterInputs.byType === "") {
