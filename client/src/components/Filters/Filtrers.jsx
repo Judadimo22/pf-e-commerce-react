@@ -32,6 +32,9 @@ const Filtrers = () => {
       <div>
         <SortByPrice />
       </div>
+      <div className="filter-sort-bytype"> 
+        <ByType/>
+      </div>
     </div>
   );
 };

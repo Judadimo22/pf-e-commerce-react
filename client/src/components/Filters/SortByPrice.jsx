@@ -18,7 +18,7 @@ const SortByPrice = () => {
 
   return (
     <>
-      <Text fontFamily="Jaldi" fontSize="1.95rem" fontWeight="bold" pt="1rem">SORT</Text>
+      <Text fontFamily="Jaldi" fontSize="1.3rem" fontWeight="bold" pt="1rem">SORT</Text>
       <VStack alignItems="flex-start">
         <RadioGroup onChange={handleChange} value={value} isInline={false}>
           <Stack direction="column" spacing={1}>

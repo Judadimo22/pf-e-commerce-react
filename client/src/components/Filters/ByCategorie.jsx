@@ -17,7 +17,7 @@ const ByCategorie = () => {
   };
   return (
     <>
-      <Text fontFamily="Jaldi" fontSize="1.95rem" fontWeight="bold">
+      <Text fontFamily="Jaldi" fontSize="1.3rem" fontWeight="bold">
         Category
       </Text>
       <VStack alignItems="flex-start" pb="1rem" fontFamily="'Jaldi', sans-serif" fontSize="1.2rem" spacing={1}>
