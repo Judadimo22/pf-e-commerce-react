@@ -19,6 +19,7 @@ import AdmUsers from './components/Dashboard/AdmUsers'
 
 
 import CartPage from './views/Cart/CartPage';
+import UserEditPage from './views/User/UserEdit';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage/>} />
         <Route exact path="/add" element={<Upload/>} />
-        <Route exact path="/user/edit" element={<UserPage />} />
+        <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
         <Route exact path="/user/:id/orders" element={<UserPage />} />
         <Route exact path="/user/:id/notifications" element={<UserPage />} />
