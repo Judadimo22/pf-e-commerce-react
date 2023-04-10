@@ -20,6 +20,8 @@ export const GET_ORDERS = "GET_ORDERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const SORT_ASCENDING = "SORT_ASCENDING";
 export const SORT_DESCENDING = "SORT_DESCENDING";
+export const CACHIMBA = "CACHIMBA";
+
 
 export const sortAscending = () => {
   return {
@@ -55,7 +57,7 @@ export function getUsers() {
 export function getCloth(name) {
   console.log(name);
   return async function (dispatch) {
-    let json = await axios.get(`${process.env.BACKEND_URL}/cloth?name=${name}`);
+    let json = await axios.get(`http://localhost:3001/cloth?name=${name}`);
     dispatch({
       type: GET_CLOTHES,
       payload: json.data,
@@ -64,9 +66,7 @@ export function getCloth(name) {
 }
 export function getClothById(id) {
   return async function (dispatch) {
-    let json = await axios.get(
-      `https://backend-pf-uh1o.onrender.com/cloth/${id}`
-    );
+    let json = await axios.get(`http://localhost:3001/cloth/${id}`);
     dispatch({
       type: GET_BY_ID,
       payload: json.data,
@@ -99,8 +99,8 @@ export function ChangefilterInputByCategorie(fliter) {
   };
 }
 
-export function ChangeFilterInputByTradeMark(fliter) {
-  return async function (dispatch) {
+export function ChangeFilterInputByTradeMark(fliter)  {
+  return async function (dispatch)  {
     dispatch({
       type: CHANGE_FILTER_INPUT_BY_TRADEMARK,
       payload: fliter,
@@ -125,6 +125,7 @@ export function filterByType() {
     });
   };
 
+  //------------------------------------------------------------------------------
   //------------------------------------------------------------------------------
 }
 export function filterByTrademark() {
@@ -172,7 +173,7 @@ export const putUser = (id, payload) => async (dispatch) => {
 
 export const createUser = (payload) => async (dispatch) => {
   try {
-    const userCreate = await axios.post("/users", payload);
+    const userCreate = await axios.post("http://localhost:3001/users", payload);
     return dispatch({
       type: "POST_USERS",
       payload: userCreate,
