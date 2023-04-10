@@ -22,7 +22,7 @@ export function DashboardLeftMenu({ nav,edit,user }) {
       />
       <Flex
       pos="fixed"
-      h="710px"
+      h="720px"
       boxShadow="0 0px 0 0 rgb(0,0,0,0.5)" 
       w="350px"
       flexDir="column"
@@ -37,7 +37,7 @@ export function DashboardLeftMenu({ nav,edit,user }) {
         >
             <Flex mt={4} align="center" alignSelf="center" flexDir="column" >
                 <Avatar size="md" m={2} /* as={user.image} *//>
-                <Heading as="h3" color="#ffffff" m={2} size="md">{user.name} {user.lastname}</Heading>
+                <Heading as="h3" color="#ffffff" m={2} size="md">{user?.name} {user?.lastname}</Heading>
                <Button
                 bgColor="#272727"
                 color="#f2f2f2"

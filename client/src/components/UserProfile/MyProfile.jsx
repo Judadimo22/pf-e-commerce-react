@@ -228,7 +228,7 @@ import {
   putUser,
 } from "../../redux/actions/index"
 import Swal from "sweetalert2";
-import NavBar from "../NavBar/NavBar";
+import { TbUserCircle } from "react-icons/tb";
 
 
 export default function MyProfile() {
@@ -341,13 +341,12 @@ export default function MyProfile() {
 
   return (
     <div>
-      <NavBar/>
-      {isAuthenticated ? (
-        <div>
+{/*       {isAuthenticated ? (
+ */}        <div>
           <form className="ml-40 mr-20 text-white  " onSubmit={handleSubmit}>
             <div>
               <img
-                src={user.picture}
+                src={user?.picture ? user?.picture : TbUserCircle}
                 width="100px"
                 height="100px"
                 alt="img not fuound"
@@ -356,8 +355,8 @@ export default function MyProfile() {
                 className="text-primary mt-2"
                 onChange={handleInputChange}
                 type="file"
-                id={user.picture}
-                name={user.picture}
+                id={user?.picture}
+                name={user?.picture}
               />
             </div>
             <div className="flex  row space-rounded">
@@ -501,10 +500,10 @@ export default function MyProfile() {
             </div>
           </form>
         </div>
-      ) : (
+{/*       ) : (
         <p> there is not information to show</p>
       )}
-    </div>
+ */}    </div>
   );
 }
 

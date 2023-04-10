@@ -7,6 +7,9 @@ import { Flex } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getUserById } from '../../redux/actions'
+import UserInfo from '../../components/UserInfo/userInfo'
+import MyCloth from '../../components/UserProfile/MyCloth'
+import MyProfile from '../../components/UserProfile/MyProfile'
 
 const UserPage = () => {
   const user = useSelector(state=>state.user)
@@ -41,7 +44,6 @@ const UserPage = () => {
     <Flex>
       <DashboardLeftMenu nav={nav} edit={true} user={user}/>
     <Flex width="100%" justifyContent="center" >
-      
       </Flex>
     </Flex>
   </>
