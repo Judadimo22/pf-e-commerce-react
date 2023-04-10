@@ -18,13 +18,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  <Provider store={store}>
     <ThemeProvider theme={lightTheme}>
       <CssBaseline/>
+  <Provider store={store}>
       <React.StrictMode>
         <Auth0Provider 
-        domain='dev-2llhwpnt06dhuqy3.us.auth0.com' 
-        clientId='dDyL1k58O24ODoBGnD2n3awYccV0Zccf'
+        domain="dev-05o0jj0rko2ty63h.us.auth0.com"
+        clientId="xcBeyYqKJ7bYItFfWKmMmFI8v1lkcTbQ"
         authorizationParams={{
           redirect_uri: window.location.origin,
         }}
@@ -36,7 +36,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </BrowserRouter>
         </Auth0Provider>
       </React.StrictMode>
-    </ThemeProvider>
   </Provider>
+    </ThemeProvider>
 
 )

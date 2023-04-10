@@ -6,7 +6,7 @@
     -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
-    height: 75px;
+    height: 70px;
     width: 100%;
     top: 0;
 }
@@ -14,10 +14,7 @@
 .containerSearch{
     display: flex;
     align-items: center;
-    margin-right: 1em;
-    position: relative;
-    left: 1.25rem;
-
+    margin-right: 50px;
 }
 
 .containerSearch button{
@@ -38,3 +35,85 @@
     position: relative;
     left: 6.25rem;
 }
+
+
+/*
+a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .p_menu1 {
+    height: 100%;
+  }
+  
+  /* Hamburger *//*
+  .hamburger1 {
+    height: 36px;
+    margin: 3px 7px;
+    display: grid;
+    margin-left: 20px;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: left;
+    z-index: 120;
+  }
+  
+  .hamburger1 div {
+    background-color: rgb(61, 61, 61);
+    position: relative;
+    width: 32px;
+    height: 4px;
+    margin-top: 5.5px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .toggle1 {
+    display: none;
+  }
+  
+  .toggle1:checked + .hamburger1 .top {
+    transform: rotate(-45deg);
+    margin-top: 17px;
+  }
+  
+  .toggle1:checked + .hamburger1 .meat {
+    transform: rotate(45deg);
+    margin-top: -4px;
+  }
+  
+  .toggle1:checked + .hamburger1 .bottom {
+    transform: scale(0);
+  }
+  
+  .toggle1:checked ~ .menu1 {
+    height: 214px;
+    padding-top: 19px;
+  }
+  
+  /* Menu *//*
+  .menu1 {
+    width: 100vw;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr repeat(4, 0.5fr);
+    place-items: center;
+    padding: 0;
+    list-style: none;
+    clear: both;
+    text-align: center;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.4s ease;
+    z-index: 120;
+    transition: all 0.3s ease;
+  }
+  
+  .link1 {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0;
+    font: 700 20px "Oswald", sans-serif;
+    margin-top: 2px;
+    background-color: #fff;
+  }
+  */

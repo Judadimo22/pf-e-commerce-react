@@ -2,17 +2,14 @@ import { Avatar, Box, Button, Divider, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import NavItem from "./NavItem";
-import { TbDeviceDesktopAnalytics, TbShirt, TbTruck } from "react-icons/tb";
-import { FiUsers } from "react-icons/fi";
 
 
-export function DashboardLeftMenu() {
+export function DashboardLeftMenu({ nav,edit,user }) {
   // Verifica el token de autenticación y el rol del usuario
   //como lo hago? xd
   //que dios me guie
 
 
-  const name = "Mateo Rojas"
   
   const navigate  = useNavigate()
   if ("admin" === "admin") {
@@ -25,7 +22,7 @@ export function DashboardLeftMenu() {
       />
       <Flex
       pos="fixed"
-      h="710px"
+      h="720px"
       boxShadow="0 0px 0 0 rgb(0,0,0,0.5)" 
       w="350px"
       flexDir="column"
@@ -39,9 +36,9 @@ export function DashboardLeftMenu() {
         alignItems="flex-start"
         >
             <Flex mt={4} align="center" alignSelf="center" flexDir="column" >
-                <Avatar size="md" m={2}/>
-                <Heading as="h3" color="#ffffff" m={2} size="md">{name}</Heading>
-                <Button
+                <Avatar size="md" m={2} /* as={user.image} *//>
+                <Heading as="h3" color="#ffffff" m={2} size="md">{user?.name} {user?.lastname}</Heading>
+               <Button
                 bgColor="#272727"
                 color="#f2f2f2"
                 border="1px solid #f2f2f2"
@@ -50,6 +47,7 @@ export function DashboardLeftMenu() {
                 w="100px"
                 borderRadius={15}
                 m={2}
+                visibility={edit === true ? "visible":"hidden"}
                 >Edit</Button>
             </Flex>
 
@@ -60,10 +58,11 @@ export function DashboardLeftMenu() {
             flexDir="column"
             mb={20}
         >
-            <NavItem icon={TbDeviceDesktopAnalytics} title="Dashboard" redirect="/admin"/>
-            <NavItem icon={TbShirt} title="Products" redirect="/admin/products"/>
-            <NavItem icon={FiUsers} title="Users" redirect="/admin/users"/>
-            <NavItem icon={TbTruck} title="Orders" redirect="/admin/orders"/>
+          {
+            nav.map(item=>(
+              <NavItem key={item.title} icon={item.icon} title={item.title} redirect={item.redirect}/>
+            ))
+          }
         </Flex>
         <Flex
             justifyContent="center"
