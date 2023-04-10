@@ -24,9 +24,18 @@ const ByTrademark = () => {
   };
   return (
     <>
-      <Text fontFamily="Jaldi" fontSize="1.95rem" fontWeight="bold" pt="1rem">
+      <Text fontFamily="Jaldi" fontSize="1.3rem" fontWeight="bold" pt="0.5rem">
         Trademark
       </Text>
+
+
+
+
+
+
+
+
+      
       <VStack alignItems="flex-start" pb="1rem" fontFamily="'Jaldi', sans-serif" fontSize="1.2rem" spacing={1}>
         <button
           onClick={onChange}
