@@ -31,7 +31,7 @@ function LandingPage() {
         </div>*/}
       </div>
         <Box h={800}>
-            <Image w='100' h={800} objectFit='cover' src={mainImage}/>
+            <Image w='100%' h={800} objectFit='cover' src={mainImage}/>
             <Text textAlign='center' position='relative' bottom={500} fontSize={200} color='#DAEB0F' textShadow='2xl'>Be Yourself</Text>
         </Box>
 

@@ -66,7 +66,7 @@ export function getCloth(name) {
 }
 export function getClothById(id) {
   return async function (dispatch) {
-    let json = await axios.get(`http://localhost:3001/cloth/${id}`);
+    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth/${id}`);
     dispatch({
       type: GET_BY_ID,
       payload: json.data,
