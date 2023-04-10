@@ -172,7 +172,7 @@ export const putUser = (id, payload) => async (dispatch) => {
 
 export const createUser = (payload) => async (dispatch) => {
   try {
-    const userCreate = await axios.post("/users", payload);
+    const userCreate = await axios.post("http://localhost:3001/users", payload);
     return dispatch({
       type: "POST_USERS",
       payload: userCreate,
