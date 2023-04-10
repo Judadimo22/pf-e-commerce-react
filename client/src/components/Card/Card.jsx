@@ -8,10 +8,7 @@ import { Box,  Button,  Flex, Image, Text } from '@chakra-ui/react'
 export const ProductCard = (props) => {
 
  
-  
-  const onClick = (event) => {
-    alert("alguien que añada el carrito o rompo development")
-  }
+
 
   const productPrice = props.product.price ?  '$' + props.product.price  : ''
   const productType = props.product.type
@@ -36,7 +33,7 @@ export const ProductCard = (props) => {
             <Box width="190px" height="60px" />
           </Link>    
 
-          <Button className={style.cartContainer} onClick={onClick} backgroundColor="#DAEB0F" padding="0">
+          <Button className={style.cartContainer}  backgroundColor="#DAEB0F" padding="0">
             <TbShoppingCartPlus className={style.cart}/>
           </Button>
 
