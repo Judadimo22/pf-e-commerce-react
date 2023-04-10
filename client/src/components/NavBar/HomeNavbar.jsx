@@ -56,9 +56,9 @@ const HomeNavBar = () => {
 
 
         <>
-              <a href="/home"><button>HOME</button></a>
-            <a href="/about"><button>ABOUT</button></a>
-            <a href="/contact"><button>CONTACT</button></a>
+            <Link to={'/home'}><button>HOME</button></Link>
+            <Link to={'/about'}><button>ABOUT</button></Link>
+            <Link to={'/contact'}><button>CONTACT</button></Link>
            
               
             </>
