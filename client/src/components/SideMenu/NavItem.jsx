@@ -22,12 +22,12 @@ const NavItem = ({title,icon,redirect}) => {
                     <Flex 
                         color={location===redirect ? "#272727" : "#ffffff"}
                         bgColor={location===redirect ? "#DAEB0F" : "#272727"}
-                        width="135px"
+                        width="140px"
                         height="35px"
                         alignItems="center"
                         borderRadius={15}
                     >
-                        <Icon marginLeft="12px" as={icon} mr={4}/>
+                        <Icon marginLeft="10px" as={icon} mr={3}/>
                         <Text>{title}</Text>
                     </Flex>
                 </MenuButton>

@@ -7,14 +7,18 @@ import { Flex } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getUserById } from '../../redux/actions'
+import UserInfo from '../../components/UserInfo/userInfo'
+import MyCloth from '../../components/UserProfile/MyCloth'
+import MyProfile from '../../components/UserProfile/MyProfile'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const UserPage = () => {
-  const user = useSelector(state=>state.user)
+  const userState = useSelector(state=>state.user)
   const dispatch = useDispatch()
   const { id } = useParams();
-
+  const { user } = useAuth0()
   useEffect(()=>{
-   if(!user.length) dispatch(getUserById(id))
+   if(!userState.length) dispatch(getUserById(id))
   },[])
 
     const nav= [
@@ -39,9 +43,8 @@ const UserPage = () => {
     <>
     <HomeNavBar/>
     <Flex>
-      <DashboardLeftMenu nav={nav} edit={true} user={user}/>
+      <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
     <Flex width="100%" justifyContent="center" >
-      
       </Flex>
     </Flex>
   </>

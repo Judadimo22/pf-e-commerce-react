@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./NavBar.module.css";
 //import {BsBagCheckFill} from "react-icons/bs"
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../Login/login";
 import { LogOutButton } from "../Login/logOut";
+import { CACHIMBA } from "../../redux/actions";
+import { useState } from "react";
+import { createUser } from "../../redux/actions/index";
+import axios from "axios";
 
 const NavBar = () => {
-  const { isAuthenticated, user } = useAuth0();
+  const dispatch = useDispatch();
+  const { isAuthenticated, user, logout } = useAuth0();
+  const [infoUser, setInfoUser] = useState({});
+
+  useEffect(() => {
+    if (user && isAuthenticated) {
+      axios.get("https://backend-pf-uh1o.onrender.com/users").then((element) => {
+        const userDb = element.data.find(
+          (element) => element.email === user.email
+        );
+        if (!userDb) {
+          const newUser = {
+            name: user.given_name,
+            lastname: user.family_name,
+            email: user.email,
+          };
+
+          console.log(newUser);
+          dispatch(createUser(newUser));
+        } else {
+          setInfoUser(userDb);
+          return false;
+        }
+      });
+    }
+  }, [user]);
+
   console.log(isAuthenticated, user);
   return (
     <div className={style.containerNavBar}>
@@ -17,18 +48,33 @@ const NavBar = () => {
         <div>
           {isAuthenticated ? (
             <>
-              <a href="/home"><button>HOME</button></a>
-            <a href="/about"><button>ABOUT</button></a>
-            <a href="/contact"><button>CONTACT</button></a>
-            <a href="/Profile"><button>MyProfile</button></a>
+              <a href="/home">
+                <button>HOME</button>
+              </a>
+              <a href="/about">
+                <button>ABOUT</button>
+              </a>
+              <a href="/contact">
+                <button>CONTACT</button>
+              </a>
+              <a href="/Profile">
+                <button>MyProfile</button>
+              </a>
               <LogOutButton />
             </>
-          ) : (<>
-            <a href="/home"><button>HOME</button></a>
-            <a href="/about"><button>ABOUT</button></a>
-            <a href="/contact"><button>CONTACT</button></a>
-            <LoginButton />
-          </>
+          ) : (
+            <>
+              <a href="/home">
+                <button>HOME</button>
+              </a>
+              <a href="/about">
+                <button>ABOUT</button>
+              </a>
+              <a href="/contact">
+                <button>CONTACT</button>
+              </a>
+              <LoginButton />
+            </>
           )}
         </div>
         {/*<h2 className={style.logoCarritoCompras}><BsBagCheckFill/></h2>*/}
@@ -38,24 +84,6 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -349,4 +377,3 @@ function NavBar() {
 }
 
 export default NavBar;*/
-

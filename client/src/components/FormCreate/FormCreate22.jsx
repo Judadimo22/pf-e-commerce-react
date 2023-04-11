@@ -1,63 +1,54 @@
 import { useState } from 'react';
-import { Box, Heading, Text, FormControl, FormLabel, Input, Select, Checkbox, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Button, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Heading, Text, FormControl, FormLabel, Input, Select, Checkbox, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Button, Flex, Spacer, VStack, Image } from '@chakra-ui/react';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { PostCloth } from '../../redux/actions';
 
 function CrearProducto() {
-    const dispatch = useDispatch
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [categoria, setCategoria] = useState('');
-    const [tipoPrenda, setTipoPrenda] = useState('');
-    const [talles, setTalles] = useState([]);
-    const [stock, setStock] = useState({});
-    const [marca, setMarca] = useState('');
-    const [images, setImages] = useState();
+    const [categorie, setCategorie] = useState('');
+    const [type, setType] = useState('');
+    const [tallas, setTalles] = useState([]);
+    const [trademark, setTrademark] = useState('');
+    const [image, setImage] = useState('');
+    const [price, setPrice] = useState(0);
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Validar datos
-        if (name === '') {
-            alert('Por favor ingrese un name para el producto');
-            return;
-        }
-
-        // Enviar datos a la base de datos de MongoDB
-        const data = {
-            name:name,
-            description:description,
-            categoria:categoria,
-            tipoPrenda:tipoPrenda,
-            talles:talles,
-            stock:stock,
-            marca:marca,
-            images:["https://http2.mlstatic.com/D_NQ_NP_806215-MLA52615217426_112022-O.webp","https://http2.mlstatic.com/D_NQ_NP_806215-MLA52615217426_112022-O.webp"],
-        };
+        const formData = new FormData(e.target);
+        formData.append("image", image);
+        formData.append("name", name);
+        formData.append("description", description);
+        formData.append("categorie", categorie);
+        formData.append("tallas", JSON.stringify(tallas));
+        formData.append("trademark", trademark);
+        formData.append("price", price);
+        console.log('formData', formData)
+        const response = await fetch("/cloth", {
+            method: "POST",
+            body: formData,
+        });
+        const data = await response.json();
         console.log(data);
-        dispatch(PostCloth(data))
-            .then(response => {
-                console.log('Producto creado:', response.data);
-                // Limpiar formulario
-                setName('');
-                setDescription('');
-                setCategoria('');
-                setTipoPrenda('');
-                setTalles([]);
-                setStock({});
-                setMarca('');
-                setImages([]);
-            })
-            .catch(error => {
-                console.error('Error al crear el producto:', error);
-            });
     };
+
+
+    const handleTalleChange = (talla, stock) => {
+        const talleIndex = tallas.findIndex((item) => item.talla === talla);
+        if (talleIndex === -1) {
+            setTalles([...tallas, { talla, stock: parseInt(stock) }]);
+        } else {
+            const newTalles = [...tallas];
+            newTalles[talleIndex].stock = parseInt(stock);
+            setTalles(newTalles);
+        }
+    };
+
+
 
     return (
         <Box p="4">
             <Heading as="h1" size="xl">Crear Producto</Heading>
-
             <Box mt="8">
                 <form onSubmit={handleSubmit}>
                     <Button type='submit'>Create</Button>
@@ -70,10 +61,9 @@ function CrearProducto() {
                         <FormLabel>Descripción</FormLabel>
                         <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </FormControl>
-
-                    <FormControl id="categoria" mt="4" isRequired> 
+                    <FormControl id="categorie" mt="4" isRequired>
                         <FormLabel>Categoría</FormLabel>
-                        <Select placeholder="Seleccionar categoría" value={categoria} onChange={(e) => setCategoria(e.target.value)}>
+                        <Select placeholder="Seleccionar categoría" value={categorie} onChange={(e) => setCategorie(e.target.value)}>
                             <option value="hombre">Hombre</option>
                             <option value="mujer">Mujer</option>
                             <option value="niño">Niño</option>
@@ -82,70 +72,94 @@ function CrearProducto() {
 
                     <FormControl id="tipo-prenda" mt="4" isRequired>
                         <FormLabel>Tipo de prenda</FormLabel>
-                        <Select value={tipoPrenda} onChange={(e) => setTipoPrenda(e.target.value)}>
+                        <Select value={type} onChange={(e) => setType(e.target.value)}>
                             <option value="pantalon">Pantalón</option>
                             <option value="remera">Remera</option>
                             <option value="abrigo">Abrigo</option>
                             <option value="gorra">Gorra</option>
                         </Select>
                     </FormControl>
-
-                    <FormControl id="TradeMark" mt="4" >
-                        <FormLabel>TradeMark</FormLabel>
-                        <Flex flexWrap="wrap">
-                            {["ADIDAS","Nike","Vandalia", "Oldtown Polo", "Topper", "Puma"].map((tradeMark) => (
-                                <Box key={tradeMark} mr="4" mb="4">
-                                    <Checkbox value={tradeMark} isChecked={marca.includes(tradeMark)} onChange={(e) => {
-                                        if (e.target.checked) {
-                                            setMarca([...marca, tradeMark]);
-                                        } else {
-                                            setMarca(marca.filter((value) => value !== tradeMark));
-                                        }
-                                    }}>
-                                        {tradeMark}
-                                    </Checkbox>
-                                </Box>
-                            ))}
-                        </Flex>
+                    <FormControl id="trademark" mt="4" isRequired>
+                        <FormLabel>Marca</FormLabel>
+                        <Input type="text" value={trademark} onChange={(e) => setTrademark(e.target.value)} />
                     </FormControl>
-
-                    <FormControl id="talles" mt="4" >
+                    <FormControl>
+                        <FormLabel>Imagen</FormLabel>
+                        <Input type="file" onChange={(e) => setImage(e.target.files[0])} />
+                        {/* <Button onClick={handleImageUpload}>Cargar imagen</Button> */}
+                    </FormControl>
+                    <FormControl id="price" mt="4">
+                        <FormLabel>Precio</FormLabel>
+                        <NumberInput
+                            defaultValue={isNaN(price) ? 0 : price}
+                            min={0}
+                            precision={2}
+                            step={0.01}
+                            onChange={(value) => {
+                                const newValue = parseFloat(value);
+                                if (!isNaN(newValue)) {
+                                    setPrice(newValue);
+                                }
+                            }}
+                        >
+                            <NumberInputField />
+                            <NumberInputStepper>
+                                <NumberIncrementStepper />
+                                <NumberDecrementStepper />
+                            </NumberInputStepper>
+                        </NumberInput>
+                    </FormControl>
+                    <FormControl id="tallas" mt="4">
                         <FormLabel>Talles</FormLabel>
-                        <Flex flexWrap="wrap">
-                            {['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'].map((talle) => (
-                                <Box key={talle} mr="4" mb="4">
-                                    <Checkbox value={talle} isChecked={talles.includes(talle)} onChange={(e) => {
-                                        if (e.target.checked) {
-                                            setTalles([...talles, talle]);
-                                        } else {
-                                            setTalles(talles.filter((value) => value !== talle));
-                                        }
-                                    }}>
-                                        {talle}
-                                    </Checkbox>
-                                </Box>
-                            ))}
-                        </Flex>
-                    </FormControl>
-
-                    <FormControl id="stock" mt="4" isRequired>
-                        <FormLabel>Stock</FormLabel>
-                        {talles.map((talle) => (
-                            <Box key={talle} mb="4">
-                                <FormLabel>{talle}</FormLabel>
-                                <NumberInput defaultValue={0} min={0}>
-                                    <NumberInputField value={stock[talle] || ''} onChange={(e) => setStock({ ...stock, [talle]: e.target.value })} />
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper />
-                                        <NumberDecrementStepper />
-                                    </NumberInputStepper>
+                        <Flex>
+                            <Box flex="1" mr="4">
+                                <FormLabel htmlFor="talla-xs">XS</FormLabel>
+                                <NumberInput id="talla-xs" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('XS', e.target.value)} />
                                 </NumberInput>
                             </Box>
-                        ))}
+                            <Box flex="1" mr="4">
+                                <FormLabel htmlFor="talla-s">S</FormLabel>
+                                <NumberInput id="talla-s" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('S', e.target.value)} />
+                                </NumberInput>
+                            </Box>
+                            <Box flex="1" mr="4">
+                                <FormLabel htmlFor="talla-m">M</FormLabel>
+                                <NumberInput id="talla-m" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('M', e.target.value)} />
+                                </NumberInput>
+                            </Box>
+                            <Box flex="1">
+                                <FormLabel htmlFor="talla-l">L</FormLabel>
+                                <NumberInput id="talla-l" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('L', e.target.value)} />
+                                </NumberInput>
+                            </Box>
+                            <Box flex="1">
+                                <FormLabel htmlFor="talla-xl">XL</FormLabel>
+                                <NumberInput id="talla-xl" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('XL', e.target.value)} />
+                                </NumberInput>
+                            </Box>
+                            <Box flex="1">
+                                <FormLabel htmlFor="talla-xxl">XXL</FormLabel>
+                                <NumberInput id="talla-xxl" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('XXL', e.target.value)} />
+                                </NumberInput>
+                            </Box>
+                            <Box flex="1">
+                                <FormLabel htmlFor="talla-xxxl">XXXL</FormLabel>
+                                <NumberInput id="talla-xxxl" defaultValue={0} min={0}>
+                                    <NumberInputField onChange={(e) => handleTalleChange('XXXL', e.target.value)} />
+                                </NumberInput>
+                            </Box>
+                        </Flex>
                     </FormControl>
+
                 </form>
             </Box>
-        </Box>)
+        </Box>
+    )
 }
-
 export default CrearProducto

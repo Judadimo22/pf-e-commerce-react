@@ -1,18 +1,13 @@
-.trademark{
-    text-align: left;
-    padding: 0 1.25rem;
+.trademark h1 {
+  font-family: "Jaldi";
+  font-size: 1.95rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
-
-.trademark h1{
-    font-family: 'Jaldi', sans-serif;
-    font-size: 2.5rem
-}
-.trademark button{
-    border: none;
-    background: none;
-    margin: .3125rem 0;
-    font-size: 1.5625rem;
-    position: relative;
-    bottom: .625rem;
-    font-family: 'Jaldi', sans-serif;
+.trademark button {
+  border: none;
+  background: none;
+  margin-top: 1px;
+  position: relative;
+  bottom: 1.25rem;
 }

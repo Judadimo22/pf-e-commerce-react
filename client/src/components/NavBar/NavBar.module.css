@@ -6,7 +6,7 @@
     -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
     -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
     box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.25);
-    height: 75px;
+    height: 70px;
     width: 100%;
     top: 0;
 }
@@ -14,10 +14,7 @@
 .containerSearch{
     display: flex;
     align-items: center;
-    margin-right: 1em;
-    position: relative;
-    left: 1.25rem;
-
+    margin-right: 50px;
 }
 
 .containerSearch button{
