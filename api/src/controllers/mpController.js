@@ -20,9 +20,9 @@ const pagarProducto = async (req, res) => {
     ],
 
     back_urls: {
-      success: "http://localhost:3001/cloth",
-      failure: "http://localhost:3001/cloth",
-      pending: "http://localhost:3001/cloth",
+      success: "https://backend-pf-uh1o.onrender.com/cloth",
+      failure: "https://backend-pf-uh1o.onrender.com/cloth",
+      pending: "https://backend-pf-uh1o.onrender.com/cloth",
     },
     auto_return: "approved",
     external_reference: email,

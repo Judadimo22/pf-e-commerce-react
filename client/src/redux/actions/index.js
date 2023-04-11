@@ -173,7 +173,7 @@ export const putUser = (id, payload) => async (dispatch) => {
 
 export const createUser = (payload) => async (dispatch) => {
   try {
-    const userCreate = await axios.post("http://localhost:3001/users", payload);
+    const userCreate = await axios.post("https://backend-pf-uh1o.onrender.com/users", payload);
     return dispatch({
       type: "POST_USERS",
       payload: userCreate,
@@ -184,7 +184,7 @@ export const createUser = (payload) => async (dispatch) => {
 };
 export const getOrders = () => async (dispatch) => {
   try {
-    const Orders = await axios.get("http://localhost:3001/feedback");
+    const Orders = await axios.get("https://backend-pf-uh1o.onrender.com/feedback");
     return dispatch({
       type: GET_ORDERS,
       payload: Orders.data,
@@ -195,7 +195,7 @@ export const getOrders = () => async (dispatch) => {
 };
 export const getUserById = (id) => async (dispatch) => {
   try {
-    const user = await axios.get(`http://localhost:3001/users/${id}`);
+    const user = await axios.get(`https://backend-pf-uh1o.onrender.com/users/${id}`);
     return dispatch({
       type: GET_USER_BY_ID,
       payload: user.data,

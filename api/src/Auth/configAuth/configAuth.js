@@ -3,7 +3,7 @@ const auth0 = require("auth0-js");
 const auth0Config = {
   domain: "dev-2llhwpnt06dhuqy3.us.auth0.com",
   clientID: "i4gEbxcn35MZoagHLqzqXiRfLRTJRR4V",
-  redirectUri: "http://localhost:3001/",
+  redirectUri: "https://backend-pf-uh1o.onrender.com/",
   responseType: "token ",
   scope: "openid",
 };
