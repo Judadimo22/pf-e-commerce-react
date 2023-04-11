@@ -17,7 +17,7 @@ const NavBar = () => {
 
   useEffect(() => {
     if (user && isAuthenticated) {
-      axios.get("http://localhost:3001/users").then((element) => {
+      axios.get("https://backend-pf-uh1o.onrender.com/users").then((element) => {
         const userDb = element.data.find(
           (element) => element.email === user.email
         );
