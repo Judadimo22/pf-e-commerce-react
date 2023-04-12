@@ -23,6 +23,11 @@ const productSchema = new Schema(
         message: "{VALUE} no es un tipo valido",
       },
     },
+    active: {
+      type: String,
+      enum: ["valid", "invalid"],
+      default: "valid",
+    },
     categorie: {
       type: String,
       enum: {
