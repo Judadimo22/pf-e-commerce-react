@@ -23,6 +23,10 @@ import UserEditPage from './views/User/UserEdit';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
 
+import axios from "axios"
+axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+//axios.defaults.baseURL = "http://localhost:3001"
+
 
 function App() {
   
