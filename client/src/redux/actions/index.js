@@ -37,7 +37,7 @@ export const sortDescending = () => {
 
 export function getClothes() {
   return async function (dispatch) {
-    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth`);
+    let json = await axios.get(`/cloth`);
     dispatch({
       type: GET_CLOTHES,
       payload: json.data,
@@ -47,7 +47,7 @@ export function getClothes() {
 
 export function getUsers() {
   return async function (dispatch) {
-    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/users`);
+    let json = await axios.get(`/users`);
     dispatch({
       type: GET_USERS,
       payload: json.data,
@@ -58,7 +58,7 @@ export function getUsers() {
 export function getCloth(name) {
   console.log(name);
   return async function (dispatch) {
-    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth?name=${name}`);
+    let json = await axios.get(`/cloth?name=${name}`);
     dispatch({
       type: GET_CLOTHES,
       payload: json.data,
@@ -67,7 +67,7 @@ export function getCloth(name) {
 }
 export function getClothById(id) {
   return async function (dispatch) {
-    let json = await axios.get(`https://backend-pf-uh1o.onrender.com/cloth/${id}`);
+    let json = await axios.get(`/cloth/${id}`);
     dispatch({
       type: GET_BY_ID,
       payload: json.data,
@@ -138,19 +138,19 @@ export function filterByTrademark() {
 }
 
 export function PostCloth(payload) {
-  let json = axios.post(`https://backend-pf-uh1o.onrender.com/cloth`, payload);
+  let json = axios.post(`/cloth`, payload);
   return { type: POST_CLOTH, payload: json };
 }
 
 export function DeleteCloth(idCloth) {
   return async function (dispatch) {
-    return axios.delete(`https://backend-pf-uh1o.onrender.com/cloth/${idCloth}`);
+    return axios.delete(`/cloth/${idCloth}`);
   };
 }
 
 export function UpdateCloth(id, payload) {
   return async function (dispatch) {
-    const json = await axios.put(`https://backend-pf-uh1o.onrender.com/cloth/${id}`, payload);
+    const json = await axios.put(`/cloth/${id}`, payload);
     return dispatch({
       type: UPDATE_CLOTH,
       payload: json.data,
@@ -186,7 +186,7 @@ export const putUser = (id, payload) => async (dispatch) => {
 
 export const createUser = (payload) => async (dispatch) => {
   try {
-    const userCreate = await axios.post("https://backend-pf-uh1o.onrender.com/users", payload);
+    const userCreate = await axios.post("/users", payload);
     return dispatch({
       type: "POST_USERS",
       payload: userCreate,
@@ -197,7 +197,7 @@ export const createUser = (payload) => async (dispatch) => {
 };
 export const getOrders = () => async (dispatch) => {
   try {
-    const Orders = await axios.get("https://backend-pf-uh1o.onrender.com/feedback");
+    const Orders = await axios.get("/feedback");
     return dispatch({
       type: GET_ORDERS,
       payload: Orders.data,
@@ -207,10 +207,13 @@ export const getOrders = () => async (dispatch) => {
   }
 };
 export const getUserById = (id) => async (dispatch) => {
-    const user = await axios.get(`https://backend-pf-uh1o.onrender.com/users/${id}`);
+  try {
+    const user = await axios.get(`/users/${id}`);
     return dispatch({
       type: GET_USER_BY_ID,
       payload: user.data,
     });
-
+  } catch (e) {
+    console.log(e);
+  }
 };
