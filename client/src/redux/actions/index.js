@@ -2,9 +2,7 @@ import axios from "axios";
 export const GET_CLOTHES = "GET_CLOTHES";
 export const GET_CLOTH = "GET_CLOTH";
 export const GET_BY_ID = "GET_BY_ID";
-export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
-export const FILTER_BY_CATEGORIE = "FILTER_BY_CATEGORIE";
-export const FILTER_BY_TRADEMARK = "FILTER_BY_TRADEMARK";
+export const FILTER = "FILTER";
 export const CHANGE_FILTER_INPUT_BY_TYPE = "CHANGE_FILTER_INPUT_BY_TYPE";
 export const CHANGE_FILTER_INPUT_BY_CATEGORIE =
   "CHANGE_FILTER_INPUT_BY_CATEGORIE";
@@ -21,6 +19,7 @@ export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const SORT_ASCENDING = "SORT_ASCENDING";
 export const SORT_DESCENDING = "SORT_DESCENDING";
 export const CACHIMBA = "CACHIMBA";
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
 
 export const sortAscending = () => {
@@ -82,6 +81,14 @@ export const setSearch = (payload) => {
 };
 
 //-----------------------------------Change Input----------------------------------
+export function clearFilters(payload) {
+  return async function (dispatch) {
+    dispatch({
+      type: CLEAR_FILTERS,
+      payload:payload
+    });
+  };
+}
 export function ChangefilterInputByType(fliter) {
   return async function (dispatch) {
     dispatch({
@@ -107,34 +114,15 @@ export function ChangeFilterInputByTradeMark(fliter)  {
     });
   };
 }
+export function Filter()  {
+  return async function (dispatch)  {
+    dispatch({
+      type: FILTER,
+    });
+  };
+}
 //-----------------------------------------------------------------------------
 
-//-----------------------Filter render-----------------------------------------
-
-export function filterByCategorie() {
-  return async function (dispatch) {
-    dispatch({
-      type: FILTER_BY_CATEGORIE,
-    });
-  };
-}
-export function filterByType() {
-  return async function (dispatch) {
-    dispatch({
-      type: FILTER_BY_TYPE,
-    });
-  };
-
-  //------------------------------------------------------------------------------
-  //------------------------------------------------------------------------------
-}
-export function filterByTrademark() {
-  return async function (dispatch) {
-    dispatch({
-      type: FILTER_BY_TRADEMARK,
-    });
-  };
-}
 
 export function PostCloth(payload) {
   let json = axios.post(`/cloth`, payload);
