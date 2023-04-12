@@ -1,27 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./CardProduct.module.css";
 import { Link } from "react-router-dom";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 
+let products = [];
 export const ProductCard = (props) => {
   const productPrice = props.product.price ? "$" + props.product.price : "";
   const productType = props.product.type;
   const productTrademark = props.product.trademark;
   const productImage = props.product.image;
   const productName = props.product.name;
-  let products = [];
-  const handleClick = () => {
-    products.push({
-      image: props.product.image,
+  const handleAddToCart = () => {
+    // Obtener los datos del producto seleccionado
+    const product = {
+      id: props.product.id,
       name: props.product.name,
       price: props.product.price,
-      trademark: props.product.trademark,
-      type: props.product.type,
-    });
-    localStorage.setItem("cartItems", JSON.stringify(products));
-  };
+      image: props.product.image,
+      quantity: 1,
+    };
 
+    // Obtener el carrito actual desde el localStorage
+    let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Verificar si el producto ya está en el carrito
+    const existingProductIndex = cart.findIndex(
+      (item) =>
+        item.id === product.id &&
+        item.size === product.size &&
+        item.color === product.color &&
+        item.image === product.image
+    );
+
+    if (existingProductIndex >= 0) {
+      // Si el producto ya está en el carrito, aumentar la cantidad
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      // Si el producto no está en el carrito, agregarlo
+      cart.push(product);
+    }
+
+    // Actualizar el carrito en el localStorage
+    localStorage.setItem("cartItems", JSON.stringify(cart));
+
+    // Actualizar el estado del número de productos en el carrito
+    //setNumCartItems(cart.length);
+  };
   return (
     <Flex flexDirection="column" className={style.containerCard}>
       <Box
@@ -49,7 +74,10 @@ export const ProductCard = (props) => {
             backgroundColor="#DAEB0F"
             padding="0"
           >
-            <TbShoppingCartPlus onClick={handleClick} className={style.cart} />
+            <TbShoppingCartPlus
+              onClick={handleAddToCart}
+              className={style.cart}
+            />
           </Button>
         </Flex>
       </Box>
