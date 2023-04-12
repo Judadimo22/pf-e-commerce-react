@@ -17,7 +17,8 @@ import {
   GET_USER_BY_ID,
   SORT_ASCENDING,
   SORT_DESCENDING,
-  CACHIMBA
+  CACHIMBA,
+  UPDATE_USER
 } from "../actions/index";
 
 const initialState = {
@@ -34,6 +35,7 @@ const initialState = {
   UsersCopy: [],
   orders: [],
   user: {},
+  DetailUser: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -47,7 +49,7 @@ function rootReducer(state = initialState, action) {
     case GET_USER_BY_ID:
       return {
         ...state,
-        user: action.payload,
+        DetailUser: action.payload,
       };
 
     case GET_USERS:
@@ -283,7 +285,7 @@ function rootReducer(state = initialState, action) {
           );
           return {
             ...state,
-            ClothesCopy: array.flat(),
+            ClothesCopy: array2.flat(),
           };
         } else {
           return {
@@ -345,6 +347,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         // allUsers: action.action.payload
+      };
+    case UPDATE_USER:
+      return {
+        ...state          
       };
     case POST_USERS:
       return {

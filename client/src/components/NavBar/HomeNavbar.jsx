@@ -25,7 +25,7 @@ const HomeNavBar = () => {
     
       useEffect(() => {
         if (user && isAuthenticated) {
-          axios.get("https://backend-pf-uh1o.onrender.com/users").then((element) => {
+          axios.get("http://localhost:3001/users").then((element) => {
             const userDb = element.data.find(
               (element) => element.email === user.email
             );
@@ -68,7 +68,7 @@ const HomeNavBar = () => {
 
             <Link to="/home">
                 <div className={style.containerTitle}>
-                    <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
+                <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
                 </div>
             </Link>
             <SearchBar/>

@@ -23,6 +23,7 @@ export const SORT_DESCENDING = "SORT_DESCENDING";
 export const CACHIMBA = "CACHIMBA";
 export const POST_REVIEW = "POST_REVIEW"
 
+export const UPDATE_USER = 'UPDATE_USER'
 
 
 export const sortAscending = () => {
@@ -159,6 +160,18 @@ export function UpdateCloth(id, payload) {
   };
 }
 ///---------------------USERS-----------------------
+
+export function updateUser (id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`/users/${id}`, payload);
+    return dispatch({
+      type: UPDATE_USER,
+      payload: json.data
+    })
+  }
+}
+
+
 export const putUser = (id, payload) => async (dispatch) => {
   console.log(id, payload);
   try {

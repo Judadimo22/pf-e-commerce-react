@@ -46,7 +46,7 @@ export const Clothes = () => {
           <Tbody>
         {
           Products.length ?
-            Products.slice(pageSliceStart, pageSliceEnd).map(product => (<Cloth key={product._id} id={product._id} name={product.name} img={product.image} price={product.price} stock={product.stock} />)) : null  
+            Products.slice(pageSliceStart, pageSliceEnd).map(product => (<Cloth key={product._id} product={product} />)) : null  
         }
           </Tbody>
 
