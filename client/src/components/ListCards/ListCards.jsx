@@ -35,7 +35,6 @@ export const ListCard = () => {
 
 
   function sortProducts(type, list) {
-    console.log(list);
     const sorted = list.sort((a, b) => {
       const isAsc = type === "asc";
       if (isAsc) {
@@ -47,12 +46,7 @@ export const ListCard = () => {
     return sorted;
   }
 
-  function handleSelectChange(event) {
-    const newSortType = event.target.value;
-    const sortedProducts = sortProducts(newSortType, filteredProducts);
-    setSortType(newSortType);
-    setProducts(sortedProducts);
-  }
+
   return (
     <div>    
       <div className={styles.product}>

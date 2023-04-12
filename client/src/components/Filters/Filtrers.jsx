@@ -1,18 +1,18 @@
 import React from "react";
-import "./Filtrers.css";
 import ByCategorie from "./ByCategorie";
 import ByType from "./ByType";
 import ByTrademark from "./ByTrademark";
 import SortByPrice from "./SortByPrice";
-import * as Chakra from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 const Filtrers = () => {
   return (
-    <div className="Filters-container">
+    <Flex flexDir="column">
       <div>
         <ByCategorie />
       </div>
-      <Chakra.Box
+      <Box
         borderBottom="2px"
         borderColor="#b5babb"
         borderRadius="full"
@@ -22,7 +22,7 @@ const Filtrers = () => {
       <div>
         <ByTrademark />
       </div>
-      <Chakra.Box
+      <Box
         borderBottom="2px"
         borderColor="#b5babb"
         borderRadius="full"
@@ -30,12 +30,19 @@ const Filtrers = () => {
         margin="auto"
       />
       <div>
-        <SortByPrice />
-      </div>
-      <div className="filter-sort-bytype"> 
         <ByType/>
       </div>
-    </div>
+      <Box
+        borderBottom="2px"
+        borderColor="#b5babb"
+        borderRadius="full"
+        width="100%"
+        margin="auto"
+      />
+      <div className="filter-sort-bytype"> 
+        <SortByPrice />
+      </div>
+    </Flex>
   );
 };
 
