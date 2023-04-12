@@ -161,7 +161,7 @@ export function UpdateCloth(id, payload) {
 
 export function updateUser (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`http://localhost:3001/users/${id}`, payload);
+    const json = await axios.put(`https://backend-pf-uh1o.onrender.com/users/${id}`, payload);
     return dispatch({
       type: UPDATE_USER,
       payload: json.data
@@ -207,13 +207,10 @@ export const getOrders = () => async (dispatch) => {
   }
 };
 export const getUserById = (id) => async (dispatch) => {
-  try {
     const user = await axios.get(`https://backend-pf-uh1o.onrender.com/users/${id}`);
     return dispatch({
       type: GET_USER_BY_ID,
       payload: user.data,
     });
-  } catch (e) {
-    console.log(e);
-  }
+
 };

@@ -17,6 +17,7 @@ const User = (props) => {
   const LastName = props.user.lastname
   const Country = props.user.country
   const Address = props.user.addres
+  const Email = props.user.email
 
 
 

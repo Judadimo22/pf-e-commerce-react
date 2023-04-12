@@ -48,6 +48,7 @@ import { getUserById } from "../../redux/actions";
         });
     }
 
+
     function handleSubmit(e){
         e.preventDefault();
         dispatch(updateUser(id, input));
@@ -58,7 +59,6 @@ import { getUserById } from "../../redux/actions";
             city: getUserId.city,
             addres: getUserId.addres,
             name:getUserId.name
-
         })
     }
   

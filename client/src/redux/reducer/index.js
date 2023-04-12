@@ -35,7 +35,7 @@ const initialState = {
   UsersCopy: [],
   orders: [],
   user: {},
-  DetailUser:[]
+  DetailUser: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -49,7 +49,7 @@ function rootReducer(state = initialState, action) {
     case GET_USER_BY_ID:
       return {
         ...state,
-        user: action.payload,
+        DetailUser: action.payload,
       };
 
     case GET_USERS:
