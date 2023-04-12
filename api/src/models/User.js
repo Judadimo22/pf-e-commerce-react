@@ -53,6 +53,11 @@ const userSchema = mongoose.Schema(
       enum: ["valid", "invalid"],
       default: "invalid",
     },
+    active: {
+      type: String,
+      enum: ["valid", "invalid"],
+      default: "valid",
+    },
   },
   { timestamps: true }
 );
