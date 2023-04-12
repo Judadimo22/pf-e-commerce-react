@@ -24,8 +24,9 @@ import Contact from './components/Contact/Contact';
 import About from './components/About/About';
 
 import axios from "axios"
-axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-//axios.defaults.baseURL = "http://localhost:3001"
+import UserEditsPage from './views/Admin/UserEdit';
+// axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About/>} />
         <Route exact path='/cart' element={<CartPage />} />
+        <Route exact path="/Update/:id" element={<UserEditsPage/>} />
        </Routes>
       </div>
     </>

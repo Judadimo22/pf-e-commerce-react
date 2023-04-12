@@ -37,7 +37,7 @@ const Dashboard = () => {
       }
 
     }, [user]);
-    if(userState.roll !== "admin") window.location.href = '/home'
+    // if(userState.roll !== "admin") window.location.href = '/home'
 
   const nav= [
       {
