@@ -17,9 +17,6 @@ import ImageUpload from './components/AddFiles/AddFiles'
 import TableUsersContainer from './components/Dashboard/AdmUsers'
 import AdmUsers from './components/Dashboard/AdmUsers'
 import UserEdit from './components/UserEdit/UserEdit'
-import UserEditPage from './views/Admin/UserEdit'
-
-
 import CartPage from './views/Cart/CartPage';
 import UserEditPage from './views/User/UserEdit';
 import Contact from './components/Contact/Contact';

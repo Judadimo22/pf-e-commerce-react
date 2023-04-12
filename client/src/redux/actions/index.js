@@ -218,7 +218,5 @@ export function getUserById(id){
       type: GET_USER_BY_ID,
       payload: json.data
     });
-  } catch (e) {
-    console.log(e);
-  }
+  } 
 };

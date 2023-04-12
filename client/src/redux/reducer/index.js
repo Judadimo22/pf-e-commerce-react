@@ -34,7 +34,7 @@ const initialState = {
   Users: [],
   UsersCopy: [],
   orders: [],
-  user: {},,
+  user: {},
     DetailUser: []
 };
 
