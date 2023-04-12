@@ -18,7 +18,8 @@ import {
   SORT_ASCENDING,
   SORT_DESCENDING,
   CACHIMBA,
-  UPDATE_USER
+  UPDATE_USER,
+  INFO_USER_BY_ID
 } from "../actions/index";
 
 const initialState = {
@@ -46,11 +47,17 @@ function rootReducer(state = initialState, action) {
         Clothes: action.payload,
         ClothesCopy: action.payload,
       };
-    case GET_USER_BY_ID:
-      return {
-        ...state,
-        DetailUser: action.payload,
-      };
+      case GET_USER_BY_ID:
+        return {
+          ...state,
+          user: action.payload,
+        };
+  
+      case INFO_USER_BY_ID:
+          return {
+            ...state,
+            DetailUser: action.payload,
+          };
 
     case GET_USERS:
       return {

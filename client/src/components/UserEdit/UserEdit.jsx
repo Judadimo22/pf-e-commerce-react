@@ -8,7 +8,7 @@ import {
   } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { updateUser } from "../../redux/actions";
+import { infoUserById, updateUser } from "../../redux/actions";
 import { getUserById } from "../../redux/actions";
 
 
@@ -32,7 +32,7 @@ import { getUserById } from "../../redux/actions";
     })
 
     useEffect(()=> {
-        dispatch(getUserById(id));
+        dispatch(infoUserById(id));
     },[id]);
 
     useEffect(() => {
