@@ -6,7 +6,7 @@ import { Pagination } from '../Paginado/Paginado';
 import { getUsers} from '../../redux/actions';
 import { Flex, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 
-const Users = ({users}) => {
+const Users = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");

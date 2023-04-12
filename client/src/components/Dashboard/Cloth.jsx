@@ -20,7 +20,7 @@ export const Cloth = (props) => {
 
   const Name = props.product.name
   const Price = props.product.price
-  const Stock = props.product.
+  const Stock = props.product.stock
 
   
   
@@ -29,13 +29,13 @@ export const Cloth = (props) => {
   return (
     
     <Tr >
-      <Link to={`/details/${id}`}>
-        <Td as='u'>{name}</Td>
-      </Link>
-      <Td>${price}</Td>
-      <Td>{stock}</Td>
+      <Td>{Name}</Td>
+      <Td>${Price}</Td>
+      <Td>{Stock}</Td>
       <Flex height="50px" alignItems="center" justifyContent="center" >
+        <Link to={`/product/edit/${props.product._id}`}>
         <AiFillEdit/>
+        </Link>
         <AiFillDelete/>
       </Flex>
     </Tr>

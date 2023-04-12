@@ -26,6 +26,7 @@ import UserEdit from './components/UserEdit/UserEdit';
 import UserEditsPage from './views/Admin/UserEdit';
 
 import axios from "axios"
+import EditProduct from './components/EditProduct/EditProduct';
 axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
 // axios.defaults.baseURL = "http://localhost:3001"
 
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/about" element={<About/>} />
         <Route exact path='/cart' element={<CartPage />} />
         <Route exact path="/Update/:id" element={<UserEditsPage/>} />
+        <Route exact path="/product/edit/:id" element={<EditProduct/>} />
        </Routes>
       </div>
     </>

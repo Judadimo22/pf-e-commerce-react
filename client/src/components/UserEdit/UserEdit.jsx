@@ -15,6 +15,9 @@ import { getUserById } from "../../redux/actions";
   const UserEdit = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
+    const [current, setCurrent] = useState({
+        currentName:''
+    })
     const getUserId = useSelector((state => state.DetailUser))
     const [input, setInput] = useState({
         email: '',
@@ -67,6 +70,8 @@ import { getUserById } from "../../redux/actions";
             name:e.target.value,
             roll: e.target.value
         })
+        
+    
     }
   
   
@@ -81,6 +86,7 @@ import { getUserById } from "../../redux/actions";
                      name="name"
                      value={input.name}
                       />
+                    <p>{getUserId.name}</p>
                     <label htmlFor="">Last Name</label>
                     <input onChange={(e) => handleInputChange(e)}
                      key='lastname'
