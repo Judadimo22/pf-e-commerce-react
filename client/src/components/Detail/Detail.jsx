@@ -10,6 +10,7 @@ import ColorSelector from "../ColorSelector/ColorSelector";
 import { FaShoppingCart } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import { useAuth0 } from "@auth0/auth0-react";
+import ClothReviews from "../Reviews/clothReviews";
 
 export const Details = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export const Details = () => {
 
   const { isAuthenticated, user } = useAuth0();
   const [pay, setPay] = useState(false);
+  const allData = useSelector((state) => state.Details);
 
   function handlerPay() {
     setPay(true);
@@ -180,6 +182,7 @@ export const Details = () => {
           </Chakra.Box>
         </Chakra.Grid>
       </Chakra.Box>
+      <ClothReviews id={id} comment={allData.review} />
       <Footer />
     </>
   );

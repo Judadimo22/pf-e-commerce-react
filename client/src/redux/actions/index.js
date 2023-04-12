@@ -21,6 +21,8 @@ export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const SORT_ASCENDING = "SORT_ASCENDING";
 export const SORT_DESCENDING = "SORT_DESCENDING";
 export const CACHIMBA = "CACHIMBA";
+export const POST_REVIEW = "POST_REVIEW"
+
 
 
 export const sortAscending = () => {
@@ -202,5 +204,15 @@ export const getUserById = (id) => async (dispatch) => {
     });
   } catch (e) {
     console.log(e);
+  }
+};
+export const postReview = (payload) => async (dispatch) => {
+  try {
+    const postReview = await axios.post("/review", payload);
+    return dispatch({
+      type: "POST_REVIEW",
+    });
+  } catch (error) {
+    console.error(error);
   }
 };
