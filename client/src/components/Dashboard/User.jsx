@@ -10,8 +10,14 @@ import { Button, Flex, Icon, Image, Td, Tr } from '@chakra-ui/react';
 
 
 
-const User = ({name, lastname, country, addres}) => {
+const User = (props) => {
   const dispatch = useDispatch()
+
+  const Name = props.user.name
+  const LastName = props.user.lastname
+  const Country = props.user.country
+  const Address = props.user.addres
+
 
 
 
@@ -22,10 +28,13 @@ const User = ({name, lastname, country, addres}) => {
   return (
     
     <Tr >
-      <Td>{name}</Td>
-      <Td>{lastname}</Td>
-      <Td>{country}</Td>
-      <Td>{addres}</Td>
+      <Td>{Name}</Td>
+      <Td>{LastName}</Td>
+      <Td>{Country}</Td>
+      <Td>{Address}</Td>
+      <Link to={`/Update/${props.user._id}`}>
+      <button>Edit</button>
+      </Link>
     </Tr>
   )
 };
