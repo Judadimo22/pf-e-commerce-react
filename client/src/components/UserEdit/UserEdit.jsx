@@ -4,7 +4,9 @@ import {
     FormLabel,
     Input,
     Box,
-    Text
+    Text,
+    Button,
+    Select
   } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -27,7 +29,8 @@ import { getUserById } from "../../redux/actions";
         city: '',
         addres: '',
         name:'',
-        roll:''
+        roll:'',
+        active:''
 
     })
 
@@ -44,7 +47,8 @@ import { getUserById } from "../../redux/actions";
             city: getUserId.city,
             addres: getUserId.addres,
             name:getUserId.name,
-            roll: getUserId.roll
+            roll: getUserId.roll,
+            active: getUserId.active
         })
     },[getUserId])
 
@@ -59,6 +63,7 @@ import { getUserById } from "../../redux/actions";
 
     function handleSubmit(e){
         e.preventDefault();
+        alert("The user has been updated");
         dispatch(updateUser(id, input));
         setInput({
             email: getUserId.email,
@@ -68,52 +73,50 @@ import { getUserById } from "../../redux/actions";
             city: getUserId.city,
             addres: getUserId.addres,
             name:e.target.value,
-            roll: e.target.value
+            roll: e.target.value,
+            active: e.target.value
         })
-        
-    
     }
+
+    const rol = ['admin', 'user']
   
   
     return (
-        <div>
-            <div>
+            <Box>
+                <FormControl>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="">Name</label>
-                    <input onChange={(e) => handleInputChange(e)}
-                     key='name'
-                     type="text"
-                     name="name"
-                     value={input.name}
-                      />
-                    <p>{getUserId.name}</p>
-                    <label htmlFor="">Last Name</label>
-                    <input onChange={(e) => handleInputChange(e)}
-                     key='lastname'
-                     type="text"
-                     name="lastname"
-                     value={input.lastname}
-                      />
-                    <label htmlFor="">Email</label>
-                    <input onChange={(e) => handleInputChange(e)}
-                     key='email'
-                     type="text"
-                     name="email"
-                     value={input.email}
-                      />
-                    <label htmlFor="">Rol</label>
-                    <input onChange={(e) => handleInputChange(e)}
+                    <Box>
+                    <Text><strong>Name</strong></Text>
+                    <Text>{getUserId.name}</Text>
+                    </Box> 
+                    <Box>
+                    <Text><strong>Last Name</strong></Text>
+                    <Text>{getUserId.lastname}</Text>
+                    </Box>
+                    <Box>
+                    <Text><strong>Email</strong></Text>
+                    <Text>{getUserId.email}</Text>
+                    </Box>
+                    <FormLabel htmlFor="">Rol</FormLabel>
+                    <Input w='20%' onChange={(e) => handleInputChange(e)}
                      key='roll'
                      type="text"
                      name="roll"
                      value={input.roll}
                       />
-                      <div>
-                        <button type="submit">Update</button>
-                      </div>
+                    <FormLabel htmlFor="">Active</FormLabel>
+                    <Input w='20%' onChange={(e) => handleInputChange(e)}
+                     key='active'
+                     type="text"
+                     name="active"
+                     value={input.active}
+                      />
+                      <Box textAlign='center'>
+                        <Button  type="submit">Update</Button>
+                      </Box>
                 </form>
-            </div>
-        </div>
+                </FormControl>
+            </Box>
     )
   };
 

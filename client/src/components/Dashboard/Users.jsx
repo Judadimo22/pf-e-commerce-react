@@ -42,6 +42,7 @@ const Users = () => {
               <Th>Last Name</Th>
               <Th>Email</Th>
               <Th>Rol</Th>
+              <Th>Active</Th>
             </Tr>
           </Thead>
           <Tbody>
