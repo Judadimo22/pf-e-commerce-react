@@ -1,11 +1,9 @@
 .product{
    display: grid;
    justify-content: center;
-   grid-template-columns: 350px 350px 350px;
+   grid-template-columns: 325px 325px 325px;
    padding: 0 3.125rem;
    flex-wrap: wrap;
-   margin-right: 60px;
-
 }
 .by_continent{
    display: flex;
