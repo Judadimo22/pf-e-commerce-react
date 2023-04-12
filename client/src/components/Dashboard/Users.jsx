@@ -40,8 +40,8 @@ const Users = ({users}) => {
             <Tr>
               <Th>Name</Th>
               <Th>Last Name</Th>
-              <Th>Country</Th>
-              <Th>Addres</Th>
+              <Th>Email</Th>
+              <Th>Rol</Th>
             </Tr>
           </Thead>
           <Tbody>

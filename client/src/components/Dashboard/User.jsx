@@ -18,6 +18,7 @@ const User = (props) => {
   const Country = props.user.country
   const Address = props.user.addres
   const Email = props.user.email
+  const Rol = props.user.roll
 
 
 
@@ -31,10 +32,10 @@ const User = (props) => {
     <Tr >
       <Td>{Name}</Td>
       <Td>{LastName}</Td>
-      <Td>{Country}</Td>
-      <Td>{Address}</Td>
+      <Td>{Email}</Td>
+      <Td>{Rol}</Td>
       <Link to={`/Update/${props.user._id}`}>
-      <button>Edit</button>
+      <Td>Edit</Td>
       </Link>
     </Tr>
   )

@@ -18,11 +18,14 @@ import { getUserById } from "../../redux/actions";
     const getUserId = useSelector((state => state.DetailUser))
     const [input, setInput] = useState({
         email: '',
+        lastname:'',
         phone: '',
         country: '',
         city: '',
         addres: '',
-        name:''
+        name:'',
+        roll:''
+
     })
 
     useEffect(()=> {
@@ -32,11 +35,13 @@ import { getUserById } from "../../redux/actions";
     useEffect(() => {
         setInput({
             email: getUserId.email,
+            lastname: getUserId.lastname,
             phone: getUserId.phone,
             country: getUserId.country,
             city: getUserId.city,
             addres: getUserId.addres,
-            name:getUserId.name
+            name:getUserId.name,
+            roll: getUserId.roll
         })
     },[getUserId])
 
@@ -54,11 +59,13 @@ import { getUserById } from "../../redux/actions";
         dispatch(updateUser(id, input));
         setInput({
             email: getUserId.email,
+            lastname: e.target.value,
             phone: getUserId.phone,
             country: getUserId.country,
             city: getUserId.city,
             addres: getUserId.addres,
-            name:getUserId.name
+            name:e.target.value,
+            roll: e.target.value
         })
     }
   
@@ -73,6 +80,27 @@ import { getUserById } from "../../redux/actions";
                      type="text"
                      name="name"
                      value={input.name}
+                      />
+                    <label htmlFor="">Last Name</label>
+                    <input onChange={(e) => handleInputChange(e)}
+                     key='lastname'
+                     type="text"
+                     name="lastname"
+                     value={input.lastname}
+                      />
+                    <label htmlFor="">Email</label>
+                    <input onChange={(e) => handleInputChange(e)}
+                     key='email'
+                     type="text"
+                     name="email"
+                     value={input.email}
+                      />
+                    <label htmlFor="">Rol</label>
+                    <input onChange={(e) => handleInputChange(e)}
+                     key='roll'
+                     type="text"
+                     name="roll"
+                     value={input.roll}
                       />
                       <div>
                         <button type="submit">Update</button>

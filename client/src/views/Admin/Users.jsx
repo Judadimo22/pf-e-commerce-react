@@ -65,7 +65,7 @@ const UsersPage = () => {
         redirect:"/admin/orders"
     },
 ]
-if(userState.roll !== "admin") window.location.href = '/home'
+// if(userState.roll !== "admin") window.location.href = '/home'
 
   return (
     <div>
