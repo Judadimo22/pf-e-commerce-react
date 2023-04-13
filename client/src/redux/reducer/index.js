@@ -4,9 +4,7 @@ import {
   CHANGE_FILTER_INPUT_BY_TYPE,
   CHANGE_FILTER_INPUT_BY_CATEGORIE,
   CHANGE_FILTER_INPUT_BY_TRADEMARK,
-  FILTER_BY_CATEGORIE,
-  FILTER_BY_TYPE,
-  FILTER_BY_TRADEMARK,
+  FILTER,
   SEARCH,
   UPDATE_CLOTH,
   POST_CLOTH,
@@ -17,8 +15,19 @@ import {
   GET_USER_BY_ID,
   SORT_ASCENDING,
   SORT_DESCENDING,
-  CACHIMBA
+  CACHIMBA,
+  CLEAR_FILTERS,
+  CHANGE_INDEX
 } from "../actions/index";
+
+const computeFilteredData = ((products, categoryFilter, typeFilter, trademarkFilter) =>
+  products.filter(
+    product =>
+      (!categoryFilter || product.categorie === categoryFilter) &&
+      (!typeFilter || product.type === typeFilter) &&
+      (!trademarkFilter || product.trademark === trademarkFilter)
+  )
+)
 
 const initialState = {
   Clothes: [],
@@ -28,6 +37,11 @@ const initialState = {
     byType: "",
     byCategorie: "",
     byTrademark: "",
+  },
+  filterIndex: {
+    byType: -1,
+    byCategorie: -1,
+    byTrademark: -1,
   },
   allUsers: [],
   Users: [],
@@ -72,26 +86,80 @@ function rootReducer(state = initialState, action) {
         ...state,
         Details: action.payload,
       };
-    case CHANGE_FILTER_INPUT_BY_TYPE:
-      return {
-        ...state,
-        filterInputs: {
-          ...state.filterInputs,
-          byType: action.payload,
-        },
-      };
-    case GET_ORDERS:
-      return {
-        ...state,
-        orders: action.payload,
-      };
+      case GET_ORDERS:
+        return {
+          ...state,
+          orders: action.payload,
+        };
+
+//--------------------------------------------------Filters------------------------------------------------
+
+
+    case CHANGE_INDEX:
+      if(action.payload[0] == "type"){
+        return {
+          ...state,
+          filterIndex:{
+            ...state.filterIndex,
+            byType:action.payload[1],
+          }
+        };
+      }
+      if(action.payload[0] == "category"){
+        return {
+          ...state,
+          filterIndex:{
+            ...state.filterIndex,
+            byCategorie:action.payload[1],
+          }
+        };
+      }
+      if(action.payload[0] == "trademark"){
+        return {
+          ...state,
+          filterIndex:{
+            ...state.filterIndex,
+            byTrademark:action.payload[1],
+          }
+        };
+      }
+      if(action.payload[0] == "all") {
+          return {
+            ...state,
+            filterIndex: {
+              byType: action.payload[1],
+              byCategorie: action.payload[1],
+              byTrademark: action.payload[1],
+            }
+          };
+        } 
+
+
+      case FILTER:
+        return {
+          ...state,          
+          ClothesCopy: computeFilteredData(
+            state.Clothes,
+            state.filterInputs.byCategorie,
+            state.filterInputs.byType,
+            state.filterInputs.byTrademark
+          )
+        };
+      case CHANGE_FILTER_INPUT_BY_TYPE:
+        return {
+          ...state,
+          filterInputs: {
+            ...state.filterInputs,
+            byType: action.payload,
+          }
+        };
     case CHANGE_FILTER_INPUT_BY_CATEGORIE:
       return {
         ...state,
         filterInputs: {
           ...state.filterInputs,
           byCategorie: action.payload,
-        },
+        }
       };
     case CHANGE_FILTER_INPUT_BY_TRADEMARK:
       return {
@@ -99,224 +167,11 @@ function rootReducer(state = initialState, action) {
         filterInputs: {
           ...state.filterInputs,
           byTrademark: action.payload,
-        },
+        }
       };
 
-    //---------------------------------------Filter by category-----------------------------------
-    //---------------------------------------Filter by category-----------------------------------
-
-    case FILTER_BY_CATEGORIE:
-      let newArray = [];
-      if (state.filterInputs.byCategorie === "") {
-        if (state.filterInputs.byType.length) {
-          newArray = state.Clothes.filter(
-            (product) => product.type === state.filterInputs.byType
-          );
-          return {
-            ...state,
-            ClothesCopy: newArray.flat(),
-          };
-        } else {
-          return {
-            ...state,
-            ClothesCopy: state.Clothes,
-          };
-        }
-      }
-      if (
-        state.filterInputs.byCategorie.length &&
-        state.filterInputs.byType.length
-      ) {
-        const filteredByCategorie = state.Clothes.filter(
-          (product) => product.categorie === state.filterInputs.byCategorie
-        );
-        const lastArray = filteredByCategorie
-          .flat()
-          .filter((product) => product.type === state.filterInputs.byType);
-        return {
-          ...state,
-          ClothesCopy: lastArray.flat(),
-        };
-      } else {
-        const newerArray = state.Clothes.filter(
-          (product) => product.categorie === state.filterInputs.byCategorie
-        );
-        return {
-          ...state,
-          ClothesCopy: newerArray.flat(),
-        };
-      }
- /*    case FILTER_BY_CATEGORIE:
-      let newArray = [];
-      if (state.filterInputs.byCategorie === "") {
-        if (state.filterInputs.byType.length) {
-          newArray = state.Clothes.filter(
-            (product) => product.type === state.filterInputs.byType
-          );
-          return {
-            ...state,
-            ClothesCopy: newArray.flat(),
-          };
-        } else {
-          return {
-            ...state,
-            ClothesCopy: state.Clothes,
-          };
-        }
-      }
-      if (
-        state.filterInputs.byCategorie.length &&
-        state.filterInputs.byType.length
-      ) {
-        const filteredByCategorie = state.Clothes.filter(
-          (product) => product.categorie === state.filterInputs.byCategorie
-        );
-        const lastArray = filteredByCategorie
-          .flat()
-          .filter((product) => product.type === state.filterInputs.byType);
-        return {
-          ...state,
-          ClothesCopy: lastArray.flat(),
-        };
-      } else {
-        const newerArray = state.Clothes.filter(
-          (product) => product.categorie === state.filterInputs.byCategorie
-        );
-        return {
-          ...state,
-          ClothesCopy: newerArray.flat(),
-        };
-      } */
-
-    //---------------------------------------Filter by type---------------------------------
-    //---------------------------------------Filter by type---------------------------------
-
-    /* case FILTER_BY_TYPE:
-      let array = [];
-      if (state.filterInputs.byType === "") {
-        if (state.filterInputs.byCategorie.length) {
-          array = state.Clothes.filter(
-            (product) => product.categorie === state.filterInputs.byCategorie
-          );
-          return {
-            ...state,
-            ClothesCopy: array.flat(),
-          };
-        } else {
-          return {
-            ...state,
-            ClothesCopy: state.Clothes,
-          };
-        }
-      }
-      if (
-        state.filterInputs.byType.length &&
-        state.filterInputs.byCategorie.length
-      ) {
-        const filteredByCategorie = state.Clothes.filter(
-          (product) => product.categorie === state.filterInputs.byCategorie
-        );
-        const lastArray = filteredByCategorie
-          .flat()
-          .filter((product) => product.type === state.filterInputs.byType);
-        return {
-          ...state,
-          ClothesCopy: lastArray.flat(),
-        };
-      } else {
-        const newerArray = state.Clothes.filter(
-          (product) => product.type === state.filterInputs.byType
-        );
-        return {
-          ...state,
-          ClothesCopy: newerArray.flat(),
-        };
-      } */
-    case FILTER_BY_TYPE:
-      let array = [];
-      if (state.filterInputs.byType === "") {
-        if (state.filterInputs.byCategorie.length) {
-          array = state.Clothes.filter(
-            (product) => product.categorie === state.filterInputs.byCategorie
-          );
-          return {
-            ...state,
-            ClothesCopy: array.flat(),
-          };
-        } else {
-          return {
-            ...state,
-            ClothesCopy: state.Clothes,
-          };
-        }
-      }
-      if (
-        state.filterInputs.byType.length &&
-        state.filterInputs.byCategorie.length
-      ) {
-        const filteredByCategorie = state.Clothes.filter(
-          (product) => product.categorie === state.filterInputs.byCategorie
-        );
-        const lastArray = filteredByCategorie
-          .flat()
-          .filter((product) => product.type === state.filterInputs.byType);
-        return {
-          ...state,
-          ClothesCopy: lastArray.flat(),
-        };
-      } else {
-        const newerArray = state.Clothes.filter(
-          (product) => product.type === state.filterInputs.byType
-        );
-        return {
-          ...state,
-          ClothesCopy: newerArray.flat(),
-        };
-      }
-
-    case FILTER_BY_TRADEMARK:
-      let array2 = [];
-      if (state.filterInputs.byTrademark === "") {
-        if (state.filterInputs.byTrademark.length) {
-          array2 = state.Clothes.filter(
-            (product) => product.trademark === state.filterInputs.byTrademark
-          );
-          return {
-            ...state,
-            ClothesCopy: array.flat(),
-          };
-        } else {
-          return {
-            ...state,
-            ClothesCopy: state.Clothes,
-          };
-        }
-      }
-      if (
-        state.filterInputs.byTrademark.length &&
-        state.filterInputs.byTrademark.length
-      ) {
-        const filteredByTrademark = state.Clothes.filter(
-          (product) => product.trademark === state.filterInputs.byTrademark
-        );
-        const lastArray = filteredByTrademark
-          .flat()
-          .filter(
-            (product) => product.trademark === state.filterInputs.byTrademark
-          );
-        return {
-          ...state,
-          ClothesCopy: lastArray.flat(),
-        };
-      } else {
-        const newerArray = state.Clothes.filter(
-          (product) => product.trademark === state.filterInputs.byTrademark
-        );
-        return {
-          ...state,
-          ClothesCopy: newerArray.flat(),
-        };
-      }
+//---------------------------------------------------------------------------------------------------------------
+  
 
     case SORT_ASCENDING:
       return {
@@ -351,6 +206,45 @@ function rootReducer(state = initialState, action) {
         ...state,
         allUsers: action.payload,
       };
+    case CLEAR_FILTERS:
+      if(action.payload == "trademark") {
+        return {
+          ...state,
+          filterInputs: {
+            ...state.filterInputs,
+            byTrademark: "",
+          }
+        };
+      }
+      if(action.payload == "category") {
+        return {
+          ...state,
+          filterInputs: {
+            ...state.filterInputs,
+            byCategorie: "",
+          }
+       };
+      }
+      if(action.payload == "type") {
+        return {
+          ...state,
+          filterInputs: {
+            ...state.filterInputs,
+            byType: "",
+          }
+        };
+      }
+      if(action.payload == "all") {
+        return {
+          ...state,
+          filterInputs: {
+            byType: "",
+            byCategorie: "",
+            byTrademark: "",
+          }
+        };
+      }
+      
     default: {
       return state;
     }
