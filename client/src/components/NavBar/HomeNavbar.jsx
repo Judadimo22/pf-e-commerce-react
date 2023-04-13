@@ -22,6 +22,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 const HomeNavBar = () => {
+
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
   const [infoUser, setInfoUser] = useState({});

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./ByTrademark.css";
 import {
-  filterByTrademark,
-  ChangeFilterInputByTradeMark,
+  ChangeFilterInputByTradeMark, Filter, changeIndex, clearFilters,
 } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
-import { Text, VStack } from "@chakra-ui/react";
+import { Flex, Tab, TabList, Tabs, Text, VStack } from "@chakra-ui/react";
 
 const ByTrademark = () => {
+  const typeFilter = useSelector(state=>state.filterInputs.byTrademark)
+  const selectIndex = useSelector(state=>state.filterIndex.byTrademark)
+
   const dispatch = useDispatch();
   const trademarks = [
     "ADIDAS",
@@ -20,72 +22,41 @@ const ByTrademark = () => {
 
   const onChange = (e) => {
     dispatch(ChangeFilterInputByTradeMark(e.target.value));
-    dispatch(filterByTrademark(e.target.value));
+    dispatch(Filter());
   };
+  const clearFilter = () => {
+    dispatch(clearFilters("trademark"))
+    dispatch(Filter());
+    dispatch(changeIndex(["trademark",-1]))
+  }
+
   return (
     <>
-      <Text fontFamily="Jaldi" fontSize="1.3rem" fontWeight="bold" pt="0.5rem">
-        Trademark
+    <Flex justifyContent="space-between"  alignItems="center">
+      <Text fontFamily="Jaldi" fontSize="2rem" fontWeight="bold" pt="1rem">
+      Trademark
       </Text>
-
-
-
-
-
-
-
-
-      
-      <VStack alignItems="flex-start" pb="1rem" fontFamily="'Jaldi', sans-serif" fontSize="1.2rem" spacing={1}>
-        <button
-          onClick={onChange}
-          value={"ADIDAS"}
-          className="option"
-          key={"ADIDAS"}
-        >
-          ADIDAS
-        </button>
-        <button
-          onClick={onChange}
-          value={"Nike"}
-          className="option"
-          key={"Nike"}
-        >
-          Nike
-        </button>
-        <button
-          onClick={onChange}
-          value={"Vandalia"}
-          className="option"
-          key={"Vandalia"}
-        >
-          Vandalia
-        </button>
-        <button
-          onClick={onChange}
-          value={"Oldtown Polo"}
-          className="option"
-          key={"Oldtown Polo"}
-        >
-          Oldtown Polo
-        </button>
-        <button
-          onClick={onChange}
-          value={"Topper"}
-          className="option"
-          key={"Topper"}
-        >
-          Topper
-        </button>
-        <button
-          onClick={onChange}
-          value={"Puma"}
-          className="option"
-          key={"Puma"}
-        >
-          Puma
-        </button>
-      </VStack>
+      {
+        typeFilter !== "" ?  (<Text fontFamily="Jaldi" cursor="pointer" as='u' fontSize="1rem" onClick={clearFilter} fontWeight="medium" pt="1rem">
+          Clear Filter
+        </Text>): null
+      }
+    </Flex>
+      <Tabs variant='unstyled' align='start' onChange={(index)=>dispatch(changeIndex(["trademark",index]))}  index={selectIndex} defaultIndex="" justifyContent="flex-start">
+  <TabList flexDir="column" >
+  {trademarks.map((a,index)=> 
+          (<Tab
+            _selected={{ color: '#272727', bg: '#DAEB0F' }}
+            onClick={(e)=>onChange(e)}
+            value={a}
+            display="flex" 
+            justifyContent="flex-start"
+            className="option" 
+            key={index}
+            >{a}</Tab>)
+          )}
+  </TabList>
+  </Tabs>
     </>
   );
 };
