@@ -10,7 +10,7 @@ const Users = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const Users = useSelector((state) => state.Users)
+  const Users = useSelector((state) => state.UsersCopy)
   const resultsPerPage = 15
   const numberOfResults = Users.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0

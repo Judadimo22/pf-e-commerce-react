@@ -10,7 +10,7 @@ export const Clothes = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const Products = useSelector((state) => state.Clothes)
+  const Products = useSelector((state) => state.ClothesCopy)
   const resultsPerPage = 15
   const numberOfResults = Products.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0

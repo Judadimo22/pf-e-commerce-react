@@ -19,7 +19,8 @@ import {
   UPDATE_USER,
   INFO_USER_BY_ID,
   CLEAR_FILTERS,
-  CHANGE_INDEX
+  CHANGE_INDEX,
+  SEARCH_USER
 } from "../actions/index";
 
 const computeFilteredData = ((products, categoryFilter, typeFilter, trademarkFilter) =>
@@ -88,6 +89,16 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         ClothesCopy: [...search],
+      };
+    }
+    case SEARCH_USER: {
+      let search = [];
+      search = state.Users?.filter((c) =>
+        c.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        UsersCopy: [...search],
       };
     }
     case GET_BY_ID:
