@@ -99,7 +99,9 @@ const HomeNavBar = () => {
                 </MenuList>
                 </Menu>
                 ):<LoginButton/>}
+                <Link to='/cart'>
                 <Icon bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
+                </Link>
             </Flex>
         </Flex>
         </>
