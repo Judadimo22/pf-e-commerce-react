@@ -9,6 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import AdmProduct from '../../components/Dashboard/AdmProduct'
 import { getUserById } from '../../redux/actions';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 const ProductsAdmin = () => {

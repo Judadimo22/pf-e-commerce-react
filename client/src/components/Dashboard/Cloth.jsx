@@ -32,12 +32,11 @@ export const Cloth = (props) => {
       <Td>{Name}</Td>
       <Td>${Price}</Td>
       <Td>{Stock}</Td>
-      <Flex height="50px" alignItems="center" justifyContent="center" >
-        <Link to={`/product/edit/${props.product._id}`}>
-        <AiFillEdit/>
+      <Td>
+      <Link to={`/product/edit/${props.product._id}`}>
+      <AiFillEdit/>
         </Link>
-        <AiFillDelete/>
-      </Flex>
+      </Td>
     </Tr>
   )
 }
