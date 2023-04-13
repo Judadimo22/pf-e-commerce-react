@@ -143,6 +143,19 @@ function rootReducer(state = initialState, action) {
           }
         };
       }
+
+    case FILTER_BY_TRADEMARK:
+      let array2 = [];
+      if (state.filterInputs.byTrademark === "") {
+        if (state.filterInputs.byTrademark.length) {
+          array2 = state.Clothes.filter(
+            (product) => product.trademark === state.filterInputs.byTrademark
+          );
+          return {
+            ...state,
+            ClothesCopy: array2.flat(),
+          };
+        } else {
       if(action.payload[0] == "all") {
           return {
             ...state,
