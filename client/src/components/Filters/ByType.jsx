@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./ByType.css"
-import {ChangefilterInputByType, Filter, clearFilters} from "../../redux/actions/index"
+import {ChangefilterInputByType, Filter, changeIndex, clearFilters} from "../../redux/actions/index"
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Flex, Tab, TabList, TabPanel, TabPanels, Tabs, Text, VStack } from '@chakra-ui/react'
 import { capitalize } from '@mui/material'
@@ -9,7 +9,7 @@ const ByType = () => {
   const typeFilter = useSelector(state=>state.filterInputs.byType)
   const type = ["shirts","pants","hoodies","hats"]
   const dispatch = useDispatch()
-  const [selectIndex,setSelectIndex] = useState(-1)
+  const selectIndex = useSelector(state=>state.filterIndex.byType)
 
   const onChange = (e) => {
     dispatch(ChangefilterInputByType(e.target.value))
@@ -18,7 +18,7 @@ const ByType = () => {
   const clearFilter = () => {
     dispatch(clearFilters("type"))
     dispatch(Filter());
-    setSelectIndex(-1)
+    dispatch(changeIndex(["type",-1]))
   }
 
   return (
@@ -33,7 +33,7 @@ const ByType = () => {
         </Text>): null
       }
     </Flex>
-    <Tabs className="type" variant='unstyled' align='start' onChange={(index)=>setSelectIndex(index)}  index={selectIndex} justifyContent="flex-start">
+    <Tabs className="type" variant='unstyled' align='start' onChange={(index)=> dispatch(changeIndex(["type",index]))}  index={selectIndex} justifyContent="flex-start">
       <TabList flexDir="column" >
         {type.map((a,index)=> 
           (<Tab
