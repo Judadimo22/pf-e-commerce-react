@@ -8,17 +8,7 @@ const pagarProducto = async (req, res) => {
   const productId = await productSchema.findById(product.id);
 
   let preference = {
-    items: [
-      {
-        category_id: productId.id,
-        title: productId.name,
-        description: productId.description,
-        picture_url: productId.image,
-        quantity: 1,
-        currency_id: "ARS",
-        unit_price: productId.price,
-      },
-    ],
+    items: [],
 
     back_urls: {
       success: "https://pf-e-commerce-react.vercel.app/",
@@ -31,9 +21,7 @@ const pagarProducto = async (req, res) => {
 
   productos.forEach((e) => {
     preference.items.push({
-      category_id: e.id,
       title: e.name,
-      description: e.description,
       picture_url: e.image,
       quantity: e.quantity,
       currency_id: "ARS",
