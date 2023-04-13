@@ -38,6 +38,7 @@ export const Clothes = () => {
         <Table>
           <Thead>
             <Tr>
+              <Th justifyContent='center'>Image</Th>
               <Th>Name</Th>
               <Th>Price</Th>
               <Th>Stock</Th>

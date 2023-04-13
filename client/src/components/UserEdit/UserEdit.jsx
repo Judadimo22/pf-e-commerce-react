@@ -11,7 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { infoUserById, updateUser } from "../../redux/actions";
-import { getUserById } from "../../redux/actions";
+
 
 
   const UserEdit = () => {
