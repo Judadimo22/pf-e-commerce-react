@@ -21,6 +21,8 @@ export const SORT_DESCENDING = "SORT_DESCENDING";
 export const CACHIMBA = "CACHIMBA";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const POST_REVIEW = "POST_REVIEW"
+export const CHANGE_INDEX = "CHANGE_INDEX"
+
 
 
 export const sortAscending = () => {
@@ -119,6 +121,14 @@ export function Filter()  {
   return async function (dispatch)  {
     dispatch({
       type: FILTER,
+    });
+  };
+}
+export function changeIndex(payload) {
+  return async function (dispatch) {
+    dispatch({
+      type: CHANGE_INDEX,
+      payload:payload
     });
   };
 }
