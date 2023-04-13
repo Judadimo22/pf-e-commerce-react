@@ -50,15 +50,12 @@ const HomeNavBar = () => {
     
     return(
         <>
-        <Flex h="70px" width="100%"/>
+        <Flex display={{base:'none' ,md:'block'}} h="70px" width="100%"/>
         <Flex className={style.containerNavBar} position="fixed" zIndex="9999">
-
-
-
         <>
-            <Link to={'/home'}><button>HOME</button></Link>
-            <Link to={'/about'}><button>ABOUT</button></Link>
-            <Link to={'/contact'}><button>CONTACT</button></Link>
+            <Link to={'/home'}><Button display={{base:'none', md:'block'}}>HOME</Button></Link>
+            <Link to={'/about'}><Button display={{base:'none', md:'block'}}>ABOUT</Button></Link>
+            <Link to={'/contact'}><Button display={{base:'none', md:'block'}}>CONTACT</Button></Link>
            
               
             </>
@@ -67,12 +64,14 @@ const HomeNavBar = () => {
 
 
             <Link to="/home">
-                <div className={style.containerTitle}>
-                    <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
-                </div>
+                <Box textAlign='center'>
+                  <Text textAlign="center" position='relative' right={{base:75, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Ecommerce</Text>
+                </Box>
             </Link>
+            <Box display={{base:'none', md:'block'}}>
             <SearchBar/>
-            <Flex w="8%" justifyContent="space-between">
+            </Box>
+            <Flex w="8%" justifyContent="space-between" display={{base:'none', md:'block'}}>
                 {isAuthenticated ?(
                 <Menu cursor="pointer">
                     <MenuButton >
