@@ -1,38 +1,31 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sortAscending, sortDescending } from "../../redux/actions";
-import { Stack, Radio, RadioGroup, VStack, Text, Flex, Container } from "@chakra-ui/react";
+import { Stack, Radio, RadioGroup, VStack, Text, Flex, Container, Tabs, TabList, Tab } from "@chakra-ui/react";
 
 const SortByPrice = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState(null);
 
-  const handleChange = (value) => {
-    setValue(value);
-    if (value === "asc") {
+  const handleChange = (e) => {
+    if (e.target.value === "asc") {
       dispatch(sortAscending());
-    } else if (value === "desc") {
+    } else if (e.target.value === "desc") {
       dispatch(sortDescending());
     }
   };
 
   return (
     <>
-      <Text fontFamily="Jaldi" fontSize="1.3rem" fontWeight="bold" pt="1rem">SORT</Text>
-      <VStack alignItems="flex-start">
-        <RadioGroup onChange={handleChange} value={value} isInline={false}>
-          <Stack direction="column" spacing={1}>
-            <Flex>
-              <Text fontFamily="'Jaldi', sans-serif" fontSize="1.2rem">Higher price</Text>
-              <Radio value="asc" pl=".5rem" size="md" colorScheme="gray"></Radio>
-            </Flex>
-            <Flex>
-              <Text fontFamily="'Jaldi', sans-serif" fontSize="1.2rem">Lower price</Text>
-              <Radio value="desc" pl=".8rem" size="md" colorScheme="gray"></Radio>
-            </Flex>
-          </Stack>
-        </RadioGroup>
-      </VStack>
+      <Text fontFamily="Jaldi" fontSize="2rem" fontWeight="bold" pt="0.5rem">
+      Sort
+      </Text>
+      <Tabs variant='unstyled' align='start' defaultIndex="" justifyContent="flex-start">
+  <TabList flexDir="column" >
+          <Tab _selected={{ color: '#272727', bg: '#DAEB0F' }} onClick={handleChange} value="asc" display="flex" justifyContent="flex-start" >Higher price</Tab>
+          <Tab _selected={{ color: '#272727', bg: '#DAEB0F' }} onClick={handleChange} value="desc" display="flex" justifyContent="flex-start" >Lower price</Tab>
+  </TabList>
+  </Tabs>
     </>
   );
 };
