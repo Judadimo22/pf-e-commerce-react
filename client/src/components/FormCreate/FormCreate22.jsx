@@ -15,21 +15,33 @@ function CrearProducto() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        formData.append("image", image);
-        formData.append("name", name);
-        formData.append("description", description);
-        formData.append("categorie", categorie);
-        formData.append("tallas", JSON.stringify(tallas));
-        formData.append("trademark", trademark);
-        formData.append("price", price);
-        console.log('formData', formData)
-        const response = await fetch("/cloth", {
-            method: "POST",
-            body: formData,
+
+        // Subir imagen a Cloudinary
+        const formData = new FormData();
+        formData.append('file', image);
+        formData.append('upload_preset', 'i5hof6um');
+        const response = await axios.post('https://api.cloudinary.com/v1_1/dlqnb6csq/image/upload', formData);
+        const imageUrl = response.data.secure_url;
+
+        // Guardar el resto de los datos en la base de datos en MongoDB
+        const data = {
+            name,
+            description,
+            categorie,
+            type,
+            tallas,
+            trademark,
+            image: imageUrl,
+            price
+        };
+        console.log('data', data)
+        const response2 = await fetch('https://backend-pf-uh1o.onrender.com/cloth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
         });
-        const data = await response.json();
-        console.log(data);
+        const result = await response2.json();
+        console.log(result);
     };
 
 
@@ -53,30 +65,30 @@ function CrearProducto() {
                 <form onSubmit={handleSubmit}>
                     <Button type='submit'>Create</Button>
                     <FormControl id="name" isRequired>
-                        <FormLabel>Nombre</FormLabel>
+                        <FormLabel>Name</FormLabel>
                         <Input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                     </FormControl>
 
                     <FormControl id="description" mt="4" isRequired>
-                        <FormLabel>Descripción</FormLabel>
+                        <FormLabel>Description</FormLabel>
                         <Input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </FormControl>
                     <FormControl id="categorie" mt="4" isRequired>
                         <FormLabel>Categoría</FormLabel>
                         <Select placeholder="Seleccionar categoría" value={categorie} onChange={(e) => setCategorie(e.target.value)}>
-                            <option value="hombre">Hombre</option>
-                            <option value="mujer">Mujer</option>
-                            <option value="niño">Niño</option>
+                            <option value="men">Men</option>
+                            <option value="women">Women</option>
+                            <option value="kid">Kid</option>
                         </Select>
                     </FormControl>
-
                     <FormControl id="tipo-prenda" mt="4" isRequired>
-                        <FormLabel>Tipo de prenda</FormLabel>
+                        <FormLabel>Type</FormLabel>
                         <Select value={type} onChange={(e) => setType(e.target.value)}>
-                            <option value="pantalon">Pantalón</option>
-                            <option value="remera">Remera</option>
-                            <option value="abrigo">Abrigo</option>
-                            <option value="gorra">Gorra</option>
+                            <option value="" disabled={true}>Select an option</option>
+                            <option value="pants">Pants</option>
+                            <option value="shirts">Shirts</option>
+                            <option value="hoodies">Hoodies</option>
+                            <option value="hats">Hats</option>
                         </Select>
                     </FormControl>
                     <FormControl id="trademark" mt="4" isRequired>
@@ -84,12 +96,12 @@ function CrearProducto() {
                         <Input type="text" value={trademark} onChange={(e) => setTrademark(e.target.value)} />
                     </FormControl>
                     <FormControl>
-                        <FormLabel>Imagen</FormLabel>
+                        <FormLabel>Image</FormLabel>
                         <Input type="file" onChange={(e) => setImage(e.target.files[0])} />
                         {/* <Button onClick={handleImageUpload}>Cargar imagen</Button> */}
                     </FormControl>
                     <FormControl id="price" mt="4">
-                        <FormLabel>Precio</FormLabel>
+                        <FormLabel>Price</FormLabel>
                         <NumberInput
                             defaultValue={isNaN(price) ? 0 : price}
                             min={0}
