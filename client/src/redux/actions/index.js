@@ -23,6 +23,8 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const INFO_USER_BY_ID = 'INFO_USER_BY_ID'
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const POST_REVIEW = "POST_REVIEW"
+export const CHANGE_INDEX = "CHANGE_INDEX"
+
 
 
 export const sortAscending = () => {
@@ -121,6 +123,14 @@ export function Filter()  {
   return async function (dispatch)  {
     dispatch({
       type: FILTER,
+    });
+  };
+}
+export function changeIndex(payload) {
+  return async function (dispatch) {
+    dispatch({
+      type: CHANGE_INDEX,
+      payload:payload
     });
   };
 }

@@ -18,7 +18,8 @@ import {
   CACHIMBA,
   UPDATE_USER,
   INFO_USER_BY_ID,
-  CLEAR_FILTERS
+  CLEAR_FILTERS,
+  CHANGE_INDEX
 } from "../actions/index";
 
 const computeFilteredData = ((products, categoryFilter, typeFilter, trademarkFilter) =>
@@ -38,6 +39,11 @@ const initialState = {
     byType: "",
     byCategorie: "",
     byTrademark: "",
+  },
+  filterIndex: {
+    byType: -1,
+    byCategorie: -1,
+    byTrademark: -1,
   },
   allUsers: [],
   Users: [],
@@ -96,6 +102,47 @@ function rootReducer(state = initialState, action) {
         };
 
 //--------------------------------------------------Filters------------------------------------------------
+
+
+    case CHANGE_INDEX:
+      if(action.payload[0] == "type"){
+        return {
+          ...state,
+          filterIndex:{
+            ...state.filterIndex,
+            byType:action.payload[1],
+          }
+        };
+      }
+      if(action.payload[0] == "category"){
+        return {
+          ...state,
+          filterIndex:{
+            ...state.filterIndex,
+            byCategorie:action.payload[1],
+          }
+        };
+      }
+      if(action.payload[0] == "trademark"){
+        return {
+          ...state,
+          filterIndex:{
+            ...state.filterIndex,
+            byTrademark:action.payload[1],
+          }
+        };
+      }
+      if(action.payload[0] == "all") {
+          return {
+            ...state,
+            filterIndex: {
+              byType: action.payload[1],
+              byCategorie: action.payload[1],
+              byTrademark: action.payload[1],
+            }
+          };
+        } 
+
 
       case FILTER:
         return {
@@ -199,7 +246,18 @@ function rootReducer(state = initialState, action) {
             byType: "",
           }
         };
-      } 
+      }
+      if(action.payload == "all") {
+        return {
+          ...state,
+          filterInputs: {
+            byType: "",
+            byCategorie: "",
+            byTrademark: "",
+          }
+        };
+      }
+      
     default: {
       return state;
     }

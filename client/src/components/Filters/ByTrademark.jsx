@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./ByTrademark.css";
 import {
-  ChangeFilterInputByTradeMark, Filter, clearFilters,
+  ChangeFilterInputByTradeMark, Filter, changeIndex, clearFilters,
 } from "../../redux/actions/index";
 import { useDispatch, useSelector } from "react-redux";
 import { Flex, Tab, TabList, Tabs, Text, VStack } from "@chakra-ui/react";
 
 const ByTrademark = () => {
   const typeFilter = useSelector(state=>state.filterInputs.byTrademark)
-  const [selectIndex,setSelectIndex] = useState(-1)
+  const selectIndex = useSelector(state=>state.filterIndex.byTrademark)
 
   const dispatch = useDispatch();
   const trademarks = [
@@ -27,7 +27,7 @@ const ByTrademark = () => {
   const clearFilter = () => {
     dispatch(clearFilters("trademark"))
     dispatch(Filter());
-    setSelectIndex(-1)
+    dispatch(changeIndex(["trademark",-1]))
   }
 
   return (
@@ -42,7 +42,7 @@ const ByTrademark = () => {
         </Text>): null
       }
     </Flex>
-      <Tabs variant='unstyled' align='start' onChange={(index)=>setSelectIndex(index)}  index={selectIndex} defaultIndex="" justifyContent="flex-start">
+      <Tabs variant='unstyled' align='start' onChange={(index)=>dispatch(changeIndex(["trademark",index]))}  index={selectIndex} defaultIndex="" justifyContent="flex-start">
   <TabList flexDir="column" >
   {trademarks.map((a,index)=> 
           (<Tab
