@@ -16,6 +16,8 @@ import {
   SORT_ASCENDING,
   SORT_DESCENDING,
   CACHIMBA,
+  UPDATE_USER,
+  INFO_USER_BY_ID
   CLEAR_FILTERS,
   CHANGE_INDEX
 } from "../actions/index";
@@ -48,6 +50,7 @@ const initialState = {
   UsersCopy: [],
   orders: [],
   user: {},
+  DetailUser: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -58,11 +61,17 @@ function rootReducer(state = initialState, action) {
         Clothes: action.payload,
         ClothesCopy: action.payload,
       };
-    case GET_USER_BY_ID:
-      return {
-        ...state,
-        user: action.payload,
-      };
+      case GET_USER_BY_ID:
+        return {
+          ...state,
+          user: action.payload,
+        };
+  
+      case INFO_USER_BY_ID:
+          return {
+            ...state,
+            DetailUser: action.payload,
+          };
 
     case GET_USERS:
       return {
@@ -123,6 +132,19 @@ function rootReducer(state = initialState, action) {
           }
         };
       }
+
+    case FILTER_BY_TRADEMARK:
+      let array2 = [];
+      if (state.filterInputs.byTrademark === "") {
+        if (state.filterInputs.byTrademark.length) {
+          array2 = state.Clothes.filter(
+            (product) => product.trademark === state.filterInputs.byTrademark
+          );
+          return {
+            ...state,
+            ClothesCopy: array2.flat(),
+          };
+        } else {
       if(action.payload[0] == "all") {
           return {
             ...state,
@@ -200,6 +222,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         // allUsers: action.action.payload
+      };
+    case UPDATE_USER:
+      return {
+        ...state          
       };
     case POST_USERS:
       return {

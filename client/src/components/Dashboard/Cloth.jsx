@@ -11,12 +11,16 @@ import { Button, Flex, Icon, Image, Td, Tr } from '@chakra-ui/react';
 
 
 
-export const Cloth = ({id,img,name,price,stock}) => {
+export const Cloth = (props) => {
   const dispatch = useDispatch()
 
-  const goToProductDetails = () => {
-    dispatch(getClothById(props.product._id))
-  }
+  // const goToProductDetails = () => {
+  //   dispatch(getClothById(props.product._id))
+  // }
+
+  const Name = props.product.name
+  const Price = props.product.price
+  const Stock = props.product.stock
 
   
   
@@ -25,15 +29,14 @@ export const Cloth = ({id,img,name,price,stock}) => {
   return (
     
     <Tr >
-      <Link to={`/details/${id}`}>
-        <Td as='u'>{name}</Td>
-      </Link>
-      <Td>${price}</Td>
-      <Td>{stock}</Td>
-      <Flex height="50px" alignItems="center" justifyContent="center" >
-        <AiFillEdit/>
-        <AiFillDelete/>
-      </Flex>
+      <Td>{Name}</Td>
+      <Td>${Price}</Td>
+      <Td>{Stock}</Td>
+      <Td>
+      <Link to={`/product/edit/${props.product._id}`}>
+      <AiFillEdit/>
+        </Link>
+      </Td>
     </Tr>
   )
 }

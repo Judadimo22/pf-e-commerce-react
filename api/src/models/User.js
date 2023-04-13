@@ -19,15 +19,12 @@ const userSchema = mongoose.Schema(
     },
     country: {
       type: String,
-      required: true,
     },
     city: {
       type: String,
-      required: true,
     },
     addres: {
       type: String,
-      required: true,
     },
     review: {
       type: Array,
@@ -44,8 +41,7 @@ const userSchema = mongoose.Schema(
     },
     phone: {
       type: String,
-      unique: true,
-      minLength: 9,
+      unique: false,
     },
     roll: {
       type: String,
@@ -56,6 +52,11 @@ const userSchema = mongoose.Schema(
       type: String,
       enum: ["valid", "invalid"],
       default: "invalid",
+    },
+    active: {
+      type: String,
+      enum: ["valid", "invalid"],
+      default: "valid",
     },
   },
   { timestamps: true }

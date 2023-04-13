@@ -6,7 +6,7 @@ import { Pagination } from '../Paginado/Paginado';
 import { getUsers} from '../../redux/actions';
 import { Flex, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 
-const Users = ({users}) => {
+const Users = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
@@ -40,14 +40,15 @@ const Users = ({users}) => {
             <Tr>
               <Th>Name</Th>
               <Th>Last Name</Th>
-              <Th>Country</Th>
-              <Th>Addres</Th>
+              <Th>Email</Th>
+              <Th>Rol</Th>
+              <Th>Active</Th>
             </Tr>
           </Thead>
           <Tbody>
         {
           Users.length ?
-             Users.slice(pageSliceStart, pageSliceEnd).map(product => (<User key={product._id} name={product.name} lastname={product.lastname} country={product.country} addres={product.addres} />)) : null 
+             Users.slice(pageSliceStart, pageSliceEnd).map(user => (<User key={user._id} user={user} />)) : null 
         }
           </Tbody>
 

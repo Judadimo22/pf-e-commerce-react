@@ -22,7 +22,33 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 const HomeNavBar = () => {
+    const dispatch = useDispatch(); 
+    const {isAuthenticated, user,logout} = useAuth0();
+      const [infoUser, setInfoUser] = useState({});
+      const userState = useSelector(state=>state.user)
 
+    
+      useEffect(() => {
+        if (user && isAuthenticated) {
+          axios.get("http://localhost:3001/users").then((element) => {
+            const userDb = element.data.find(
+              (element) => element.email === user.email
+            );
+            if (!userDb) {
+              const newUser = {
+                name: user.given_name,
+                lastname: user.family_name,
+                email: user.email,
+              };
+    
+              console.log(newUser);
+              dispatch(createUser(newUser));
+            } else {
+              setInfoUser(userDb);
+            }
+            if(!userState.length) dispatch(getUserById(userDb._id))
+          });
+        }
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
   const [infoUser, setInfoUser] = useState({});
@@ -59,6 +85,52 @@ const HomeNavBar = () => {
       <Flex h="70px" width="100%" />
       <Flex className={style.containerNavBar} position="fixed" zIndex="9999">
         <>
+
+        <Flex h="70px" width="100%"/>
+        <Flex className={style.containerNavBar} position="fixed" zIndex="9999">
+
+
+
+        <>
+            <Link to={'/home'}><button>HOME</button></Link>
+            <Link to={'/about'}><button>ABOUT</button></Link>
+            <Link to={'/contact'}><button>CONTACT</button></Link>
+           
+              
+            </>
+
+
+
+
+            <Link to="/home">
+                <div className={style.containerTitle}>
+                <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
+                </div>
+            </Link>
+            <SearchBar/>
+            <Flex w="8%" justifyContent="space-between">
+                {isAuthenticated ?(
+                <Menu cursor="pointer">
+                    <MenuButton >
+                        <Avatar src={user?.picture}  size="md"/>
+                    </MenuButton>
+                <MenuList >
+                    <Link to={`/user/${infoUser._id}`}>
+                        <MenuItem>Profile</MenuItem>
+                    </Link>
+                    <Link to={`/user/${infoUser._id}/orders`}>
+                        <MenuItem>My orders</MenuItem>
+                    </Link>
+                    <Link to={`/user/${infoUser._id}/notifications`}>
+                        <MenuItem>Notifications</MenuItem>
+                    </Link>
+                    {
+                      userState.roll === "admin" ? 
+                      (<Link to={`/admin`}>
+                        <MenuItem>Dashboard</MenuItem>
+                    </Link>) : null
+                    }
+
           <Link to={"/home"}>
             <button>HOME</button>
           </Link>
@@ -69,6 +141,7 @@ const HomeNavBar = () => {
             <button>CONTACT</button>
           </Link>
         </>
+
 
         <Link to="/home">
           <div className={style.containerTitle}>

@@ -8,7 +8,7 @@ const router = express.Router();
 const authConfig = {
   domain: "dev-2llhwpnt06dhuqy3.us.auth0.com",
   clientID: "i4gEbxcn35MZoagHLqzqXiRfLRTJRR4V",
-  redirectUri: "https://backend-pf-uh1o.onrender.com/auth",
+  redirectUri: "http://localhost:3001/auth",
   responseType: "token ",
   scope: "openid",
 };
