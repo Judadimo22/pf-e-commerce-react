@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
 import Footer from "../../components/Footer/Footer";
+import { MPButton } from "../../components/MPButton/MPButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
+  const { isAuthenticated, user } = useAuth0();
+  const [pay, setPay] = useState(false);
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -20,6 +25,17 @@ const CartPage = () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+
+  function handlerPay() {
+    setPay(true);
+    Swal.fire({
+      position: "center",
+      icon: "warning",
+      title: "You need a login",
+      showConfirmButton: true,
+      //timer: 3000,
+    });
+  }
 
   const handleStorageChange = () => {
     const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -49,7 +65,17 @@ const CartPage = () => {
     0
   );
 
-  const handleCheckout = () => {};
+  const handleCheckout = () => {
+    {
+      isAuthenticated ? (
+        <MPButton id={cartItems} />
+      ) : (
+        <button onClick={handlerPay}>Buy</button>
+      );
+    }
+  };
+
+  console.log(handleCheckout());
 
   return (
     <>
@@ -93,6 +119,11 @@ const CartPage = () => {
                 >
                   Comprar
                 </Button>
+                {isAuthenticated ? (
+                  <MPButton id={cartItems} />
+                ) : (
+                  <button onClick={handlerPay}>Buy</button>
+                )}
               </Grid>
             </>
           )}
