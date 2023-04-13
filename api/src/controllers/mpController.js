@@ -21,9 +21,9 @@ const pagarProducto = async (req, res) => {
     ],
 
     back_urls: {
-      success: "http://localhost:3001/cloth",
-      failure: "http://localhost:3001/cloth",
-      pending: "http://localhost:3001/cloth",
+      success: "https://pf-e-commerce-react.vercel.app/",
+      failure: "https://pf-e-commerce-react.vercel.app/",
+      pending: "https://pf-e-commerce-react.vercel.app/",
     },
     auto_return: "approved",
     external_reference: email,
