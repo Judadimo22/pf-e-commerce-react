@@ -6,11 +6,22 @@ import {
     Box,
     Text,
     Button,
-    Select
+    Select,
+    Icon
   } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { infoUserById, updateUser } from "../../redux/actions";
+import { TbMap2 } from "react-icons/tb";
+import { MdOutlineEmail } from "react-icons/md";
+import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
+import { BsTelephone } from "react-icons/bs";
+import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
+
+
+
+
+
 
 
 
@@ -78,41 +89,105 @@ import { infoUserById, updateUser } from "../../redux/actions";
         })
     }
 
-    const rol = ['admin', 'user']
+    const rol = ['admin', 'user'];
+    const active = ['valid', 'invalid']
   
   
     return (
             <Box>
                 <FormControl>
                 <form onSubmit={handleSubmit}>
-                    <Box>
-                    <Text><strong>Name</strong></Text>
-                    <Text>{getUserId.name}</Text>
-                    </Box> 
-                    <Box>
-                    <Text><strong>Last Name</strong></Text>
-                    <Text>{getUserId.lastname}</Text>
+                    <Box display='flex' mb={5}>
+                    <Text fontWeight={1000} fontSize={30} mr={1}>{getUserId.name}</Text>
+                    <Text fontWeight={1000} fontSize={30}>{getUserId.lastname}</Text>
                     </Box>
-                    <Box>
-                    <Text><strong>Email</strong></Text>
-                    <Text>{getUserId.email}</Text>
+
+                    <Box display='flex' justifyContent='space-between' >
+                    <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={20}>
+                        <Text fontSize={20} fontWeight={1000}><strong>Country - City</strong></Text>
+                        <Text>{getUserId.country} - {getUserId.city}</Text>
+                        </Box>
+                        <Box alignItems='center'>
+                            <Icon fontSize={25}><TbMap2/></Icon>
+                        </Box>
                     </Box>
-                    <FormLabel htmlFor="">Rol</FormLabel>
-                    <Input w='20%' onChange={(e) => handleInputChange(e)}
-                     key='roll'
-                     type="text"
-                     name="roll"
-                     value={input.roll}
-                      />
-                    <FormLabel htmlFor="">Active</FormLabel>
-                    <Input w='20%' onChange={(e) => handleInputChange(e)}
-                     key='active'
-                     type="text"
-                     name="active"
-                     value={input.active}
-                      />
-                      <Box textAlign='center'>
-                        <Button  type="submit">Update</Button>
+                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={20}>
+                        <Text fontSize={20} fontWeight={1000}><strong>Email</strong></Text>
+                        <Text>{getUserId.email}</Text>
+                        </Box>
+                        <Box alignItems='center'>
+                            <Icon fontSize={25}><MdOutlineEmail/></Icon>
+                        </Box>
+                    </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='space-between' mt={30}  >
+                    <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={20}>
+                        <Text fontSize={20} fontWeight={1000}><strong>Address</strong></Text>
+                        <Text>{getUserId.addres}</Text>
+                        </Box>
+                        <Box alignItems='center'>
+                            <Icon fontSize={25}><HiLocationMarker/></Icon>
+                        </Box>
+                    </Box>
+                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={20}>
+                        <Text fontSize={20} fontWeight={1000}><strong>Phone</strong></Text>
+                        <Text>{getUserId.phone}</Text>
+                        </Box>
+                        <Box alignItems='center'>
+                            <Icon fontSize={25}><BsTelephone/></Icon>
+                        </Box>
+                    </Box>
+                    </Box>
+
+                    <Box display='flex' justifyContent='space-between' mt={30} >
+                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={20}>
+                        <FormLabel fontSize={20}><strong>Active</strong></FormLabel>
+                        <Select
+                        name ='active'
+                        onChange={(e) => handleInputChange(e)}
+                        >
+                            <option value="">Select Active</option>
+                            {
+                                active.map(active => (
+                                    <option value={active} key={active}>{active}</option>
+                                ))
+                            }
+
+                        </Select>
+                        </Box>
+                        <Box alignItems='center'>
+                            <Icon fontSize={25}><AiOutlineCheckCircle/></Icon>
+                        </Box>
+                    </Box>
+                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={20}>
+                        <FormLabel fontSize={20}><strong>Rol</strong></FormLabel>
+                        <Select
+                        name ='roll'
+                        onChange={(e) => handleInputChange(e)}
+                        >
+                            <option value="">Select Rol</option>
+                            {
+                                rol.map(rol => (
+                                    <option value={rol} key={rol}>{rol}</option>
+                                ))
+                            }
+
+                        </Select>
+                        </Box>
+                        <Box alignItems='center'>
+                            <Icon fontSize={25}><AiOutlineControl/></Icon>
+                        </Box>
+                    </Box>
+                    </Box>  
+                      <Box w='100%' textAlign='center' mt={5}>
+                        <Button w='100%' backgroundColor='#DAEB0F'  type="submit">Update</Button>
                       </Box>
                 </form>
                 </FormControl>

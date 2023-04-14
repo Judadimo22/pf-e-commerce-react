@@ -65,17 +65,17 @@ const HomeNavBar = () => {
 
             <Link to="/home">
                 <Box textAlign='center'>
-                  <Text textAlign="center" position='relative' right={{base:75, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Ecommerce</Text>
+                  <Text textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Ecommerce</Text>
                 </Box>
             </Link>
             <Box display={{base:'none', md:'block'}}>
             <SearchBar/>
             </Box>
-            <Flex w="8%" justifyContent="space-between" display={{base:'none', md:'block'}}>
+            <Flex w="8%" justifyContent="space-between">
                 {isAuthenticated ?(
-                <Menu cursor="pointer">
+                <Menu cursor="pointer" >
                     <MenuButton >
-                        <Avatar src={user?.picture}  size="md"/>
+                        <Avatar src={user?.picture} display={{base:'none' ,md:'block'}}  size="md"/>
                     </MenuButton>
                 <MenuList >
                     <Link to={`/user/${infoUser._id}`}>
@@ -98,9 +98,11 @@ const HomeNavBar = () => {
                 </MenuList>
                 </Menu>
                 ):<LoginButton/>}
+                <Box >
                 <Link to='/cart'>
-                <Icon bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
+                <Icon display={{base:'none' ,md:'block'}}  bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
                 </Link>
+                </Box>
             </Flex>
         </Flex>
         </>

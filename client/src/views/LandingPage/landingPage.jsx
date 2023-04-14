@@ -119,7 +119,7 @@ function LandingPage() {
         </div>
         </Link>
 
-        <Box display={{base:'flex' ,md:'flex'}} mx={{base:5 ,md:300}} justifyContent='center' borderRadius={10} backgroundColor='#272727' mb={{md:50}} mt={{md:10}}>
+        <Box display={{base:'flex' ,md:'flex'}} mx={{base:5 ,md:300}} justifyContent='center' borderRadius={10} backgroundColor='#272727' mb={{base:10,md:50}} mt={{md:10}}>
         <Image  w='50%' src={imageRegister} objectFit='cover'></Image>
         <Box w={{base:'100%' ,md:'50%'}} textAlign='left' alignItems={{base:'center' ,md:'center'}} my='auto' mx={{base:2 ,md:20}}>
             <Text position='relative' top={{base:5 ,md:0}} mb={{base:2 ,md:5}} fontSize={{base:12 ,md:40}} color='#DAEB0F'><strong>The latest trends</strong></Text>
