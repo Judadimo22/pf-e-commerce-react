@@ -242,10 +242,10 @@
     width: 20em;
     border: solid 1px;
     background-color: #D9D9D9;
-    margin-left: 3%;
     padding: 1.25em;
     border-radius: 10%;
     margin-bottom: .3125rem;
+    margin: .625rem 1.875rem;
   }
 .develop{
   color: rgb(74, 58, 255);
@@ -258,9 +258,10 @@ font-size: 18px;
   font-size: 1.6em;
 }
 .contenedorOrdenador{
-  display: grid;
+  display: flex;
   justify-content: center;
-  grid-template-columns: 400px 400px 400px;
+  flex-wrap: wrap;
   margin: 0.625rem auto;
+  width: 80%;
 }
   

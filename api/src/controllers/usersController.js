@@ -112,7 +112,7 @@ const getUserById = async (req, res) => {
 const putUser = async (req, res) => {
   const { id } = req.params;
 
-  const { name, lastname, email, addres, phone, roll, city, country } =
+  const { name, lastname, email, addres, phone, roll, city, country, active } =
     req.body;
 
   userSchema
@@ -128,6 +128,7 @@ const putUser = async (req, res) => {
           roll,
           city,
           country,
+          active
         },
       }
     )

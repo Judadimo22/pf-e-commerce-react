@@ -9,6 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { getUserById } from '../../redux/actions';
 import AdmUsers from '../../components/Dashboard/AdmUsers'
+import SearchUserNavBar from '../../components/NavBar/SearchUserNavBar';
 
 const UsersPage = () => {
 
@@ -69,7 +70,7 @@ if(userState.roll !== "admin") window.location.href = '/home'
 
   return (
     <div>
-      <AdminNavBar/>
+      <SearchUserNavBar/>
       <Flex>
         <DashboardLeftMenu nav={nav} user={user} />
       <Flex width="100%" justifyContent="center" >
