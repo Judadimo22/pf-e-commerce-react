@@ -6,11 +6,17 @@ import {
     Box,
     Text,
     Button,
-    Select
+    Select,
+    Icon
   } from '@chakra-ui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getClothById, UpdateCloth } from "../../redux/actions";
+import { TbMap2 } from "react-icons/tb";
+import { MdOutlineEmail } from "react-icons/md";
+import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
+import { BsTelephone } from "react-icons/bs";
+import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
 
 
 
@@ -20,17 +26,15 @@ import { getClothById, UpdateCloth } from "../../redux/actions";
     const [current, setCurrent] = useState({
         currentName:''
     })
-    const getUserId = useSelector((state => state.Details))
+    const getProductId = useSelector((state => state.Details))
     const [input, setInput] = useState({
-        email: '',
-        lastname:'',
-        phone: '',
-        country: '',
-        city: '',
-        addres: '',
-        name:'',
-        roll:'',
-        active:''
+        name: '',
+        description:'',
+        price:'',
+        stock: '',
+        trademark: '',
+        type:'',
+        categorie: '',
 
     })
 
@@ -40,17 +44,15 @@ import { getClothById, UpdateCloth } from "../../redux/actions";
 
     useEffect(() => {
         setInput({
-            email: getUserId.email,
-            lastname: getUserId.lastname,
-            phone: getUserId.phone,
-            country: getUserId.country,
-            city: getUserId.city,
-            addres: getUserId.addres,
-            name:getUserId.name,
-            roll: getUserId.roll,
-            active: getUserId.active
+            name:getProductId.name,
+            price:getProductId.price,
+            description:getProductId.description,
+            stock:getProductId.stock,
+            trademark:getProductId.trademark,
+            type:getProductId.type,
+            categorie:getProductId.categorie
         })
-    },[getUserId])
+    },[getProductId])
 
     function handleInputChange(e){
         e.preventDefault()
@@ -66,61 +68,108 @@ import { getClothById, UpdateCloth } from "../../redux/actions";
         alert("The product has been updated");
         dispatch(UpdateCloth(id, input));
         setInput({
-            email: getUserId.email,
-            lastname: e.target.value,
-            phone: getUserId.phone,
-            country: getUserId.country,
-            city: getUserId.city,
-            addres: getUserId.addres,
             name:e.target.value,
-            roll: e.target.value,
-            active: e.target.value
+            description:e.target.value,
+            price:e.target.value,
+            stock:e.target.value,
+            trademark:e.target.value,
+            type:e.target.value,
+            categorie:e.target.value
         })
     }
 
+    const categories = ["men", "women", "kid"];
+    const trademarks = [
+        "ADIDAS",
+        "Nike",
+        "Vandalia",
+        "Oldtown Polo",
+        "Topper",
+        "Puma",
+      ];
+    const type = ["shirts","pants","hoodies","hats"]
 
   
   
     return (
-            <Box>
-                <FormControl>
-                <form onSubmit={handleSubmit}>
-                <FormLabel htmlFor="">Name</FormLabel>
-                <Input onChange={(e) => handleInputChange(e)}
-                     key='name'
-                     type="text"
-                     name="name"
-                     value={input.name}
-                      />
-                    <Box>
-                    <Text><strong>Last Name</strong></Text>
-                    <Text>{getUserId.lastname}</Text>
+        <Box>
+            <FormControl>
+            <form onSubmit={handleSubmit}>
+                <Box display='flex' mb={5}>
+                <Text fontWeight={1000} fontSize={30} mr={1}>EditProduct</Text>
+                </Box>
+                <Box textAlign='left' mr={20}>
+                    <Text fontSize={20} fontWeight={1000}><strong>Name</strong></Text>
+                    <Text>{getProductId.name}</Text>
+                </Box>
+                <Box textAlign='left' mr={20} mt={5}>
+                    <Text fontSize={20} fontWeight={1000}><strong>Description</strong></Text>
+                    <Text>{getProductId.description}</Text>
+                </Box>
+                <Box textAlign='left' mr={20} mt={5}>
+                    <Text fontSize={20} fontWeight={1000}><strong>Price</strong></Text>
+                    <Text>${getProductId.price}</Text>
+                </Box>
+
+
+                <Box display='flex' justifyContent='space-between' mt={5} >
+                <Box w={420} borderRadius={10}  alignItems='center' display='flex' justifyContent='space-between'>
+                    <Box textAlign='left' mr={20}>
+                    <FormLabel fontSize={20}><strong>Type</strong></FormLabel>
+                    <Select
+                    name ='type'
+                    onChange={(e) => handleInputChange(e)}
+                    >
+                        <option value="">Select Type</option>
+                        {
+                            type.map(type => (
+                                <option value={type} key={type}>{type}</option>
+                            ))
+                        }
+
+                    </Select>
                     </Box>
-                    <Box>
-                    <Text><strong>Email</strong></Text>
-                    <Text>{getUserId.email}</Text>
+                </Box>
+                <Box w={420}  borderRadius={10} alignItems='center' display='flex'   justifyContent='space-between'>
+                    <Box textAlign='left' mr={20}>
+                    <FormLabel fontSize={20}><strong>Trademark</strong></FormLabel>
+                    <Select
+                    name ='trademark'
+                    onChange={(e) => handleInputChange(e)}
+                    >
+                        <option value="">Select Trademark</option>
+                        {
+                            trademarks.map(trademark => (
+                                <option value={trademark} key={trademark}>{trademark}</option>
+                            ))
+                        }
+
+                    </Select>
                     </Box>
-                    <FormLabel htmlFor="">Rol</FormLabel>
-                    <Input w='20%' onChange={(e) => handleInputChange(e)}
-                     key='roll'
-                     type="text"
-                     name="roll"
-                     value={input.roll}
-                      />
-                    <FormLabel htmlFor="">Active</FormLabel>
-                    <Input w='20%' onChange={(e) => handleInputChange(e)}
-                     key='active'
-                     type="text"
-                     name="active"
-                     value={input.active}
-                      />
-                      <Box textAlign='center'>
-                        <Button  type="submit">Update</Button>
-                      </Box>
-                </form>
-                </FormControl>
-            </Box>
-    )
+                </Box>
+                </Box>  
+                <Box textAlign='left' w={180}>
+                    <FormLabel fontSize={20}><strong>Category</strong></FormLabel>
+                    <Select
+                    name ='categorie'
+                    onChange={(e) => handleInputChange(e)}
+                    >
+                        <option value="">Select Category</option>
+                        {
+                            categories.map(category => (
+                                <option value={category} key={category}>{category}</option>
+                            ))
+                        }
+
+                    </Select>
+                    </Box>
+                  <Box w='100%' textAlign='center' mt={5}>
+                    <Button w='100%' backgroundColor='#DAEB0F'  type="submit">Update</Button>
+                  </Box>
+            </form>
+            </FormControl>
+        </Box>
+)
   };
 
   export default EditProduct
