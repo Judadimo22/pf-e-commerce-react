@@ -7,7 +7,7 @@ import { getUserById } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import { FiPhone } from "react-icons/fi";
 import LoadingText from "./LoadingText";
-import InfoCard from "./infoCard";
+import InfoCard from './InfoCard'
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
 
 function UserInfo() {
