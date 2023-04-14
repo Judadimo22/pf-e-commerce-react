@@ -42,10 +42,9 @@ const UserPage = () => {
   return (
     <>
     <HomeNavBar/>
-    <Flex>
+    <Flex minH="91.1vh">
       <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
-    <Flex width="100%" justifyContent="center" >
-      </Flex>
+      <UserInfo/>
     </Flex>
   </>
   )
