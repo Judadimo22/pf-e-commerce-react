@@ -151,7 +151,7 @@ function LandingPage() {
         Conoce a los miembros de nuestro equipo
         </h2>
         <p className={Style.descripcionGrupo}>
-        Este proyecto no hubiera sido posible sin estar 6 personas, siempre siguiendo la idea de hacer algo fuera de lo común.
+        Este proyecto no hubiera sido posible sin estar 5 personas, siempre siguiendo la idea de hacer algo fuera de lo común.
         </p>
 
 
@@ -250,49 +250,7 @@ function LandingPage() {
 
 
 
-       <div className={Style.container_4}>
-        <div className={Style.cartasIntegrantes}>
-          <div className={Style.cartaIntegrante}>
-            <div className={Style.descripcionIntegrante}>
-              <div
-                className="rounded-full bg-slate-400"
-                style={{ height: "50px", width: "50px" }}
-              >
-                <img src={member} alt=""/>
-              </div>
-              <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Leandro Frette</h3>
-                <p className={Style.develop} >
-                  FULL-STACK DEVELOPER
-                </p>
-              </div>
-            </div>
-            <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
-            </p>
-            <div className={Style.links}>
-              <a
-                className="m-3 ml-0"
-                href=" https://github.com/Lafsitoo"
-                target="_blank"
-              >
-                <div>
-                  <BsGithub></BsGithub>
-                </div>
-              </a>
-              <a
-                className="m-3"
-                href="https://www.linkedin.com/in/leandro-ariel-frette/"
-                target="_blank"
-              >
-                <div>
-                  <BsLinkedin></BsLinkedin>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-       </div>
+      
 
 
 
