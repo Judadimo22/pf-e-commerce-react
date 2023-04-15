@@ -17,15 +17,13 @@ const userSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
-    country: {
-      type: String,
-    },
-    city: {
-      type: String,
-    },
-    addres: {
-      type: String,
-    },
+    location: [
+      {
+        country: { type: String },
+        city: { type: String },
+        addres: { type: String },
+      },
+    ],
     review: {
       type: Array,
       ref: "Review",

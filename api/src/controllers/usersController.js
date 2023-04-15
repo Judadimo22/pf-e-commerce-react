@@ -112,8 +112,7 @@ const getUserById = async (req, res) => {
 const putUser = async (req, res) => {
   const { id } = req.params;
 
-  const { name, lastname, email, addres, phone, roll, city, country } =
-    req.body;
+  const { name, lastname, email, phone, roll, location } = req.body;
 
   userSchema
     .updateOne(
@@ -123,11 +122,9 @@ const putUser = async (req, res) => {
           name,
           lastname,
           email,
-          addres,
+          location,
           phone,
           roll,
-          city,
-          country,
         },
       }
     )
