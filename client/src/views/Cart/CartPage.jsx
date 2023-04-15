@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
 import Footer from "../../components/Footer/Footer";
-import { MPButton } from "../../components/MPButton/MPButton";
+import { MPButton } from "../../components/MPButton/mpButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 

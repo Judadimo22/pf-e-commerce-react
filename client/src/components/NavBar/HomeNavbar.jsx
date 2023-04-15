@@ -22,7 +22,6 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 const HomeNavBar = () => {
-
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
   const [infoUser, setInfoUser] = useState({});
@@ -45,6 +44,7 @@ const HomeNavBar = () => {
 
             console.log(newUser);
             dispatch(createUser(newUser));
+            window.location.href = `/user/${userDb._id}`;
           } else {
             setInfoUser(userDb);
           }
