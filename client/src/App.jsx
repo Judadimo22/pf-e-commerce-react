@@ -24,6 +24,7 @@ import Contact from './components/Contact/Contact';
 import About from './components/About/About';
 
 import axios from "axios"
+import AddressesPage from './views/User/AddressesPage';
 axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
 //axios.defaults.baseURL = "http://localhost:3001"
 
@@ -46,7 +47,8 @@ function App() {
         <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
         <Route exact path="/user/:id/orders" element={<UserPage />} />
-        <Route exact path="/user/:id/notifications" element={<UserPage />} />
+        <Route exact path="/user/:id/notifications" element={<UserPage/>} />
+        <Route exact path="/user/:id/addresses" element={<AddressesPage/>} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
         <Route exact path="/contact" element={<Contact />} />
