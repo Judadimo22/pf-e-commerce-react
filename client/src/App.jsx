@@ -22,12 +22,14 @@ import CartPage from './views/Cart/CartPage';
 import UserEditPage from './views/User/UserEdit';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
+import UserEdit from './components/UserEdit/UserEdit';
+import UserEditsPage from './views/Admin/UserEdit';
 
 import axios from "axios"
 import AddressesPage from './views/User/AddressesPage';
 import UserOrdersPage from './views/User/UserOrdersPage';
 axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-//axios.defaults.baseURL = "http://localhost:3001"
+// axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
@@ -55,6 +57,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About/>} />
         <Route exact path='/cart' element={<CartPage />} />
+        <Route exact path="/Update/:id" element={<UserEditsPage/>} />
        </Routes>
       </div>
     </>

@@ -17,7 +17,8 @@ import {
   SORT_DESCENDING,
   CACHIMBA,
   CLEAR_FILTERS,
-  CHANGE_INDEX
+  CHANGE_INDEX,
+  UPDATE_USER
 } from "../actions/index";
 
 const computeFilteredData = ((products, categoryFilter, typeFilter, trademarkFilter) =>
@@ -48,6 +49,7 @@ const initialState = {
   UsersCopy: [],
   orders: [],
   user: {},
+  DetailUser: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -61,7 +63,7 @@ function rootReducer(state = initialState, action) {
     case GET_USER_BY_ID:
       return {
         ...state,
-        user: action.payload,
+        DetailUser: action.payload,
       };
 
     case GET_USERS:
@@ -200,6 +202,10 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         // allUsers: action.action.payload
+      };
+    case UPDATE_USER:
+      return {
+        ...state          
       };
     case POST_USERS:
       return {

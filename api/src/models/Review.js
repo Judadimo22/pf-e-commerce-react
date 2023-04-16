@@ -21,12 +21,7 @@ const reviewSchema = mongoose.Schema({
     minLength: 5,
     maxLength: 250,
   },
-  score: {
-    type: Number,
-    min: 0,
-    max: 5,
-    required: true,
-  },
+
   status: {
     type: String,
     enum: ["answered", "pendding"],

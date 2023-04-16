@@ -19,6 +19,7 @@ export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const SORT_ASCENDING = "SORT_ASCENDING";
 export const SORT_DESCENDING = "SORT_DESCENDING";
 export const CACHIMBA = "CACHIMBA";
+export const UPDATE_USER = 'UPDATE_USER'
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const POST_REVIEW = "POST_REVIEW"
 export const CHANGE_INDEX = "CHANGE_INDEX"
@@ -156,6 +157,18 @@ export function UpdateCloth(id, payload) {
   };
 }
 ///---------------------USERS-----------------------
+
+export function updateUser (id, payload){
+  return async function (dispatch) {
+    const json = await axios.put(`https://backend-pf-uh1o.onrender.com/users/${id}`, payload);
+    return dispatch({
+      type: UPDATE_USER,
+      payload: json.data
+    })
+  }
+}
+
+
 export const putUser = (id, payload) => async (dispatch) => {
   console.log(id, payload);
   try {

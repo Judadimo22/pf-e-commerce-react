@@ -11,12 +11,16 @@ import { Button, Flex, Icon, Image, Td, Tr } from '@chakra-ui/react';
 
 
 
-export const Cloth = ({id,img,name,price,stock}) => {
+export const Cloth = (props) => {
   const dispatch = useDispatch()
 
-  const goToProductDetails = () => {
-    dispatch(getClothById(props.product._id))
-  }
+  // const goToProductDetails = () => {
+  //   dispatch(getClothById(props.product._id))
+  // }
+
+  const Name = props.product.name
+  const Price = props.product.price
+  const Stock = props.product.
 
   
   
