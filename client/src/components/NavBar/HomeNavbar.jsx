@@ -65,7 +65,7 @@ const HomeNavBar = () => {
 
             <Link to="/home">
                 <Box textAlign='center'>
-                  <Text textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Ecommerce</Text>
+                  <Text textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Casual Couture</Text>
                 </Box>
             </Link>
             <Box display={{base:'none', md:'block'}}>
