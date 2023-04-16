@@ -1,30 +1,30 @@
 import { Box, Button } from "@chakra-ui/react";
 
 function SizeSelector(props) {
-  const { sizes, selectedSize, onSizeSelect } = props;
+  const { size, selectedSize, onSizeSelect, stock } = props;
 
-  if (!sizes) {
+  if (!size) {
     return null;
   }
 
   return (
     <Box>
-      {Object.keys(sizes).map((sizeKey) => (
+     
         <Button
-          key={sizeKey}
+          key={size}
           size="md"
           variant="outline"
           borderRadius="10px"
-          borderColor={selectedSize === sizeKey ? "#DAEB0F" : "#D9D9D9"}
-          color={selectedSize === sizeKey ? "#272727" : "#565656"}
-          bg={selectedSize === sizeKey ? "#DAEB0F" : "null"}
+          borderColor={selectedSize === size ? "#DAEB0F" : "#D9D9D9"}
+          color={selectedSize === size ? "#272727" : "#565656"}
+          bg={selectedSize === size ? "#DAEB0F" : "null"}
           _hover={{ bg: "#DAEB0F", color: "white" }}
           marginRight="1rem"
-          onClick={() => onSizeSelect(sizeKey)}
+          onClick={() => onSizeSelect(size)}
         >
-          {sizes[sizeKey]}
+          {size}
         </Button>
-      ))}
+      
     </Box>
   );
 }

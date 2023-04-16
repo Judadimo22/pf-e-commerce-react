@@ -8,7 +8,36 @@ function CrearProducto() {
     const [description, setDescription] = useState('');
     const [categorie, setCategorie] = useState('');
     const [type, setType] = useState('');
-    const [tallas, setTalles] = useState([]);
+    const [tallas, setTallas] = useState([
+        { 
+        talla:"XS",
+        stock:0
+    },
+        { 
+        talla:"S",
+        stock:0
+    },
+        { 
+        talla:"M",
+        stock:0
+    },
+        { 
+        talla:"L",
+        stock:0
+    },
+        { 
+        talla:"XL",
+        stock:0
+    },
+        { 
+        talla:"XXL",
+        stock:0
+    },
+        { 
+        talla:"XXXL",
+        stock:0
+    }
+    ]);
     const [trademark, setTrademark] = useState('');
     const [image, setImage] = useState('');
     const [price, setPrice] = useState(0);
@@ -35,28 +64,66 @@ function CrearProducto() {
             image: imageUrl,
             price
         };
-        console.log('data', data)
+     
         const response2 = await fetch('https://backend-pf-uh1o.onrender.com/cloth', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
         const result = await response2.json();
-        console.log(result);
+    
+        setName("")
+        setDescription("")
+        setCategorie("")
+        setType("")
+        setTrademark("")
+        setTallas([
+            { 
+            talla:"XS",
+            stock:0
+        },
+            { 
+            talla:"S",
+            stock:0
+        },
+            { 
+            talla:"M",
+            stock:0
+        },
+            { 
+            talla:"L",
+            stock:0
+        },
+            { 
+            talla:"XL",
+            stock:0
+        },
+            { 
+            talla:"XXL",
+            stock:0
+        },
+            { 
+            talla:"XXXL",
+            stock:0
+        }
+        ])
+        setImage('')
+        setPrice(0)
     };
 
 
     const handleTalleChange = (talla, stock) => {
         const talleIndex = tallas.findIndex((item) => item.talla === talla);
         if (talleIndex === -1) {
-            setTalles([...tallas, { talla, stock: parseInt(stock) }]);
+            setTallas([...tallas, { talla, stock: parseInt(stock) }]);
         } else {
             const newTalles = [...tallas];
             newTalles[talleIndex].stock = parseInt(stock);
-            setTalles(newTalles);
+            setTallas(newTalles);
         }
     };
-
+   
+    console.log('tallas[0]', tallas[0])
 
 
     return (
@@ -84,26 +151,26 @@ function CrearProducto() {
                                     <Flex spacing={4} direction='row' justifyContent='flex-start' >
                                         <Flex flexDir='column'   mr="9" >
                                             <FormLabel w='100%' h='3' htmlFor="talla-xs" textAlign='center' fontSize='14px'>XS</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xs" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('XS', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-xs"  min={0}>
+                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "XS").stock} onChange={(e) => handleTalleChange('XS', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                         <Flex flexDir='column'   mr="9"  >
                                             <FormLabel w='100%' h='3' htmlFor="talla-s" textAlign='center' fontSize='14px'>S</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-s" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('S', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-s"  min={0}>
+                                                <NumberInputField  textAlign="center" p={0} value={tallas.find(t => t.talla == "S").stock} onChange={(e) => handleTalleChange('S', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                         <Flex flexDir='column'  mr="9">
                                             <FormLabel w='100%' h='3' htmlFor="talla-m" textAlign='center' fontSize='14px'>M</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-m" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('M', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-m"  min={0}>
+                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "M").stock} onChange={(e) => handleTalleChange('M', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                         <Flex flexDir='column'  mr="9"  >
                                             <FormLabel w='100%' h='3' htmlFor="talla-l" textAlign='center' fontSize='14px'>L</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-l" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('L', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-l"  min={0}>
+                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "L").stock} onChange={(e) => handleTalleChange('L', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                     </Flex>
@@ -111,20 +178,20 @@ function CrearProducto() {
                                     <Flex spacing={4} direction='row'  justifyContent='flex-start'  >
                                         <Flex flexDir='column'  mr='9' >
                                             <FormLabel w='100%' h='3' htmlFor="talla-xl" textAlign='center' fontSize='14px'>XL</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xl" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('XL', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-xl"  min={0}>
+                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "XL").stock} onChange={(e) => handleTalleChange('XL', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                         <Flex flexDir='column'  mr='9'  >
                                             <FormLabel w='100%'  h='3' htmlFor="talla-xxl" textAlign='center' fontSize='14px'>XXL</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xxl" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('XXL', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-xxl"  min={0}>
+                                                <NumberInputField  textAlign="center" p={0} value={tallas.find(t => t.talla == "XXL").stock} onChange={(e) => handleTalleChange('XXL', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                         <Flex flexDir='column'  mr='9'>
                                             <FormLabel w='100%'  h='3' htmlFor="talla-xxxl" textAlign='center' fontSize='14px'>XXXL</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xxxl" defaultValue={0} min={0}>
-                                                <NumberInputField onChange={(e) => handleTalleChange('XXXL', e.target.value)} />
+                                            <NumberInput size='md' maxW={16} id="talla-xxxl"  min={0}>
+                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "XXXL").stock} onChange={(e) => handleTalleChange('XXXL', e.target.value)} />
                                             </NumberInput>
                                         </Flex>
                                         <Flex  flex="1">
@@ -149,7 +216,7 @@ function CrearProducto() {
                             <FormControl  margin='2'  id="price" mt="4" isRequired>
                                 <FormLabel  fontSize='18px'>Price</FormLabel>
                                 <NumberInput
-                                    defaultValue={isNaN(price) ? 0 : price}
+                                    value={price}
                                     min={0}
                                     precision={2}
                                     step={0.01}
