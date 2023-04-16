@@ -26,10 +26,12 @@ import UserEdit from './components/UserEdit/UserEdit';
 import UserEditsPage from './views/Admin/UserEdit';
 
 import axios from "axios"
+import AddressesPage from './views/User/AddressesPage';
+import UserOrdersPage from './views/User/UserOrdersPage';
 import EditProduct from './components/EditProduct/EditProduct';
 import ProductEditPage from './views/Admin/ProductEdit';
-axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-// axios.defaults.baseURL = "http://localhost:3001"
+//axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+ axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
@@ -49,8 +51,9 @@ function App() {
         <Route exact path="/add" element={<Upload/>} />
         <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
-        <Route exact path="/user/:id/orders" element={<UserPage />} />
-        <Route exact path="/user/:id/notifications" element={<UserPage />} />
+        <Route exact path="/user/:id/orders" element={<UserOrdersPage />} />
+        <Route exact path="/user/:id/notifications" element={<UserPage/>} />
+        <Route exact path="/user/:id/addresses" element={<AddressesPage/>} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
         <Route exact path="/contact" element={<Contact />} />

@@ -20,6 +20,10 @@ export const Cloth = (props) => {
   //   dispatch(getClothById(props.product._id))
   // }
 
+  const totalStock = props.product.tallas.reduce((total, talla) => {
+     return total + talla.stock;
+   }, 0);
+
   const Name = props.product.name
   const Price = props.product.price
   const Stock = props.product.stock
@@ -35,7 +39,7 @@ export const Cloth = (props) => {
       <Td><Image h={100} src={Img}/></Td>
       <Td>{Name}</Td>
       <Td>${Price}</Td>
-      <Td>{Stock}</Td>
+      <Td>{totalStock}</Td>
       <Td>
       <Link to={`/product/edit/${props.product._id}`}>
       <VscEdit/>
