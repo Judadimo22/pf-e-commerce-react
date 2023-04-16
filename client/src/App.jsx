@@ -28,8 +28,8 @@ import UserEditsPage from './views/Admin/UserEdit';
 import axios from "axios"
 import EditProduct from './components/EditProduct/EditProduct';
 import ProductEditPage from './views/Admin/ProductEdit';
-axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-// axios.defaults.baseURL = "http://localhost:3001"
+//axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {

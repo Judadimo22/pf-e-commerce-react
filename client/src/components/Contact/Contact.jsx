@@ -5,6 +5,9 @@ import imageContact from '../../assets/image_contact.jpeg'
 
 
 const Contact = () => {
+    const sarasa=()=>{
+        alert(`recivimos su mensaje pronto le daremos respuesta`)
+    }
     return(
         <Box>
            <HomeNavBar/> 
@@ -19,7 +22,7 @@ const Contact = () => {
                         </Box>
                         <Input mb={5} backgroundColor='#D9D9D9' py={1} placeholder="Email"/>
                         <Textarea backgroundColor='#D9D9D9' py={1} mb={5}  placeholder="Message"/>
-                        <Button backgroundColor='#DAEB0F' w='full'>Send Message</Button>
+                        <Button backgroundColor='#DAEB0F' w='full' onClick={sarasa}>Send Message</Button>
                         
                     </FormControl>
                 </Box>

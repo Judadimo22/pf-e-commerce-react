@@ -19,6 +19,7 @@ export const ProductCard = (props) => {
       price: props.product.price,
       image: props.product.image,
       quantity: 1,
+      
     };
 
     // Obtener el carrito actual desde el localStorage
@@ -46,6 +47,7 @@ export const ProductCard = (props) => {
 
     // Actualizar el estado del número de productos en el carrito
     //setNumCartItems(cart.length);
+    alert(`se agrego a se lista de compras`)
   };
   return (
     <Flex flexDirection="column" className={style.containerCard}>
