@@ -6,11 +6,11 @@ import { Pagination } from '../Paginado/Paginado';
 import { getUsers} from '../../redux/actions';
 import { Flex, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 
-const Users = ({users}) => {
+const Users = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const Users = useSelector((state) => state.Users)
+  const Users = useSelector((state) => state.UsersCopy)
   const resultsPerPage = 15
   const numberOfResults = Users.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
@@ -42,6 +42,7 @@ const Users = ({users}) => {
               <Th>Last Name</Th>
               <Th>Email</Th>
               <Th>Rol</Th>
+              <Th>Active</Th>
             </Tr>
           </Thead>
           <Tbody>

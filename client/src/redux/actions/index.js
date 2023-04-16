@@ -19,10 +19,12 @@ export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const SORT_ASCENDING = "SORT_ASCENDING";
 export const SORT_DESCENDING = "SORT_DESCENDING";
 export const CACHIMBA = "CACHIMBA";
-export const UPDATE_USER = 'UPDATE_USER'
+export const UPDATE_USER = 'UPDATE_USER';
+export const INFO_USER_BY_ID = 'INFO_USER_BY_ID'
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
-export const POST_REVIEW = "POST_REVIEW"
-export const CHANGE_INDEX = "CHANGE_INDEX"
+export const POST_REVIEW = "POST_REVIEW";
+export const CHANGE_INDEX = "CHANGE_INDEX";
+export const SEARCH_USER = 'SEARCH_USER'
 
 
 
@@ -83,6 +85,13 @@ export const setSearch = (payload) => {
     payload,
   };
 };
+
+export const setSearchUser = (payload) => {
+  return {
+    type: SEARCH_USER,
+    payload
+  };
+}
 
 //-----------------------------------Change Input----------------------------------
 export function clearFilters(payload) {
@@ -160,7 +169,7 @@ export function UpdateCloth(id, payload) {
 
 export function updateUser (id, payload){
   return async function (dispatch) {
-    const json = await axios.put(`https://backend-pf-uh1o.onrender.com/users/${id}`, payload);
+    const json = await axios.put(`/users/${id}`, payload);
     return dispatch({
       type: UPDATE_USER,
       payload: json.data
@@ -205,6 +214,19 @@ export const getOrders = () => async (dispatch) => {
     console.log(e);
   }
 };
+
+export const infoUserById = (id) => async (dispatch) => {
+  try {
+    const user = await axios.get(`/users/${id}`);
+    return dispatch({
+      type: INFO_USER_BY_ID,
+      payload: user.data,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const getUserById = (id) => async (dispatch) => {
   try {
     const user = await axios.get(`/users/${id}`);

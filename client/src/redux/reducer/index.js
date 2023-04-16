@@ -18,6 +18,8 @@ import {
   CACHIMBA,
   CLEAR_FILTERS,
   CHANGE_INDEX,
+  SEARCH_USER,
+  INFO_USER_BY_ID
   UPDATE_USER
 } from "../actions/index";
 
@@ -63,8 +65,13 @@ function rootReducer(state = initialState, action) {
     case GET_USER_BY_ID:
       return {
         ...state,
-        DetailUser: action.payload,
+        user: action.payload,
       };
+    case INFO_USER_BY_ID:
+        return {
+          ...state,
+          DetailUser: action.payload,
+        };
 
     case GET_USERS:
       return {
@@ -81,6 +88,16 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         ClothesCopy: [...search],
+      };
+    }
+    case SEARCH_USER: {
+      let search = [];
+      search = state.Users?.filter((c) =>
+        c.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        UsersCopy: [...search],
       };
     }
     case GET_BY_ID:
@@ -203,10 +220,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         // allUsers: action.action.payload
       };
-    case UPDATE_USER:
-      return {
-        ...state          
-      };
     case POST_USERS:
       return {
         ...state,
@@ -258,4 +271,3 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer;
-

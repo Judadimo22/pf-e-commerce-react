@@ -8,8 +8,9 @@ import UserEdit from '../../components/UserEdit/UserEdit'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+import EditProduct from '../../components/EditProduct/EditProduct'
 
-const UserEditsPage = () => {
+const ProductEditPage = () => {
     const dispatch = useDispatch(); 
     const {isAuthenticated, user,logout} = useAuth0();
       const [infoUser, setInfoUser] = useState({});
@@ -77,7 +78,7 @@ const UserEditsPage = () => {
           h='100%'
           >
             <TableContainer w="100%" >
-                <UserEdit/>
+                <EditProduct/>
             </TableContainer>
           </Flex>
           </Flex>
@@ -86,4 +87,4 @@ const UserEditsPage = () => {
       )
   }
 
-export default UserEditsPage
+export default ProductEditPage
