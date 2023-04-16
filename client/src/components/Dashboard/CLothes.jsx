@@ -10,7 +10,7 @@ export const Clothes = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const Products = useSelector((state) => state.Clothes)
+  const Products = useSelector((state) => state.ClothesCopy)
   const resultsPerPage = 15
   const numberOfResults = Products.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
@@ -38,6 +38,7 @@ export const Clothes = () => {
         <Table>
           <Thead>
             <Tr>
+              <Th justifyContent='center'>Image</Th>
               <Th>Name</Th>
               <Th>Price</Th>
               <Th>Stock</Th>
@@ -46,7 +47,7 @@ export const Clothes = () => {
           <Tbody>
         {
           Products.length ?
-            Products.slice(pageSliceStart, pageSliceEnd).map(product => (<Cloth key={product._id} id={product._id} name={product.name} img={product.image} price={product.price} stock={product.stock} />)) : null  
+            Products.slice(pageSliceStart, pageSliceEnd).map(product => (<Cloth key={product._id} product={product} />)) : null  
         }
           </Tbody>
 

@@ -10,20 +10,24 @@ import ColorSelector from "../ColorSelector/ColorSelector";
 import { FaShoppingCart } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import { useAuth0 } from "@auth0/auth0-react";
+import ClothReviews from "../Reviews/clothReviews";
 
 export const Details = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.Details);
   console.log('productDetails', productDetails)
   const { id } = useParams();
+
   const { name, trademark, description, image, price, size, review, stock } = productDetails;
   // const tallas = productDetails.tallas;
   // const totalStock = productDetails.tallas.reduce((total, talla) => {
   //   return total + talla.stock;
   // }, 0);
 
+
   const { isAuthenticated, user } = useAuth0();
   const [pay, setPay] = useState(false);
+  const allData = useSelector((state) => state.Details);
 
   function handlerPay() {
     setPay(true);
@@ -90,6 +94,7 @@ export const Details = () => {
     localStorage.setItem("cartItems", JSON.stringify(cart));
 
     // Actualizar el estado del número de productos en el carrito
+
     setNumCartItems(cart.length);
     setSelectedSize("");
   };
@@ -125,7 +130,8 @@ export const Details = () => {
             <Chakra.Box h="1px" w="95%" bg="gray" borderRadius="full" />
             <Chakra.Flex pt="1.5rem" pb="2rem">
               <StarRating rating={4.5} />
-              <Chakra.Text ml={1}>(1 review)</Chakra.Text> {/* que alguien añada reviews o rompo development */}
+              <Chakra.Text ml={1}>(1 review)</Chakra.Text>{" "}
+              {/* que alguien añada reviews o rompo development */}
             </Chakra.Flex>
             <Chakra.Flex>
             {productDetails.tallas?.map((talla) => (
@@ -162,8 +168,10 @@ export const Details = () => {
                 >
                   Agregar al carrito
                 </Chakra.Button>
+
                 <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
                   {selectedSize == "" ? null : (productDetails.tallas.find(t => t.talla == selectedSize).stock + " Disponibles") }  
+
                 </Chakra.Text>
               </Chakra.Flex>
             </Chakra.Box>
@@ -189,6 +197,7 @@ export const Details = () => {
           </Chakra.Box>
         </Chakra.Grid>
       </Chakra.Box>
+      <ClothReviews id={id} comment={allData.review} />
       <Footer />
     </>
   );

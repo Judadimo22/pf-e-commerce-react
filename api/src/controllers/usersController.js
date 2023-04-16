@@ -7,37 +7,39 @@ const { eMail } = require("../nodemailer/mailer");
 
 const postUser = async (req, res) => {
   try {
-    validateCreate;
-
-    const users = await User.find({});
+    //validateCreate;
     const user = userSchema(req.body);
+    const users = await User.find({ email: user.email });
+    if (users.length) {
+      res.status(403).send("The email already exist");
+    } else {
+      const newUser = await new User({
+        name: user.name,
+        email: user.email,
+        image:
+          user.image ||
+          "https://w7.pngwing.com/pngs/981/645/png-transparent-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-symbol.png",
+        lastname: user.lastname,
+      });
 
-    const newUser = await new User({
-      name: user.name,
-      email: user.email,
-      image:
-        user.image ||
-        "https://w7.pngwing.com/pngs/981/645/png-transparent-default-profile-united-states-computer-icons-desktop-free-high-quality-person-icon-miscellaneous-silhouette-symbol.png",
-      lastname: user.lastname,
-      phone: user.phone,
-      country: user.country,
-      city: user.city,
-      addres: user.addres,
-    });
-
-    const saveUser = await newUser.save();
-
-    res.status(200).json(saveUser);
-    eMail(user.email);
+      //const saveUser = await newUser.save();
+      console.log(user);
+      newUser
+        .save()
+        .then((data) => res.status(200).json(data))
+        .catch((error) => res.status(500).json({ message: `${error}` }));
+      // res.status(200).json(saveUser);
+      eMail(user.email);
+    }
   } catch (error) {
-    res.status(500).send(`{messaje: ${error}}`);
+    res.status(500).send(`{messaje del catch: ${error}}`);
   }
 };
 
 const postUserLoading = async (req, res) => {
   try {
     const { email, password, loading } = req.body;
-    const users = await userSchema.findOne({ email });
+    const users = await User.findOne({ email });
     let equal;
 
     users
@@ -110,7 +112,7 @@ const getUserById = async (req, res) => {
 const putUser = async (req, res) => {
   const { id } = req.params;
 
-  const { name, lastname, email, addres, phone, roll, city, country } =
+  const { name, lastname, email, addres, phone, roll, city, country, active } =
     req.body;
 
   userSchema
@@ -126,6 +128,7 @@ const putUser = async (req, res) => {
           roll,
           city,
           country,
+          active
         },
       }
     )

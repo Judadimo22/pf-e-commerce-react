@@ -9,6 +9,7 @@ export function MPButton({ id }) {
   const { isAuthenticated, user } = useAuth0();
   // aqui se recibe el body
   console.log(user);
+  console.log(id);
   const email = user.email;
 
   const dataMP = {
