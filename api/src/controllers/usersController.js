@@ -123,7 +123,7 @@ const putUser = async (req, res) => {
           name,
           lastname,
           email,
-          addres,
+          location,
           phone,
           roll,
           city,

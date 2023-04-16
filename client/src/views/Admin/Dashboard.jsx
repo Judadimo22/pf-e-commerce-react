@@ -65,7 +65,7 @@ const Dashboard = () => {
   
     return (
       <>
-        <HomeNavBar/>
+        <AdminNavBar/>
           <DashboardLeftMenu nav={nav} user={user} userState={userState}/>
       </>
   )

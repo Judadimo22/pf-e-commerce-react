@@ -19,7 +19,8 @@ import {
   CLEAR_FILTERS,
   CHANGE_INDEX,
   SEARCH_USER,
-  INFO_USER_BY_ID
+  INFO_USER_BY_ID,
+  UPDATE_USER
 } from "../actions/index";
 
 const computeFilteredData = ((products, categoryFilter, typeFilter, trademarkFilter) =>
