@@ -3,7 +3,7 @@ import { ListCard } from "../../components/ListCards/ListCards";
 import Filtrers from "../../components/Filters/Filtrers";
 import style from './Home.module.css'
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
-
+import Footer from "../../components/Footer/Footer"
 const Home = () => {
     return(
         <div className={style.containerHome}>
@@ -16,6 +16,7 @@ const Home = () => {
                 <ListCard/>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 };
@@ -23,9 +24,3 @@ const Home = () => {
 export default Home
 
 
-{/* <div>
-<div>
-<NavBar/>
-<ListCard/>
-<div/>
-</div> */}

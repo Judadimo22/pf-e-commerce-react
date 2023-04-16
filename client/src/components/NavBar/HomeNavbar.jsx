@@ -54,8 +54,6 @@ const HomeNavBar = () => {
         <Flex className={style.containerNavBar} position="fixed" zIndex="9999">
         <>
             <Link to={'/home'}><Button background='none' display={{base:'none', md:'block'}}>HOME</Button></Link>
-            <Link to={'/about'}><Button background='none' display={{base:'none', md:'block'}}>ABOUT</Button></Link>
-            <Link to={'/contact'}><Button background='none' display={{base:'none', md:'block'}}>CONTACT</Button></Link>
            
               
             </>

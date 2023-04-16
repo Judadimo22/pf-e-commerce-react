@@ -1,5 +1,7 @@
 import * as Chakra from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const Footer = () => {
   return (
@@ -15,10 +17,10 @@ const Footer = () => {
         pb={12}
       >
         <Chakra.Box mt={8} mb={8}>
-          <Chakra.Text fontWeight="bold" fontSize={20}>MARCA</Chakra.Text>
+          <Chakra.Text fontWeight="bold" fontSize={20}>Casual Couture</Chakra.Text>
           <Chakra.Grid mt={1} fontSize={15}>
             <Chakra.Link href="#" fontWeight="100">
-              Sobre nosotros
+            <Link to={'/about'}>About</Link>
             </Chakra.Link>
             <Chakra.Link href="#" fontWeight="100">
               Hoodies
@@ -35,21 +37,18 @@ const Footer = () => {
           </Chakra.Grid>
         </Chakra.Box>
         <Chakra.Box pr="10.5rem">
-          <Chakra.Text fontWeight="bold" fontSize={20} mt={-12}>AYUDA</Chakra.Text>
+          <Chakra.Text fontWeight="bold" fontSize={20} mt={-12}>HELP</Chakra.Text>
           <Chakra.Grid mt={1} fontSize={15}>
             <Chakra.Link href="#" fontWeight="100">
-              Mis pedidos
+            <Link to={'/contact'}>Contact</Link>
             </Chakra.Link>
             <Chakra.Link href="#" fontWeight="100">
-              Devoluciones y cambios
-            </Chakra.Link>
-            <Chakra.Link href="#" fontWeight="100">
-              Tiempo de envios
+            <Link to={'/preg-frecuentes'}>Frequently asked questions</Link>
             </Chakra.Link>
           </Chakra.Grid>
         </Chakra.Box>
         <Chakra.Box mt={-12}>
-          <Chakra.Text fontWeight="bold" fontSize={20}>SE PARTE DE NUESTRO VIAJE</Chakra.Text>
+          <Chakra.Text fontWeight="bold" fontSize={20}>Don't miss the new!</Chakra.Text>
           <Chakra.Flex justify="center" align="center" py="4" mt="4" gap={3} pr="1rem">
             <Chakra.Link href="#">
               <Chakra.Box as={FaFacebook} size="24px" color="#DAEB0F" mx="2" />
