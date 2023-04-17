@@ -19,7 +19,6 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
         ...isError,
         [e.target.name]: true,
       });
-      console.log("asd");
     } else {
       setIsError({
         ...isError,
