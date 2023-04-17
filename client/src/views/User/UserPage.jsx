@@ -11,6 +11,7 @@ import UserInfo from '../../components/UserInfo/userInfo'
 import MyCloth from '../../components/UserProfile/MyCloth'
 import MyProfile from '../../components/UserProfile/MyProfile'
 import { useAuth0 } from '@auth0/auth0-react'
+import Footer from '../../components/Footer/Footer'
 
 const UserPage = () => {
   const userState = useSelector(state=>state.user)
@@ -51,6 +52,7 @@ const UserPage = () => {
       <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
       <UserInfo/>
     </Flex>
+    
   </>
   )
 }

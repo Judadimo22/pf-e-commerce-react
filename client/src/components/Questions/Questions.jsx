@@ -1,10 +1,13 @@
 import { Button } from '@chakra-ui/react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Footer from '../Footer/Footer'
+import HomeNavBar from '../NavBar/HomeNavbar'
 
 
 const Questions=()=> {
   return (<>
+  <HomeNavBar/>
   How can I make an online purchase?
 <br/>
 To make an online purchase, simply add the items you wish to purchase to your shopping cart and follow the instructions to checkout. You will need to provide shipping and payment information during checkout.
@@ -39,6 +42,7 @@ How can I contact customer service?
 
 You can contact us by email. You can also send us a message through our social networks and we will answer you as soon as possible. Find our contact details on our contact page.<br/>
 Or by clicking here<a href='/contact'> Contact</a>
+<Footer/>
   </>
   )
 }

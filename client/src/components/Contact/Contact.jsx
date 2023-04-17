@@ -2,6 +2,7 @@ import { Box, Image, Text, FormControl, Input, Textarea, Button } from "@chakra-
 import React from "react";
 import HomeNavBar from "../NavBar/HomeNavbar";
 import imageContact from '../../assets/image_contact.jpeg'
+import Footer from "../Footer/Footer";
 
 
 const Contact = () => {
@@ -28,7 +29,9 @@ const Contact = () => {
                 </Box>
                 <Image w='60%' h={600} src={imageContact} objectFit='cover'/>
             </Box>
+            <Footer/>
         </Box>
+        
     )
 };
 
