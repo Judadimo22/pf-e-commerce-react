@@ -13,25 +13,20 @@ import UserPage from './views/User/UserPage'
 import Playmet from "./views/Playmet/Playmet";
 import MyProfile from "./components/UserProfile/MyProfile";
 import Upload from './components/AddFiles/AddFiles'
-import ImageUpload from './components/AddFiles/AddFiles'
-import TableUsersContainer from './components/Dashboard/AdmUsers'
-import AdmUsers from './components/Dashboard/AdmUsers'
 
 
 import CartPage from './views/Cart/CartPage';
 import UserEditPage from './views/User/UserEdit';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
-import UserEdit from './components/UserEdit/UserEdit';
 import UserEditsPage from './views/Admin/UserEdit';
 import Questions from './components/Questions/Questions.jsx';
 import axios from "axios"
 import AddressesPage from './views/User/AddressesPage';
 import UserOrdersPage from './views/User/UserOrdersPage';
-import EditProduct from './components/EditProduct/EditProduct';
 import ProductEditPage from './views/Admin/ProductEdit';
-//axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-axios.defaults.baseURL = "http://localhost:3001"
+axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+//axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
