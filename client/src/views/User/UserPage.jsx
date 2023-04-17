@@ -52,7 +52,7 @@ const UserPage = () => {
       <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
       <UserInfo/>
     </Flex>
-    
+    <Footer/>
   </>
   )
 }
