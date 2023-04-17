@@ -1,6 +1,7 @@
 import * as Chakra from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo/logoC3.jpeg"
 
 
 const Footer = () => {
@@ -17,7 +18,7 @@ const Footer = () => {
         pb={12}
       >
         <Chakra.Box mt={8} mb={8}>
-          <Chakra.Text fontWeight="bold" fontSize={20}>Casual Couture</Chakra.Text>
+        <Chakra.Image boxSize={`70px`} borderRadius={`full`} src={logo}  alt={``}textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif"></Chakra.Image>
           <Chakra.Grid mt={1} fontSize={15}>
             <Chakra.Link href="#" fontWeight="100">
             <Link to={'/about'}>About</Link>

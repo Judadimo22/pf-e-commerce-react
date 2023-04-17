@@ -5,10 +5,12 @@ import { LoginButton} from '../Login/login'
 import { createUser, getUserById } from "../../redux/actions";
 import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { Avatar, Box, Button, Flex, Icon, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, Icon, Menu, MenuButton, MenuItem, MenuList, Text, Image, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import logo from "../../assets/logo/logoC3.jpeg"
+
 
 
 
@@ -62,9 +64,11 @@ const HomeNavBar = () => {
 
 
             <Link to="/home">
-                <Box textAlign='center'>
-                  <Text textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Casual Couture</Text>
-                </Box>
+                <Flex textAlign='center'>
+                  <Image boxSize={`70px`} borderRadius={`full`} src={logo}  alt={``}></Image>
+                  <Heading textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Casual Couture</Heading>
+                </Flex>
+
             </Link>
             <Box display={{base:'none', md:'block'}}>
             <SearchBar/>
