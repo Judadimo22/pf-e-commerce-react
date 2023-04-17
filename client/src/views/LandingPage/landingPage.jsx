@@ -15,6 +15,7 @@ import HomeNavBar from '../../components/NavBar/HomeNavbar';
 import { Box, Image, Text, Button } from "@chakra-ui/react";
 import mainImage from '../../assets/main_landing.jpeg';
 import imageRegister from '../../assets/image_register.jpeg'
+import Footer from '../../components/Footer/Footer';
 
 function LandingPage() {
   return (
@@ -407,6 +408,7 @@ function LandingPage() {
       </div>
   </div>
 
+  <Footer/>
   </Box>
   )
 }
