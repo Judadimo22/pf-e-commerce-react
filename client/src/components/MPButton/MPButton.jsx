@@ -81,7 +81,7 @@ export function MPButton({ id }) {
   return (
     <>
       {isAuthenticated ? (
-        <div className="cho-container">buy</div>
+        <div className="cho-container"></div>
       ) : (
         <div>....</div>
       )}
