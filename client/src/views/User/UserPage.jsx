@@ -14,36 +14,36 @@ import { useAuth0 } from '@auth0/auth0-react'
 import Footer from '../../components/Footer/Footer'
 
 const UserPage = () => {
-  const userState = useSelector(state=>state.user)
-  const dispatch = useDispatch()
+  const userState = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const { id } = useParams();
-  const { user } = useAuth0()
-  useEffect(()=>{
-   if(!userState.length) dispatch(getUserById(id))
-  },[])
+  const { user } = useAuth0();
+  useEffect(() => {
+    if (!userState.length) dispatch(getUserById(id));
+  }, []);
 
-    const nav= [
-      {
-        icon:TbUserCircle,
-        title:"General",
-        redirect:`/user/${id}`
-      },
-      {
-          icon:TbTruckDelivery,
-          title:"My orders",
-          redirect:`/user/${id}/orders`
-      },
-      {
-          icon:HiOutlineMail,
-          title:"Notifications",
-          redirect:`/user/${id}/notifications`
-      },
-      {
-          icon:HiOutlineLocationMarker,
-          title:"Addresses",
-          redirect:`/user/${id}/addresses`
-      },
-    ]
+  const nav = [
+    {
+      icon: TbUserCircle,
+      title: "General",
+      redirect: `/user/${id}`,
+    },
+    {
+      icon: TbTruckDelivery,
+      title: "My orders",
+      redirect: `/user/orders/${id}`,
+    },
+    {
+      icon: HiOutlineMail,
+      title: "Notifications",
+      redirect: `/user/notifications/${id}`,
+    },
+    {
+      icon: HiOutlineLocationMarker,
+      title: "Addresses",
+      redirect: `/user/addresses/${id}`,
+    },
+  ];
 
   return (
     <>
@@ -56,5 +56,3 @@ const UserPage = () => {
   </>
   )
 }
-
-export default UserPage

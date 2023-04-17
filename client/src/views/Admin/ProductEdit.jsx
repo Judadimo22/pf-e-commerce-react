@@ -19,7 +19,7 @@ const ProductEditPage = () => {
     
       useEffect(() => {
         if (user && isAuthenticated) {
-          axios.get("https://backend-pf-uh1o.onrender.com/users").then((element) => {
+          axios.get("/users").then((element) => {
             const userDb = element.data.find(
               (element) => element.email === user.email
             );
@@ -75,11 +75,9 @@ const ProductEditPage = () => {
           width="80%"
           p="10px"
           m="40px 0"
-          h='100%'
+          minH="80.9vh"
           >
-            <TableContainer w="100%" >
                 <EditProduct/>
-            </TableContainer>
           </Flex>
           </Flex>
         </Flex>

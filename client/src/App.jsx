@@ -26,6 +26,8 @@ import UserEdit from './components/UserEdit/UserEdit';
 import UserEditsPage from './views/Admin/UserEdit';
 import Questions from './components/Questions/Questions.jsx';
 import axios from "axios"
+import AddressesPage from './views/User/AddressesPage';
+import UserOrdersPage from './views/User/UserOrdersPage';
 import EditProduct from './components/EditProduct/EditProduct';
 import ProductEditPage from './views/Admin/ProductEdit';
 //axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
@@ -49,8 +51,9 @@ function App() {
         <Route exact path="/add" element={<Upload/>} />
         <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
-        <Route exact path="/user/:id/orders" element={<UserPage />} />
-        <Route exact path="/user/:id/notifications" element={<UserPage />} />
+        <Route exact path="/user/orders/:id" element={<UserOrdersPage />} />
+        <Route exact path="/user/notifications/:id" element={<UserPage/>} />
+        <Route exact path="/user/addresses/:id" element={<AddressesPage/>} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
         <Route exact path="/contact" element={<Contact />} />

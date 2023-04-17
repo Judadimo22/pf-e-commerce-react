@@ -112,7 +112,7 @@ const getUserById = async (req, res) => {
 const putUser = async (req, res) => {
   const { id } = req.params;
 
-  const { name, lastname, email, addres, phone, roll, city, country, active } =
+  const { name, lastname, email, location, phone, roll, city, country, active } =
     req.body;
 
   userSchema

@@ -4,6 +4,7 @@ import {
   Grid,
   GridItem,
   Heading,
+  Icon,
   Table,
   TableContainer,
   Tbody,
@@ -13,40 +14,26 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pagination } from "../Paginado/Paginado";
 import AddressButton from "./AddressButton";
 import AddAddressForm from "./AddAddressForm";
-
-const addresses = [
-  {
-    country: "Ecuador",
-    city: "ciudad 1",
-    address: "street 1",
-  },
-  {
-    country: "Ecuador",
-    city: "ciudad 2",
-    address: "street 2",
-  },
-  {
-    country: "Ecuador",
-    city: "ciudad 3",
-    address: "street 3",
-  },
-  {
-    country: "Ecuador",
-    city: "ciudad 4",
-    address: "street 4",
-  },
-  {
-    country: "Ecuador",
-    city: "ciudad 4",
-    address: "street 4",
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById, updateUser } from "../../redux/actions";
+import { useParams } from "react-router-dom";
+import { VscEdit } from "react-icons/vsc";
+import { HiOutlineTrash } from "react-icons/hi";
 
 const UserAddresses = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const addresses = useSelector((state) => state.user.location);
+  const [swi, setSwi] = useState(false);
+
+  useEffect(() => {
+    dispatch(getUserById(id));
+  }, [swi]);
+
   //------------------------------pagination----------------------------------------------
   const resultsPerPage = 4;
   const numberOfResults = addresses.length;
@@ -58,26 +45,23 @@ const UserAddresses = () => {
     pageNumber === 1 ? 0 : (pageNumber - 1) * resultsPerPage;
   const pageSliceEnd = pageNumber * resultsPerPage;
   //------------------------------pagination----------------------------------------------
-
   //----------------------------------add form-----------------------------------------------
 
   const [renderInput, setRenderInput] = useState(false);
   const [input, setInput] = useState({
     country: "",
     city: "",
-    address: "",
+    addres: "",
   });
 
   const [isError, setIsError] = useState({
     country: false,
     city: false,
-    address: false,
+    addres: false,
   });
-  let error = input.country && input.city && input.address;
   //------------------------------------add form--------------------------------------------
 
   const addAddresSubmit = () => {
-    console.log(!error);
     if (!input.country) {
       console.log("asd");
       setIsError({
@@ -89,34 +73,48 @@ const UserAddresses = () => {
         ...isError,
         city: true,
       });
-    } else if (!input.address) {
+    } else if (!input.addres) {
       setIsError({
         ...isError,
-        address: true,
+        addres: true,
       });
     }
-    if (!error) return;
-    else {
+
+    if (!input.country || !input.city || !input.addres) {
+      console.log(input);
+      return;
+    } else {
+      setSwi(swi == true ? false : true);
+      console.log(id);
+      const location = { location: [input,...addresses] };
+      dispatch(updateUser(id, location));
       setRenderInput(false);
       setInput({
         country: "",
         city: "",
-        address: "",
+        addres: "",
       });
     }
   };
+  const deleteAddress = (index) =>{
+    const locationsFiltereds = addresses.filter(address=>(address._id !== index))
+    const location = { location: locationsFiltereds };
 
+    console.log(location);
+    dispatch(updateUser(id, location));
+    setSwi(swi == true ? false : true);
+  }
   const cancelSubmit = () => {
     setRenderInput(false);
     setInput({
       country: "",
       city: "",
-      address: "",
+      addres: "",
     });
     setIsError({
       country: false,
       city: false,
-      address: false,
+      addres: false,
     });
   };
   return (
@@ -168,10 +166,13 @@ const UserAddresses = () => {
                 {addresses
                   .slice(pageSliceStart, pageSliceEnd)
                   .map((address) => (
-                    <Tr>
+                    <Tr key={address._id}>
                       <Td>{address.country}</Td>
                       <Td>{address.city}</Td>
-                      <Td>{address.address}</Td>
+                      <Td>{address.addres}</Td>
+                      <Td p={0}>
+                        <Icon cursor="pointer" onClick={()=>deleteAddress(address._id)} as={HiOutlineTrash} boxSize={6} />
+                      </Td>
                     </Tr>
                   ))}
               </Tbody>
@@ -196,11 +197,7 @@ const UserAddresses = () => {
             isError={isError}
             setIsError={setIsError}
           />
-          <AddressButton
-            onClick={cancelSubmit}
-            colSpan={3}
-            content="Cancel"
-          />
+          <AddressButton onClick={cancelSubmit} colSpan={3} content="Cancel" />
           <GridItem colSpan={1} />
           <AddressButton
             onClick={addAddresSubmit}

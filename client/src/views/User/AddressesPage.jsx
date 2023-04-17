@@ -29,17 +29,17 @@ const AddressesPage = () => {
           {
               icon:TbTruckDelivery,
               title:"My orders",
-              redirect:`/user/${id}/orders`
+              redirect:`/user/orders/${id}`
           },
           {
               icon:HiOutlineMail,
               title:"Notifications",
-              redirect:`/user/${id}/notifications`
+              redirect:`/user/notifications/${id}`
           },
           {
               icon:HiOutlineLocationMarker,
               title:"Addresses",
-              redirect:`/user/${id}/addresses`
+              redirect:`/user/addresses/${id}`
           },
       ]
   
