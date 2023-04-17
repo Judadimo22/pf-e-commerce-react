@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
 import Footer from "../../components/Footer/Footer";
-import { MPButton } from "../../components/MPButton/MPButton";
+import { MPButton } from "../../components/MPButton/mpButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 
@@ -65,18 +65,6 @@ const CartPage = () => {
     0
   );
 
-  const handleCheckout = () => {
-    {
-      isAuthenticated ? (
-        <MPButton id={cartItems} />
-      ) : (
-        <button onClick={handlerPay}>Buy</button>
-      );
-    }
-  };
-
-  console.log(handleCheckout());
-
   return (
     <>
       <Box bgColor="#F2F2F2" pt="5rem" pb="12rem">
@@ -110,7 +98,7 @@ const CartPage = () => {
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">
-                <Button
+                {/* <Button
                   mt={2}
                   mb={5}
                   variant="solid"
@@ -118,11 +106,25 @@ const CartPage = () => {
                   onClick={handleCheckout}
                 >
                   Comprar
-                </Button>
+                </Button> */}
                 {isAuthenticated ? (
-                  <MPButton id={cartItems} />
+                  <MPButton
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    width="100%"
+                    id={cartItems}
+                  />
                 ) : (
-                  <button onClick={handlerPay}>Buy</button>
+                  <Button
+                    mt={2}
+                    mb={5}
+                    variant="solid"
+                    colorScheme="green"
+                    onClick={handlerPay}
+                  >
+                    Comprar
+                  </Button>
                 )}
               </Grid>
             </>
