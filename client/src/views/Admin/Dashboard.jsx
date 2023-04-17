@@ -6,6 +6,7 @@ import { FiUsers } from "react-icons/fi";
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
+import HomeNavBar from '../../components/NavBar/HomeNavbar';
 
 const Dashboard = () => {
   const dispatch = useDispatch(); 

@@ -15,8 +15,15 @@ import ClothReviews from "../Reviews/clothReviews";
 export const Details = () => {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.Details);
+  console.log('productDetails', productDetails)
   const { id } = useParams();
-  const {  name, trademark, description, image, price, size, review, stock } = productDetails;
+
+  const { name, trademark, description, image, price, size, review, stock } = productDetails;
+  // const tallas = productDetails.tallas;
+  // const totalStock = productDetails.tallas.reduce((total, talla) => {
+  //   return total + talla.stock;
+  // }, 0);
+
 
   const { isAuthenticated, user } = useAuth0();
   const [pay, setPay] = useState(false);
@@ -38,6 +45,7 @@ export const Details = () => {
   }, []);
 
   const [selectedSize, setSelectedSize] = useState("");
+  console.log('selectedSize', selectedSize)
 
   const handleSizeSelect = (size) => {
     setSelectedSize(size);
@@ -86,7 +94,9 @@ export const Details = () => {
     localStorage.setItem("cartItems", JSON.stringify(cart));
 
     // Actualizar el estado del número de productos en el carrito
+
     setNumCartItems(cart.length);
+    setSelectedSize("");
   };
 
   return (
@@ -120,16 +130,19 @@ export const Details = () => {
             <Chakra.Box h="1px" w="95%" bg="gray" borderRadius="full" />
             <Chakra.Flex pt="1.5rem" pb="2rem">
               <StarRating rating={4.5} />
-              <Chakra.Text ml={1}>(1 review)</Chakra.Text> {/* que alguien añada reviews o rompo development */}
+              <Chakra.Text ml={1}>(1 review)</Chakra.Text>{" "}
+              {/* que alguien añada reviews o rompo development */}
             </Chakra.Flex>
-            <Chakra.Text fontWeight="bold" fontSize="lg" pb="1rem">
-              Seleccionar Talle
-            </Chakra.Text>
-            <SizeSelector
-              sizes={size}
-              selectedSize={selectedSize}
-              onSizeSelect={handleSizeSelect}
-            />
+            <Chakra.Flex>
+            {productDetails.tallas?.map((talla) => (
+              <SizeSelector
+                size={talla.talla}
+                stock={talla.stock}
+                key={talla._id}
+                selectedSize={selectedSize}
+                onSizeSelect={handleSizeSelect}
+              />))}
+            </Chakra.Flex>
             <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem">
               Colores Disponibles
             </Chakra.Text>
@@ -155,8 +168,10 @@ export const Details = () => {
                 >
                   Agregar al carrito
                 </Chakra.Button>
+
                 <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
-                  {stock} Disponibles
+                  {selectedSize == "" ? null : (productDetails.tallas.find(t => t.talla == selectedSize).stock + " Disponibles") }  
+
                 </Chakra.Text>
               </Chakra.Flex>
             </Chakra.Box>

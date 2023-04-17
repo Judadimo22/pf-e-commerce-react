@@ -3,30 +3,31 @@ const productSchema = require("../models/Product");
 
 const pagarProducto = async (req, res) => {
   const product = req.body.dataMP;
+  const productos = req.body.dataMP.id;
   const email = product.email;
   const productId = await productSchema.findById(product.id);
 
   let preference = {
-    items: [
-      {
-        category_id: productId.id,
-        title: productId.name,
-        description: productId.description,
-        picture_url: productId.image,
-        quantity: 1,
-        currency_id: "ARS",
-        unit_price: productId.price,
-      },
-    ],
+    items: [],
 
     back_urls: {
-      success: "https://backend-pf-uh1o.onrender.com/cloth",
-      failure: "https://backend-pf-uh1o.onrender.com/cloth",
-      pending: "https://backend-pf-uh1o.onrender.com/cloth",
+      success: "https://pf-e-commerce-react.vercel.app/",
+      failure: "https://pf-e-commerce-react.vercel.app/",
+      pending: "https://pf-e-commerce-react.vercel.app/",
     },
     auto_return: "approved",
     external_reference: email,
   };
+
+  productos.forEach((e) => {
+    preference.items.push({
+      title: e.name,
+      picture_url: e.image,
+      quantity: e.quantity,
+      currency_id: "ARS",
+      unit_price: e.price,
+    });
+  });
 
   mercadopago.preferences
     .create(preference)

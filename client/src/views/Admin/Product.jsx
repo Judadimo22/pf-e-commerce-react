@@ -9,6 +9,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import AdmProduct from '../../components/Dashboard/AdmProduct'
 import { getUserById } from '../../redux/actions';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 const ProductsAdmin = () => {
@@ -20,7 +21,7 @@ const ProductsAdmin = () => {
   
     useEffect(() => {
       if (user && isAuthenticated) {
-        axios.get("https://backend-pf-uh1o.onrender.com/users").then((element) => {
+        axios.get("/users").then((element) => {
           const userDb = element.data.find(
             (element) => element.email === user.email
           );

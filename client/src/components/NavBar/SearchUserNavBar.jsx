@@ -10,6 +10,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import SearchBarUser from "../SearchBarUser/SearchBarUser";
 
 
 
@@ -17,7 +18,7 @@ import { Link } from "react-router-dom";
 
 
 
-const AdminNavBar = () => {
+const SearchUserNavBar = () => {
     const {isAuthenticated, user} = useAuth0();
     console.log(user)
     return(
@@ -27,9 +28,9 @@ const AdminNavBar = () => {
                     <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Casual Couture</Text>
                 </div>
             </Link>
-            <SearchBar/>
+            <SearchBarUser/>
         </Flex>
     )
 };
 
-export default AdminNavBar;
+export default SearchUserNavBar;

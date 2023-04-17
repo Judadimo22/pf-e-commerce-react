@@ -50,15 +50,10 @@ const HomeNavBar = () => {
     
     return(
         <>
-        <Flex h="70px" width="100%"/>
+        <Flex display={{base:'none' ,md:'block'}} h="70px" width="100%"/>
         <Flex className={style.containerNavBar} position="fixed" zIndex="9999">
-
-
-
         <>
-            <Link to={'/home'}><button>HOME</button></Link>
-            <Link to={'/about'}><button>ABOUT</button></Link>
-            <Link to={'/contact'}><button>CONTACT</button></Link>
+            <Link to={'/home'}><Button background='none' display={{base:'none', md:'block'}}>HOME</Button></Link>
            
               
             </>
@@ -67,16 +62,18 @@ const HomeNavBar = () => {
 
 
             <Link to="/home">
-                <div className={style.containerTitle}>
-                    <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Ecommerce</Text>
-                </div>
+                <Box textAlign='center'>
+                  <Text textAlign="center" position='relative' right={{base:5, md:0}} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif">Casual Couture</Text>
+                </Box>
             </Link>
+            <Box display={{base:'none', md:'block'}}>
             <SearchBar/>
+            </Box>
             <Flex w="8%" justifyContent="space-between">
                 {isAuthenticated ?(
-                <Menu cursor="pointer">
+                <Menu cursor="pointer" >
                     <MenuButton >
-                        <Avatar src={user?.picture}  size="md"/>
+                        <Avatar src={user?.picture} display={{base:'none' ,md:'block'}}  size="md"/>
                     </MenuButton>
                 <MenuList >
                     <Link to={`/user/${infoUser._id}`}>
@@ -99,7 +96,11 @@ const HomeNavBar = () => {
                 </MenuList>
                 </Menu>
                 ):<LoginButton/>}
-                <Icon bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
+                <Box >
+                <Link to='/cart'>
+                <Icon display={{base:'none' ,md:'block'}}  bgColor="#f2f2f2" cursor="pointer" boxSize={12} borderRadius={50} p={2.5} justifyContent="center" alignItems="center"  as={AiOutlineShoppingCart}/> 
+                </Link>
+                </Box>
             </Flex>
         </Flex>
         </>

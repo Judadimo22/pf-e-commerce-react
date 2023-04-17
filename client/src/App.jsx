@@ -22,10 +22,14 @@ import CartPage from './views/Cart/CartPage';
 import UserEditPage from './views/User/UserEdit';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
-
+import UserEdit from './components/UserEdit/UserEdit';
+import UserEditsPage from './views/Admin/UserEdit';
+import Questions from './components/Questions/Questions.jsx';
 import axios from "axios"
-axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-//axios.defaults.baseURL = "http://localhost:3001"
+import EditProduct from './components/EditProduct/EditProduct';
+import ProductEditPage from './views/Admin/ProductEdit';
+//axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
@@ -52,6 +56,9 @@ function App() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/about" element={<About/>} />
         <Route exact path='/cart' element={<CartPage />} />
+        <Route exact path="/Update/:id" element={<UserEditsPage/>} />
+        <Route exact path="/product/edit/:id" element={<ProductEditPage/>} />
+        <Route exact path='/preg-frecuentes' element={<Questions/>}/>
        </Routes>
       </div>
     </>

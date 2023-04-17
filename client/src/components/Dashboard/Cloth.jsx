@@ -7,16 +7,27 @@ import { AiFillEdit } from "react-icons/ai";
 import { AiFillDelete} from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { Button, Flex, Icon, Image, Td, Tr } from '@chakra-ui/react';
+import { VscEdit } from "react-icons/vsc";
 
 
 
 
-export const Cloth = ({id,img,name,price,stock}) => {
+
+export const Cloth = (props) => {
   const dispatch = useDispatch()
 
-  const goToProductDetails = () => {
-    dispatch(getClothById(props.product._id))
-  }
+  // const goToProductDetails = () => {
+  //   dispatch(getClothById(props.product._id))
+  // }
+
+  const totalStock = props.product.tallas.reduce((total, talla) => {
+     return total + talla.stock;
+   }, 0);
+
+  const Name = props.product.name
+  const Price = props.product.price
+  const Stock = props.product.stock
+  const Img = props.product.image
 
   
   
@@ -25,15 +36,15 @@ export const Cloth = ({id,img,name,price,stock}) => {
   return (
     
     <Tr >
-      <Link to={`/details/${id}`}>
-        <Td as='u'>{name}</Td>
-      </Link>
-      <Td>${price}</Td>
-      <Td>{stock}</Td>
-      <Flex height="50px" alignItems="center" justifyContent="center" >
-        <AiFillEdit/>
-        <AiFillDelete/>
-      </Flex>
+      <Td><Image h={100} src={Img}/></Td>
+      <Td>{Name}</Td>
+      <Td>${Price}</Td>
+      <Td>{totalStock}</Td>
+      <Td>
+      <Link to={`/product/edit/${props.product._id}`}>
+      <VscEdit/>
+        </Link>
+      </Td>
     </Tr>
   )
 }

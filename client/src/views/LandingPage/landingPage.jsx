@@ -15,28 +15,19 @@ import HomeNavBar from '../../components/NavBar/HomeNavbar';
 import { Box, Image, Text, Button } from "@chakra-ui/react";
 import mainImage from '../../assets/main_landing.jpeg';
 import imageRegister from '../../assets/image_register.jpeg'
+import Footer from '../../components/Footer/Footer';
 
 function LandingPage() {
   return (
-  <>
+  <Box overflowX='hidden'>
   <HomeNavBar/>
-  <div className={Style.container}>
-        {/*<div className={Style.titulo}>
-          <h1>El sitio que arma tus atuendos!</h1>
-        </div>*/}
-       { /*<div className={Style.boxBtn}>
-          <Link to="/home">
-            <button>Vamos!</button>
-          </Link>
-        </div>*/}
-      </div>
-        <Box h={800}>
-            <Image w='100%' h={800} objectFit='cover' src={mainImage}/>
-            <Text textAlign='center' position='relative' bottom={500} fontSize={200} color='#DAEB0F' textShadow='2xl'>Be Yourself</Text>
+        <Box h={{base: 250,md:800}} w={{base:'100%', md:'100%'}} overflowX='hidden' overflowY='hidden'>
+            <Image mt={{base:5, md:0}} w={{base:'100%', md:'100%'}} height={{base:250,md:800}} objectFit='cover' src={mainImage} overflowY='hidden'/>
+            <Text textAlign={{base:'center' ,md:'center', lg:'center'}} position={{base:'relative' ,md:'relative'}} bottom={{base:120 ,md:500}} fontSize={{base:50 ,md:200}} color='#DAEB0F' textShadow='2xl'>Be Yourself</Text>
         </Box>
 
-        <Box>
-            <Text textAlign='center' fontSize={50} mt={10} mb={5}>Don’t miss our <strong>latest trends</strong></Text>
+        <Box w='100%' overflowX='hidden'>
+            <Text textAlign='center' fontSize={{base:20,md:50}} mt={10} mb={5}>Don’t miss our <strong>latest trends</strong></Text>
             </Box>
             <Box  textAlign='center'>
                 <Link to={'/home'}><Button  backgroundColor='#272727' color='#F2F2F2' mb={5} py={0} px={5} _hover={{color:'white'}}>See more</Button></Link>
@@ -129,12 +120,12 @@ function LandingPage() {
         </div>
         </Link>
 
-        <Box display='flex' mx={300} justifyContent='center' borderRadius={10} backgroundColor='#272727' mb={50} mt={10}>
-        <Image  w='50%' src={imageRegister}></Image>
-        <Box w='50%' textAlign='left' alignItems='center' my='auto' mx={20}>
-            <Text mb={5} fontSize={40} color='#DAEB0F'><strong>The latest trends</strong></Text>
-            <Text color='#DAEB0F' fontSize={20} mb={10}>Don’t miss all of our products and <br /> all our offers </Text>
-            <Button backgroundColor='#DAEB0F'>Register</Button>
+        <Box display={{base:'flex' ,md:'flex'}} mx={{base:5 ,md:300}} justifyContent='center' borderRadius={10} backgroundColor='#272727' mb={{base:10,md:50}} mt={{md:10}}>
+        <Image  w='50%' src={imageRegister} objectFit='cover'></Image>
+        <Box w={{base:'100%' ,md:'50%'}} textAlign='left' alignItems={{base:'center' ,md:'center'}} my='auto' mx={{base:2 ,md:20}}>
+            <Text position='relative' top={{base:5 ,md:0}} mb={{base:2 ,md:5}} fontSize={{base:12 ,md:40}} color='#DAEB0F'><strong>The latest trends</strong></Text>
+            <Text position='relative' top={{base:5 ,md:0}} color='#DAEB0F' fontSize={{base:12 ,md:20}} mb={{base:10 ,md:10}}>Don’t miss all of our products and <br /> all our offers </Text>
+            <Button fontSize={{base:12, md:20}} backgroundColor='#DAEB0F'>Register</Button>
         </Box>
       </Box>
 
@@ -161,11 +152,13 @@ function LandingPage() {
         Conoce a los miembros de nuestro equipo
         </h2>
         <p className={Style.descripcionGrupo}>
-        Este proyecto no hubiera sido posible sin estar 6 personas, siempre siguiendo la idea de hacer algo fuera de lo común.
+        Este proyecto no hubiera sido posible sin estar 5 personas, siempre siguiendo la idea de hacer algo fuera de lo común.
         </p>
 
 
       <div className={Style.contenedorOrdenador}>
+
+        <div className={Style.container_4}>
         <div className={Style.cartasIntegrantes}>
           <div className={Style.cartaIntegrante}>
             <div className={Style.descripcionIntegrante}>
@@ -206,6 +199,7 @@ function LandingPage() {
               </a>
             </div>
           </div>
+        </div>
         </div>
       
 
@@ -257,49 +251,7 @@ function LandingPage() {
 
 
 
-       <div className={Style.container_4}>
-        <div className={Style.cartasIntegrantes}>
-          <div className={Style.cartaIntegrante}>
-            <div className={Style.descripcionIntegrante}>
-              <div
-                className="rounded-full bg-slate-400"
-                style={{ height: "50px", width: "50px" }}
-              >
-                <img src={member} alt=""/>
-              </div>
-              <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Leandro Frette</h3>
-                <p className={Style.develop} >
-                  FULL-STACK DEVELOPER
-                </p>
-              </div>
-            </div>
-            <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
-            </p>
-            <div className={Style.links}>
-              <a
-                className="m-3 ml-0"
-                href=" https://github.com/Lafsitoo"
-                target="_blank"
-              >
-                <div>
-                  <BsGithub></BsGithub>
-                </div>
-              </a>
-              <a
-                className="m-3"
-                href="https://www.linkedin.com/in/leandro-ariel-frette/"
-                target="_blank"
-              >
-                <div>
-                  <BsLinkedin></BsLinkedin>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-       </div>
+      
 
 
 
@@ -456,7 +408,8 @@ function LandingPage() {
       </div>
   </div>
 
-  </>
+  <Footer/>
+  </Box>
   )
 }
 
