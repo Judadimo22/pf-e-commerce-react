@@ -51,9 +51,9 @@ function App() {
         <Route exact path="/add" element={<Upload/>} />
         <Route exact path="/user/edit" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
-        <Route exact path="/user/:id/orders" element={<UserOrdersPage />} />
-        <Route exact path="/user/:id/notifications" element={<UserPage/>} />
-        <Route exact path="/user/:id/addresses" element={<AddressesPage/>} />
+        <Route exact path="/user/orders/:id" element={<UserOrdersPage />} />
+        <Route exact path="/user/notifications/:id" element={<UserPage/>} />
+        <Route exact path="/user/addresses/:id" element={<AddressesPage/>} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
         <Route exact path="/contact" element={<Contact />} />

@@ -67,19 +67,19 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
         </FormControl>
       </GridItem>
       <GridItem colSpan={7} rowSpan={1}>
-        <FormControl isInvalid={isError.address}>
+        <FormControl isInvalid={isError.addres}>
           <FormLabel>Address</FormLabel>
           <Input
             type="text"
-            name="address"
-            value={input.address}
+            name="addres"
+            value={input.addres}
             onChange={handleInputChange}
             bgColor="#fff"
             boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
           />
-          {!isError.address ? null : (
+          {!isError.addres ? null : (
             <FormErrorMessage>Address is required.</FormErrorMessage>
           )}
         </FormControl>
