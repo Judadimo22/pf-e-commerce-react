@@ -94,6 +94,7 @@ const putProduct = async (req, res) => {
     type,
     categorie,
     name,
+    active
   } = req.body;
 
   productSchema
@@ -109,6 +110,7 @@ const putProduct = async (req, res) => {
           type,
           categorie,
           name,
+          active
         },
       }
     )
