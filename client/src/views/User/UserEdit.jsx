@@ -42,9 +42,8 @@ const UserEditPage = () => {
     <>
       <HomeNavBar />
       <Flex>
-        <DashboardLeftMenu nav={nav} edit={true} user={user} />
         <Flex width="100%" justifyContent="center">
-          {user ? <MyProfile user={user} /> : null}
+          {user ? <MyProfile user={user} id={id} /> : null}
         </Flex>
       </Flex>
     </>
