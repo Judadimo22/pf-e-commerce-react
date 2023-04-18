@@ -49,7 +49,7 @@ const UserPage = () => {
     <>
     <HomeNavBar/>
     <Flex minH="91.1vh">
-      <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
+      <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState} id={id}/>
       <UserInfo/>
     </Flex>
     <Footer/>

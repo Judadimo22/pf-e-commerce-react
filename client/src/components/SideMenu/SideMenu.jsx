@@ -5,10 +5,8 @@ import NavItem from "./NavItem";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-export function DashboardLeftMenu({ nav,edit,user,userState }) {
-  // Verifica el token de autenticación y el rol del usuario
-  //como lo hago? xd
-  //que dios me guie
+export function DashboardLeftMenu({ nav,edit,user,userState, id }) {
+
   const {logout} = useAuth0()
   const location = useLocation().pathname
   console.log(user);
@@ -44,7 +42,7 @@ export function DashboardLeftMenu({ nav,edit,user,userState }) {
                   <Image src={user?.picture} />
                 </Avatar>
                 <Heading as="h3" color="#ffffff" m={2} size="md">{user?.name} {user?.lastname}</Heading>
-                <Link to="/user/edit">
+                <Link to={`/user/edit/${id}`}>
                   <Button
                     border="1px solid #f2f2f2"
                     _hover={{backgroundColor:"#DEE965", color:"#272727"}}
