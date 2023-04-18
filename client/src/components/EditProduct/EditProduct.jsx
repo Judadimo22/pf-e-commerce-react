@@ -8,6 +8,7 @@ import {
   Button,
   Select,
   Icon,
+  Flex,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -17,8 +18,39 @@ import { MdOutlineEmail } from "react-icons/md";
 import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineControl, AiOutlineCheckCircle } from "react-icons/ai";
+import StockInput from "../FormCreate/StockInput";
 
 const EditProduct = () => {
+  const array20 = [
+    {
+      id: "talla-xs",
+      content: "XS",
+    },
+    {
+      id: "talla-s",
+      content: "S",
+    },
+    {
+      id: "talla-m",
+      content: "M",
+    },
+    {
+      id: "talla-l",
+      content: "L",
+    },
+    {
+      id: "talla-xl",
+      content: "XL",
+    },
+    {
+      id: "talla-xxl",
+      content: "XXL",
+    },
+    {
+      id: "talla-xxxl",
+      content: "XXXL",
+    },
+  ]
   const dispatch = useDispatch();
   const { id } = useParams();
   const [current, setCurrent] = useState({
@@ -33,6 +65,15 @@ const EditProduct = () => {
     trademark: "",
     type: "",
     categorie: "",
+    tallas: {
+      XS: 0,
+      S: 0,
+      M: 0,
+      L: 0,
+      XL: 0,
+      XXL: 0,
+      XXXL: 0,
+    }
   });
 
   useEffect(() => {
@@ -55,23 +96,58 @@ const EditProduct = () => {
     e.preventDefault();
     setInput({
       ...input,
+      tallas: {...input.tallas,
       [e.target.name]: e.target.value,
+      }
     });
+    console.log(e.target.name)
+    console.log(e.target.value)
   }
+
+  const handleTalleChange = (content, stock) => {
+    setInput({
+      ...input,
+      tallas: {...input.tallas,
+        [content]: stock,
+        }
+    });
+  };
+
+  console.log(input)
+
+  
 
   function handleSubmit(e) {
     e.preventDefault();
     alert("The product has been updated");
-    dispatch(UpdateCloth(id, input));
-    setInput({
-      name: e.target.value,
-      description: e.target.value,
-      price: e.target.value,
-      stock: e.target.value,
-      trademark: e.target.value,
-      type: e.target.value,
-      categorie: e.target.value,
-    });
+    console.log(input)
+    const array = []
+    const tallasToDB = () => {
+      for (let key in input.tallas) {
+        if (input.tallas[key] !== 0) {
+          const obj = {
+            talla: key,
+            stock: input.tallas[key],
+          };
+          array.push(obj);
+        }
+      }
+    };
+    tallasToDB()
+    const obj1 = {
+      tallas: array
+    }
+    dispatch(UpdateCloth(id, obj1));
+    // setInput({
+    //   name: e.target.value,
+    //   description: e.target.value,
+    //   price: e.target.value,
+    //   stock: e.target.value,
+    //   trademark: e.target.value,
+    //   type: e.target.value,
+    //   categorie: e.target.value,
+    //   tallas: e.target.value
+    // });
   }
 
   const categories = ["men", "women", "kid"];
@@ -118,6 +194,20 @@ const EditProduct = () => {
               value={input.price}
             />
           </Box>
+
+          <Flex textAlign="left" mr={20} mt={5}>
+          {array20.map((i) => (
+                      <StockInput
+                        key={i.id}
+                        id={i.id}
+                        tallas={input.tallas}
+                        talla={input.tallas?.[i.content]}
+                        handleTalleChange={handleTalleChange}
+                        content={i.content}
+                        placeHolder={getProductId.tallas?.find(t => t.talla == i.content)?.stock ? getProductId.tallas?.find(t => t.talla == i.content)?.stock : 0  }
+                      />
+                    ))}
+          </Flex>
 
           <Box display="flex" justifyContent="space-between" mt={5}>
             <Box
