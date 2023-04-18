@@ -30,7 +30,7 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
   return (
     <>
       <GridItem colSpan={3} rowSpan={1}>
-        <FormControl isInvalid={isError.country}>
+        <FormControl mb="20px" isInvalid={isError.country}>
           <FormLabel>Country</FormLabel>
           <Input
             type="text"
@@ -49,7 +49,7 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
       </GridItem>
       <GridItem colSpan={1} rowSpan={1} />
       <GridItem colSpan={3} rowSpan={1}>
-        <FormControl isInvalid={isError.city}>
+        <FormControl mb="20px" isInvalid={isError.city}>
           <FormLabel>City</FormLabel>
           <Input
             type="text"
@@ -67,7 +67,7 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
         </FormControl>
       </GridItem>
       <GridItem colSpan={7} rowSpan={1}>
-        <FormControl isInvalid={isError.addres}>
+        <FormControl mb="20px" isInvalid={isError.addres}>
           <FormLabel>Address</FormLabel>
           <Input
             type="text"
