@@ -57,10 +57,11 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CLOTHES:
+      const valid = action.payload.filter(product => product.active == 'valid')
       return {
         ...state,
-        Clothes: action.payload,
-        ClothesCopy: action.payload,
+        Clothes: valid,
+        ClothesCopy: valid,
       };
     case GET_USER_BY_ID:
       return {
