@@ -1,9 +1,11 @@
-import { Box, Input, Button, GridItem, FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/react";
+import { Box, Input, Button, GridItem, FormControl, FormLabel, FormErrorMessage, FormHelperText } from "@chakra-ui/react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { updateUser } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import AddAddressForm from "../UserInfo/AddAddressForm"
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 
 export default function UserForm() {
@@ -85,23 +87,22 @@ export default function UserForm() {
 
 
 
- 
+
 
   return (
     <Box as="form">
-       <GridItem colSpan={7} rowSpan={1}>
+      <GridItem colSpan={7} rowSpan={1}>
         <FormControl isInvalid={isError.phone}>
           <FormLabel>Phone</FormLabel>
-          <Input
-            type="text"
+          <PhoneInput
             name="phone"
+            defaultCountry="US"
             value={input.phone}
-            onChange={handleInputChange}
+            onChange={(phone) => setInput({ ...input, phone })}
             bgColor="#fff"
-            boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+            style={{ boxShadow: "1px 1px 2px 0.5px rgba(0,0,0,0.15)" }}
           />
+          <FormHelperText>Start with your country prefix</FormHelperText>
           {!isError.phone ? null : (
             <FormErrorMessage>Phone is required.</FormErrorMessage>
           )}
@@ -113,7 +114,7 @@ export default function UserForm() {
         isError={isError}
         setIsError={setIsError} />
 
-      <Button  onClick={addAddresSubmit}>Continue</Button>
+      <Button onClick={addAddresSubmit}>Continue</Button>
     </Box>
   );
 }
