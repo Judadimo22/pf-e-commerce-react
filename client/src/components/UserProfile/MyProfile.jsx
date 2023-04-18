@@ -1,20 +1,34 @@
-import { Box, Input, Button, GridItem, FormControl, FormLabel, FormErrorMessage } from "@chakra-ui/react";
+import {
+  Box,
+  Input,
+  Button,
+  GridItem,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Text,
+  Grid,
+  Heading,
+  Flex,
+} from "@chakra-ui/react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { updateUser } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import AddAddressForm from "../UserInfo/AddAddressForm"
-
+import AddAddressForm from "../UserInfo/AddAddressForm";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 export default function UserForm() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const addresses = useSelector((state) => state.user.location);
+  const [phone, setPhone] = useState("");
   const [input, setInput] = useState({
     country: "",
     city: "",
     addres: "",
-    phone: "",
   });
 
   const [isError, setIsError] = useState({
@@ -43,32 +57,34 @@ export default function UserForm() {
         ...isError,
         addres: true,
       });
-    } else if (!input.phone) {
+    } else if (!phone) {
       setIsError({
         ...isError,
         phone: true,
       });
     }
 
-    if (!input.country || !input.city || !input.addres || !input.phone) {
+    if (!input.country || !input.city || !input.addres || !phone) {
       return;
     } else {
       setSwi(swi == true ? false : true);
       const location = {
-        phone:input.phone,
-        location: [input, ...addresses]
+        phone: phone,
+        location: [input, ...addresses],
       };
+      console.log(location);
       dispatch(updateUser(id, location));
       setInput({
         country: "",
         city: "",
         addres: "",
-        phone: "",
       });
+      setPhone("");
     }
   };
 
   const handleInputChange = (e) => {
+    console.log(e);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -86,38 +102,64 @@ export default function UserForm() {
     }
   };
 
-
-
- 
-
   return (
-    <Box as="form">
-       <GridItem colSpan={7} rowSpan={1}>
-        <FormControl isInvalid={isError.phone}>
-          <FormLabel>Phone</FormLabel>
-          <Input
-            type="text"
+    <Flex h="91.1vh" w="100%" flexDir="column" p="50px 300px">
+      <Flex width="100%" mb="60px" justifyContent="center">
+        <Heading as="h1" size="3xl">
+          Complete your profile
+        </Heading>
+      </Flex>
+      <Flex w="100%" flexDir="column">
+        <FormLabel>Phone</FormLabel>
+        <FormControl
+          w="100%"
+          height="2.5rem"
+          mb="20px"
+          isInvalid={isError.phone}
+        >
+          <PhoneInput
             name="phone"
-            value={input.phone}
-            onChange={handleInputChange}
-            bgColor="#fff"
-            boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+            defaultCountry="US"
+            value={phone}
+            onChange={setPhone}
+            style={{
+              boxShadow: "1px 1px 2px 0.5px rgba(0,0,0,0.15)",
+              height: "100%",
+              backgroundColor: "#fff",
+              borderRadius: "0.375rem",
+              padding: "0 15px",
+            }}
           />
-          {!isError.phone ? null : (
+          {!phone ? null : (
             <FormErrorMessage>Phone is required.</FormErrorMessage>
           )}
         </FormControl>
-      </GridItem>
-      <AddAddressForm
-        input={input}
-        setInput={setInput}
-        isError={isError}
-        setIsError={setIsError} />
-
-      <Button  onClick={addAddresSubmit}>Continue</Button>
-    </Box>
+      </Flex>
+      <Flex flexDir="column">
+        <Grid mb="40px">
+          <AddAddressForm
+            input={input}
+            setInput={setInput}
+            isError={isError}
+            setIsError={setIsError}
+          />
+        </Grid>
+        <Link to="/home">
+          <Button
+            w="100%"
+            bgColor="#272727"
+            color="#f2f2f2"
+            _hover={{
+              bgColor: "#fff",
+              color: "#272727",
+              border: "1px solid #272727",
+            }}
+            onClick={addAddresSubmit}
+          >
+            Continue
+          </Button>
+        </Link>
+      </Flex>
+    </Flex>
   );
 }
-
