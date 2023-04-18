@@ -58,13 +58,6 @@ const EditProduct = () => {
   });
   const getProductId = useSelector((state) => state.Details);
   const [input, setInput] = useState({
-    name: "",
-    description: "",
-    price: getProductId.price,
-    stock: "",
-    trademark: "",
-    type: "",
-    categorie: "",
     tallas: {
       XS: 0,
       S: 0,
@@ -76,12 +69,23 @@ const EditProduct = () => {
     }
   });
 
+  const [inputInfo, setInputInfo] = useState({
+    name: "",
+    description: "",
+    price: '',
+    stock: "",
+    trademark: "",
+    type: "",
+    categorie: "",
+    active: ''
+  }) 
+
   useEffect(() => {
     dispatch(getClothById(id));
   }, [id]);
 
   useEffect(() => {
-    setInput({
+    setInputInfo({
       name: getProductId.name,
       price: getProductId.price,
       description: getProductId.description,
@@ -89,16 +93,15 @@ const EditProduct = () => {
       trademark: getProductId.trademark,
       type: getProductId.type,
       categorie: getProductId.categorie,
+      active: getProductId.active
     });
   }, [getProductId]);
 
   function handleInputChange(e) {
     e.preventDefault();
-    setInput({
-      ...input,
-      tallas: {...input.tallas,
+    setInputInfo({
+      ...inputInfo,
       [e.target.name]: e.target.value,
-      }
     });
     console.log(e.target.name)
     console.log(e.target.value)
@@ -115,11 +118,27 @@ const EditProduct = () => {
 
   console.log(input)
 
+  function handleSubmitInfo(e){
+    e.preventDefault();
+    alert("The product has been updated");
+    dispatch(UpdateCloth(id, inputInfo));
+    setInputInfo({
+      name: e.target.value,
+      description: e.target.value,
+      price: e.target.value,
+      stock: e.target.value,
+      trademark: e.target.value,
+      type: e.target.value,
+      categorie: e.target.value,
+      active: e.target.value
+    });
+  }
+
   
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert("The product has been updated");
+    alert("The sizes has been updated");
     console.log(input)
     const array = []
     const tallasToDB = () => {
@@ -138,16 +157,7 @@ const EditProduct = () => {
       tallas: array
     }
     dispatch(UpdateCloth(id, obj1));
-    // setInput({
-    //   name: e.target.value,
-    //   description: e.target.value,
-    //   price: e.target.value,
-    //   stock: e.target.value,
-    //   trademark: e.target.value,
-    //   type: e.target.value,
-    //   categorie: e.target.value,
-    //   tallas: e.target.value
-    // });
+
   }
 
   const categories = ["men", "women", "kid"];
@@ -161,10 +171,12 @@ const EditProduct = () => {
   ];
   const type = ["shirts", "pants", "hoodies", "hats"];
 
+  const active = ['valid', 'invalid']
+
   return (
     <Box>
       <FormControl>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitInfo}>
           <Box display="flex" mb={5}>
             <Text fontWeight={1000} fontSize={30} mr={1}>
               EditProduct
@@ -187,28 +199,16 @@ const EditProduct = () => {
               <strong>Price</strong>
             </Text>
             <Input
+              onChange={(e) => handleInputChange(e)}
+              key='price'
+              name='price'
               bgColor="#fff"
               boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-              value={input.price}
+              value={inputInfo.price}
             />
           </Box>
-
-          <Flex textAlign="left" mr={20} mt={5}>
-          {array20.map((i) => (
-                      <StockInput
-                        key={i.id}
-                        id={i.id}
-                        tallas={input.tallas}
-                        talla={input.tallas?.[i.content]}
-                        handleTalleChange={handleTalleChange}
-                        content={i.content}
-                        placeHolder={getProductId.tallas?.find(t => t.talla == i.content)?.stock ? getProductId.tallas?.find(t => t.talla == i.content)?.stock : 0  }
-                      />
-                    ))}
-          </Flex>
-
           <Box display="flex" justifyContent="space-between" mt={5}>
             <Box
               w={420}
@@ -267,7 +267,13 @@ const EditProduct = () => {
               </Box>
             </Box>
           </Box>
-          <Box textAlign="left" w={180}>
+          <Box display='flex' justifyContent='space-between' mt={5}>
+            <Box w={420}
+              borderRadius={10}
+              alignItems="center"
+              display="flex"
+              justifyContent="space-between">
+            <Box textAlign="left" w={180}>
             <FormLabel fontSize={20}>
               <strong>Category</strong>
             </FormLabel>
@@ -287,11 +293,56 @@ const EditProduct = () => {
               ))}
             </Select>
           </Box>
+            </Box>
+            <Box w={420}
+              borderRadius={10}
+              alignItems="center"
+              display="flex"
+              justifyContent="space-between">
+            <Box textAlign="left" w={180}>
+            <FormLabel fontSize={20}>
+              <strong>Active</strong>
+            </FormLabel>
+            <Select
+              bgColor="#fff"
+              boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                        -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                        box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+              name="active"
+              onChange={(e) => handleInputChange(e)}
+            >
+              <option value="">Select Active</option>
+              {active.map((a) => (
+                <option value={a} key={a}>
+                  {a}
+                </option>
+              ))}
+            </Select>
+          </Box>
+            </Box>
+          </Box>
+
           <Box w="100%" textAlign="center" mt={5}>
             <Button w="100%" backgroundColor="#DAEB0F" type="submit">
-              Update
+              Update info
             </Button>
           </Box>
+        </form>
+        <form onSubmit={handleSubmit}>
+        <Flex alignItems='center' textAlign="left" mr={20} mt={5}>
+          {array20.map((i) => (
+                      <StockInput
+                        key={i.id}
+                        id={i.id}
+                        tallas={input.tallas}
+                        talla={input.tallas?.[i.content]}
+                        handleTalleChange={handleTalleChange}
+                        content={i.content}
+                        placeHolder={getProductId.tallas?.find(t => t.talla == i.content)?.stock ? getProductId.tallas?.find(t => t.talla == i.content)?.stock : 0  }
+                      />
+                    ))}
+          <Button position='relative' top={2} backgroundColor="#DAEB0F" alignItems='center' type='submit'>Update Tallas</Button>
+          </Flex>
         </form>
       </FormControl>
     </Box>
