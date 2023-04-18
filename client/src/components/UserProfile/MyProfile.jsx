@@ -56,7 +56,10 @@ export default function UserForm() {
       return;
     } else {
       setSwi(swi == true ? false : true);
-      const location = { location: [input, ...addresses] };
+      const location = {
+        phone:input.phone,
+        location: [input, ...addresses]
+      };
       dispatch(updateUser(id, location));
       setInput({
         country: "",
