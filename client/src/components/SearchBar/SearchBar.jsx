@@ -26,11 +26,11 @@ export default function SearchBar() {
   };
 
     return(
-        <Box color='#565656' >
+        <Box color='#565656' backgroundColor={{base:'#F2F2F2', md:'white'}} mt={{base:5, md:0}}>
             <FormControl display='flex' justifyContent='center'>
             <form onSubmit={(e) => handleCLick(e)}>
-            <Button fontSize={25} cursor='pointer' position='relative' zIndex={20} left={{base:0,md:14}} _hover='none' border='none' background='none' bac onClick={(e) => handleCLick(e)}><IoIosSearch/></Button>
-                <Input  pl={{base:0 ,md:50}} borderRadius={20} backgroundColor='#F2F2F2' border='none' fontSize={16} h={{base:5,md:35}} w={{base:100,md:250}}  type="text" id="" value={name} placeholder="Search ..." onChange={(e) => handleInputChange(e)} />
+            <Button fontSize={{base:30, md:25}} cursor='pointer' position='relative' zIndex={20} left={{base:0,md:14}} _hover='none' border='none' background='none' bac onClick={(e) => handleCLick(e)}><IoIosSearch/></Button>
+                <Input  pl={{base:0 ,md:50}} borderRadius={20} backgroundColor='#F2F2F2' border='none' fontSize={{base:20,md:16}} h={{base:10,md:35}} w={{base:'70%',md:250}}  type="text" id="" value={name} placeholder="Search ..." onChange={(e) => handleInputChange(e)} />
             </form>
             </FormControl>
         </Box>

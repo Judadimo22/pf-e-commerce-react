@@ -4,20 +4,21 @@ import Filtrers from "../../components/Filters/Filtrers";
 import style from './Home.module.css'
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import Footer from "../../components/Footer/Footer"
+import { Box } from "@chakra-ui/react";
 const Home = () => {
     return(
-        <div className={style.containerHome}>
+        <Box>
             <HomeNavBar/>
-            <div className={style.containerFilters}>
-                <div className={style.filters}>
+            <Box display={{base:'block' ,md:'flex'}} justifyContent={{base:'center' ,md:'space-between'}} mx={20}>
+                <Box mt={{base:20,md:10}} display={{base:'none' , md:'block'}}>
                 <Filtrers/>
-                </div>
-                <div className={style.cards}>
+                </Box>
+                <Box mb={10} mt={{base:20,md:10}} >
                 <ListCard/>
-                </div>
-            </div>
+                </Box>
+            </Box>
             <Footer/>
-        </div>
+        </Box>
     )
 };
 

@@ -72,7 +72,7 @@ export const ListCard = () => {
             <Button>clear search</Button>
           </Flex>
           ) : null}
-          <Box className={styles.product}>
+          <Box display={{base:'block' ,md:'grid'}} gridTemplateColumns='325px 325px 325px'>
             {filteredProducts
               .slice(pageSliceStart, pageSliceEnd)
               .map((product) => (
@@ -81,7 +81,7 @@ export const ListCard = () => {
           </Box>
         </Flex>
       ) : (
-        <Box className={styles.product}>
+        <Box  display='flex' justifyContent='center' pl='20%' className={styles.product}>
           <LoadingCards />
         </Box>
       )}

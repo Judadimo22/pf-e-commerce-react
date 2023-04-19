@@ -24,7 +24,7 @@ const ByType = () => {
   return (
   <>
     <Flex justifyContent="space-between"  alignItems="center">
-      <Text fontFamily="Jaldi" fontSize="2rem" fontWeight="bold" pt="1rem">
+      <Text fontFamily="Jaldi" fontSize={{base:'16px',md:"2rem"}}fontWeight="bold" pt="1rem">
         Type
       </Text>
       {
@@ -44,6 +44,7 @@ const ByType = () => {
             value={a}
             display="flex"
             justifyContent="flex-start"
+            fontSize={{base:'12px' ,md:'20px'}}
             key={index}>{capitalize(a)}</Tab>)
         )}
       </TabList>

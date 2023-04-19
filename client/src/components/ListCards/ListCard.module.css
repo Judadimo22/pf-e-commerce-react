@@ -2,38 +2,4 @@
    display: grid;
    justify-content: center;
    grid-template-columns: 325px 325px 325px;
-   flex-wrap: wrap;
 }
-.by_continent{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border: none;
-   height: 35px;
-   width: 200px;
-   padding: 7px;    
-   cursor: pointer;
-   border-radius: 10px;
-   color: #334142;
-   background-color: #D6E4E5;
-}
-.select {
-   display: flex;
-}
-
-
-.by_continent:focus{
-   outline: none;
-}
-
-.by_continent::selection{
-   outline: none;
-   color: #334142;
-   background-color: #D6E4E5;
-
-}
-.option{
-   cursor: pointer;
-   box-shadow: none;
-   border: none;
-} 

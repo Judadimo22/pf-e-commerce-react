@@ -33,7 +33,7 @@ const ByTrademark = () => {
   return (
     <>
     <Flex justifyContent="space-between"  alignItems="center">
-      <Text fontFamily="Jaldi" fontSize="2rem" fontWeight="bold" pt="1rem">
+      <Text fontFamily="Jaldi" fontSize={{base:'16px',md:"2rem"}}fontWeight="bold" pt="1rem">
       Trademark
       </Text>
       {
@@ -53,6 +53,7 @@ const ByTrademark = () => {
             justifyContent="flex-start"
             className="option" 
             key={index}
+            fontSize={{base:'12px' ,md:'20px'}}
             >{a}</Tab>)
           )}
   </TabList>

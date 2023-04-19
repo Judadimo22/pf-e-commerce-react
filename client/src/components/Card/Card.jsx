@@ -50,8 +50,8 @@ export const ProductCard = (props) => {
     alert(`se agrego a se lista de compras`)
   };
   return (
-    <Flex flexDirection="column" className={style.containerCard}>
-      <Box
+    <Flex w={{md:'250px' ,base:'auto'}} flexDirection="column" className={style.containerCard}>
+      <Box w={{md:'250px', base:'auto'}}
         className={style.boxContainer}
         backgroundImage={productImage}
         minH="320px"

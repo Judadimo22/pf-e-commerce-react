@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 const Filtrers = () => {
   return (
-    <Flex flexDir="column">
+    <Box display={{ base:'flex',md:'block'}} flexWrap='wrap'>
       <div>
         <ByCategorie />
       </div>
@@ -42,7 +42,7 @@ const Filtrers = () => {
       <div className="filter-sort-bytype"> 
         <SortByPrice />
       </div>
-    </Flex>
+    </Box>
   );
 };
 

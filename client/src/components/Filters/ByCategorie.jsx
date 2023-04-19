@@ -27,7 +27,7 @@ const ByCategorie = () => {
     <>
       
       <Flex justifyContent="space-between"  alignItems="center">
-      <Text fontFamily="Jaldi" fontSize="2rem" fontWeight="bold" pt="1rem">
+      <Text fontFamily="Jaldi" fontSize={{base:'16px',md:"2rem"}} fontWeight="bold" pt="1rem">
       Category
       </Text>
       {
@@ -39,7 +39,7 @@ const ByCategorie = () => {
       <Tabs variant='unstyled' align='start' onChange={(index)=>dispatch(changeIndex(["category",index]))}  index={selectIndex} defaultIndex="" justifyContent="flex-start">
   <TabList flexDir="column" >
   {categories.map((a,index)=> 
-          (<Tab _selected={{ color: '#272727', bg: '#DAEB0F' }} onClick={onChange} value={a} display="flex" justifyContent="flex-start" className="option" key={index}>{capitalize(a)}</Tab>)
+          (<Tab _selected={{ color: '#272727', bg: '#DAEB0F' }} onClick={onChange} value={a} display="flex" justifyContent="flex-start" className="option" key={index} fontSize={{base:'12px' ,md:'20px'}}>{capitalize(a)}</Tab>)
           )}
   </TabList>
   

@@ -18,12 +18,22 @@ import {
   Text,
   Image,
   Heading,IconButton,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  Input,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import logo from "../../assets/logo/logoC3.jpeg";
+import Filtrers from "../Filters/Filtrers";
 
 const HomeNavBar = () => {
   const location = useLocation();
@@ -77,6 +87,9 @@ const HomeNavBar = () => {
     }
   }, [user]);
   console.log(userState.roll);
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   return (
     <>
@@ -162,40 +175,36 @@ const HomeNavBar = () => {
             </Link>
           </Box>
         </Flex>
-        <Box background='none' border='none'>
-          <Menu background='none' border='none' zIndex={400}>
-            <MenuButton
-            display={{base:'block', md:'none'}}
-            as={IconButton}
-            aria-label='Options'
-            icon={<AiOutlineMenu />}
-           variant='outline'
-           background='white'
-           border='none'
-           fontSize={20}
-           _active={{background:'none'}}
-           />
-          <MenuList zIndex={300}>
-            <MenuItem mb={3}>
-            <SearchBar/>
-            </MenuItem>
-            <Link to='/home'>
-            <MenuItem>
-            Home
-            </MenuItem>
-            </Link>
-            <Link to='/cart'>
-            <MenuItem>
-          <Box display='flex'>
-            <Text mr={2}>Cart</Text> 
-            <Icon fontSize={21} position='relative' top={1}><AiOutlineShoppingCart /></Icon>
-          </Box>
-          </MenuItem>
-            </Link>
-         </MenuList>
-       </Menu>
-      </Box>
+        <Box display={{base:'block',md:'none'}}>
+      <Button ref={btnRef} background='none' onClick={onOpen}>
+        <AiOutlineMenu/>
+      </Button>
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        w={200}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Create your account</DrawerHeader>
 
+          <DrawerBody>
+            <Link to='/cart'><Button w='full' mt={5}>Go to cart</Button></Link>
+            <SearchBar/>
+            <Filtrers/> 
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button variant='outline' mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </Box>
       </Flex>
     </>
   );
