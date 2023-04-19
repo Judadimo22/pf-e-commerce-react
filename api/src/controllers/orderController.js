@@ -6,13 +6,7 @@ const userSchema = require("../models/User");
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 
-const orderSchema = require("../models/Order");
-const Order = require("../models/Order");
-const axios = require("axios");
-const productSchema = require("../models/Product");
-const userSchema = require("../models/User");
-const User = require("../models/User");
-const nodemailer = require("nodemailer");
+
 
 const postOrder = async (req, res) => {
   try {
