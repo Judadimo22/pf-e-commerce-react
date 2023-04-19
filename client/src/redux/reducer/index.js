@@ -22,6 +22,8 @@ import {
   INFO_USER_BY_ID,
   UPDATE_USER,
   IS_SEARCH_INPUT,
+  GET_CLOTHES_ADMIN,
+  SEARCH_ADMIN
 } from "../actions/index";
 
 const computeFilteredData = (
@@ -40,6 +42,8 @@ const computeFilteredData = (
 const initialState = {
   Clothes: [],
   ClothesCopy: [],
+  ClothesAdmin : [],
+  ClothesAdminCopy: [],
   Details: [],
   filterInputs: {
     byType: "",
@@ -67,8 +71,14 @@ function rootReducer(state = initialState, action) {
       const valid = action.payload.filter(product => product.active == 'valid')
       return {
         ...state,
-        Clothes: action.payload,
+        Clothes: valid,
         ClothesCopy: valid,
+      };
+    case GET_CLOTHES_ADMIN:
+      return {
+        ...state,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload,
       };
     case IS_SEARCH_INPUT:
       return {
@@ -102,6 +112,17 @@ function rootReducer(state = initialState, action) {
         ...state,
         searchResults: search.length,
         ClothesCopy: [...search],
+      };
+    }
+    case SEARCH_ADMIN: {
+      let search = [];
+      search = state.ClothesAdmin?.filter((c) =>
+        c.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        searchResults: search.length,
+        ClothesAdminCopy: [...search],
       };
     }
     case SEARCH_USER: {

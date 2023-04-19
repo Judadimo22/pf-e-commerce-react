@@ -6,10 +6,10 @@ import { LoginButton} from '../Login/login'
 import { LogOutButton } from '../Login/logOut'
 import ByCategorie from "../Filters/ByCategorie";
 import ByType from "../Filters/ByType";
-import SearchBar from '../SearchBar/SearchBar'
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import SearchBarAdmin from "../SearchBar/SearchBarAdmin";
 
 
 
@@ -26,7 +26,7 @@ const AdminNavBar = () => {
                     <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Casual Couture</Text>
                 </div>
             </Link>
-            <SearchBar/>
+            <SearchBarAdmin/>
         </Flex>
     )
 };

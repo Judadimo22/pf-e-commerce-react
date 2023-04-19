@@ -3,16 +3,14 @@ import styles from './Clothes.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { Cloth } from './Cloth';
 import { Pagination } from '../Paginado/Paginado';
-import { getClothes } from '../../redux/actions';
+import { getClothes, getClothesAdmin } from '../../redux/actions';
 import { Flex, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 
 export const Clothes = () => {
 
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const Products = useSelector((state) => state.Clothes)
-  const ADIDAS = Products?.filter(product => product.trademark === 'ADIDAS')
-  console.log(ADIDAS.length)
+  const Products = useSelector((state) => state.ClothesAdminCopy)
   const resultsPerPage = 15
   const numberOfResults = Products.length
   const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
@@ -27,7 +25,7 @@ export const Clothes = () => {
   useEffect(() => {
     getClothes()
     const getData = async ( ) => {
-      return dispatch(getClothes())
+      return dispatch(getClothesAdmin())
     }
     
   
