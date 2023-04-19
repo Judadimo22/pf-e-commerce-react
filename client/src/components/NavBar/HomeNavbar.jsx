@@ -67,7 +67,7 @@ const HomeNavBar = () => {
           console.log(newUser);
           dispatch(createUser(newUser))
           .then(
-            //(e) => (window.location.href = `/user/edit/${e.payload.data._id}`)
+            (e) => (window.location.href = `/user/edit/${e.payload.data._id}`)
           );
         } else {
           setInfoUser(userDb);
