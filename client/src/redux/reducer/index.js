@@ -269,6 +269,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         Clothes: action.payload,
         ClothesCopy: action.payload,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload
       };
     case PUT_USERS:
       return {
