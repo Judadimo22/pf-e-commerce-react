@@ -17,6 +17,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
+import Swal from "sweetalert2";
 
 
 
@@ -74,7 +75,13 @@ import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
 
     function handleSubmit(e){
         e.preventDefault();
-        alert("The user has been updated");
+        Swal.fire({
+            icon: 'success',
+            title: '¡Success!',
+            text: 'The user info has been updated',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Continue'
+          })
         dispatch(updateUser(id, input));
         setInput({
             email: getUserId.email,
