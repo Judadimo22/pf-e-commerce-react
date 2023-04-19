@@ -64,7 +64,7 @@ export const Details = () => {
       id: productDetails.id,
       name: productDetails.name,
       price: productDetails.price,
-      size: selectedSize,
+      size: selectedSize ,
       color: selectedColor,
       image: productDetails.image,
       quantity: 1,
@@ -162,13 +162,13 @@ export const Details = () => {
                   pr="3rem"
                   _hover="white"
                   color="#272727"
-                  disabled={!selectedSize || !selectedColor}
+                  isDisabled={!selectedSize}
                   onClick={handleAddToCart}
                   leftIcon={<FaShoppingCart />}
                 >
                   Agregar al carrito
                 </Chakra.Button>
-
+              
                 <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
                 {selectedSize === "" ? "Selecciona una talla" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
 

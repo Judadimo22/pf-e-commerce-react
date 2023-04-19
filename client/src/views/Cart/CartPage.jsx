@@ -65,17 +65,7 @@ const CartPage = () => {
     0
   );
 
-  const handleCheckout = () => {
-    {
-      isAuthenticated ? (
-        null//<MPButton id={cartItems} />
-      ) : (
-        <button onClick={handlerPay}>Buy</button>
-      );
-    }
-  };
-
-  console.log(handleCheckout());
+  const size = cartItems.size
 
   return (
     <>
@@ -110,6 +100,7 @@ const CartPage = () => {
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">
+             
                 {/* <Button
                   mt={2}
                   mb={5}
@@ -119,6 +110,7 @@ const CartPage = () => {
                 >
                   Comprar
                 </Button> */}
+               
                 {isAuthenticated ? (
                   <MPButton id={cartItems} />
                 ) : (

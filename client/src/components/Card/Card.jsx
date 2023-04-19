@@ -11,7 +11,8 @@ export const ProductCard = (props) => {
   const productTrademark = props.product.trademark;
   const productImage = props.product.image;
   const productName = props.product.name;
-  const handleAddToCart = () => {
+  const producTallas = props.product.tallas;
+   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
     const product = {
       id: props.product.id,
@@ -19,6 +20,7 @@ export const ProductCard = (props) => {
       price: props.product.price,
       image: props.product.image,
       quantity: 1,
+      sizes: props.product.tallas
       
     };
 
