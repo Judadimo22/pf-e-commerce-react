@@ -25,8 +25,8 @@ import axios from "axios"
 import AddressesPage from './views/User/AddressesPage';
 import UserOrdersPage from './views/User/UserOrdersPage';
 import ProductEditPage from './views/Admin/ProductEdit';
-// axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-axios.defaults.baseURL = "http://localhost:3001"
+axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+// axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
