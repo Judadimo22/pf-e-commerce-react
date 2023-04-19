@@ -170,7 +170,7 @@ export const Details = () => {
                 </Chakra.Button>
 
                 <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
-                  {selectedSize == "" ? null : (productDetails.tallas.find(t => t.talla == selectedSize).stock + " Disponibles") }  
+                {selectedSize === "" ? "Selecciona una talla" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
 
                 </Chakra.Text>
               </Chakra.Flex>
