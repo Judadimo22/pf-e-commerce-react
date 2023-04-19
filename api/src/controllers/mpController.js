@@ -12,7 +12,7 @@ const pagarProducto = async (req, res) => {
     items: [],
 
     back_urls: {
-      success: "https://pf-e-commerce-react.vercel.app/",
+      success: "http://127.0.0.1:5173/",
       failure: "https://pf-e-commerce-react.vercel.app/",
       pending: "https://pf-e-commerce-react.vercel.app/",
     },
@@ -29,6 +29,8 @@ const pagarProducto = async (req, res) => {
       unit_price: e.price,
     });
   });
+
+  let idData = "";
 
   mercadopago.preferences
     .create(preference)
