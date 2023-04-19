@@ -18,7 +18,7 @@ export function MPButton({ id }) {
   };
 
   const fetchCheckout = async () => {
-    const res = await fetch("http://localhost:3001/cloth/buy", {
+    const res = await fetch("/cloth/buy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
