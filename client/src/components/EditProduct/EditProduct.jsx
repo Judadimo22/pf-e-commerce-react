@@ -76,7 +76,7 @@ const EditProduct = () => {
     stock: "",
     trademark: "",
     type: "",
-    categorie: "",
+    categorie: '',
     active: ''
   }) 
 
@@ -217,26 +217,12 @@ const EditProduct = () => {
               display="flex"
               justifyContent="space-between"
             >
-              <Box textAlign="left" mr={20}>
+            <Box textAlign="left" mr={20}>
                 <FormLabel fontSize={20}>
                   <strong>Type</strong>
                 </FormLabel>
-                <Select
-                  bgColor="#fff"
-                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-                  name="type"
-                  onChange={(e) => handleInputChange(e)}
-                >
-                  <option value="">Select Type</option>
-                  {type.map((type) => (
-                    <option value={type} key={type}>
-                      {type}
-                    </option>
-                  ))}
-                </Select>
-              </Box>
+                <Text>{getProductId.type}</Text>
+            </Box>
             </Box>
             <Box
               w={420}
@@ -249,21 +235,7 @@ const EditProduct = () => {
                 <FormLabel fontSize={20}>
                   <strong>Trademark</strong>
                 </FormLabel>
-                <Select
-                  bgColor="#fff"
-                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-                  name="trademark"
-                  onChange={(e) => handleInputChange(e)}
-                >
-                  <option value="">Select Trademark</option>
-                  {trademarks.map((trademark) => (
-                    <option value={trademark} key={trademark}>
-                      {trademark}
-                    </option>
-                  ))}
-                </Select>
+                <Text>{getProductId.trademark}</Text>
               </Box>
             </Box>
           </Box>
@@ -277,21 +249,7 @@ const EditProduct = () => {
             <FormLabel fontSize={20}>
               <strong>Category</strong>
             </FormLabel>
-            <Select
-              bgColor="#fff"
-              boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                        -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                        box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-              name="categorie"
-              onChange={(e) => handleInputChange(e)}
-            >
-              <option value="">Select Category</option>
-              {categories.map((category) => (
-                <option value={category} key={category}>
-                  {category}
-                </option>
-              ))}
-            </Select>
+            <Text>{getProductId.categorie}</Text>
           </Box>
             </Box>
             <Box w={420}

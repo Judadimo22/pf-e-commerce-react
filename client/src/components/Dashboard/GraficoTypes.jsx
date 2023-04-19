@@ -11,6 +11,7 @@ import{
     Legend,
     Filler
 } from 'chart.js'
+import { useSelector } from "react-redux";
 
 ChartJS.register(
     CategoryScale,
@@ -23,8 +24,19 @@ ChartJS.register(
     Filler
 )
 
-var cantidad = [0, 10, 2, 30, 5, 8, 60]
-const types = ["shirts", "pants", "hoodies", "hats"];
+
+
+export function GraficoTypes(){
+
+const Products = useSelector((state) => state.Clothes)
+const shirts = Products?.filter(product => product.type === 'shirts')
+const pants = Products?.filter(product => product.type === 'pants')
+const hoodies = Products?.filter(product => product.type === 'hoodies')
+const hats= Products?.filter(product => product.type === 'hats')
+console.log(shirts)
+ 
+var cantidad = [shirts?.length, pants?.length, hoodies?.length, hats?.length]
+const types = ["Shirts", "Pants", "Hoodies", "Hats"];
 
 var miData = {
     labels: types,
@@ -47,7 +59,5 @@ var miData = {
 var misOptions = {
 
 }
-
-export function GraficoTypes(){
     return <Line data={miData} options={misOptions}/>
 } 

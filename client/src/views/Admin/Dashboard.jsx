@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import HomeNavBar from '../../components/NavBar/HomeNavbar';
 import { getUserById } from '../../redux/actions';
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex, Box, Text, Heading } from '@chakra-ui/react';
 import {GraficoTrademarks } from '../../components/Dashboard/GraficoTrademarks';
 import { GraficoTypes } from '../../components/Dashboard/GraficoTypes';
 import { GraficoCategories } from '../../components/Dashboard/GraficoCategories';
@@ -72,24 +72,36 @@ const Dashboard = () => {
     return (
       <>
         <AdminNavBar/>
-        <Flex wrap='wrap'>
+        <Flex wrap='wrap' minH='90vh'>
         <DashboardLeftMenu nav={nav} user={user} userState={userState}/>
-        <Box display='flex' justifyContent='space-between' mx='auto' pt={5}>
-          <Box mx={5} w={600}>
-          <GraficoTrademarks/>
-          </Box>
-          <Box mx={5} w={600}>
-          <GraficoTypes/>
-          </Box>
+        <Flex>
+        <Box pl='10%'>
+          <Heading pt={4} pb={2}>
+          Stadistics
+          </Heading>
+          <Text>
+          A page that assists in the identification of patterns and insights to help with decision-making and performance optimization.
+          </Text>
         </Box>
+        </Flex>
+        
+        <Box flexDirection='column' pl='25%' >
         <Box display='flex' justifyContent='space-between' mx='auto' pt={5}>
-        <Box mx={5} w={600} h={300}  justifyContent='center' position='relative' left={320}>
+        <Box mx={5} w={560} h={260}  justifyContent='center' display='flex' >
+
           <GraficoCategories/>
         </Box>
-        <Box mx={5} w={600} position='relative' left={175}>
+        <Box mx={5} w={560}>
           <GraficoTypes/>
           </Box> 
         </Box>
+        <Box mx='auto' pt={5}>
+          <Flex  h={285} justifyContent='center' mb={10}>
+          <GraficoTrademarks/>
+          </Flex>
+        </Box>
+        </Box>
+
         </Flex>
       </>
   )
