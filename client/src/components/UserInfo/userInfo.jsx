@@ -26,7 +26,6 @@ function UserInfo() {
   useEffect(() => {
     dispatch(getUserById(id));
   }, []);
-  console.log(`${user.country} - ${user.city}`);
 
   return (
     <Grid
@@ -55,9 +54,9 @@ function UserInfo() {
 
       <InfoCard
         header="Country"
-        info={user.country}
+        info={user.location[user.location?.length-1]?.country}
         icon={TbMap2}
-        conditional={!user.country}
+        conditional={!user.location[user.location?.length-1]?.country}
       />
 
       <GridItem colSpan={1} />

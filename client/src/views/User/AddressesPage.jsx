@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { getUserById } from '../../redux/actions';
 import UserAddresses from '../../components/UserInfo/UserAddresses';
+import Footer from '../../components/Footer/Footer';
 
 const AddressesPage = () => {
     const userState = useSelector(state=>state.user)
@@ -50,6 +51,7 @@ const AddressesPage = () => {
         <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
         <UserAddresses/>
       </Flex>
+      <Footer/>
     </>
     )
 }

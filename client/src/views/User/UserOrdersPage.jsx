@@ -11,6 +11,7 @@ import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import { useParams } from "react-router-dom";
 import { TbTruckDelivery, TbUserCircle } from "react-icons/tb";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
+import Footer from "../../components/Footer/Footer";
 
 const UserOrdersPage = () => {
   const userState = useSelector((state) => state.user);
@@ -72,6 +73,7 @@ const UserOrdersPage = () => {
           </Flex>
         </Flex>
       </Flex>
+      <Footer />
     </>
   );
 };

@@ -21,7 +21,7 @@ const UserPage = () => {
   useEffect(() => {
     if (!userState.length) dispatch(getUserById(id));
   }, []);
-
+  console.log(user);
   const nav = [
     {
       icon: TbUserCircle,
@@ -49,7 +49,7 @@ const UserPage = () => {
     <>
     <HomeNavBar/>
     <Flex minH="91.1vh">
-      <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
+      <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState} id={id}/>
       <UserInfo/>
     </Flex>
     <Footer/>
@@ -57,4 +57,4 @@ const UserPage = () => {
   )
 }
 
-export default UserPage;
+export default UserPage
