@@ -29,7 +29,17 @@ export function MPButton({ id }) {
     });
     const data = await res.json();
 
-    console.log(data);
+    // const order = await fetch("http://localhost:3001/feedback", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+
+    // const orden = await order.json();
+
+    console.log("Esto es data:" + data.id);
     if (data) {
       const script = document.createElement("script");
       script.type = "text/javascript";

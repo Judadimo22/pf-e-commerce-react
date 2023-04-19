@@ -20,12 +20,33 @@ import {
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const HomeNavBar = () => {
+  const location = useLocation();
+  const search = location.search;
+  const searchParams = new URLSearchParams(search);
+  let id = searchParams.get("payment_id");
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
   const [infoUser, setInfoUser] = useState({});
   const userState = useSelector((state) => state.user);
+
+  // const orderId = {
+  //   id: id,
+  // };
+
+  if (id) {
+    const fetchOrder = async () => {
+      const order = await axios.post(`http://localhost:3001/feedback`, {
+        id,
+      });
+
+      const orden = await order.json();
+    };
+
+    fetchOrder();
+  }
 
   useEffect(() => {
     if (user && isAuthenticated) {
@@ -44,7 +65,7 @@ const HomeNavBar = () => {
 
             console.log(newUser);
             dispatch(createUser(newUser));
-            window.location.href = `/user/${userDb._id}`;
+            //window.location.href = `/user/${userDb._id}`;
           } else {
             setInfoUser(userDb);
           }
