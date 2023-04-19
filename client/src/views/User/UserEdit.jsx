@@ -13,9 +13,7 @@ import Footer from "../../components/Footer/Footer";
 const UserEditPage = () => {
   const { user, loginWithPopup, isAuthenticated } = useAuth0();
   const { id } = useParams();
-  useEffect(() => {
-    if (!isAuthenticated) window.location.href = "/home";
-  }, []);
+  
 
   const nav = [
     {
