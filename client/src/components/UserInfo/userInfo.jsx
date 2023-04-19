@@ -26,7 +26,7 @@ function UserInfo() {
   useEffect(() => {
     dispatch(getUserById(id));
   }, []);
-  console.log(user.location[user.location.length-1].country);
+
 
   return (
     <Grid
