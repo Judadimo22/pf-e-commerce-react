@@ -149,10 +149,10 @@ function LandingPage() {
 
       <div className={Style.container_4}>
         <h2 className={Style.miembros}>
-        Conoce a los miembros de nuestro equipo
+        Meet our team members
         </h2>
         <p className={Style.descripcionGrupo}>
-        Este proyecto no hubiera sido posible sin estar 5 personas, siempre siguiendo la idea de hacer algo fuera de lo común.
+        This project would not have been possible without these 5 people, always following the idea of doing something out of the ordinary.
         </p>
 
 
@@ -176,7 +176,7 @@ function LandingPage() {
               </div>
             </div>
             <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
+            Constantly looking for ways to improve productivity.
             </p>
             <div className={Style.links}>
               <a
@@ -221,7 +221,7 @@ function LandingPage() {
               </div>
             </div>
             <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
+             Constantly looking for ways to improve productivity.
             </p>
             <div className={Style.links}>
               <a
@@ -277,7 +277,7 @@ function LandingPage() {
               </div>
             </div>
             <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
+            Constantly looking for ways to improve productivity.
             </p>
             <div className={Style.links}>
               <a
@@ -321,7 +321,7 @@ function LandingPage() {
               </div>
             </div>
             <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
+            Constantly looking for ways to improve productivity.
             </p>
             <div className={Style.links}>
               <a
@@ -378,7 +378,7 @@ function LandingPage() {
               </div>
             </div>
             <p className={Style.devAptitud}>
-              Buscando constantemente formas de mejorar la productividad.
+            Constantly looking for ways to improve productivity.
             </p>
             <div className={Style.links}>
               <a

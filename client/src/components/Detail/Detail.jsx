@@ -131,7 +131,7 @@ export const Details = () => {
             <Chakra.Flex pt="1.5rem" pb="2rem">
               <StarRating rating={4.5} />
               <Chakra.Text ml={1}>(1 review)</Chakra.Text>{" "}
-              {/* que alguien añada reviews o rompo development */}
+           
             </Chakra.Flex>
             <Chakra.Flex>
             {productDetails.tallas?.map((talla) => (
@@ -144,7 +144,7 @@ export const Details = () => {
               />))}
             </Chakra.Flex>
             <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem">
-              Colores Disponibles
+            Colors available
             </Chakra.Text>
             <ColorSelector
               colors={colors}
@@ -166,11 +166,11 @@ export const Details = () => {
                   onClick={handleAddToCart}
                   leftIcon={<FaShoppingCart />}
                 >
-                  Agregar al carrito
+                 Add to cart
                 </Chakra.Button>
               
                 <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
-                {selectedSize === "" ? "Selecciona una talla" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
+                {selectedSize === "" ? "Select a size" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
 
                 </Chakra.Text>
               </Chakra.Flex>
@@ -183,7 +183,7 @@ export const Details = () => {
               pt="1.5rem"
               color="#565656"
             >
-              Marca {trademark ? trademark : "N/A"}
+              Trademark: {trademark ? trademark : "N/A"}
             </Chakra.Text>
             <Chakra.Text
               fontSize="md"

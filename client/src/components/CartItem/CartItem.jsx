@@ -48,7 +48,7 @@ const CartItem = ({ item, handleRemoveItem, handleQuantityChange }) => {
           colorScheme="red"
           onClick={() => handleRemoveItem(item)}
         >
-          Eliminar
+          Delete
         </Button>
       </Box>
     </Flex>
