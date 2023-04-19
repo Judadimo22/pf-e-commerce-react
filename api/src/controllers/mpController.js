@@ -12,7 +12,7 @@ const pagarProducto = async (req, res) => {
     items: [],
 
     back_urls: {
-      success: "http://127.0.0.1:5173/",
+      success: "https://pf-e-commerce-react.vercel.app/",
       failure: "https://pf-e-commerce-react.vercel.app/",
       pending: "https://pf-e-commerce-react.vercel.app/",
     },
