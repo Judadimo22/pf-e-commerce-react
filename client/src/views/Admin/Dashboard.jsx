@@ -8,6 +8,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import HomeNavBar from '../../components/NavBar/HomeNavbar';
 import { getUserById } from '../../redux/actions';
+import { Flex, Box } from '@chakra-ui/react';
+import {GraficoTrademarks } from '../../components/Dashboard/GraficoTrademarks';
+import { GraficoTypes } from '../../components/Dashboard/GraficoTypes';
+import { GraficoCategories } from '../../components/Dashboard/GraficoCategories';
+// import GraficoLineas from '../../components/Dashboard/GraficoLineas';
 
 const Dashboard = () => {
   const dispatch = useDispatch(); 
@@ -67,7 +72,25 @@ const Dashboard = () => {
     return (
       <>
         <AdminNavBar/>
-          <DashboardLeftMenu nav={nav} user={user} userState={userState}/>
+        <Flex wrap='wrap'>
+        <DashboardLeftMenu nav={nav} user={user} userState={userState}/>
+        <Box display='flex' justifyContent='space-between' mx='auto' pt={5}>
+          <Box mx={5} w={600}>
+          <GraficoTrademarks/>
+          </Box>
+          <Box mx={5} w={600}>
+          <GraficoTypes/>
+          </Box>
+        </Box>
+        <Box display='flex' justifyContent='space-between' mx='auto' pt={5}>
+        <Box mx={5} w={600} h={300}  justifyContent='center' position='relative' left={320}>
+          <GraficoCategories/>
+        </Box>
+        <Box mx={5} w={600} position='relative' left={175}>
+          <GraficoTypes/>
+          </Box> 
+        </Box>
+        </Flex>
       </>
   )
 }
