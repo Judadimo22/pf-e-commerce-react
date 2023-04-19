@@ -64,7 +64,7 @@ export const Details = () => {
       id: productDetails.id,
       name: productDetails.name,
       price: productDetails.price,
-      size: selectedSize,
+      size: selectedSize ,
       color: selectedColor,
       image: productDetails.image,
       quantity: 1,
@@ -162,7 +162,7 @@ export const Details = () => {
                   pr="3rem"
                   _hover="white"
                   color="#272727"
-                  disabled={!selectedSize || !selectedColor}
+                  isDisabled={!selectedSize}
                   onClick={handleAddToCart}
                   leftIcon={<FaShoppingCart />}
                 >

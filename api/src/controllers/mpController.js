@@ -30,6 +30,8 @@ const pagarProducto = async (req, res) => {
     });
   });
 
+  let idData = "";
+
   mercadopago.preferences
     .create(preference)
     .then(function (response) {

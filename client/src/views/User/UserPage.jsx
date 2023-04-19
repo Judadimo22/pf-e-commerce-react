@@ -21,7 +21,7 @@ const UserPage = () => {
   useEffect(() => {
     if (!userState.length) dispatch(getUserById(id));
   }, []);
-
+  console.log(user);
   const nav = [
     {
       icon: TbUserCircle,

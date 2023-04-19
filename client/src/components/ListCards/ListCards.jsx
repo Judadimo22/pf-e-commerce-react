@@ -1,44 +1,46 @@
-import React, { useEffect, useState } from 'react'
-import styles from './ListCard.module.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { ProductCard } from '../Card/Card';
-import { Pagination } from '../Paginado/Paginado';
-import { getClothes } from '../../redux/actions';
-import SortByPrice from '../Filters/SortByPrice';
-import SearchBar from '../SearchBar/SearchBar'
-import LoadingCards from '../Ux/LoadingCards';
-import NotFoundFilters from '../Ux/NotFoundFilters';
-import { Flex } from '@chakra-ui/react';
+import React, { useEffect, useState } from "react";
+import styles from "./ListCard.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { ProductCard } from "../Card/Card";
+import { Pagination } from "../Paginado/Paginado";
+import { getClothes } from "../../redux/actions";
+import SortByPrice from "../Filters/SortByPrice";
+import SearchBar from "../SearchBar/SearchBar";
+import LoadingCards from "../Ux/LoadingCards";
+import NotFoundFilters from "../Ux/NotFoundFilters";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 
 export const ListCard = () => {
-
   const [products, setProducts] = useState([]);
   const [sortType, setSortType] = useState("asc");
-  const filteredProducts = useSelector((state) => state.ClothesCopy)
-  const type = useSelector((state) => state.filterInputs.byType)
-  const category = useSelector((state) => state.filterInputs.byCategorie)
-  const trademark = useSelector((state) => state.filterInputs.byTrademark)
-  const resultsPerPage = 9
-  const numberOfResults = filteredProducts.length
-  const numberOfPages = numberOfResults ? Math.ceil(numberOfResults / resultsPerPage) : 0
-  const [pageNumber, setPageNumber] = useState(1)
-  const pageSliceStart = pageNumber === 1 ? 0 : (pageNumber - 1) * resultsPerPage
-  const pageSliceEnd = pageNumber * resultsPerPage
+  const filteredProducts = useSelector((state) => state.ClothesCopy);
+  const searchInput = useSelector((state) => state.searchInput);
+  const searchResults = useSelector((state) => state.searchResults);
+  const type = useSelector((state) => state.filterInputs.byType);
+  const category = useSelector((state) => state.filterInputs.byCategorie);
+  const trademark = useSelector((state) => state.filterInputs.byTrademark);
+  const resultsPerPage = 9;
+  const numberOfResults = filteredProducts.length;
+  const numberOfPages = numberOfResults
+    ? Math.ceil(numberOfResults / resultsPerPage)
+    : 0;
+  const [pageNumber, setPageNumber] = useState(1);
+  const pageSliceStart =
+    pageNumber === 1 ? 0 : (pageNumber - 1) * resultsPerPage;
+  const pageSliceEnd = pageNumber * resultsPerPage;
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    setPageNumber(1)
-  }, [numberOfResults])
+    setPageNumber(1);
+  }, [numberOfResults]);
   useEffect(() => {
-    getClothes()
-    const getData = async ( ) => {
-      return dispatch(getClothes())
-    }
-    
-  
+    getClothes();
+    const getData = async () => {
+      return dispatch(getClothes());
+    };
+
     setProducts(getData());
   }, []);
-
 
   function sortProducts(type, list) {
     const sorted = list.sort((a, b) => {
@@ -52,26 +54,43 @@ export const ListCard = () => {
     return sorted;
   }
 
-  if((type||category||trademark) && !filteredProducts.length) return(
-    <Flex w="100%" justifyContent="center" alignItems="center" pr="30%">
-      <NotFoundFilters/>
-    </Flex>
-  )
+  if ((type || category || trademark) && !filteredProducts.length)
+    return (
+      <Flex w="100%" justifyContent="center" alignItems="center" pr="30%">
+        <NotFoundFilters />
+      </Flex>
+    );
 
   return (
-    <div>    
-      <div className={styles.product}>
-        {
-          filteredProducts.length ?  (filteredProducts.slice(pageSliceStart, pageSliceEnd).map(product => (<ProductCard key={product._id} product={product} />)))
-            : (<LoadingCards/>)
-        }
-      </div>
+    <div>
+      {filteredProducts.length ? (
+        <Flex flexDir="column">
+          {searchInput.length ? (<Flex>
+            <Text>
+              {searchResults} results for: {searchInput}
+            </Text>
+            <Button>clear search</Button>
+          </Flex>
+          ) : null}
+          <Box className={styles.product}>
+            {filteredProducts
+              .slice(pageSliceStart, pageSliceEnd)
+              .map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+          </Box>
+        </Flex>
+      ) : (
+        <Box className={styles.product}>
+          <LoadingCards />
+        </Box>
+      )}
       <Pagination
-          pageNumber={pageNumber}
-          totalPages={numberOfPages}
-          nextPageFn={() => setPageNumber(page => page + 1)}
-          prevPageFn={() => setPageNumber(page => page - 1)}
-        />
+        pageNumber={pageNumber}
+        totalPages={numberOfPages}
+        nextPageFn={() => setPageNumber((page) => page + 1)}
+        prevPageFn={() => setPageNumber((page) => page - 1)}
+      />
     </div>
-  )
-}
+  );
+};

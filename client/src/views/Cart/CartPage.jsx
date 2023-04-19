@@ -65,6 +65,8 @@ const CartPage = () => {
     0
   );
 
+  const size = cartItems.size
+
   return (
     <>
       <Box bgColor="#F2F2F2" pt="5rem" pb="12rem">
@@ -98,6 +100,7 @@ const CartPage = () => {
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">
+             
                 {/* <Button
                   mt={2}
                   mb={5}
@@ -107,14 +110,9 @@ const CartPage = () => {
                 >
                   Comprar
                 </Button> */}
+               
                 {isAuthenticated ? (
-                  <MPButton
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    width="100%"
-                    id={cartItems}
-                  />
+                  <MPButton id={cartItems} />
                 ) : (
                   <Button
                     mt={2}

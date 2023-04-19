@@ -12,6 +12,7 @@ const CartItem = ({ item, handleRemoveItem, handleQuantityChange }) => {
     }
   };
 
+
   return (
     <Flex alignItems="center" justifyContent="space-between" mb="4">
       <Box w="100px" h="100px" borderRadius="lg" overflow="hidden" mr="4">
@@ -22,6 +23,9 @@ const CartItem = ({ item, handleRemoveItem, handleQuantityChange }) => {
           {item.name}
         </Text>
         <Text>Price: ${item.price}.00</Text>
+        <Text>
+          Size: {item.size ? item.size : item.sizes[0].talla}
+        </Text>
         <Box mr="4">
           <Button
             size="sm"
