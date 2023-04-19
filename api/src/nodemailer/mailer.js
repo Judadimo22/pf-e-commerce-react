@@ -162,7 +162,7 @@ const eMail = async (email) => {
   </html>`;
 
   let msj = {
-    from: '"TuTienda" <tu.Tienda.OnlineHenry@gmail.com>',
+    from: '"Casual Couture" <tu.Tienda.OnlineHenry@gmail.com>',
     to: email,
     subject: "Notificación",
     text: "Usuario creado con éxito.",

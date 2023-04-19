@@ -65,7 +65,7 @@ const postOrder = async (req, res) => {
 
     transporter.sendMail(
       {
-        from: '"TuTienda" <tu.Tienda.OnlineHenry@gmail.com>',
+        from: '"Casual Couture" <tu.Tienda.OnlineHenry@gmail.com>',
         to: newUserCompra.email,
         subject: "Compra con Exito",
         text: `Querido ${nombre[0]} Sus compras ya fueron programadas
