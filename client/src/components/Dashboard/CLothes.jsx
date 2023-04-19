@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Cloth } from './Cloth';
 import { Pagination } from '../Paginado/Paginado';
 import { getClothes, getClothesAdmin } from '../../redux/actions';
-import { Flex, Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
+import { Flex, Table, Tbody, Th, Thead, Tr, Box, Text, Icon, Button } from '@chakra-ui/react';
+import { GrAddCircle} from "react-icons/gr";
+import { Link } from 'react-router-dom';
+
 
 export const Clothes = () => {
 
@@ -34,7 +37,16 @@ export const Clothes = () => {
 
 
   return (
-    <Flex flexDir="column" minH="590px" justifyContent="space-between">    
+    <Box>
+      <Link to='/admin/create'>
+      <Flex textAlign='center' justifyContent='center' py={2}>
+        <Button backgroundColor='#DAEB0F' pl={6}> 
+        <Text>Create new product</Text>
+        <Icon position='relative' ml={2} top='2.5px' fontSize={20}><GrAddCircle/></Icon>
+        </Button>
+      </Flex>
+      </Link>
+      <Flex flexDir="column" minH="590px" justifyContent="space-between"> 
         <Table>
           <Thead>
             <Tr>
@@ -60,5 +72,6 @@ export const Clothes = () => {
           prevPageFn={() => setPageNumber(page => page - 1)}
         />
     </Flex>
+    </Box>
   )
 }

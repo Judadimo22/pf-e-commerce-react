@@ -55,9 +55,6 @@ import Swal from "sweetalert2";
             email: getUserId.email,
             lastname: getUserId.lastname,
             phone: getUserId.phone,
-            country: getUserId.location[getUserId.location?.length-1]?.country,
-            city: getUserId.location[getUserId.location?.length-1]?.city,
-            addres: getUserId.location[getUserId.location?.length-1]?.addres,
             name:getUserId.name,
             roll: getUserId.roll,
             active: getUserId.active
@@ -87,14 +84,13 @@ import Swal from "sweetalert2";
             email: getUserId.email,
             lastname: e.target.value,
             phone: getUserId.phone,
-            country: getUserId.location[getUserId.location?.length-1]?.country,
-            city: getUserId.location[getUserId.location?.length-1]?.city,
-            addres: getUserId.location[getUserId.location?.length-1]?.addres,
             name:e.target.value,
             roll: e.target.value,
             active: e.target.value
         })
     }
+
+    console.log(getUserId)
 
     const rol = ['admin', 'user'];
     const active = ['valid', 'invalid']
@@ -113,7 +109,9 @@ import Swal from "sweetalert2";
                     <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
                         <Box textAlign='left' mr={20}>
                         <Text fontSize={20} fontWeight={1000}><strong>Country - City</strong></Text>
-                        <Text>{getUserId.location[getUserId.location?.length-1]?.country} - {getUserId.location[getUserId.location?.length-1]?.city}</Text>
+                        {getUserId.location?.length ? (
+                             <Text>{getUserId.location[getUserId.location?.length-1]?.country} - {getUserId.location[getUserId.location?.length-1]?.city}</Text>
+                        ) : null}
                         </Box>
                         <Box alignItems='center'>
                             <Icon fontSize={25}><TbMap2/></Icon>
@@ -134,7 +132,9 @@ import Swal from "sweetalert2";
                     <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
                         <Box textAlign='left' mr={20}>
                         <Text fontSize={20} fontWeight={1000}><strong>Address</strong></Text>
-                        <Text>{getUserId.location[getUserId.location?.length-1]?.addres}</Text>
+                        {getUserId.location?.length ? (
+                             <Text>{getUserId.location[getUserId.location?.length-1]?.addres}</Text>
+                        ) : null}
                         </Box>
                         <Box alignItems='center'>
                             <Icon fontSize={25}><HiLocationMarker/></Icon>
