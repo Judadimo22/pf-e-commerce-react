@@ -41,7 +41,7 @@ const HomeNavBar = () => {
 
   if (id) {
     const fetchOrder = async () => {
-      const order = await axios.post(`http://localhost:3001/feedback`, {
+      const order = await axios.post(`https://backend-pf-uh1o.onrender.com/feedback`, {
         id,
       });
 
