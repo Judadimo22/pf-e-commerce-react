@@ -19,6 +19,7 @@ import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineControl, AiOutlineCheckCircle } from "react-icons/ai";
 import StockInput from "../FormCreate/StockInput";
+import Swal from "sweetalert2";
 
 const EditProduct = () => {
   const array20 = [
@@ -120,7 +121,13 @@ const EditProduct = () => {
 
   function handleSubmitInfo(e){
     e.preventDefault();
-    alert("The product has been updated");
+    Swal.fire({
+      icon: 'success',
+      title: '¡Success!',
+      text: 'The product info has been updated',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continue'
+    })
     dispatch(UpdateCloth(id, inputInfo));
     setInputInfo({
       name: e.target.value,
@@ -138,7 +145,13 @@ const EditProduct = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    alert("The sizes has been updated");
+    Swal.fire({
+      icon: 'success',
+      title: '¡Success!',
+      text: 'The product sizes has been updated',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continue'
+    })
     console.log(input)
     const array = []
     const tallasToDB = () => {
