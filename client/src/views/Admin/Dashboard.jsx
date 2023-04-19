@@ -106,4 +106,6 @@ const Dashboard = () => {
         </Flex>
       </>
   )
-}
+};
+
+export default Dashboard
