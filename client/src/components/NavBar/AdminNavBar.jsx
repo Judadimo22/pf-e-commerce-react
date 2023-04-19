@@ -19,7 +19,6 @@ import { Link } from "react-router-dom";
 
 const AdminNavBar = () => {
     const {isAuthenticated, user} = useAuth0();
-    console.log(user)
     return(
         <Flex className={style.containerNavBar}>            
             <Link to="/home">

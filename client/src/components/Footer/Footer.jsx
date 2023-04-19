@@ -6,7 +6,7 @@ import logo from "../../assets/logo/logoC3.jpeg"
 
 const Footer = () => {
   return (
-    <Chakra.Box as="footer" bg="#272727" color="white">
+    <Chakra.Box as="footer" bg="#272727" color="white" id="miFooter" >
       <Chakra.Flex
         as="footer"
         align="center"

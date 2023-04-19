@@ -8,6 +8,7 @@ import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import { DashboardLeftMenu } from "../../components/SideMenu/SideMenu";
 
 import { Flex } from "@chakra-ui/react";
+import Footer from "../../components/Footer/Footer";
 
 const UserEditPage = () => {
   const { user, loginWithPopup, isAuthenticated } = useAuth0();
@@ -46,6 +47,7 @@ const UserEditPage = () => {
           {user ? <MyProfile user={user} id={id} /> : null}
         </Flex>
       </Flex>
+      <Footer/>
     </>
   );
 };
