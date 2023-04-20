@@ -26,6 +26,7 @@ import AddressesPage from './views/User/AddressesPage';
 import UserOrdersPage from './views/User/UserOrdersPage';
 import ProductEditPage from './views/Admin/ProductEdit';
 import CreateProduct from './views/Admin/CreateProduct';
+import UserNotification from './views/User/UserNotification';
 axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
 // axios.defaults.baseURL = "http://localhost:3001"
 
@@ -48,7 +49,7 @@ function App() {
         <Route exact path="/user/edit/:id" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
         <Route exact path="/user/orders/:id" element={<UserOrdersPage />} />
-        <Route exact path="/user/notifications/:id" element={<UserPage/>} />
+        <Route exact path="/user/notifications/:id" element={<UserNotification/>} />
         <Route exact path="/user/addresses/:id" element={<AddressesPage/>} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
