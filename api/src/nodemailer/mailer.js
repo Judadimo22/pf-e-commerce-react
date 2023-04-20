@@ -73,20 +73,18 @@ const eMail = async (email) => {
           text-align: center;
         "
       >
-        <h2>Bienvenido a Tu Tienda</h2>
+        <h2>Welcome to Casual Couture</h2>
         <p>
-          Somos una plataforma dedicada a la venta de ropa. Aquí te ofrecemos una
-          amplia variedad de opciones
+        We are a platform dedicated to the sale of clothing. Here we offer you a wide variety of options
         </p>
-        <p>GRACIAS POR VOLVERTE PARTE DE NUESTRO GRUPO</p>
+        <p>THANK YOU FOR BECOMING PART OF OUR TEAM</p>
         <div style="display: flex; padding: 20px 10px 20px 10px">
           <div
             style="padding: 10px 0px 10px 0px; width: 100%; text-align: center"
           >
             <p>
-              Cualquier consulta comunícate con nosotros desde nuestra página o a
-              traves de nuestros canales digitales. <br />
-              ESPERAREMOS POR TI
+            If you have any questions, please contact us from our website or through our digital channels.. <br />
+            WE WILL WAIT FOR YOU
             </p>
           </div>
         </div>
@@ -107,7 +105,7 @@ const eMail = async (email) => {
             transition-duration: 0.4s;
             cursor: pointer;
           "
-          >Bienvenido</a
+          >Welcome</a
         >
         <div
           style="
@@ -162,10 +160,10 @@ const eMail = async (email) => {
   </html>`;
 
   let msj = {
-    from: '"TuTienda" <tu.Tienda.OnlineHenry@gmail.com>',
+    from: '"CasualCouture" <tu.Tienda.OnlineHenry@gmail.com>',
     to: email,
-    subject: "Notificación",
-    text: "Usuario creado con éxito.",
+    subject: "Notification",
+    text: "User successfully created.",
     html: html,
   };
 

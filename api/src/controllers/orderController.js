@@ -59,15 +59,15 @@ const postOrder = async (req, res) => {
 
     transporter.sendMail(
       {
-        from: '"TuTienda" <tu.Tienda.OnlineHenry@gmail.com>',
+        from: '"CasualCouture" <tu.Tienda.OnlineHenry@gmail.com>',
         to: newUserCompra.email,
-        subject: "Compra con Exito",
-        text: `Querido ${nombre[0]} Sus compras ya fueron programadas
+        subject: "Successful purchase",
+        text: `Dear ${nombre[0]}  Your purchases have already been programmed
             \n Buys data:
             \nProductos ${newUserCompra.items.map(
               (e) => e.title
-            )} \n Para cualquier consulta, póngase en contacto con <tu.Tienda.OnlineHenry@gmail.com>
-            \n Gracias por elegirnos
+            )} \n For any questions, please contact <tu.Tienda.OnlineHenry@gmail.com>
+            \n Thank you for choosing us
 
           `,
       },
