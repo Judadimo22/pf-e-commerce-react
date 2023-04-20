@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../redux/actions';
 
 
-
+console.log(getOrders)
 /* const orders = [
 {
   _id:1,
@@ -34,7 +34,7 @@ import { getOrders } from '../../redux/actions';
 }
 ] */
 
-function OrderTrackingContainer() {
+function OrderTrackingContainer({orders}) {
 
   const dispatch = useDispatch()
   useEffect(()=>{
@@ -68,15 +68,14 @@ function OrderTrackingContainer() {
       console.error(error);
     } */
   };
-  const orders = useSelector((state) => state.orders)
-  console.log(orders);
-
+console.log(orders)
   return ( 
        <Table variant='simple' colorScheme="blackAlpha" >
         <Thead>
           <Tr>
             <Th>Email</Th>
-            <Th>Name</Th>
+            <Th>Transaction ID</Th>
+            <Th>Detail</Th>
             <Th>Total amount</Th>
             <Th>State</Th>
           </Tr>
@@ -86,8 +85,9 @@ function OrderTrackingContainer() {
         <OrderTracking
           key={order._id}
           email={order.email}
-          name={order.name}
-          totalAmount={order.totalAmount}
+          id_pay={order.id_pay}
+          items={order.items}
+          transaction_amount={order.transaction_amount}
           status={order.status}
           orderId={order._id}
           updateOrderStatus={handleUpdateOrderStatus}

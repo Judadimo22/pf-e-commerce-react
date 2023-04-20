@@ -66,6 +66,7 @@ const OrdersPage = () => {
       redirect: "/admin/orders",
     },
   ];
+  const orders = useSelector((state) => state.orders)
 
   return (
     <>
@@ -85,7 +86,7 @@ const OrdersPage = () => {
         box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);"
           >
             <TableContainer w="100%">
-              <OrderTrackingContainer />
+              <OrderTrackingContainer orders={orders}/>
             </TableContainer>
           </Flex>
         </Flex>
