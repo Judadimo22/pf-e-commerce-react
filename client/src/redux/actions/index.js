@@ -78,7 +78,6 @@ export function getUsers() {
 }
 
 export function getCloth(name) {
-  console.log(name);
   return async function (dispatch) {
     let json = await axios.get(`/cloth?name=${name}`);
     dispatch({
@@ -98,9 +97,11 @@ export function getClothById(id) {
 }
 
 export const setSearch = (payload) => {
-  return {
-    type: SEARCH,
-    payload,
+  return async function (dispatch) {
+    dispatch({
+      type: SEARCH,
+      payload,
+      });
   };
 };
 
@@ -197,7 +198,6 @@ export function updateUser (id, payload){
 
 
 export const putUser = (id, payload) => async (dispatch) => {
-  console.log(id, payload);
   try {
     const putCreate = await axios.put(`/users/${id}`, payload);
 
