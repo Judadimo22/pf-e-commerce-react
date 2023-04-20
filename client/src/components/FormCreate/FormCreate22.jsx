@@ -51,6 +51,7 @@ function CrearProducto() {
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Continue'
     })
+    
 
     const newArray = [];
     const tallasToDB = () => {
