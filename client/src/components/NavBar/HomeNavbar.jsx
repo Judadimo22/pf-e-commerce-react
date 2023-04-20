@@ -17,7 +17,7 @@ import {
   MenuList,
   Text,
   Image,
-  Heading,IconButton,
+  Heading,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
