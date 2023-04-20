@@ -73,10 +73,10 @@ const Dashboard = () => {
     return (
       <>
         <AdminNavBar/>
-        <Flex wrap='wrap' minH='90vh'>
+        <Flex display={{base:'block',md:'flex'}} wrap='wrap' minH='90vh'>
         <DashboardLeftMenu nav={nav} user={user} userState={userState}/>
         <Flex>
-        <Box pl='10%'>
+        <Box pl={{base:0,md:'10%'}} mx={{base:5,md:0}}>
           <Heading pt={4} pb={2}>
           Stadistics
           </Heading>
@@ -86,17 +86,17 @@ const Dashboard = () => {
         </Box>
         </Flex>
         
-        <Box flexDirection='column' pl='25%' >
-        <Box display='flex' justifyContent='space-between' mx='auto' pt={5}>
-        <Box mx={5} w={560} h={260}  justifyContent='center' display='flex' >
+        <Box flexDirection='column' pl={{base:0,md:'25%'}} >
+        <Box display={{base:'block',md:'flex'}} justifyContent={{base:'center',md:'space-between'}} mx='auto' pt={5}>
+        <Box mx={{base:0,md:5}} w={{base:380,md:560}} h={260}  justifyContent='center' display='flex' mb={{base:5,md:0}} >
 
           <GraficoCategories/>
         </Box>
-        <Box mx={5} w={560}>
+        <Box mx={{base:5,md:5}} w={{base:350,md:560}}>
           <GraficoTypes/>
           </Box> 
         </Box>
-        <Box mx='auto' pt={5}>
+        <Box mx='auto' pt={5} w={{base:350,md:560}}>
           <Flex  h={285} justifyContent='center' mb={10}>
           <GraficoTrademarks/>
           </Flex>
