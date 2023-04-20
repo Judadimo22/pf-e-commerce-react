@@ -76,7 +76,7 @@ const CartPage = () => {
       <Box bgColor="#F2F2F2" pt="5rem" pb="12rem">
         <HomeNavBar />
         <Box mt={4} mb={1} mx="auto" maxW="800px">
-          <Flex justify="space-between" alignItems="center" mb="6">
+          <Flex display={{base:'block',md:'flex'}} textAlign={{base:'center',md:'left'}} justify={{base:'center',md:"space-between"}} alignItems="center" mb="6">
             <Text fontSize="3xl" fontWeight="bold">
             Shopping Cart
             </Text>
@@ -100,7 +100,7 @@ const CartPage = () => {
                   }
                 />
               ))}
-              <Text fontSize="xl" fontWeight="bold">
+              <Text textAlign='center' fontSize="xl" fontWeight="bold">
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">

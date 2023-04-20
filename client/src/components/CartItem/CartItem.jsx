@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Text, Button } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, Image } from "@chakra-ui/react";
 
 const CartItem = ({ item, handleRemoveItem, handleQuantityChange }) => {
   const handleIncrement = () => {
@@ -14,9 +14,9 @@ const CartItem = ({ item, handleRemoveItem, handleQuantityChange }) => {
 
 
   return (
-    <Flex alignItems="center" justifyContent="space-between" mb="4">
-      <Box w="100px" h="100px" borderRadius="lg" overflow="hidden" mr="4">
-        <img src={item.image} alt={item.name} />
+    <Flex display={{base:'block',md:'flex'}}textAlign={{base:'center', md:'left'}} alignItems="center" justifyContent={{base:'center',md:"space-between"}} mb="4">
+      <Box  h="150px" borderRadius="lg" overflow="hidden" display='flex' justifyContent='center' textAlign='center'>
+        <Image display='flex' justifyContent='center' src={item.image} alt={item.name} />
       </Box>
       <Box>
         <Text fontSize="lg" fontWeight="bold" mb="2">
