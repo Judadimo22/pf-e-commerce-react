@@ -201,7 +201,7 @@ const EditProduct = () => {
             </Text>
             <Text>{getProductId.name}</Text>
           </Box>
-          <Box textAlign="left" mr={20} mt={5}>
+          <Box w={{md:'100%', base:'300px'}} textAlign="left" mr={20} mt={5}>
             <Text fontSize={20} fontWeight={1000}>
               <strong>Description</strong>
             </Text>
@@ -214,6 +214,7 @@ const EditProduct = () => {
             <Input
               onChange={(e) => handleInputChange(e)}
               key='price'
+              width={{md:'100%', base:'85%'}}
               name='price'
               bgColor="#fff"
               boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
@@ -222,15 +223,15 @@ const EditProduct = () => {
               value={inputInfo.price}
             />
           </Box>
-          <Box display="flex" justifyContent="space-between" mt={5}>
+          <Box display={{base:'block',md:"flex"}} justifyContent="space-between" mt={5}>
             <Box
               w={420}
               borderRadius={10}
               alignItems="center"
-              display="flex"
+              display={{base:'block',md:"flex"}}
               justifyContent="space-between"
             >
-            <Box textAlign="left" mr={20}>
+            <Box textAlign="left" mr={20} mb={{base:2,md:0}}>
                 <FormLabel fontSize={20}>
                   <strong>Type</strong>
                 </FormLabel>
@@ -241,7 +242,7 @@ const EditProduct = () => {
               w={420}
               borderRadius={10}
               alignItems="center"
-              display="flex"
+              display={{base:'block',md:"flex"}}
               justifyContent="space-between"
             >
               <Box textAlign="left" mr={20}>
@@ -252,12 +253,14 @@ const EditProduct = () => {
               </Box>
             </Box>
           </Box>
-          <Box display='flex' justifyContent='space-between' mt={5}>
+          <Box display={{base:'block',md:"flex"}} justifyContent='space-between' mt={5}>
             <Box w={420}
               borderRadius={10}
               alignItems="center"
-              display="flex"
-              justifyContent="space-between">
+              display={{base:'block',md:"flex"}}
+              justifyContent="space-between"
+              mb={{base:2,md:0}}>
+                
             <Box textAlign="left" w={180}>
             <FormLabel fontSize={20}>
               <strong>Category</strong>
@@ -268,9 +271,9 @@ const EditProduct = () => {
             <Box w={420}
               borderRadius={10}
               alignItems="center"
-              display="flex"
+              display={{base:'block',md:"flex"}}
               justifyContent="space-between">
-            <Box textAlign="left" w={180}>
+            <Box textAlign="left" width={{md:'80%', base:'65%'}}>
             <FormLabel fontSize={20}>
               <strong>Active</strong>
             </FormLabel>
@@ -293,14 +296,14 @@ const EditProduct = () => {
             </Box>
           </Box>
 
-          <Box w="100%" textAlign="center" mt={5}>
+          <Box w={{base:'70%',md:"100%" }}textAlign="center" mt={5}>
             <Button w="100%" backgroundColor="#DAEB0F" type="submit">
               Update info
             </Button>
           </Box>
         </form>
         <form onSubmit={handleSubmit}>
-        <Flex alignItems='center' textAlign="left" mr={20} mt={5}>
+        <Flex w={{base:'80%',md:"100%" }} flexWrap='wrap'  alignItems='center' textAlign="left" mr={20} mt={5}>
           {array20.map((i) => (
                       <StockInput
                         key={i.id}
