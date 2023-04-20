@@ -19,8 +19,8 @@ export default function SearchBar() {
     dispatch(clearFilters("all"));
     dispatch(Filter());
     dispatch(changeIndex(["all", -1]));
-    dispatch(setSearch(name));
     dispatch(setSearchInput(name));
+    dispatch(setSearch(name));
 
     setName("");
   };

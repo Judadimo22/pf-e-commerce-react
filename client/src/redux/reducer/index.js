@@ -22,6 +22,7 @@ import {
   INFO_USER_BY_ID,
   UPDATE_USER,
   IS_SEARCH_INPUT,
+  CART_LENGTH,
   GET_CLOTHES_ADMIN,
   SEARCH_ADMIN
 } from "../actions/index";
@@ -63,10 +64,16 @@ const initialState = {
   DetailUser: [],
   searchInput: "",
   searchResults: 0,
+  cartLength:0
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case CART_LENGTH:
+      return {
+        ...state,
+        cartLength: action.payload,
+      };
     case GET_CLOTHES:
       const valid = action.payload.filter(product => product.active == 'valid')
       return {
@@ -104,26 +111,21 @@ function rootReducer(state = initialState, action) {
       };
 
     case SEARCH: {
-      let search = [];
-      search = state.Clothes?.filter((c) =>
-        c.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      return {
-        ...state,
-        searchResults: search.length,
-        ClothesCopy: [...search],
-      };
-    }
-    case SEARCH_ADMIN: {
-      let search = [];
-      search = state.ClothesAdmin?.filter((c) =>
-        c.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      return {
-        ...state,
-        searchResults: search.length,
-        ClothesAdminCopy: [...search],
-      };
+      if(!state.searchInput.length) {
+        return {
+          ...state,
+          ClothesCopy: state.Clothes
+        };
+      }else{
+        let search = state.Clothes?.filter((c) =>
+          c.name.toLowerCase().includes(state.searchInput.toLowerCase())
+        );
+        return {
+          ...state,
+          searchResults: search.length,
+          ClothesCopy: [...search],
+        };
+      }
     }
     case SEARCH_USER: {
       let search = [];
@@ -188,10 +190,6 @@ function rootReducer(state = initialState, action) {
       }
 
     case FILTER:
-      console.log(state.ClothesCopy);
-      console.log(state.filterInputs.byCategorie);
-      console.log(state.filterInputs.byType);
-      console.log(state.filterInputs.byTrademark);
       if (state.searchInput.length) {
         let search = [];
       search = state.Clothes?.filter((c) =>
