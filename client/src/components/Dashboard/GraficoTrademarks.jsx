@@ -35,13 +35,10 @@ export function GraficoTrademarks(){
     const OldtownPolo = Products?.filter(product => product.trademark === 'Oldtown Polo')
     const Topper = Products?.filter(product => product.trademark === 'Topper')
     const Puma= Products?.filter(product => product.trademark === 'Puma')
-    const nike = Products?.filter(product => product.trademark === 'nike')
-
-    console.log('Nike' + Vandalia?.length)
 
   
 
-const cantidad = [ADIDAS?.length, Nike?.length, Vandalia?.length, OldtownPolo?.length, Topper?.length, Puma?.length, nike?.length]
+const cantidad = [ADIDAS?.length, Nike?.length, Vandalia?.length, OldtownPolo?.length, Topper?.length, Puma?.length]
 const trademarks = [
     "Adidas",
     "Nike",
@@ -49,7 +46,6 @@ const trademarks = [
     "Oldtown Polo",
     "Topper",
     "Puma",
-    'nike'
   ];
 
 const miData = {

@@ -86,13 +86,12 @@ const Dashboard = () => {
         </Box>
         </Flex>
         
-        <Box flexDirection='column' pl={{base:0,md:'25%'}} >
+        <Box flexDirection='column' pl={{base:0,md:'20%'}} >
         <Box display={{base:'block',md:'flex'}} justifyContent={{base:'center',md:'space-between'}} mx='auto' pt={5}>
         <Box mx={{base:0,md:5}} w={{base:380,md:560}} h={260}  justifyContent='center' display='flex' mb={{base:5,md:0}} >
-
           <GraficoCategories/>
         </Box>
-        <Box mx={{base:5,md:5}} w={{base:350,md:560}}>
+        <Box mx={{base:5,md:5}} w={{base:320,md:500}}>
           <GraficoTypes/>
           </Box> 
         </Box>
