@@ -114,6 +114,7 @@ export const Details = () => {
         <Chakra.Grid templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} gap={6}>
           <Chakra.Box>
             <Chakra.Image
+              w={{base:200, md:'auto'}}
               src={image}
               alt={name}
               borderRadius="10px"
@@ -121,19 +122,19 @@ export const Details = () => {
             />
           </Chakra.Box>
           <Chakra.Box>
-            <Chakra.Text fontSize="4xl" fontWeight="extrabold" mb={3} mt={-4}>
+            <Chakra.Text fontSize={{base:'20px',md:"4xl"}} textAlign={{base:'center', md:'left'}} fontWeight="extrabold" mb={3} mt={-4}>
               {name}
             </Chakra.Text>
-            <Chakra.Text fontSize="3xl" fontWeight="bold" pb="1.5rem">
+            <Chakra.Text fontSize={{base:'20px',md:"3xl"}} textAlign={{base:'center', md:'left'}} fontWeight="bold" pb="1.5rem">
               ${price}.00
             </Chakra.Text>
-            <Chakra.Box h="1px" w="95%" bg="gray" borderRadius="full" />
-            <Chakra.Flex pt="1.5rem" pb="2rem">
-              <StarRating rating={4.5} />
-              <Chakra.Text ml={1}>(1 review)</Chakra.Text>{" "}
+            <Chakra.Box h="1px" bg="gray" borderRadius="full" justifyContent={{base:'center', md:'left'}} />
+            <Chakra.Flex pt="1.5rem" pb="2rem" justifyContent={{base:'center', md:'left'}}  >
+              <StarRating rating={4.5} justifyContent={{base:'center', md:'left'}} />
+              <Chakra.Text ml={1} justifyContent={{base:'center', md:'left'}} >(1 review)</Chakra.Text>{" "}
               {/* que alguien añada reviews o rompo development */}
             </Chakra.Flex>
-            <Chakra.Flex>
+            <Chakra.Flex justifyContent={{ base:'center',md:'left'}}>
             {productDetails.tallas?.map((talla) => (
               <SizeSelector
                 size={talla.talla}
@@ -143,16 +144,18 @@ export const Details = () => {
                 onSizeSelect={handleSizeSelect}
               />))}
             </Chakra.Flex>
-            <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem">
+            <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem" textAlign={{ base:'center',md:'left'}}>
               Colores Disponibles
             </Chakra.Text>
-            <ColorSelector
+            <Chakra.Box  display='flex' justifyContent={{ base:'center',md:'left'}}>
+            <ColorSelector 
               colors={colors}
               selectedColor={selectedColor}
               onColorSelect={handleColorSelect}
             />
+            </Chakra.Box>
             <Chakra.Box pt="1.5rem" pb="1.5rem" mt={8} mb={4}>
-              <Chakra.Flex>
+              <Chakra.Box display={{base:'block',md:'flex'}} textAlign={{ base:'center',md:'left'}}>
                 <Chakra.Button
                   borderRadius="100px"
                   colorScheme="#DAEB0F"
@@ -169,11 +172,11 @@ export const Details = () => {
                   Agregar al carrito
                 </Chakra.Button>
               
-                <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
+                <Chakra.Text fontSize="md" fontWeight="bold" pl={{base:0,md:"2rem"}} pt=".7rem" color="#565656">
                 {selectedSize === "" ? "Selecciona una talla" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
 
                 </Chakra.Text>
-              </Chakra.Flex>
+              </Chakra.Box>
             </Chakra.Box>
             <Chakra.Box h="1px" w="95%" bg="gray" borderRadius="full" />
             <Chakra.Text
@@ -182,6 +185,7 @@ export const Details = () => {
               mb={1}
               pt="1.5rem"
               color="#565656"
+              mx={{base:5 ,md:0}}
             >
               Marca {trademark ? trademark : "N/A"}
             </Chakra.Text>
@@ -191,13 +195,14 @@ export const Details = () => {
               mb={1}
               color="#565656"
               pb="5rem"
+              mx={{base:5 ,md:0}}
             >
               {description ? description : "N/A"}
             </Chakra.Text>
           </Chakra.Box>
         </Chakra.Grid>
       </Chakra.Box>
-      <ClothReviews id={id} comment={allData.review} />
+      <ClothReviews id={id} comment={allData.review}  />
       <Footer />
     </>
   );
