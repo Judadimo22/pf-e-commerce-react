@@ -109,6 +109,7 @@ function rootReducer(state = initialState, action) {
         Users: action.payload,
         UsersCopy: action.payload,
       };
+    
 
     case SEARCH: {
       if(!state.searchInput.length) {
@@ -126,6 +127,16 @@ function rootReducer(state = initialState, action) {
           ClothesCopy: [...search],
         };
       }
+    }
+    case SEARCH_ADMIN: {
+      let search = [];
+      search = state.ClothesAdmin?.filter((c) =>
+        c.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        ClothesAdminCopy: [...search],
+      };
     }
     case SEARCH_USER: {
       let search = [];

@@ -118,11 +118,9 @@ export const setSearch = (payload) => {
 };
 
 export const setSearchAdmin = (payload) => {
-  return async function (dispatch) {
-    dispatch({
-      type: SEARCH,
-      payload,
-      });
+  return {
+    type: SEARCH_ADMIN,
+    payload
   };
 };
 
