@@ -3,12 +3,15 @@ import styles from "./ListCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductCard } from "../Card/Card";
 import { Pagination } from "../Paginado/Paginado";
-import { getClothes } from "../../redux/actions";
+import { Filter, getClothes, setSearchInput } from "../../redux/actions";
 import SortByPrice from "../Filters/SortByPrice";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadingCards from "../Ux/LoadingCards";
 import NotFoundFilters from "../Ux/NotFoundFilters";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import ClearFilButton from "../Filters/ClearFilButton";
+import ClearSearButton from "../Ux/ClearSearButton";
+import NotFoundSearch from "../Ux/NotFoundSearch";
 
 export const ListCard = () => {
   const [products, setProducts] = useState([]);
@@ -60,17 +63,24 @@ export const ListCard = () => {
         <NotFoundFilters />
       </Flex>
     );
+  if ((searchInput.length) && !filteredProducts.length)
+    return (
+      <Flex w="100%" justifyContent="center" alignItems="center" pr="30%">
+        <NotFoundSearch />
+      </Flex>
+    );
 
   return (
     <div>
       {filteredProducts.length ? (
         <Flex flexDir="column">
-          {searchInput.length ? (<Flex>
-            <Text>
-              {searchResults} results for: {searchInput}
-            </Text>
-            <Button>clear search</Button>
-          </Flex>
+          {searchInput.length ? (
+            <Flex justifyContent="space-between" w="90%" mb={5} >
+              <Text>
+                {searchResults} results for: {searchInput}
+              </Text>
+              <ClearSearButton/>
+            </Flex>
           ) : null}
           <Box display={{base:'block' ,md:'grid'}} gridTemplateColumns='325px 325px 325px'>
             {filteredProducts

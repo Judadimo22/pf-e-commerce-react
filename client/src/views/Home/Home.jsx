@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ListCard } from "../../components/ListCards/ListCards";
 import Filtrers from "../../components/Filters/Filtrers";
 import style from './Home.module.css'
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import Footer from "../../components/Footer/Footer"
 import { Box } from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { setSearchInput } from "../../redux/actions";
 const Home = () => {
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(setSearchInput(""));
+    },[])
     return(
         <Box>
             <HomeNavBar/>

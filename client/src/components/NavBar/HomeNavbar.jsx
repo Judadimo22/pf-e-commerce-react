@@ -17,7 +17,7 @@ import {
   MenuList,
   Text,
   Image,
-  Heading,IconButton,
+  Heading,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -34,6 +34,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import logo from "../../assets/logo/logoC3.jpeg";
 import Filtrers from "../Filters/Filtrers";
+import { Badge, IconButton } from "@mui/material";
 
 const HomeNavBar = () => {
   const location = useLocation();
@@ -44,6 +45,7 @@ const HomeNavBar = () => {
   const { isAuthenticated, user, logout } = useAuth0();
   const [infoUser, setInfoUser] = useState({});
   const userState = useSelector((state) => state.user);
+  const cartLength = useSelector((state) => state.cartLength);
 
   // const orderId = {
   //   id: id,
@@ -75,8 +77,7 @@ const HomeNavBar = () => {
           };
 
           console.log(newUser);
-          dispatch(createUser(newUser))
-          .then(
+          dispatch(createUser(newUser)).then(
             (e) => (window.location.href = `/user/edit/${e.payload.data._id}`)
           );
         } else {
@@ -86,7 +87,7 @@ const HomeNavBar = () => {
       });
     }
   }, [user]);
-  console.log(userState.roll);
+  console.log(cartLength);
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
@@ -159,21 +160,13 @@ const HomeNavBar = () => {
           ) : (
             <LoginButton />
           )}
-          <Box>
-            <Link to="/cart">
-              <Icon
-                display={{ base: "none", md: "block" }}
-                bgColor="white"
-                cursor="pointer"
-                boxSize={12}
-                borderRadius={50}
-                p={2.5}
-                justifyContent="center"
-                alignItems="center"
-                as={AiOutlineShoppingCart}
-              />
-            </Link>
-          </Box>
+          <Link to="/cart">
+            <IconButton style={{backgroundColor:"#DAEB0F",color:"#272727"}} aria-label="cart">
+              <Badge style={{width:"30px",height:"30px",display:"flex",justifyContent:"center",alignItems:"center"}} badgeContent={cartLength} color="secondary">
+                <AiOutlineShoppingCart />
+              </Badge>
+            </IconButton>
+          </Link>
         </Flex>
         <Box display={{base:'block',md:'none'}}>
       <Button ref={btnRef} background='none' onClick={onOpen}>
