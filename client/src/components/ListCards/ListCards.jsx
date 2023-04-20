@@ -91,7 +91,7 @@ export const ListCard = () => {
           </Box>
         </Flex>
       ) : (
-        <Box  display='flex' justifyContent='center' pl='20%' className={styles.product}>
+        <Box className={styles.product}>
           <LoadingCards />
         </Box>
       )}
