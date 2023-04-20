@@ -20,7 +20,8 @@ const Footer = () => {
         pb={{base:20 ,md:12}}
       >
         <Chakra.Box mt={8} mb={8}>
-        <Chakra.Image justifyContent='center' boxSize={{base:'70px',md:`70px`}} borderRadius={`full`} src={logo}  alt={``}textAlign={{base:'center',md:"left"}} position='relative' bottom={{base:5,md:0}} left={{base:'40%', md:0}} right={0} fontWeight={1000} fontSize={50} fontFamily="Alumni Sans, sans-serif"></Chakra.Image>
+        <Chakra.Text mt={{base:0,md:4}}  fontWeight="bold" fontSize={20} >BRAND
+        </Chakra.Text>
           <Chakra.Grid mt={1} fontSize={15}>
             <Chakra.Link href="#" fontWeight="100">
             <Link to={'/about'}>About</Link>
