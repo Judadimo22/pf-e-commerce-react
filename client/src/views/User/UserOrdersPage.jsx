@@ -17,7 +17,7 @@ const UserOrdersPage = () => {
   const userState = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { user } = useAuth0();
+  const {isAuthenticated, user } = useAuth0();
   useEffect(() => {
     if (!userState.length) dispatch(getUserById(id));
   }, []);
@@ -44,6 +44,37 @@ const UserOrdersPage = () => {
       redirect: `/user/addresses/${id}`,
     },
   ];
+
+
+  const [infoUser, setInfoUser] = useState({});
+
+
+  useEffect(() => {
+      if (user && isAuthenticated) {
+        axios
+          .get("https://backend-pf-uh1o.onrender.com/users")
+          .then((element) => {
+            const userDb = element.data.find(
+              (element) => element.email === user.email
+            );
+            if (!userDb) {
+              const newUser = {
+                name: user.given_name,
+                lastname: user.family_name,
+                email: user.email,
+              };
+  
+              console.log(newUser);
+              dispatch(createUser(newUser));
+            } else {
+              setInfoUser(userDb);
+            }
+            if (!userState.length) dispatch(getUserById(userDb._id));s
+          });
+      }
+    }, [user]);
+    if (userState.active !== "valid") window.location.href = "/banned";
+
   const orders = useSelector((state) => state.orders)
  const algo = orders.filter(o=>o.email == user.email)
  console.log(`algoalgoalgo` + algo)

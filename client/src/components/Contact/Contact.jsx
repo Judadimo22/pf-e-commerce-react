@@ -1,14 +1,47 @@
 import { Box, Image, Text, FormControl, Input, Textarea, Button } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeNavBar from "../NavBar/HomeNavbar";
 import imageContact from '../../assets/image_contact.jpeg'
 import Footer from "../Footer/Footer";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { getUserById } from "../../redux/actions";
 
 
 const Contact = () => {
     const sarasa=()=>{
         alert(`recivimos su mensaje pronto le daremos respuesta`)
     }
+    const { isAuthenticated, user, logout } = useAuth0();
+    const [infoUser, setInfoUser] = useState({});
+    const userState = useSelector((state) => state.user);
+
+    useEffect(() => {
+        if (user && isAuthenticated) {
+          axios
+            .get("https://backend-pf-uh1o.onrender.com/users")
+            .then((element) => {
+              const userDb = element.data.find(
+                (element) => element.email === user.email
+              );
+              if (!userDb) {
+                const newUser = {
+                  name: user.given_name,
+                  lastname: user.family_name,
+                  email: user.email,
+                };
+    
+                console.log(newUser);
+                dispatch(createUser(newUser));
+              } else {
+                setInfoUser(userDb);
+              }
+              if (!userState.length) dispatch(getUserById(userDb._id));s
+            });
+        }
+      }, [user]);
+      if (userState.active !== "valid") window.location.href = "/banned";
     return(
         <Box>
            <HomeNavBar/> 
