@@ -5,6 +5,7 @@ import imageContact from '../../assets/imagen_about.jpg'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import member from "../../assets/carousel-landing/t-member.png";
 import Style from "./About.css"
+import Footer from "../Footer/Footer";
 
 
 const About = () => {
@@ -283,6 +284,7 @@ const About = () => {
       </Box>
   </div>
         </Box>
+        <Footer/>
         </>
     )
 };

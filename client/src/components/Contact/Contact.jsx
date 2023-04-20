@@ -12,8 +12,8 @@ const Contact = () => {
     return(
         <Box>
            <HomeNavBar/> 
-            <Box display='flex'h={741} justifyContent='center' px={300} pt={75}  backgroundColor='#272727' >
-                <Box w='40%' justifyContent='center' backgroundColor='#F2F2F2'h={600} px={10}  >
+            <Box display={{base:'block',md:'flex'}}h={{base:650,md:741}} justifyContent='center' px={{base:0,md:300}} pt={{base:10,md:75}}  backgroundColor='#272727' >
+                <Box w={{base:'100%',md:'40%'}} justifyContent='center' backgroundColor='#F2F2F2'h={600} px={10} pt={{base:10,md:0}}  >
                     <Text fontSize={30} mt={10} mb={10}><strong>Get in touch</strong></Text>
                     <Text mb={10}>To contact with us, fill out the form and we <br /> will get back to you promptly</Text>
                     <FormControl>
@@ -27,7 +27,7 @@ const Contact = () => {
                         
                     </FormControl>
                 </Box>
-                <Image w='60%' h={600} src={imageContact} objectFit='cover'/>
+                <Image display={{base:'none',md:'block'}} w='60%' h={600} src={imageContact} objectFit='cover'/>
             </Box>
             <Footer/>
         </Box>
