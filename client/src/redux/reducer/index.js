@@ -22,6 +22,7 @@ import {
   INFO_USER_BY_ID,
   UPDATE_USER,
   IS_SEARCH_INPUT,
+  CART_LENGTH,
 } from "../actions/index";
 
 const computeFilteredData = (
@@ -59,10 +60,16 @@ const initialState = {
   DetailUser: [],
   searchInput: "",
   searchResults: 0,
+  cartLength:0
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
+    case CART_LENGTH:
+      return {
+        ...state,
+        cartLength: action.payload,
+      };
     case GET_CLOTHES:
       return {
         ...state,
@@ -93,15 +100,24 @@ function rootReducer(state = initialState, action) {
       };
 
     case SEARCH: {
-      let search = [];
-      search = state.Clothes?.filter((c) =>
-        c.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      return {
-        ...state,
-        searchResults: search.length,
-        ClothesCopy: [...search],
-      };
+      if(!!state.searchInput) {
+        console.log(!!state.searchInput);
+        console.log("as");
+        return {
+          ...state,
+          ClothesCopy: state.Clothes
+        };
+      }else{
+        let search = [];
+        search = state.Clothes?.filter((c) =>
+          c.name.toLowerCase().includes(action.payload.toLowerCase())
+        );
+        return {
+          ...state,
+          searchResults: search.length,
+          ClothesCopy: [...search],
+        };
+      }
     }
     case SEARCH_USER: {
       let search = [];

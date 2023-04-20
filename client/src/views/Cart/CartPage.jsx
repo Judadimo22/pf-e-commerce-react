@@ -7,10 +7,13 @@ import Footer from "../../components/Footer/Footer";
 //import { MPButton } from "../../components/MPButton/MPButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { cartLength } from "../../redux/actions";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const { isAuthenticated, user } = useAuth0();
+  const dispatch = useDispatch()
   const [pay, setPay] = useState(false);
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const CartPage = () => {
         item.color !== product.color
     );
     setCartItems(updatedItems);
+    dispatch(cartLength(updatedItems.length))
     localStorage.setItem("cartItems", JSON.stringify(updatedItems));
   };
 

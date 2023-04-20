@@ -3,6 +3,8 @@ import style from "./CardProduct.module.css";
 import { Link } from "react-router-dom";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { cartLength } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 let products = [];
 export const ProductCard = (props) => {
@@ -11,6 +13,7 @@ export const ProductCard = (props) => {
   const productTrademark = props.product.trademark;
   const productImage = props.product.image;
   const productName = props.product.name;
+  const dispatch = useDispatch()
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
     const product = {
@@ -47,7 +50,8 @@ export const ProductCard = (props) => {
 
     // Actualizar el estado del número de productos en el carrito
     //setNumCartItems(cart.length);
-    alert(`se agrego a se lista de compras`)
+    dispatch(cartLength(cart.length))
+
   };
   return (
     <Flex flexDirection="column" className={style.containerCard}>

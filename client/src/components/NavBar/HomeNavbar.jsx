@@ -23,12 +23,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import logo from "../../assets/logo/logoC3.jpeg";
+import { Badge, IconButton } from "@mui/material";
 
 const HomeNavBar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated, user, logout } = useAuth0();
   const [infoUser, setInfoUser] = useState({});
   const userState = useSelector((state) => state.user);
+  const cartLength = useSelector((state) => state.cartLength);
 
   useEffect(() => {
     if (user && isAuthenticated) {
@@ -44,8 +46,7 @@ const HomeNavBar = () => {
           };
 
           console.log(newUser);
-          dispatch(createUser(newUser))
-          .then(
+          dispatch(createUser(newUser)).then(
             (e) => (window.location.href = `/user/edit/${e.payload.data._id}`)
           );
         } else {
@@ -55,7 +56,7 @@ const HomeNavBar = () => {
       });
     }
   }, [user]);
-  console.log(userState.roll);
+  console.log(cartLength);
 
   return (
     <>
@@ -124,21 +125,13 @@ const HomeNavBar = () => {
           ) : (
             <LoginButton />
           )}
-          <Box>
-            <Link to="/cart">
-              <Icon
-                display={{ base: "none", md: "block" }}
-                bgColor="#f2f2f2"
-                cursor="pointer"
-                boxSize={12}
-                borderRadius={50}
-                p={2.5}
-                justifyContent="center"
-                alignItems="center"
-                as={AiOutlineShoppingCart}
-              />
-            </Link>
-          </Box>
+          <Link to="/cart">
+            <IconButton style={{backgroundColor:"#DAEB0F",color:"#272727"}} aria-label="cart">
+              <Badge style={{width:"30px",height:"30px",display:"flex",justifyContent:"center",alignItems:"center"}} badgeContent={cartLength} color="secondary">
+                <AiOutlineShoppingCart />
+              </Badge>
+            </IconButton>
+          </Link>
         </Flex>
       </Flex>
     </>

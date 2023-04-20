@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getClothById } from "../../redux/actions";
+import { cartLength, getClothById } from "../../redux/actions";
 import HomeNavBar from "../NavBar/HomeNavbar";
 import * as Chakra from "@chakra-ui/react";
 import StarRating from "../StarRating/StarRating";
@@ -95,6 +95,7 @@ export const Details = () => {
 
     // Actualizar el estado del número de productos en el carrito
 
+    dispatch(cartLength(cart.length))
     setNumCartItems(cart.length);
     setSelectedSize("");
   };

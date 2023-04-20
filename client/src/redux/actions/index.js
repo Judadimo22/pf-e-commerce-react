@@ -26,6 +26,7 @@ export const POST_REVIEW = "POST_REVIEW";
 export const CHANGE_INDEX = "CHANGE_INDEX";
 export const SEARCH_USER = 'SEARCH_USER'
 export const IS_SEARCH_INPUT = 'IS_SEARCH_INPUT'
+export const CART_LENGTH = 'CART_LENGTH'
 
 
 
@@ -40,6 +41,14 @@ export const sortDescending = () => {
   };
 };
 
+export function cartLength(payload) {
+  return async function (dispatch) {
+    dispatch({
+      type: CART_LENGTH,
+      payload: payload,
+    });
+  };
+}
 export function setSearchInput(payload) {
   return async function (dispatch) {
     dispatch({
