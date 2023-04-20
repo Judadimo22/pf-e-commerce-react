@@ -132,7 +132,7 @@ export const Details = () => {
             <Chakra.Flex pt="1.5rem" pb="2rem" justifyContent={{base:'center', md:'left'}}  >
               <StarRating rating={4.5} justifyContent={{base:'center', md:'left'}} />
               <Chakra.Text ml={1} justifyContent={{base:'center', md:'left'}} >(1 review)</Chakra.Text>{" "}
-              {/* que alguien añada reviews o rompo development */}
+           
             </Chakra.Flex>
             <Chakra.Flex justifyContent={{ base:'center',md:'left'}}>
             {productDetails.tallas?.map((talla) => (
@@ -145,7 +145,7 @@ export const Details = () => {
               />))}
             </Chakra.Flex>
             <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem" textAlign={{ base:'center',md:'left'}}>
-              Colores Disponibles
+            Colors available
             </Chakra.Text>
             <Chakra.Box  display='flex' justifyContent={{ base:'center',md:'left'}}>
             <ColorSelector 
@@ -169,11 +169,11 @@ export const Details = () => {
                   onClick={handleAddToCart}
                   leftIcon={<FaShoppingCart />}
                 >
-                  Agregar al carrito
+                 Add to cart
                 </Chakra.Button>
               
                 <Chakra.Text fontSize="md" fontWeight="bold" pl={{base:0,md:"2rem"}} pt=".7rem" color="#565656">
-                {selectedSize === "" ? "Selecciona una talla" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
+                {selectedSize === "" ? "Select a size" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
 
                 </Chakra.Text>
               </Chakra.Box>
@@ -187,7 +187,7 @@ export const Details = () => {
               color="#565656"
               mx={{base:5 ,md:0}}
             >
-              Marca {trademark ? trademark : "N/A"}
+              Trademark: {trademark ? trademark : "N/A"}
             </Chakra.Text>
             <Chakra.Text
               fontSize="md"
