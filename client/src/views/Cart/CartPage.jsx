@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
 import Footer from "../../components/Footer/Footer";
-//import { MPButton } from "../../components/MPButton/MPButton";
+import { MPButton } from "../../components/MPButton/mpButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
@@ -114,7 +114,7 @@ const CartPage = () => {
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">
-                <Button
+                {/* <Button
                   mt={2}
                   mb={5}
                   variant="solid"
@@ -122,11 +122,19 @@ const CartPage = () => {
                   onClick={handleCheckout}
                 >
                   Comprar
-                </Button>
+                </Button> */}
                 {isAuthenticated ? (
-                  null//<MPButton id={cartItems} />
+                  <MPButton id={cartItems} />
                 ) : (
-                  <button onClick={handlerPay}>Buy</button>
+                  <Button
+                    mt={2}
+                    mb={5}
+                    variant="solid"
+                    colorScheme="green"
+                    onClick={handlerPay}
+                  >
+                    Comprar
+                  </Button>
                 )}
               </Grid>
             </>

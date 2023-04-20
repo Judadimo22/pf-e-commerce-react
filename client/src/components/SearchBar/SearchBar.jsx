@@ -3,6 +3,7 @@ import { Filter, changeIndex, clearFilters, getCloth, setSearch, setSearchInput 
 import { IoIosSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import style from "./SearchBar.module.css";
+import { Box, Button, FormControl, Input } from "@chakra-ui/react";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -24,22 +25,16 @@ export default function SearchBar() {
     setName("");
   };
 
-  return (
-    <div className={style.containerSearch}>
-      <form onSubmit={(e) => handleCLick(e)}>
-        <button onClick={(e) => handleCLick(e)}>
-          <IoIosSearch />
-        </button>
-        <input
-          type="text"
-          id=""
-          value={name}
-          placeholder="Search ..."
-          onChange={(e) => handleInputChange(e)}
-        />
-      </form>
-    </div>
-  );
+    return(
+        <Box color='#565656' >
+            <FormControl display='flex' justifyContent='center'>
+            <form onSubmit={(e) => handleCLick(e)}>
+            <Button fontSize={25} cursor='pointer' position='relative' zIndex={20} left={{base:0,md:14}} _hover='none' border='none' background='none' bac onClick={(e) => handleCLick(e)}><IoIosSearch/></Button>
+                <Input  pl={{base:0 ,md:50}} borderRadius={20} backgroundColor='#F2F2F2' border='none' fontSize={16} h={{base:5,md:35}} w={{base:100,md:250}}  type="text" id="" value={name} placeholder="Search ..." onChange={(e) => handleInputChange(e)} />
+            </form>
+            </FormControl>
+        </Box>
+    )
 }
 
 // *

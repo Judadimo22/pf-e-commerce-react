@@ -25,7 +25,9 @@ export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const POST_REVIEW = "POST_REVIEW";
 export const CHANGE_INDEX = "CHANGE_INDEX";
 export const SEARCH_USER = 'SEARCH_USER'
-export const IS_SEARCH_INPUT = 'IS_SEARCH_INPUT'
+export const IS_SEARCH_INPUT = 'IS_SEARCH_INPUT';
+export const GET_CLOTHES_ADMIN = 'GET_CLOTHES_ADMIN';
+export const SEARCH_ADMIN = 'SEARCH_ADMIN'
 export const CART_LENGTH = 'CART_LENGTH'
 
 
@@ -67,6 +69,16 @@ export function getClothes() {
   };
 }
 
+export function getClothesAdmin() {
+  return async function (dispatch) {
+    let json = await axios.get(`/cloth`);
+    dispatch({
+      type: GET_CLOTHES_ADMIN,
+      payload: json.data,
+    });
+  };
+}
+
 export function getUsers() {
   return async function (dispatch) {
     let json = await axios.get(`/users`);
@@ -97,6 +109,15 @@ export function getClothById(id) {
 }
 
 export const setSearch = (payload) => {
+  return async function (dispatch) {
+    dispatch({
+      type: SEARCH,
+      payload,
+      });
+  };
+};
+
+export const setSearchAdmin = (payload) => {
   return async function (dispatch) {
     dispatch({
       type: SEARCH,

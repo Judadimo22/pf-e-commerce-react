@@ -9,7 +9,11 @@ import axios from "axios";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import { getUserById } from "../../redux/actions";
 import Footer from "../../components/Footer/Footer";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Box, Text, Heading } from '@chakra-ui/react';
+import {GraficoTrademarks } from '../../components/Dashboard/GraficoTrademarks';
+import { GraficoTypes } from '../../components/Dashboard/GraficoTypes';
+import { GraficoCategories } from '../../components/Dashboard/GraficoCategories';
+// import GraficoLineas from '../../components/Dashboard/GraficoLineas';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -43,49 +47,65 @@ const Dashboard = () => {
   }, [user]);
   if (userState.roll !== "admin") window.location.href = "/home";
 
-  const nav = [
-    {
-      icon: TbDeviceDesktopAnalytics,
-      title: "Dashboard",
-      redirect: "/admin",
-    },
-    {
-      icon: TbShirt,
-      title: "Products",
-      redirect: "/admin/products",
-    },
-    {
-      icon: FiUsers,
-      title: "Users",
-      redirect: "/admin/users",
-    },
-    {
-      icon: TbTruck,
-      title: "Orders",
-      redirect: "/admin/orders",
-    },
-  ];
-
-  return (
-    <>
-      <AdminNavBar />
-      <DashboardLeftMenu nav={nav} user={user} userState={userState} />
-      <Flex width="100%" minH="91.1vh" justifyContent="center">
-          <Flex
-            width="80%"
-            borderRadius="20px"
-            p="10px"
-            bgColor="#ffffff"
-            m="40px 0"
-            boxShadow="-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
-        -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
-        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);"
-          >
-          </Flex>
+  const nav= [
+      {
+          icon:TbDeviceDesktopAnalytics,
+          title:"Dashboard",
+          redirect:"/admin"
+      },
+      {
+          icon:TbShirt,
+          title:"Products",
+          redirect:"/admin/products"
+      },
+      {
+          icon:FiUsers,
+          title:"Users",
+          redirect:"/admin/users"
+      },
+      {
+          icon:TbTruck,
+          title:"Orders",
+          redirect:"/admin/orders"
+      },
+  ]
+  
+    return (
+      <>
+        <AdminNavBar/>
+        <Flex wrap='wrap' minH='90vh'>
+        <DashboardLeftMenu nav={nav} user={user} userState={userState}/>
+        <Flex>
+        <Box pl='10%'>
+          <Heading pt={4} pb={2}>
+          Stadistics
+          </Heading>
+          <Text>
+          A page that assists in the identification of patterns and insights to help with decision-making and performance optimization.
+          </Text>
+        </Box>
         </Flex>
-      <Footer />
-    </>
-  );
+        
+        <Box flexDirection='column' pl='25%' >
+        <Box display='flex' justifyContent='space-between' mx='auto' pt={5}>
+        <Box mx={5} w={560} h={260}  justifyContent='center' display='flex' >
+
+          <GraficoCategories/>
+        </Box>
+        <Box mx={5} w={560}>
+          <GraficoTypes/>
+          </Box> 
+        </Box>
+        <Box mx='auto' pt={5}>
+          <Flex  h={285} justifyContent='center' mb={10}>
+          <GraficoTrademarks/>
+          </Flex>
+        </Box>
+        </Box>
+
+        </Flex>
+      </>
+  )
 };
 
-export default Dashboard;
+export default Dashboard

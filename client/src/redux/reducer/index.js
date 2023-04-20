@@ -23,6 +23,8 @@ import {
   UPDATE_USER,
   IS_SEARCH_INPUT,
   CART_LENGTH,
+  GET_CLOTHES_ADMIN,
+  SEARCH_ADMIN
 } from "../actions/index";
 
 const computeFilteredData = (
@@ -41,6 +43,8 @@ const computeFilteredData = (
 const initialState = {
   Clothes: [],
   ClothesCopy: [],
+  ClothesAdmin : [],
+  ClothesAdminCopy: [],
   Details: [],
   filterInputs: {
     byType: "",
@@ -71,10 +75,17 @@ function rootReducer(state = initialState, action) {
         cartLength: action.payload,
       };
     case GET_CLOTHES:
+      const valid = action.payload.filter(product => product.active == 'valid')
       return {
         ...state,
-        Clothes: action.payload,
-        ClothesCopy: action.payload,
+        Clothes: valid,
+        ClothesCopy: valid,
+      };
+    case GET_CLOTHES_ADMIN:
+      return {
+        ...state,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload,
       };
     case IS_SEARCH_INPUT:
       return {
@@ -256,6 +267,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         Clothes: action.payload,
         ClothesCopy: action.payload,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload
       };
     case PUT_USERS:
       return {
