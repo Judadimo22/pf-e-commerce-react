@@ -105,9 +105,9 @@ import Swal from "sweetalert2";
                     <Text fontWeight={1000} fontSize={30}>{getUserId.lastname}</Text>
                     </Box>
 
-                    <Box display='flex' justifyContent='space-between' >
-                    <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
-                        <Box textAlign='left' mr={20}>
+                    <Box display={{base:'block',md:'flex'}} justifyContent='space-between' >
+                    <Box w={{base:280,md:420}} mb={{base:5,md:0}}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={{base:0,md:20}}>
                         <Text fontSize={20} fontWeight={1000}><strong>Country - City</strong></Text>
                         {getUserId.location?.length ? (
                              <Text>{getUserId.location[getUserId.location?.length-1]?.country} - {getUserId.location[getUserId.location?.length-1]?.city}</Text>
@@ -117,8 +117,8 @@ import Swal from "sweetalert2";
                             <Icon fontSize={25}><TbMap2/></Icon>
                         </Box>
                     </Box>
-                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
-                        <Box textAlign='left' mr={20}>
+                    <Box w={{base:280,md:420}} mb={{base:5,md:0}}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={{base:0,md:20}}>
                         <Text fontSize={20} fontWeight={1000}><strong>Email</strong></Text>
                         <Text>{getUserId.email}</Text>
                         </Box>
@@ -128,9 +128,9 @@ import Swal from "sweetalert2";
                     </Box>
                     </Box>
 
-                    <Box display='flex' justifyContent='space-between' mt={30}  >
-                    <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
-                        <Box textAlign='left' mr={20}>
+                    <Box display={{base:'block',md:'flex'}} justifyContent='space-between' mt={30}  >
+                    <Box w={{base:280,md:420}} mb={{base:5,md:0}}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={{base:0,md:20}}>
                         <Text fontSize={20} fontWeight={1000}><strong>Address</strong></Text>
                         {getUserId.location?.length ? (
                              <Text>{getUserId.location[getUserId.location?.length-1]?.addres}</Text>
@@ -140,8 +140,8 @@ import Swal from "sweetalert2";
                             <Icon fontSize={25}><HiLocationMarker/></Icon>
                         </Box>
                     </Box>
-                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
-                        <Box textAlign='left' mr={20}>
+                    <Box w={{base:280,md:420}} mb={{base:5,md:0}} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={{base:0,md:20}}>
                         <Text fontSize={20} fontWeight={1000}><strong>Phone</strong></Text>
                         <Text>{getUserId.phone}</Text>
                         </Box>
@@ -151,9 +151,9 @@ import Swal from "sweetalert2";
                     </Box>
                     </Box>
 
-                    <Box display='flex' justifyContent='space-between' mt={30} >
-                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
-                        <Box textAlign='left' mr={20}>
+                    <Box display={{base:'block',md:'flex'}} justifyContent='space-between' mt={30} >
+                    <Box w={{base:280,md:420}} mb={{base:5,md:0}} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={{base:0,md:20}}>
                         <FormLabel fontSize={20}><strong>Active</strong></FormLabel>
                         <Select
                         name ='active'
@@ -172,8 +172,8 @@ import Swal from "sweetalert2";
                             <Icon fontSize={25}><AiOutlineCheckCircle/></Icon>
                         </Box>
                     </Box>
-                    <Box w={420} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
-                        <Box textAlign='left' mr={20}>
+                    <Box w={{base:280,md:420}} shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
+                        <Box textAlign='left' mr={{base:0,md:20}}>
                         <FormLabel fontSize={20}><strong>Rol</strong></FormLabel>
                         <Select
                         name ='roll'

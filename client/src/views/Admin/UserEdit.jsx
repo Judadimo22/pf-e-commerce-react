@@ -68,7 +68,7 @@ const UserEditsPage = () => {
   return (
     <>
       <AdminNavBar />
-      <Flex>
+      <Flex flexWrap={{base:'wrap', md:'nowrap'}} overflowX='hidden'>
         <DashboardLeftMenu nav={nav} user={user} userState={userState} />
         <Flex width="100%" justifyContent="center">
           <Flex width="80%" p="10px" m="40px 0" h="100%">
