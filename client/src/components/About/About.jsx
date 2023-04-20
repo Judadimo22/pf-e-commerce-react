@@ -1,4 +1,4 @@
-import { Box, Image, Text, FormControl, Input, Textarea, Button } from "@chakra-ui/react";
+import { Box, Image, Text, FormControl, Input, Textarea, Button, Heading } from "@chakra-ui/react";
 import React from "react";
 import HomeNavBar from "../NavBar/HomeNavbar";
 import imageContact from '../../assets/imagen_about.jpg'
@@ -11,8 +11,8 @@ const About = () => {
     return(<>
         <Box>
            <HomeNavBar/> 
-            <Box display='flex' justifyContent='center' px={200} pt={5} pb={5}  backgroundColor='#272727' >
-                <Box w='60%' justifyContent='center' backgroundColor='#F2F2F2' px={10} pb={5}  >
+            <Box display={{base:'block',md:'flex' }}justifyContent='center' px={{base:0,md:200}} pt={{base:8,md:5}} pb={5}  backgroundColor='#272727' >
+                <Box w={{base:'100%',md:'60%'}} justifyContent='center' backgroundColor='#F2F2F2' px={10} pb={{base:0,md:5}}  >
                     <Text fontSize={30} mt={10} mb={6}><strong>¡Hello!</strong></Text>
                     <Text fontSize={18} mb={6}>We are pleased to introduce ourselves as an online store for casual and sportswear. On our platform, we offer a wide selection of clothing to meet the style needs of men and women of all ages.</Text>
                     <Text fontSize={18} mb={5}>Our goal is to provide our customers with high quality products at reasonable prices. We work hard to ensure that our selection of clothing fits the latest styles and fashion trends, while maintaining a focus on quality and durability.</Text>
@@ -21,20 +21,20 @@ const About = () => {
                     <Text fontSize={18} mb={5}>Ultimately, we are here to serve our customers and provide them with a satisfying online shopping experience. We look forward to helping you find the perfect apparel to suit your style and needs.</Text>
                     <Text mb={6} fontSize={18}><strong>¡Thank you for visiting us</strong>!</Text>
                 </Box>
-                <Image w='40%' src={imageContact} objectFit='cover'/>
+                <Image w={{base:'100%',md:'40%'}} src={imageContact} objectFit='cover'/>
             </Box>
         <div className={Style.container_4}>
-        <h2 className={Style.miembros}>
+        <Heading textAlign='center' font className={Style.miembros} mt={8}>
         Meet our team members
-        </h2>
-        <p className={Style.descripcionGrupo}>
+        </Heading>
+        <Text fontSize={20} textAlign='center' pt={5}className={Style.descripcionGrupo}>
         This project would not have been possible without these 5 people, always following the idea of doing something out of the ordinary.
-        </p>
+        </Text>
 
 
-      <div className={Style.contenedorOrdenador}>
+      <Box display='flex' mx={100} flexWrap='wrap' justifyContent='center' className={Style.contenedorOrdenador} mb={10} mt={10}>
 
-        <div className={Style.container_4}>
+        <Box backgroundColor='#d9d9d9' w='320px' mx={10} className={Style.container_4} py={5} px={{base:12,md:5}} border='1px' borderColor='black' textAlign='center' borderRadius={20} mb={5}>
         <div className={Style.cartasIntegrantes}>
           <div className={Style.cartaIntegrante}>
             <div className={Style.descripcionIntegrante}>
@@ -45,16 +45,16 @@ const About = () => {
                 <img src={member} alt=""/>
               </div>
               <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Franco Mafferra</h3>
-                <p className={Style.develop} >
+                <Text fontSize={20}><strong>Franco Mafferra</strong></Text>
+                <Text color='blue' fontSize={20} className={Style.develop} >
                   FULL-STACK DEVELOPER
-                </p>
+                </Text>
               </div>
             </div>
-            <p className={Style.devAptitud}>
+            <Text fontSize={18} className={Style.devAptitud}>
             Constantly looking for ways to improve productivity.
-            </p>
-            <div className={Style.links}>
+            </Text>
+            <Box display='flex' justifyContent='space-between' mx={70} mt={5} fontSize={30} className={Style.links}>
               <a
                 className="m-3 ml-0"
                 href="https://github.com/FrancoMafferra"
@@ -73,13 +73,12 @@ const About = () => {
                   <BsLinkedin></BsLinkedin>
                 </div>
               </a>
-            </div>
+            </Box>
           </div>
         </div>
-        </div>
+        </Box>
       
-
-       <div className={Style.container_4}>
+        <Box backgroundColor='#d9d9d9' w='320px' mx={10} className={Style.container_4} py={5} px={{base:12,md:5}} border='1px' borderColor='black' textAlign='center' borderRadius={20} mb={5}>
         <div className={Style.cartasIntegrantes}>
           <div className={Style.cartaIntegrante}>
             <div className={Style.descripcionIntegrante}>
@@ -90,16 +89,16 @@ const About = () => {
                 <img src={member} alt=""/>
               </div>
               <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Mateo Villacreses</h3>
-                <p className={Style.develop} >
+                <Text fontSize={20}><strong>Mateo Villacreses</strong></Text>
+                <Text fontSize={20} color='blue' className={Style.develop} >
                   FULL-STACK DEVELOPER
-                </p>
+                </Text>
               </div>
             </div>
-            <p className={Style.devAptitud}>
+            <Text fontSize={18} className={Style.devAptitud}>
              Constantly looking for ways to improve productivity.
-            </p>
-            <div className={Style.links}>
+            </Text>
+            <Box display='flex' justifyContent='space-between' mx={70} mt={5} fontSize={30} className={Style.links}>
               <a
                 className="m-3 ml-0"
                 href="https://github.com/Bach16"
@@ -118,10 +117,10 @@ const About = () => {
                   <BsLinkedin></BsLinkedin>
                 </div>
               </a>
-            </div>
+            </Box>
           </div>
         </div>
-       </div>
+       </Box>
 
 
 
@@ -135,7 +134,7 @@ const About = () => {
 
 
 
-       <div className={Style.container_4}>
+       <Box backgroundColor='#d9d9d9' w='320px' mx={10} className={Style.container_4} py={5} px={{base:12,md:5}} border='1px' borderColor='black' textAlign='center' borderRadius={20} mb={5}>
         <div className={Style.cartasIntegrantes}>
           <div className={Style.cartaIntegrante}>
             <div className={Style.descripcionIntegrante}>
@@ -146,16 +145,16 @@ const About = () => {
                 <img src={member} alt=""/>
               </div>
               <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Martín Suárez</h3>
-                <p className={Style.develop} >
+                <Text fontSize={20}><strong>Martín Suárez</strong></Text>
+                <Text fontSize={20} color='blue' className={Style.develop} >
                   FULL-STACK DEVELOPER
-                </p>
+                </Text>
               </div>
             </div>
-            <p className={Style.devAptitud}>
+            <Text fontSize={18} className={Style.devAptitud}>
             Constantly looking for ways to improve productivity.
-            </p>
-            <div className={Style.links}>
+            </Text>
+            <Box display='flex' justifyContent='space-between' mx={70} mt={5} fontSize={30} className={Style.links}>
               <a
                 className="m-3 ml-0"
                 href="https://github.com/Mmartinn02"
@@ -174,12 +173,12 @@ const About = () => {
                   <BsLinkedin></BsLinkedin>
                 </div>
               </a>
-            </div>
+            </Box>
           </div>
         </div>
-       </div>
+       </Box>
 
-       <div className={Style.container_4}>
+       <Box backgroundColor='#d9d9d9' w='320px' mx={10} className={Style.container_4} py={5} px={{base:12,md:5}} border='1px' borderColor='black' textAlign='center' borderRadius={20} mb={5}>
         <div className={Style.cartasIntegrantes}>
           <div className={Style.cartaIntegrante}>
             <div className={Style.descripcionIntegrante}>
@@ -190,16 +189,16 @@ const About = () => {
                 <img src={member} alt=""/>
               </div>
               <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Juan David Díaz </h3>
-                <p className={Style.develop} >
+                <Text fontSize={20}><strong>Juan David Díaz </strong></Text>
+                <Text fontSize={20} color='blue' className={Style.develop} >
                   FULL-STACK DEVELOPER
-                </p>
+                </Text>
               </div>
             </div>
-            <p className={Style.devAptitud}>
+            <Text fontSize={18} className={Style.devAptitud}>
             Constantly looking for ways to improve productivity.
-            </p>
-            <div className={Style.links}>
+            </Text>
+            <Box display='flex' justifyContent='space-between' mx={70} mt={5} fontSize={30} className={Style.links}>
               <a
                 className="m-3 ml-0"
                 href="https://github.com/Judadimo22"
@@ -218,10 +217,10 @@ const About = () => {
                   <BsLinkedin></BsLinkedin>
                 </div>
               </a>
-            </div>
+            </Box>
           </div>
         </div>
-       </div>
+       </Box>
 
 
 
@@ -236,7 +235,7 @@ const About = () => {
 
 
 
-       <div className={Style.container_4}>
+        <Box backgroundColor='#d9d9d9' w='320px' mx={10} className={Style.container_4} py={5} px={{base:12,md:5}} border='1px' borderColor='black' textAlign='center' borderRadius={20} mb={5}>
         <div className={Style.cartasIntegrantes}>
           <div className={Style.cartaIntegrante}>
             <div className={Style.descripcionIntegrante}>
@@ -247,16 +246,16 @@ const About = () => {
                 <img src={member} alt=""/>
               </div>
               <div className="text-left flex flex-col justify-center ml-3">
-                <h3>Dylan Gonzalez </h3>
-                <p className={Style.develop} >
+                <Text fontSize={20}><strong>Dylan Gonzalez</strong> </Text>
+                <Text fontSize={20} color='blue' className={Style.develop} >
                   FULL-STACK DEVELOPER
-                </p>
+                </Text>
               </div>
             </div>
-            <p className={Style.devAptitud}>
+            <Text fontSize={18} className={Style.devAptitud}>
             Constantly looking for ways to improve productivity.
-            </p>
-            <div className={Style.links}>
+            </Text>
+            <Box display='flex' justifyContent='space-between' mx={70} mt={5} fontSize={30} className={Style.links}>
               <a
                 className="m-3 ml-0"
                 href="https://github.com/Delamm"
@@ -275,13 +274,13 @@ const About = () => {
                   <BsLinkedin></BsLinkedin>
                 </div>
               </a>
-            </div>
+            </Box>
           </div>
         </div>
-       </div>
+       </Box>
 
 
-      </div>
+      </Box>
   </div>
         </Box>
         </>
