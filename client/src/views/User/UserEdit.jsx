@@ -40,7 +40,7 @@ const UserEditPage = () => {
   return (
     <>
       <HomeNavBar />
-      <Flex minH="500px">
+      <Flex minH="500px" mt={{base:'90px', md:0}}>
         <Flex width="100%" justifyContent="center">
           {user ? <MyProfile user={user} id={id} /> : null}
         </Flex>

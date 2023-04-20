@@ -47,7 +47,7 @@ const AddressesPage = () => {
     return (
       <>
       <HomeNavBar/>
-      <Flex minH="91.1vh">
+      <Flex mt={{base:10, md:0}} display='flex' minH="91.1vh" flexWrap={{base:'wrap', md:'nowrap'}}>
         <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState}/>
         <UserAddresses/>
       </Flex>

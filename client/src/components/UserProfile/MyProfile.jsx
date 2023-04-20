@@ -103,7 +103,7 @@ export default function UserForm() {
   };
 
   return (
-    <Flex h="91.1vh" w="100%" flexDir="column" p="50px 300px">
+    <Flex h="91.1vh" w="100%" flexDir="column" p={{base:0,md:"50px 300px"}} mx={{base:5, md:0}}>
       <Flex width="100%" mb="60px" justifyContent="center">
         <Heading as="h1" size="3xl">
           Complete your profile
