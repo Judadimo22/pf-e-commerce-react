@@ -54,13 +54,14 @@ const Footer = () => {
         <Chakra.Box mt={-12}>
           <Chakra.Text fontWeight="bold" position='relative' top={{base:20, md:0}} fontSize={20}>Don't miss the new!</Chakra.Text>
           <Chakra.Flex position='relative' top={{base:16, md:0}} justify="center" align="center" py="4" mt="4" gap={3} pr="1rem">
-            <Chakra.Link href="#">
+            <Chakra.Link href="https://www.facebook.com/profile.php?id=100091761772077&mibextid=ZbWKwL">
               <Chakra.Box as={FaFacebook} size="24px" color="#DAEB0F" mx="2" />
             </Chakra.Link>
-            <Chakra.Link href="#">
+            <Chakra.Link href="
+https://twitter.com/CasualCouture23?t=bmBpYUJPqKfemWqzf4WVxA&s=09">
               <Chakra.Box as={FaTwitter} size="24px" color="#DAEB0F" mx="2" />
             </Chakra.Link>
-            <Chakra.Link href="#">
+            <Chakra.Link href="https://www.instagram.com/casual_couture23/">
               <Chakra.Box as={FaInstagram} size="24px" color="#DAEB0F" mx="2" />
             </Chakra.Link>
           </Chakra.Flex>
