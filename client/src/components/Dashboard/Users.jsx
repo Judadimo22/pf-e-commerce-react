@@ -39,10 +39,10 @@ const Users = () => {
           <Thead>
             <Tr>
               <Th>Name</Th>
-              <Th>Last Name</Th>
+              <Th display={{base:'none', md:'table-cell'}}>Last Name</Th>
               <Th>Email</Th>
-              <Th>Rol</Th>
-              <Th>Active</Th>
+              <Th display={{base:'none', md:'table-cell'}}>Rol</Th>
+              <Th display={{base:'none', md:'table-cell'}}>Active</Th>
             </Tr>
           </Thead>
           <Tbody>

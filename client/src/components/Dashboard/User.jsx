@@ -20,13 +20,13 @@ const User = (props) => {
 
   return (
     <Tr>
-      <Td>{Name}</Td>
-      <Td>{LastName}</Td>
-      <Td>{Email}</Td>
-      <Td>{Rol}</Td>
-      <Td>{Active}</Td>
+      <Td fontSize={{base:10,md:16}}>{Name}</Td>
+      <Td display={{base:'none', md:'table-cell'}}>{LastName}</Td>
+      <Td fontSize={{base:10,md:16}}>{Email}</Td>
+      <Td display={{base:'none', md:'table-cell'}}>{Rol}</Td>
+      <Td  display={{base:'none', md:'table-cell'}}>{Active}</Td>
       <Link to={`/Update/${props.user._id}`}>
-        <Td>Edit</Td>
+        <Td fontSize={{base:10,md:16}}>Edit</Td>
       </Link>
     </Tr>
   );

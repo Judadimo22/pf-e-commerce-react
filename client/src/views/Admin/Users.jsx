@@ -69,19 +69,16 @@ const UsersPage = () => {
   return (
     <>
       <SearchUserNavBar />
-      <Flex>
+      <Flex flexWrap={{base:'wrap', md:'nowrap'}} overflowX='hidden'>
         <DashboardLeftMenu nav={nav} user={user} />
         <Flex width="100%" justifyContent="center">
           <Flex
-            width="80%"
-            minH="630px"
-            borderRadius="20px"
-            p="10px"
-            bgColor="#ffffff"
+            width={{base:'100%',md:"80%"}}
+            borderRadius={{base:0,md:"20px"}}
+            p={{base:0,md:"10px"}}
+            bgColor={{base:'none',md:"#ffffff"}}
             m="40px 0"
-            boxShadow="-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
-        -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);
-        box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.5);"
+            boxShadow={{base:'none',md:'2xl'}}
           >
             <TableContainer w="100%">
               <AdmUsers />
