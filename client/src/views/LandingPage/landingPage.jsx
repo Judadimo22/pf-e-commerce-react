@@ -147,6 +147,20 @@ function LandingPage() {
         <div className={Style.col1}></div>
       </div> */}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*
       <div className={Style.container_4}>
         <h2 className={Style.miembros}>
         Meet our team members
@@ -406,7 +420,7 @@ function LandingPage() {
 
 
       </div>
-  </div>
+  </div>*/}
 
   <Footer/>
   </Box>

@@ -60,6 +60,7 @@ export const Details = () => {
 
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
+    alert("Producto agregado a su carrito!")
     const product = {
       id: productDetails.id,
       name: productDetails.name,
@@ -167,7 +168,7 @@ export const Details = () => {
                   _hover="white"
                   color="#272727"
                   isDisabled={!selectedSize}
-                  onClick={handleAddToCart}
+                  onClick={handleAddToCart} 
                   leftIcon={<FaShoppingCart />}
                 >
                  Add to cart
