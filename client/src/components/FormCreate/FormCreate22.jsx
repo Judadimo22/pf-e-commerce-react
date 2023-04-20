@@ -161,7 +161,7 @@ function CrearProducto() {
               <FormControl id="name" margin="2" isRequired>
                 <FormLabel fontSize="18px">Name</FormLabel>
                 <Input
-                  w={{base:250,md:500}}
+                  w={{base:250,md:"90%"}}
                   type="text"
                   value={name}
                   bgColor="#fff"
@@ -175,7 +175,7 @@ function CrearProducto() {
               <FormControl margin="2" id="description" mt="4" isRequired>
                 <FormLabel fontSize="18px">Description</FormLabel>
                 <Input
-                  w={{base:250,md:500}}
+                  w={{base:250,md:"90%"}}
                   height="100px"
                   type="text"
                   value={description}
@@ -240,7 +240,7 @@ function CrearProducto() {
                   boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
                                                     -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
                                                     box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-                   w={{base:250,md:500}}
+                   w={{base:250,md:"90%"}}
                   type="text"
                   value={trademark}
                   onChange={(e) => setTrademark(e.target.value)}
@@ -258,7 +258,7 @@ function CrearProducto() {
                   min={0}
                   precision={2}
                   step={0.01}
-                  w={{base:250,md:500}}
+                  w={{base:250,md:"90%"}}
                   onChange={(value) => {
                     const newValue = parseFloat(value);
                     if (!isNaN(newValue)) {
@@ -277,7 +277,7 @@ function CrearProducto() {
               <FormControl margin="2" id="tipo-prenda" mt="4" isRequired>
                 <FormLabel fontSize="18px">Type</FormLabel>
                 <Select
-                  w={{base:250,md:500}}
+                  w={{base:250,md:"90%"}}
                   value={type}
                   bgColor="#fff"
                   boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
@@ -296,7 +296,7 @@ function CrearProducto() {
               <FormControl margin="2" id="categorie" mt="4" isRequired>
                 <FormLabel fontSize="18px">Category</FormLabel>
                 <Select
-                  w={{base:250,md:500}}
+                  w={{base:250,md:"90%"}}
                   placeholder="Seleccionar categoría"
                   value={categorie}
                   bgColor="#fff"
@@ -314,7 +314,7 @@ function CrearProducto() {
               <FormControl margin="2" isRequired>
                 <FormLabel fontSize="18px">Image</FormLabel>
                 <Input
-                  w={{base:250,md:500}}
+                  w={{base:250,md:"90%"}}
                   type="file"
                   bgColor="#fff"
                   boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
