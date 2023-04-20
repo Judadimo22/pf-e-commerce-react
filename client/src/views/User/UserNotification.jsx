@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import HomeNavBar from '../../components/NavBar/HomeNavbar'
 import { DashboardLeftMenu } from '../../components/SideMenu/SideMenu'
 import { TbRuler, TbTruckDelivery, TbUserCircle } from 'react-icons/tb'
@@ -13,12 +13,13 @@ import MyProfile from '../../components/UserProfile/MyProfile'
 import { useAuth0 } from '@auth0/auth0-react'
 import Footer from '../../components/Footer/Footer'
 import  VistasNotificaciones from '../../components/Notificaciones/VistasNotificaciones'
+import axios from 'axios'
 
 const UserNotification = () => {
   const userState = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { user } = useAuth0();
+  const {isAuthenticated, user } = useAuth0();
   useEffect(() => {
     if (!userState.length) dispatch(getUserById(id));
   }, []);
@@ -45,6 +46,35 @@ const UserNotification = () => {
       redirect: `/user/addresses/${id}`,
     },
   ];
+
+  const [infoUser, setInfoUser] = useState({});
+
+
+  useEffect(() => {
+      if (user && isAuthenticated) {
+       axios
+          .get("https://backend-pf-uh1o.onrender.com/users")
+          .then((element) => {
+            const userDb = element.data.find(
+              (element) => element.email === user.email
+            );
+            if (!userDb) {
+              const newUser = {
+                name: user.given_name,
+                lastname: user.family_name,
+                email: user.email,
+              };
+  
+              console.log(newUser);
+              dispatch(createUser(newUser));
+            } else {
+              setInfoUser(userDb);
+            }
+            if (!userState.length) dispatch(getUserById(userDb._id));s
+          });
+      }
+    }, [user]);
+    if (userState.active === "invalid") window.location.href = "/banned";
 
   return (
     <>

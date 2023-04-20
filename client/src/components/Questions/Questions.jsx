@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import HomeNavBar from "../NavBar/HomeNavbar";
@@ -9,6 +9,10 @@ import {
   AccordionSummary,
   Typography,
 } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { getUserById } from "../../redux/actions";
 
 const Questions = () => {
   const [expanded, setExpanded] = useState(false);
@@ -16,6 +20,36 @@ const Questions = () => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const { isAuthenticated, user, logout } = useAuth0();
+  const [infoUser, setInfoUser] = useState({});
+  const userState = useSelector((state) => state.user);
+
+  useEffect(() => {
+      if (user && isAuthenticated) {
+        axios
+          .get("https://backend-pf-uh1o.onrender.com/users")
+          .then((element) => {
+            const userDb = element.data.find(
+              (element) => element.email === user.email
+            );
+            if (!userDb) {
+              const newUser = {
+                name: user.given_name,
+                lastname: user.family_name,
+                email: user.email,
+              };
+  
+              console.log(newUser);
+              dispatch(createUser(newUser));
+            } else {
+              setInfoUser(userDb);
+            }
+            if (!userState.length) dispatch(getUserById(userDb._id));s
+          });
+      }
+    }, [user]);
+    if (userState.active === "invalid") window.location.href = "/banned";
  
 
   return (
@@ -26,7 +60,7 @@ const Questions = () => {
           <Heading mb={3} >Frequently asked questions</Heading>
           <Text>FAQs: Answers to Commonly Asked Questions.</Text>
         </Flex>
-      <Box boxSize={{base:'350px',md:"1000px"}} h="100px" pb={400} >
+      <Box boxSize={{base:'350px',md:"1000px"}} h="100px" pb={{md:400}} >
         <Accordion
           expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}

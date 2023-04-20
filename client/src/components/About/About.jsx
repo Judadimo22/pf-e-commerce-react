@@ -1,14 +1,47 @@
 import { Box, Image, Text, FormControl, Input, Textarea, Button, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HomeNavBar from "../NavBar/HomeNavbar";
 import imageContact from '../../assets/imagen_about.jpg'
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import member from "../../assets/carousel-landing/t-member.png";
 import Style from "./About.css"
 import Footer from "../Footer/Footer";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { getUserById } from "../../redux/actions";
 
 
 const About = () => {
+  const { isAuthenticated, user, logout } = useAuth0();
+  const [infoUser, setInfoUser] = useState({});
+  const userState = useSelector((state) => state.user);
+
+  useEffect(() => {
+      if (user && isAuthenticated) {
+        axios
+          .get("https://backend-pf-uh1o.onrender.com/users")
+          .then((element) => {
+            const userDb = element.data.find(
+              (element) => element.email === user.email
+            );
+            if (!userDb) {
+              const newUser = {
+                name: user.given_name,
+                lastname: user.family_name,
+                email: user.email,
+              };
+  
+              console.log(newUser);
+              dispatch(createUser(newUser));
+            } else {
+              setInfoUser(userDb);
+            }
+            if (!userState.length) dispatch(getUserById(userDb._id));s
+          });
+      }
+    }, [user]);
+    if (userState.active !== "valid") window.location.href = "/banned";
     return(<>
         <Box>
            <HomeNavBar/> 

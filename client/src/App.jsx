@@ -27,6 +27,7 @@ import UserOrdersPage from './views/User/UserOrdersPage';
 import ProductEditPage from './views/Admin/ProductEdit';
 import CreateProduct from './views/Admin/CreateProduct';
 import UserNotification from './views/User/UserNotification';
+import Banned from './components/Banned/Banned';
 axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
 // axios.defaults.baseURL = "http://localhost:3001"
 
@@ -59,6 +60,7 @@ function App() {
         <Route exact path="/Update/:id" element={<UserEditsPage/>} />
         <Route exact path="/product/edit/:id" element={<ProductEditPage/>} />
         <Route exact path='/preg-frecuentes' element={<Questions/>}/>
+        <Route exact path='/banned' element={<Banned/>}/>
        </Routes>
       </div>
     </>
