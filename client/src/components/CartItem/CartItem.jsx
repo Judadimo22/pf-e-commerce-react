@@ -24,7 +24,7 @@ const CartItem = ({ item, handleRemoveItem, handleQuantityChange }) => {
         </Text>
         <Text>Price: ${item.price}.00</Text>
         <Text>
-          Size: {item.size ? item.size : item.sizes[0].talla}
+          Size: {item.size ? item.size : item.sizes?.[0].talla}
         </Text>
         <Box mr="4">
           <Button
