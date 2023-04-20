@@ -3,7 +3,7 @@ import HomeNavBar from '../../components/NavBar/HomeNavbar'
 import { DashboardLeftMenu } from '../../components/SideMenu/SideMenu'
 import { TbRuler, TbTruckDelivery, TbUserCircle } from 'react-icons/tb'
 import { HiOutlineLocationMarker, HiOutlineMail } from 'react-icons/hi'
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getUserById } from '../../redux/actions'
@@ -48,10 +48,10 @@ const UserPage = () => {
   return (
     <>
     <HomeNavBar/>
-    <Flex minH="91.1vh">
+    <Box mt={{base:10, md:0}} display='flex' minH="91.1vh" flexWrap={{base:'wrap', md:'nowrap'}}>
       <DashboardLeftMenu nav={nav} edit={true} user={user} userState={userState} id={id}/>
       <UserInfo/>
-    </Flex>
+    </Box>
     <Footer/>
   </>
   )

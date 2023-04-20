@@ -18,15 +18,15 @@ export function DashboardLeftMenu({ nav,edit,user,userState, id }) {
     return (
       <>
       <Flex
-      minW="350px"
+      minW={{base:'auto',md:"350px"}}
       bgColor="#272727"
-      pos="sticky"
+      pos={{base:'relative',md:"sticky"}}
       />
       <Flex
-      pos="fixed"
-      h="720px"
+      pos={{base:'relative',md:"fixed"}}
+      h={{base:'400px',md:"720px"}}
       boxShadow="0 0px 0 0 rgb(0,0,0,0.5)" 
-      w="350px"
+      w={{base:'full' ,md:"350px"}}
       flexDir="column"
       justifyContent="space-between"
       bgColor="#272727"
@@ -37,7 +37,7 @@ export function DashboardLeftMenu({ nav,edit,user,userState, id }) {
         w="100%"
         alignItems="flex-start"
         >
-            <Flex mt={4} align="center" alignSelf="center" flexDir="column" >
+            <Flex mt={4} align="center" alignSelf="center" flexDir={{base:'row', md:"column"}} >
                 <Avatar size="md" m={2} >
                   <Image src={user?.picture} />
                 </Avatar>
@@ -60,8 +60,12 @@ export function DashboardLeftMenu({ nav,edit,user,userState, id }) {
         </Flex>
 
 
-        <Flex 
-            flexDir="column"
+        <Box
+            flexDir={{base:'row', md:"column"}}
+            display={{base:'flex',md:'flex'}}
+            flexWrap='wrap'
+            ml={{base:5, md:0}}
+            justifyContent={{base:'space-between',md:'left'}}
             mb={20}
         >
           {
@@ -69,12 +73,12 @@ export function DashboardLeftMenu({ nav,edit,user,userState, id }) {
               <NavItem key={item.title} icon={item.icon} title={item.title} redirect={item.redirect}/>
             ))
           }
-        </Flex>
+        </Box>
         <Flex
             justifyContent="center"
             marginBottom="40px"
         >
-            <Button
+        <Button display={{base:'none', md:'block'}}
           bgColor="#272727"
           color="#f2f2f2"
           border="1px solid #f2f2f2"
