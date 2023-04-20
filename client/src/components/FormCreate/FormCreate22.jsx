@@ -22,6 +22,7 @@ import {
 import axios from "axios";
 import AdminNavBar from "../NavBar/AdminNavBar";
 import StockInput from "./StockInput";
+import Swal from "sweetalert2";
 
 function CrearProducto() {
   const [name, setName] = useState("");
@@ -43,6 +44,13 @@ function CrearProducto() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: '¡Success!',
+      text: 'The product sizes has created',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continue'
+    })
 
     const newArray = [];
     const tallasToDB = () => {
