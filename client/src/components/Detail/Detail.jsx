@@ -60,7 +60,6 @@ export const Details = () => {
 
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
-    alert("Producto agregado a su carrito!")
     const product = {
       id: productDetails.id,
       name: productDetails.name,

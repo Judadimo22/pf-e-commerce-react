@@ -3,9 +3,12 @@ import style from "./CardProduct.module.css";
 import { Link } from "react-router-dom";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { cartLength } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 let products = [];
 export const ProductCard = (props) => {
+  const dispatch = useDispatch()
   const productPrice = props.product.price ? "$" + props.product.price : "";
   const productType = props.product.type;
   const productTrademark = props.product.trademark;
@@ -49,7 +52,7 @@ export const ProductCard = (props) => {
 
     // Actualizar el estado del número de productos en el carrito
     //setNumCartItems(cart.length);
-    alert(`se agrego a se lista de compras`)
+    dispatch(cartLength(cart.length))
   };
   return (
     <Flex w={{md:'250px' ,base:'auto'}} flexDirection="column" className={style.containerCard}>
