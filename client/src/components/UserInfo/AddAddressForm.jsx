@@ -19,7 +19,6 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
         ...isError,
         [e.target.name]: true,
       });
-      console.log("asd");
     } else {
       setIsError({
         ...isError,
@@ -31,7 +30,7 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
   return (
     <>
       <GridItem colSpan={3} rowSpan={1}>
-        <FormControl isInvalid={isError.country}>
+        <FormControl mb="20px" isInvalid={isError.country}>
           <FormLabel>Country</FormLabel>
           <Input
             type="text"
@@ -50,7 +49,7 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
       </GridItem>
       <GridItem colSpan={1} rowSpan={1} />
       <GridItem colSpan={3} rowSpan={1}>
-        <FormControl isInvalid={isError.city}>
+        <FormControl mb="20px" isInvalid={isError.city}>
           <FormLabel>City</FormLabel>
           <Input
             type="text"
@@ -68,19 +67,19 @@ const AddAddressForm = ({ input, setInput, setIsError, isError }) => {
         </FormControl>
       </GridItem>
       <GridItem colSpan={7} rowSpan={1}>
-        <FormControl isInvalid={isError.address}>
+        <FormControl mb="20px" isInvalid={isError.addres}>
           <FormLabel>Address</FormLabel>
           <Input
             type="text"
-            name="address"
-            value={input.address}
+            name="addres"
+            value={input.addres}
             onChange={handleInputChange}
             bgColor="#fff"
             boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
           />
-          {!isError.address ? null : (
+          {!isError.addres ? null : (
             <FormErrorMessage>Address is required.</FormErrorMessage>
           )}
         </FormControl>

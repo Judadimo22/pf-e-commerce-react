@@ -20,21 +20,31 @@ import {
   CHANGE_INDEX,
   SEARCH_USER,
   INFO_USER_BY_ID,
-  UPDATE_USER
+  UPDATE_USER,
+  IS_SEARCH_INPUT,
+  CART_LENGTH,
+  GET_CLOTHES_ADMIN,
+  SEARCH_ADMIN
 } from "../actions/index";
 
-const computeFilteredData = ((products, categoryFilter, typeFilter, trademarkFilter) =>
+const computeFilteredData = (
+  products,
+  categoryFilter,
+  typeFilter,
+  trademarkFilter
+) =>
   products.filter(
-    product =>
+    (product) =>
       (!categoryFilter || product.categorie === categoryFilter) &&
       (!typeFilter || product.type === typeFilter) &&
       (!trademarkFilter || product.trademark === trademarkFilter)
-  )
-)
+  );
 
 const initialState = {
   Clothes: [],
   ClothesCopy: [],
+  ClothesAdmin : [],
+  ClothesAdminCopy: [],
   Details: [],
   filterInputs: {
     byType: "",
@@ -51,16 +61,36 @@ const initialState = {
   UsersCopy: [],
   orders: [],
   user: {},
-  DetailUser: []
+  DetailUser: [],
+  searchInput: "",
+  searchResults: 0,
+  cartLength:0
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_CLOTHES:
+    case CART_LENGTH:
       return {
         ...state,
-        Clothes: action.payload,
-        ClothesCopy: action.payload,
+        cartLength: action.payload,
+      };
+    case GET_CLOTHES:
+      const valid = action.payload.filter(product => product.active == 'valid')
+      return {
+        ...state,
+        Clothes: valid,
+        ClothesCopy: valid,
+      };
+    case GET_CLOTHES_ADMIN:
+      return {
+        ...state,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload,
+      };
+    case IS_SEARCH_INPUT:
+      return {
+        ...state,
+        searchInput: action.payload,
       };
     case GET_USER_BY_ID:
       return {
@@ -68,10 +98,10 @@ function rootReducer(state = initialState, action) {
         user: action.payload,
       };
     case INFO_USER_BY_ID:
-        return {
-          ...state,
-          DetailUser: action.payload,
-        };
+      return {
+        ...state,
+        DetailUser: action.payload,
+      };
 
     case GET_USERS:
       return {
@@ -81,14 +111,21 @@ function rootReducer(state = initialState, action) {
       };
 
     case SEARCH: {
-      let search = [];
-      search = state.Clothes?.filter((c) =>
-        c.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      return {
-        ...state,
-        ClothesCopy: [...search],
-      };
+      if(!state.searchInput.length) {
+        return {
+          ...state,
+          ClothesCopy: state.Clothes
+        };
+      }else{
+        let search = state.Clothes?.filter((c) =>
+          c.name.toLowerCase().includes(state.searchInput.toLowerCase())
+        );
+        return {
+          ...state,
+          searchResults: search.length,
+          ClothesCopy: [...search],
+        };
+      }
     }
     case SEARCH_USER: {
       let search = [];
@@ -105,80 +142,93 @@ function rootReducer(state = initialState, action) {
         ...state,
         Details: action.payload,
       };
-      case GET_ORDERS:
-        return {
-          ...state,
-          orders: action.payload,
-        };
+    case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
 
-//--------------------------------------------------Filters------------------------------------------------
-
+    //--------------------------------------------------Filters------------------------------------------------
 
     case CHANGE_INDEX:
-      if(action.payload[0] == "type"){
+      if (action.payload[0] == "type") {
         return {
           ...state,
-          filterIndex:{
+          filterIndex: {
             ...state.filterIndex,
-            byType:action.payload[1],
-          }
+            byType: action.payload[1],
+          },
         };
       }
-      if(action.payload[0] == "category"){
+      if (action.payload[0] == "category") {
         return {
           ...state,
-          filterIndex:{
+          filterIndex: {
             ...state.filterIndex,
-            byCategorie:action.payload[1],
-          }
+            byCategorie: action.payload[1],
+          },
         };
       }
-      if(action.payload[0] == "trademark"){
+      if (action.payload[0] == "trademark") {
         return {
           ...state,
-          filterIndex:{
+          filterIndex: {
             ...state.filterIndex,
-            byTrademark:action.payload[1],
-          }
+            byTrademark: action.payload[1],
+          },
         };
       }
-      if(action.payload[0] == "all") {
-          return {
-            ...state,
-            filterIndex: {
-              byType: action.payload[1],
-              byCategorie: action.payload[1],
-              byTrademark: action.payload[1],
-            }
-          };
-        } 
+      if (action.payload[0] == "all") {
+        return {
+          ...state,
+          filterIndex: {
+            byType: action.payload[1],
+            byCategorie: action.payload[1],
+            byTrademark: action.payload[1],
+          },
+        };
+      }
 
-
-      case FILTER:
+    case FILTER:
+      if (state.searchInput.length) {
+        let search = [];
+      search = state.Clothes?.filter((c) =>
+        c.name.toLowerCase().includes(state.searchInput.toLowerCase())
+      );
         return {
-          ...state,          
+          ...state,
           ClothesCopy: computeFilteredData(
-            state.Clothes,
+            search,
             state.filterInputs.byCategorie,
             state.filterInputs.byType,
             state.filterInputs.byTrademark
-          )
+          ),
         };
-      case CHANGE_FILTER_INPUT_BY_TYPE:
-        return {
-          ...state,
-          filterInputs: {
-            ...state.filterInputs,
-            byType: action.payload,
-          }
-        };
+      }
+      return {
+        ...state,
+        ClothesCopy: computeFilteredData(
+          state.Clothes,
+          state.filterInputs.byCategorie,
+          state.filterInputs.byType,
+          state.filterInputs.byTrademark
+        ),
+      };
+    case CHANGE_FILTER_INPUT_BY_TYPE:
+      return {
+        ...state,
+        filterInputs: {
+          ...state.filterInputs,
+          byType: action.payload,
+        },
+      };
     case CHANGE_FILTER_INPUT_BY_CATEGORIE:
       return {
         ...state,
         filterInputs: {
           ...state.filterInputs,
           byCategorie: action.payload,
-        }
+        },
       };
     case CHANGE_FILTER_INPUT_BY_TRADEMARK:
       return {
@@ -186,22 +236,25 @@ function rootReducer(state = initialState, action) {
         filterInputs: {
           ...state.filterInputs,
           byTrademark: action.payload,
-        }
+        },
       };
 
-//---------------------------------------------------------------------------------------------------------------
-  
+    //---------------------------------------------------------------------------------------------------------------
 
     case SORT_ASCENDING:
       return {
         ...state,
-        ClothesCopy: state.ClothesCopy.slice().sort((a, b) => b.price - a.price),
+        ClothesCopy: state.ClothesCopy.slice().sort(
+          (a, b) => b.price - a.price
+        ),
       };
 
     case SORT_DESCENDING:
       return {
         ...state,
-        ClothesCopy: state.ClothesCopy.slice().sort((a, b) => a.price - b.price),
+        ClothesCopy: state.ClothesCopy.slice().sort(
+          (a, b) => a.price - b.price
+        ),
       };
 
     case UPDATE_CLOTH:
@@ -214,6 +267,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         Clothes: action.payload,
         ClothesCopy: action.payload,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload
       };
     case PUT_USERS:
       return {
@@ -226,44 +281,44 @@ function rootReducer(state = initialState, action) {
         allUsers: action.payload,
       };
     case CLEAR_FILTERS:
-      if(action.payload == "trademark") {
+      if (action.payload == "trademark") {
         return {
           ...state,
           filterInputs: {
             ...state.filterInputs,
             byTrademark: "",
-          }
+          },
         };
       }
-      if(action.payload == "category") {
+      if (action.payload == "category") {
         return {
           ...state,
           filterInputs: {
             ...state.filterInputs,
             byCategorie: "",
-          }
-       };
+          },
+        };
       }
-      if(action.payload == "type") {
+      if (action.payload == "type") {
         return {
           ...state,
           filterInputs: {
             ...state.filterInputs,
             byType: "",
-          }
+          },
         };
       }
-      if(action.payload == "all") {
+      if (action.payload == "all") {
         return {
           ...state,
           filterInputs: {
             byType: "",
             byCategorie: "",
             byTrademark: "",
-          }
+          },
         };
       }
-      
+
     default: {
       return state;
     }

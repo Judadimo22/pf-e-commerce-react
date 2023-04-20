@@ -1,275 +1,333 @@
-import { useState } from 'react';
-import { Box, Heading, Text, FormControl, FormLabel, Input, Select, Checkbox, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Button, Flex, Spacer, VStack, Image, } from '@chakra-ui/react';
-import axios from 'axios';
-import AdminNavBar from '../NavBar/AdminNavBar';
+import { useState } from "react";
+import {
+  Box,
+  Heading,
+  Text,
+  FormControl,
+  FormLabel,
+  Input,
+  Select,
+  Checkbox,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  Button,
+  Flex,
+  Spacer,
+  VStack,
+  Image,
+} from "@chakra-ui/react";
+import axios from "axios";
+import AdminNavBar from "../NavBar/AdminNavBar";
+import StockInput from "./StockInput";
 
 function CrearProducto() {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [categorie, setCategorie] = useState('');
-    const [type, setType] = useState('');
-    const [tallas, setTallas] = useState([
-        { 
-        talla:"XS",
-        stock:0
-    },
-        { 
-        talla:"S",
-        stock:0
-    },
-        { 
-        talla:"M",
-        stock:0
-    },
-        { 
-        talla:"L",
-        stock:0
-    },
-        { 
-        talla:"XL",
-        stock:0
-    },
-        { 
-        talla:"XXL",
-        stock:0
-    },
-        { 
-        talla:"XXXL",
-        stock:0
-    }
-    ]);
-    const [trademark, setTrademark] = useState('');
-    const [image, setImage] = useState('');
-    const [price, setPrice] = useState(0);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [categorie, setCategorie] = useState("");
+  const [type, setType] = useState("");
+  const [tallas, setTallas] = useState({
+    XS: 0,
+    S: 0,
+    M: 0,
+    L: 0,
+    XL: 0,
+    XXL: 0,
+    XXXL: 0,
+  });
+  const [trademark, setTrademark] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState(0);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        // Subir imagen a Cloudinary
-        const formData = new FormData();
-        formData.append('file', image);
-        formData.append('upload_preset', 'i5hof6um');
-        const response = await axios.post('https://api.cloudinary.com/v1_1/dlqnb6csq/image/upload', formData);
-        const imageUrl = response.data.secure_url;
-
-        // Guardar el resto de los datos en la base de datos en MongoDB
-        const data = {
-            name,
-            description,
-            categorie,
-            type,
-            tallas,
-            trademark,
-            image: imageUrl,
-            price
-        };
-     
-        const response2 = await fetch('https://backend-pf-uh1o.onrender.com/cloth', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        const result = await response2.json();
-    
-        setName("")
-        setDescription("")
-        setCategorie("")
-        setType("")
-        setTrademark("")
-        setTallas([
-            { 
-            talla:"XS",
-            stock:0
-        },
-            { 
-            talla:"S",
-            stock:0
-        },
-            { 
-            talla:"M",
-            stock:0
-        },
-            { 
-            talla:"L",
-            stock:0
-        },
-            { 
-            talla:"XL",
-            stock:0
-        },
-            { 
-            talla:"XXL",
-            stock:0
-        },
-            { 
-            talla:"XXXL",
-            stock:0
+    const newArray = [];
+    const tallasToDB = () => {
+      for (let key in tallas) {
+        if (tallas[key] !== 0) {
+          const obj = {
+            talla: key,
+            stock: tallas[key],
+          };
+          newArray.push(obj);
         }
-        ])
-        setImage('')
-        setPrice(0)
+      }
+    };
+    tallasToDB();
+
+    // Subir imagen a Cloudinary
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", "i5hof6um");
+    const response = await axios.post(
+      "https://api.cloudinary.com/v1_1/dlqnb6csq/image/upload",
+      formData
+    );
+    const imageUrl = response.data.secure_url;
+
+    // Guardar el resto de los datos en la base de datos en MongoDB
+
+    const data = {
+      name,
+      description,
+      categorie,
+      type,
+      tallas: newArray,
+      trademark,
+      image: imageUrl,
+      price,
     };
 
+    const response2 = await fetch(
+      "https://backend-pf-uh1o.onrender.com/cloth",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    );
+    const result = await response2.json();
 
-    const handleTalleChange = (talla, stock) => {
-        const talleIndex = tallas.findIndex((item) => item.talla === talla);
-        if (talleIndex === -1) {
-            setTallas([...tallas, { talla, stock: parseInt(stock) }]);
-        } else {
-            const newTalles = [...tallas];
-            newTalles[talleIndex].stock = parseInt(stock);
-            setTallas(newTalles);
-        }
-    };
-   
-    console.log('tallas[0]', tallas[0])
+    setName("");
+    setDescription("");
+    setCategorie("");
+    setType("");
+    setTrademark("");
+    setTallas({
+      XS: 0,
+      S: 0,
+      M: 0,
+      L: 0,
+      XL: 0,
+      XXL: 0,
+      XXXL: 0,
+    });
+    setImage("");
+    setPrice(0);
+  };
 
+  const handleTalleChange = (content, stock) => {
+    setTallas({
+      ...tallas,
+      [content]: stock,
+    });
+  };
 
-    return (
-        <div>
-            <AdminNavBar />
-            <Box minH='89vh' p="4">
-                <Heading fontFamily='inherit' as="h1" size='lg' m={[2, 1]}>Create Produc</Heading>
-                <form onSubmit={handleSubmit}>
+  const array = [
+    {
+      id: "talla-xs",
+      content: "XS",
+    },
+    {
+      id: "talla-s",
+      content: "S",
+    },
+    {
+      id: "talla-m",
+      content: "M",
+    },
+    {
+      id: "talla-l",
+      content: "L",
+    },
+  ];
+  const array2 = [
+    {
+      id: "talla-xl",
+      content: "XL",
+    },
+    {
+      id: "talla-xxl",
+      content: "XXL",
+    },
+    {
+      id: "talla-xxxl",
+      content: "XXXL",
+    },
+  ];
 
-                    <Flex >
-                        <Box width='50%'>
-                            <FormControl id="name" margin='2' isRequired>
-                                <FormLabel fontSize='18px'>Name</FormLabel>
-                                <Input w={550} type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                            </FormControl>
+  return (
+    <div>
+      <Box minH="89vh" p="4">
+        <Heading fontFamily="inherit" as="h1" size="lg" m={[2, 1]}>
+          Create Product
+        </Heading>
+        <form onSubmit={handleSubmit}>
+          <Flex>
+            <Box width="50%">
+              <FormControl id="name" margin="2" isRequired>
+                <FormLabel fontSize="18px">Name</FormLabel>
+                <Input
+                  w={500}
+                  type="text"
+                  value={name}
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </FormControl>
 
-                            <FormControl  margin='2'  id="description" mt="4" isRequired>
-                                <FormLabel fontSize='18px'>Description</FormLabel>
-                                <Input w={550} height="100px" type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-                            </FormControl>
+              <FormControl margin="2" id="description" mt="4" isRequired>
+                <FormLabel fontSize="18px">Description</FormLabel>
+                <Input
+                  w={500}
+                  height="100px"
+                  type="text"
+                  value={description}
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+              </FormControl>
 
-                            <FormControl  margin='2' id="tallas" mt="4">
-                                <FormLabel fontSize='18px'>Sizes</FormLabel>
-                                <Flex flexDir='column'  >
-                                    <Flex spacing={4} direction='row' justifyContent='flex-start' >
-                                        <Flex flexDir='column'   mr="9" >
-                                            <FormLabel w='100%' h='3' htmlFor="talla-xs" textAlign='center' fontSize='14px'>XS</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xs"  min={0}>
-                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "XS").stock} onChange={(e) => handleTalleChange('XS', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                        <Flex flexDir='column'   mr="9"  >
-                                            <FormLabel w='100%' h='3' htmlFor="talla-s" textAlign='center' fontSize='14px'>S</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-s"  min={0}>
-                                                <NumberInputField  textAlign="center" p={0} value={tallas.find(t => t.talla == "S").stock} onChange={(e) => handleTalleChange('S', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                        <Flex flexDir='column'  mr="9">
-                                            <FormLabel w='100%' h='3' htmlFor="talla-m" textAlign='center' fontSize='14px'>M</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-m"  min={0}>
-                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "M").stock} onChange={(e) => handleTalleChange('M', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                        <Flex flexDir='column'  mr="9"  >
-                                            <FormLabel w='100%' h='3' htmlFor="talla-l" textAlign='center' fontSize='14px'>L</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-l"  min={0}>
-                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "L").stock} onChange={(e) => handleTalleChange('L', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                    </Flex>
+              <FormControl margin="2" id="tallas" mt="4">
+                <FormLabel fontSize="18px">Sizes</FormLabel>
+                <Flex flexDir="column">
+                  <Flex spacing={4} direction="row" justifyContent="flex-start">
+                    {array.map((i) => (
+                      <StockInput
+                        key={i.id}
+                        id={i.id}
+                        tallas={tallas}
+                        talla={tallas[i.content]}
+                        handleTalleChange={handleTalleChange}
+                        content={i.content}
+                      />
+                    ))}
+                  </Flex>
+                  <Flex spacing={4} direction="row" justifyContent="flex-start">
+                    {array2.map((i) => (
+                      <StockInput
+                        key={i.id}
+                        id={i.id}
+                        tallas={tallas}
+                        talla={tallas[i.content]}
+                        handleTalleChange={handleTalleChange}
+                        content={i.content}
+                      />
+                    ))}
 
-                                    <Flex spacing={4} direction='row'  justifyContent='flex-start'  >
-                                        <Flex flexDir='column'  mr='9' >
-                                            <FormLabel w='100%' h='3' htmlFor="talla-xl" textAlign='center' fontSize='14px'>XL</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xl"  min={0}>
-                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "XL").stock} onChange={(e) => handleTalleChange('XL', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                        <Flex flexDir='column'  mr='9'  >
-                                            <FormLabel w='100%'  h='3' htmlFor="talla-xxl" textAlign='center' fontSize='14px'>XXL</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xxl"  min={0}>
-                                                <NumberInputField  textAlign="center" p={0} value={tallas.find(t => t.talla == "XXL").stock} onChange={(e) => handleTalleChange('XXL', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                        <Flex flexDir='column'  mr='9'>
-                                            <FormLabel w='100%'  h='3' htmlFor="talla-xxxl" textAlign='center' fontSize='14px'>XXXL</FormLabel>
-                                            <NumberInput size='md' maxW={16} id="talla-xxxl"  min={0}>
-                                                <NumberInputField textAlign="center" p={0} value={tallas.find(t => t.talla == "XXXL").stock} onChange={(e) => handleTalleChange('XXXL', e.target.value)} />
-                                            </NumberInput>
-                                        </Flex>
-                                        <Flex  flex="1">
-                                        </Flex>
-
-                                    </Flex>
-
-                                </Flex>
-                            </FormControl>
-                            <Button colorScheme='blackAlpha' variant='outline' type='submit' size='md' height='40px' width='150px' border='2px' margin='4' >Create</Button>
-
-                        </Box>
-
-
-                        <Box width='50%' position = 'relative' bottom={2}>
-
-                            <FormControl   margin='2' id="trademark" mt="4" isRequired>
-                                <FormLabel  fontSize='18px'>Mark</FormLabel>
-                                <Input w={550} type="text" value={trademark} onChange={(e) => setTrademark(e.target.value)} />
-                            </FormControl>
-
-                            <FormControl  margin='2'  id="price" mt="4" isRequired>
-                                <FormLabel  fontSize='18px'>Price</FormLabel>
-                                <NumberInput
-                                    value={price}
-                                    min={0}
-                                    precision={2}
-                                    step={0.01}
-                                    w={550}
-                                    onChange={(value) => {
-                                        const newValue = parseFloat(value);
-                                        if (!isNaN(newValue)) {
-                                            setPrice(newValue);
-                                        }
-                                    }}
-                                >
-                                    <NumberInputField />
-                                    <NumberInputStepper>
-                                        <NumberIncrementStepper />
-                                        <NumberDecrementStepper />
-                                    </NumberInputStepper>
-                                </NumberInput>
-                            </FormControl>
-
-
-                            <FormControl  margin='2' id="tipo-prenda" mt="4" isRequired>
-                                <FormLabel  fontSize='18px' >Type</FormLabel>
-                                <Select w={550} value={type} onChange={(e) => setType(e.target.value)}>
-                                    <option value="">Select an option</option>
-                                    <option value="pants">Pants</option>
-                                    <option value="shirts">Shirts</option>
-                                    <option value="hoodies">Hoodies</option>
-                                    <option value="hats">Hats</option>
-                                </Select>
-                            </FormControl>
-
-                            <FormControl  margin='2' id="categorie" mt="4" isRequired>
-                                <FormLabel  fontSize='18px' >Category</FormLabel>
-                                <Select w={550} placeholder="Seleccionar categoría" value={categorie} onChange={(e) => setCategorie(e.target.value)}>
-                                    <option value="men">Men</option>
-                                    <option value="women">Women</option>
-                                    <option value="kid">Kid</option>
-                                </Select>
-                            </FormControl>
-
-                            <FormControl  margin='2' isRequired>
-                                <FormLabel  fontSize='18px' >Image</FormLabel>
-                                <Input w='550' type="file" onChange={(e) => setImage(e.target.files[0])} />
-                            </FormControl>
-                            
-                        </Box>
-
-                    </Flex>
-
-                </form>
-
+                    <Flex flex="1" />
+                  </Flex>
+                </Flex>
+              </FormControl>
+              <Button
+                colorScheme="blackAlpha"
+                variant="outline"
+                type="submit"
+                size="md"
+                height="40px"
+                width="150px"
+                border="2px"
+                margin="4"
+              >
+                Create
+              </Button>
             </Box>
-        </div>
-    )
+
+            <Box width="50%" position="relative" bottom={2}>
+              <FormControl margin="2" id="trademark" mt="4" isRequired>
+                <FormLabel fontSize="18px">Mark</FormLabel>
+                <Input
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                                    -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                                    box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  w={500}
+                  type="text"
+                  value={trademark}
+                  onChange={(e) => setTrademark(e.target.value)}
+                />
+              </FormControl>
+
+              <FormControl margin="2" id="price" mt="4" isRequired>
+                <FormLabel fontSize="18px">Price</FormLabel>
+                <NumberInput
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                                    -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                                    box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  value={price}
+                  min={0}
+                  precision={2}
+                  step={0.01}
+                  w={500}
+                  onChange={(value) => {
+                    const newValue = parseFloat(value);
+                    if (!isNaN(newValue)) {
+                      setPrice(newValue);
+                    }
+                  }}
+                >
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+
+              <FormControl margin="2" id="tipo-prenda" mt="4" isRequired>
+                <FormLabel fontSize="18px">Type</FormLabel>
+                <Select
+                  w={500}
+                  value={type}
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  onChange={(e) => setType(e.target.value)}
+                >
+                  <option value="">Select an option</option>
+                  <option value="pants">Pants</option>
+                  <option value="shirts">Shirts</option>
+                  <option value="hoodies">Hoodies</option>
+                  <option value="hats">Hats</option>
+                </Select>
+              </FormControl>
+
+              <FormControl margin="2" id="categorie" mt="4" isRequired>
+                <FormLabel fontSize="18px">Category</FormLabel>
+                <Select
+                  w={500}
+                  placeholder="Seleccionar categoría"
+                  value={categorie}
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  onChange={(e) => setCategorie(e.target.value)}
+                >
+                  <option value="men">Men</option>
+                  <option value="women">Women</option>
+                  <option value="kid">Kid</option>
+                </Select>
+              </FormControl>
+
+              <FormControl margin="2" isRequired>
+                <FormLabel fontSize="18px">Image</FormLabel>
+                <Input
+                  w="500"
+                  type="file"
+                  bgColor="#fff"
+                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
+                                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
+                  onChange={(e) => setImage(e.target.files[0])}
+                />
+              </FormControl>
+            </Box>
+          </Flex>
+        </form>
+      </Box>
+    </div>
+  );
 }
-export default CrearProducto
+export default CrearProducto;

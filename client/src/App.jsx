@@ -13,23 +13,22 @@ import UserPage from './views/User/UserPage'
 import Playmet from "./views/Playmet/Playmet";
 import MyProfile from "./components/UserProfile/MyProfile";
 import Upload from './components/AddFiles/AddFiles'
-import ImageUpload from './components/AddFiles/AddFiles'
-import TableUsersContainer from './components/Dashboard/AdmUsers'
-import AdmUsers from './components/Dashboard/AdmUsers'
 
 
 import CartPage from './views/Cart/CartPage';
 import UserEditPage from './views/User/UserEdit';
 import Contact from './components/Contact/Contact';
 import About from './components/About/About';
-import UserEdit from './components/UserEdit/UserEdit';
 import UserEditsPage from './views/Admin/UserEdit';
 import Questions from './components/Questions/Questions.jsx';
 import axios from "axios"
-import EditProduct from './components/EditProduct/EditProduct';
+import AddressesPage from './views/User/AddressesPage';
+import UserOrdersPage from './views/User/UserOrdersPage';
 import ProductEditPage from './views/Admin/ProductEdit';
-//axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-axios.defaults.baseURL = "http://localhost:3001"
+import CreateProduct from './views/Admin/CreateProduct';
+import UserNotification from './views/User/UserNotification';
+axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+// axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
@@ -42,15 +41,16 @@ function App() {
         <Route exact path="/details/:id" element={<Details />} />
         <Route exact path="/*" element={<Error404 />} />
         <Route path="/admin" element={<Dashboard />} />
-        <Route exact path="/admin/create" element={<CrearProducto />} />
+        <Route exact path="/admin/create" element={<CreateProduct/>} />
         <Route exact path="/admin/products" element={<ProductsAdmin />} />
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage/>} />
         <Route exact path="/add" element={<Upload/>} />
-        <Route exact path="/user/edit" element={<UserEditPage/>} />
+        <Route exact path="/user/edit/:id" element={<UserEditPage/>} />
         <Route exact path="/user/:id" element={<UserPage />} />
-        <Route exact path="/user/:id/orders" element={<UserPage />} />
-        <Route exact path="/user/:id/notifications" element={<UserPage />} />
+        <Route exact path="/user/orders/:id" element={<UserOrdersPage />} />
+        <Route exact path="/user/notifications/:id" element={<UserNotification/>} />
+        <Route exact path="/user/addresses/:id" element={<AddressesPage/>} />
         <Route exact path="/playmet" element={<Playmet />} />
         <Route exact path="/Profile" element={<MyProfile />} />
         <Route exact path="/contact" element={<Contact />} />

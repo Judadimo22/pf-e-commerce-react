@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getClothById } from "../../redux/actions";
+import { cartLength, getClothById } from "../../redux/actions";
 import HomeNavBar from "../NavBar/HomeNavbar";
 import * as Chakra from "@chakra-ui/react";
 import StarRating from "../StarRating/StarRating";
@@ -60,11 +60,12 @@ export const Details = () => {
 
   const handleAddToCart = () => {
     // Obtener los datos del producto seleccionado
+    alert("Producto agregado a su carrito!")
     const product = {
       id: productDetails.id,
       name: productDetails.name,
       price: productDetails.price,
-      size: selectedSize,
+      size: selectedSize ,
       color: selectedColor,
       image: productDetails.image,
       quantity: 1,
@@ -95,6 +96,7 @@ export const Details = () => {
 
     // Actualizar el estado del número de productos en el carrito
 
+    dispatch(cartLength(cart.length))
     setNumCartItems(cart.length);
     setSelectedSize("");
   };
@@ -131,7 +133,7 @@ export const Details = () => {
             <Chakra.Flex pt="1.5rem" pb="2rem">
               <StarRating rating={4.5} />
               <Chakra.Text ml={1}>(1 review)</Chakra.Text>{" "}
-              {/* que alguien añada reviews o rompo development */}
+           
             </Chakra.Flex>
             <Chakra.Flex>
             {productDetails.tallas?.map((talla) => (
@@ -144,7 +146,7 @@ export const Details = () => {
               />))}
             </Chakra.Flex>
             <Chakra.Text fontWeight="bold" fontSize="lg" pt="1.5rem" pb="1rem">
-              Colores Disponibles
+            Colors available
             </Chakra.Text>
             <ColorSelector
               colors={colors}
@@ -162,15 +164,15 @@ export const Details = () => {
                   pr="3rem"
                   _hover="white"
                   color="#272727"
-                  disabled={!selectedSize || !selectedColor}
-                  onClick={handleAddToCart}
+                  isDisabled={!selectedSize}
+                  onClick={handleAddToCart} 
                   leftIcon={<FaShoppingCart />}
                 >
-                  Agregar al carrito
+                 Add to cart
                 </Chakra.Button>
-
+              
                 <Chakra.Text fontSize="md" fontWeight="bold" pl="2rem" pt=".7rem" color="#565656">
-                  {selectedSize == "" ? null : (productDetails.tallas.find(t => t.talla == selectedSize).stock + " Disponibles") }  
+                {selectedSize === "" ? "Select a size" : (productDetails.tallas.find(t => t.talla === selectedSize).stock + " Disponibles")}
 
                 </Chakra.Text>
               </Chakra.Flex>
@@ -183,7 +185,7 @@ export const Details = () => {
               pt="1.5rem"
               color="#565656"
             >
-              Marca {trademark ? trademark : "N/A"}
+              Trademark: {trademark ? trademark : "N/A"}
             </Chakra.Text>
             <Chakra.Text
               fontSize="md"

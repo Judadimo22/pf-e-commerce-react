@@ -29,7 +29,17 @@ export function MPButton({ id }) {
     });
     const data = await res.json();
 
-    console.log(data);
+    // const order = await fetch("http://localhost:3001/feedback", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+
+    // const orden = await order.json();
+
+    console.log("Esto es data:" + data.id);
     if (data) {
       const script = document.createElement("script");
       script.type = "text/javascript";
@@ -60,31 +70,25 @@ export function MPButton({ id }) {
       document.body.appendChild(script);
     }
 
-    const mp = new window.MercadoPago(
-      "TEST-6fa13512-f9b1-4d07-ab5e-fca851a7c8c8",
-      {
-        locale: "es-AR",
-      }
-    );
-    console.log(data);
-    mp.checkout({
-      preference: {
-        id: data.id,
-      },
-      render: {
-        container: ".cho-container",
-        label: "Mercadopago",
-      },
-    });
+    // const mp = new window.MercadoPago(
+    //   "TEST-6fa13512-f9b1-4d07-ab5e-fca851a7c8c8",
+    //   {
+    //     locale: "es-AR",
+    //   }
+    // );
+    // console.log(data);
+    // mp.checkout({
+    //   preference: {
+    //     id: data.id,
+    //   },
+    //   render: {
+    //     container: ".cho-container",
+    //     label: "Mercadopago",
+    //   },
+    // });
   };
 
   return (
-    <>
-      {isAuthenticated ? (
-        <div className="cho-container">buy</div>
-      ) : (
-        <div>....</div>
-      )}
-    </>
+    <>{isAuthenticated ? <div className="cho-container"></div> : <div></div>}</>
   );
 }

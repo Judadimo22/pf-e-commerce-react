@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import HomeNavBar from "../../components/NavBar/HomeNavbar";
 import CartItem from "../../components/CartItem/CartItem";
 import Footer from "../../components/Footer/Footer";
-import { MPButton } from "../../components/MPButton/MPButton";
+import { MPButton } from "../../components/MPButton/mpButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { cartLength } from "../../redux/actions";
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const { isAuthenticated, user } = useAuth0();
+  const dispatch = useDispatch()
   const [pay, setPay] = useState(false);
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const CartPage = () => {
         item.color !== product.color
     );
     setCartItems(updatedItems);
+    dispatch(cartLength(updatedItems.length))
     localStorage.setItem("cartItems", JSON.stringify(updatedItems));
   };
 
@@ -65,17 +69,7 @@ const CartPage = () => {
     0
   );
 
-  const handleCheckout = () => {
-    {
-      isAuthenticated ? (
-        <MPButton id={cartItems} />
-      ) : (
-        <button onClick={handlerPay}>Buy</button>
-      );
-    }
-  };
-
-  console.log(handleCheckout());
+  const size = cartItems.size
 
   return (
     <>
@@ -84,16 +78,16 @@ const CartPage = () => {
         <Box mt={4} mb={1} mx="auto" maxW="800px">
           <Flex justify="space-between" alignItems="center" mb="6">
             <Text fontSize="3xl" fontWeight="bold">
-              Carrito de Compras
+            Shopping Cart
             </Text>
             <Link to="/home">
               <Button variant="solid" colorScheme="blue">
-                Seguir comprando
+              Continue shopping
               </Button>
             </Link>
           </Flex>
           {cartItems.length === 0 ? (
-            <Text>No hay productos en el carrito</Text>
+            <Text>There are no products in the cart</Text>
           ) : (
             <>
               {cartItems.map((item, index) => (
@@ -110,7 +104,8 @@ const CartPage = () => {
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">
-                <Button
+             
+                {/* <Button
                   mt={2}
                   mb={5}
                   variant="solid"
@@ -118,11 +113,20 @@ const CartPage = () => {
                   onClick={handleCheckout}
                 >
                   Comprar
-                </Button>
+                </Button> */}
+               
                 {isAuthenticated ? (
                   <MPButton id={cartItems} />
                 ) : (
-                  <button onClick={handlerPay}>Buy</button>
+                  <Button
+                    mt={2}
+                    mb={5}
+                    variant="solid"
+                    colorScheme="green"
+                    onClick={handlerPay}
+                  >
+                    Buy
+                  </Button>
                 )}
               </Grid>
             </>

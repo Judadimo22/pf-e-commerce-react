@@ -25,6 +25,10 @@ export const CLEAR_FILTERS = "CLEAR_FILTERS";
 export const POST_REVIEW = "POST_REVIEW";
 export const CHANGE_INDEX = "CHANGE_INDEX";
 export const SEARCH_USER = 'SEARCH_USER'
+export const IS_SEARCH_INPUT = 'IS_SEARCH_INPUT';
+export const GET_CLOTHES_ADMIN = 'GET_CLOTHES_ADMIN';
+export const SEARCH_ADMIN = 'SEARCH_ADMIN'
+export const CART_LENGTH = 'CART_LENGTH'
 
 
 
@@ -39,11 +43,37 @@ export const sortDescending = () => {
   };
 };
 
+export function cartLength(payload) {
+  return async function (dispatch) {
+    dispatch({
+      type: CART_LENGTH,
+      payload: payload,
+    });
+  };
+}
+export function setSearchInput(payload) {
+  return async function (dispatch) {
+    dispatch({
+      type: IS_SEARCH_INPUT,
+      payload: payload,
+    });
+  };
+}
 export function getClothes() {
   return async function (dispatch) {
     let json = await axios.get(`/cloth`);
     dispatch({
       type: GET_CLOTHES,
+      payload: json.data,
+    });
+  };
+}
+
+export function getClothesAdmin() {
+  return async function (dispatch) {
+    let json = await axios.get(`/cloth`);
+    dispatch({
+      type: GET_CLOTHES_ADMIN,
       payload: json.data,
     });
   };
@@ -60,7 +90,6 @@ export function getUsers() {
 }
 
 export function getCloth(name) {
-  console.log(name);
   return async function (dispatch) {
     let json = await axios.get(`/cloth?name=${name}`);
     dispatch({
@@ -80,9 +109,20 @@ export function getClothById(id) {
 }
 
 export const setSearch = (payload) => {
-  return {
-    type: SEARCH,
-    payload,
+  return async function (dispatch) {
+    dispatch({
+      type: SEARCH,
+      payload,
+      });
+  };
+};
+
+export const setSearchAdmin = (payload) => {
+  return async function (dispatch) {
+    dispatch({
+      type: SEARCH,
+      payload,
+      });
   };
 };
 
@@ -179,7 +219,6 @@ export function updateUser (id, payload){
 
 
 export const putUser = (id, payload) => async (dispatch) => {
-  console.log(id, payload);
   try {
     const putCreate = await axios.put(`/users/${id}`, payload);
 
