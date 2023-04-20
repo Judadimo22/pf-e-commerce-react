@@ -26,7 +26,7 @@ const Questions = () => {
           <Heading mb={3} >Frequently asked questions</Heading>
           <Text>FAQs: Answers to Commonly Asked Questions.</Text>
         </Flex>
-      <Box boxSize={{base:'350px',md:"1000px"}} h="100px" pb={400} >
+      <Box boxSize={{base:'350px',md:"1000px"}} h="100px" pb={{md:400}} >
         <Accordion
           expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}
