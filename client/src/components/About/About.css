@@ -1,0 +1,39 @@
+
+  .container_4{
+    text-align: center;
+    
+  }
+  .miembros{
+   font-size: 2em;
+  }
+  .descripcionGrupo{
+    font-size: 1.5em;
+    margin-bottom: 3.125rem;
+  }
+  .cartasIntegrantes{
+    width: 20em;
+    border: solid 1px;
+    background-color: #D9D9D9;
+    padding: 1.25em;
+    border-radius: 10%;
+    margin-bottom: .3125rem;
+    margin: .625rem 1.875rem;
+  }
+.develop{
+  color: rgb(74, 58, 255);
+    font-size: 22px;
+}
+.devAptitud{
+font-size: 18px;
+}
+.links{
+  font-size: 1.6em;
+}
+.contenedorOrdenador{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.625rem auto;
+  width: 80%;
+}
+  

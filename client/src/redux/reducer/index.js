@@ -22,6 +22,9 @@ import {
   INFO_USER_BY_ID,
   UPDATE_USER,
   IS_SEARCH_INPUT,
+  CART_LENGTH,
+  GET_CLOTHES_ADMIN,
+  SEARCH_ADMIN
 } from "../actions/index";
 
 const computeFilteredData = (
@@ -40,6 +43,8 @@ const computeFilteredData = (
 const initialState = {
   Clothes: [],
   ClothesCopy: [],
+  ClothesAdmin : [],
+  ClothesAdminCopy: [],
   Details: [],
   filterInputs: {
     byType: "",
@@ -59,15 +64,28 @@ const initialState = {
   DetailUser: [],
   searchInput: "",
   searchResults: 0,
+  cartLength:0
 };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_CLOTHES:
+    case CART_LENGTH:
       return {
         ...state,
-        Clothes: action.payload,
-        ClothesCopy: action.payload,
+        cartLength: action.payload,
+      };
+    case GET_CLOTHES:
+      const valid = action.payload.filter(product => product.active == 'valid')
+      return {
+        ...state,
+        Clothes: valid,
+        ClothesCopy: valid,
+      };
+    case GET_CLOTHES_ADMIN:
+      return {
+        ...state,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload,
       };
     case IS_SEARCH_INPUT:
       return {
@@ -93,15 +111,21 @@ function rootReducer(state = initialState, action) {
       };
 
     case SEARCH: {
-      let search = [];
-      search = state.Clothes?.filter((c) =>
-        c.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      return {
-        ...state,
-        searchResults: search.length,
-        ClothesCopy: [...search],
-      };
+      if(!state.searchInput.length) {
+        return {
+          ...state,
+          ClothesCopy: state.Clothes
+        };
+      }else{
+        let search = state.Clothes?.filter((c) =>
+          c.name.toLowerCase().includes(state.searchInput.toLowerCase())
+        );
+        return {
+          ...state,
+          searchResults: search.length,
+          ClothesCopy: [...search],
+        };
+      }
     }
     case SEARCH_USER: {
       let search = [];
@@ -166,10 +190,6 @@ function rootReducer(state = initialState, action) {
       }
 
     case FILTER:
-      console.log(state.ClothesCopy);
-      console.log(state.filterInputs.byCategorie);
-      console.log(state.filterInputs.byType);
-      console.log(state.filterInputs.byTrademark);
       if (state.searchInput.length) {
         let search = [];
       search = state.Clothes?.filter((c) =>
@@ -247,6 +267,8 @@ function rootReducer(state = initialState, action) {
         ...state,
         Clothes: action.payload,
         ClothesCopy: action.payload,
+        ClothesAdmin: action.payload,
+        ClothesAdminCopy: action.payload
       };
     case PUT_USERS:
       return {

@@ -25,8 +25,9 @@ import axios from "axios"
 import AddressesPage from './views/User/AddressesPage';
 import UserOrdersPage from './views/User/UserOrdersPage';
 import ProductEditPage from './views/Admin/ProductEdit';
-//axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
-axios.defaults.baseURL = "http://localhost:3001"
+import CreateProduct from './views/Admin/CreateProduct';
+axios.defaults.baseURL = "https://backend-pf-uh1o.onrender.com"
+// axios.defaults.baseURL = "http://localhost:3001"
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
         <Route exact path="/details/:id" element={<Details />} />
         <Route exact path="/*" element={<Error404 />} />
         <Route path="/admin" element={<Dashboard />} />
-        <Route exact path="/admin/create" element={<CrearProducto />} />
+        <Route exact path="/admin/create" element={<CreateProduct/>} />
         <Route exact path="/admin/products" element={<ProductsAdmin />} />
         <Route exact path="/admin/orders" element={<OrdersPage />} />
         <Route exact path="/admin/users" element={<UsersPage/>} />

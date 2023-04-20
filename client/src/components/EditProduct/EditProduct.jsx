@@ -8,6 +8,7 @@ import {
   Button,
   Select,
   Icon,
+  Flex,
 } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -17,8 +18,40 @@ import { MdOutlineEmail } from "react-icons/md";
 import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineControl, AiOutlineCheckCircle } from "react-icons/ai";
+import StockInput from "../FormCreate/StockInput";
+import Swal from "sweetalert2";
 
 const EditProduct = () => {
+  const array20 = [
+    {
+      id: "talla-xs",
+      content: "XS",
+    },
+    {
+      id: "talla-s",
+      content: "S",
+    },
+    {
+      id: "talla-m",
+      content: "M",
+    },
+    {
+      id: "talla-l",
+      content: "L",
+    },
+    {
+      id: "talla-xl",
+      content: "XL",
+    },
+    {
+      id: "talla-xxl",
+      content: "XXL",
+    },
+    {
+      id: "talla-xxxl",
+      content: "XXXL",
+    },
+  ]
   const dispatch = useDispatch();
   const { id } = useParams();
   const [current, setCurrent] = useState({
@@ -26,21 +59,34 @@ const EditProduct = () => {
   });
   const getProductId = useSelector((state) => state.Details);
   const [input, setInput] = useState({
+    tallas: {
+      XS: 0,
+      S: 0,
+      M: 0,
+      L: 0,
+      XL: 0,
+      XXL: 0,
+      XXXL: 0,
+    }
+  });
+
+  const [inputInfo, setInputInfo] = useState({
     name: "",
     description: "",
-    price: getProductId.price,
+    price: '',
     stock: "",
     trademark: "",
     type: "",
-    categorie: "",
-  });
+    categorie: '',
+    active: ''
+  }) 
 
   useEffect(() => {
     dispatch(getClothById(id));
   }, [id]);
 
   useEffect(() => {
-    setInput({
+    setInputInfo({
       name: getProductId.name,
       price: getProductId.price,
       description: getProductId.description,
@@ -48,22 +94,42 @@ const EditProduct = () => {
       trademark: getProductId.trademark,
       type: getProductId.type,
       categorie: getProductId.categorie,
+      active: getProductId.active
     });
   }, [getProductId]);
 
   function handleInputChange(e) {
     e.preventDefault();
-    setInput({
-      ...input,
+    setInputInfo({
+      ...inputInfo,
       [e.target.name]: e.target.value,
     });
+    console.log(e.target.name)
+    console.log(e.target.value)
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert("The product has been updated");
-    dispatch(UpdateCloth(id, input));
+  const handleTalleChange = (content, stock) => {
     setInput({
+      ...input,
+      tallas: {...input.tallas,
+        [content]: stock,
+        }
+    });
+  };
+
+  console.log(input)
+
+  function handleSubmitInfo(e){
+    e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: '¡Success!',
+      text: 'The product info has been updated',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continue'
+    })
+    dispatch(UpdateCloth(id, inputInfo));
+    setInputInfo({
       name: e.target.value,
       description: e.target.value,
       price: e.target.value,
@@ -71,7 +137,40 @@ const EditProduct = () => {
       trademark: e.target.value,
       type: e.target.value,
       categorie: e.target.value,
+      active: e.target.value
     });
+  }
+
+  
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    Swal.fire({
+      icon: 'success',
+      title: '¡Success!',
+      text: 'The product sizes has been updated',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Continue'
+    })
+    console.log(input)
+    const array = []
+    const tallasToDB = () => {
+      for (let key in input.tallas) {
+        if (input.tallas[key] !== 0) {
+          const obj = {
+            talla: key,
+            stock: input.tallas[key],
+          };
+          array.push(obj);
+        }
+      }
+    };
+    tallasToDB()
+    const obj1 = {
+      tallas: array
+    }
+    dispatch(UpdateCloth(id, obj1));
+
   }
 
   const categories = ["men", "women", "kid"];
@@ -85,10 +184,12 @@ const EditProduct = () => {
   ];
   const type = ["shirts", "pants", "hoodies", "hats"];
 
+  const active = ['valid', 'invalid']
+
   return (
     <Box>
       <FormControl>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitInfo}>
           <Box display="flex" mb={5}>
             <Text fontWeight={1000} fontSize={30} mr={1}>
               EditProduct
@@ -111,14 +212,16 @@ const EditProduct = () => {
               <strong>Price</strong>
             </Text>
             <Input
+              onChange={(e) => handleInputChange(e)}
+              key='price'
+              name='price'
               bgColor="#fff"
               boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
             box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-              value={input.price}
+              value={inputInfo.price}
             />
           </Box>
-
           <Box display="flex" justifyContent="space-between" mt={5}>
             <Box
               w={420}
@@ -127,26 +230,12 @@ const EditProduct = () => {
               display="flex"
               justifyContent="space-between"
             >
-              <Box textAlign="left" mr={20}>
+            <Box textAlign="left" mr={20}>
                 <FormLabel fontSize={20}>
                   <strong>Type</strong>
                 </FormLabel>
-                <Select
-                  bgColor="#fff"
-                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-                  name="type"
-                  onChange={(e) => handleInputChange(e)}
-                >
-                  <option value="">Select Type</option>
-                  {type.map((type) => (
-                    <option value={type} key={type}>
-                      {type}
-                    </option>
-                  ))}
-                </Select>
-              </Box>
+                <Text>{getProductId.type}</Text>
+            </Box>
             </Box>
             <Box
               w={420}
@@ -159,49 +248,72 @@ const EditProduct = () => {
                 <FormLabel fontSize={20}>
                   <strong>Trademark</strong>
                 </FormLabel>
-                <Select
-                  bgColor="#fff"
-                  boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
-                            box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-                  name="trademark"
-                  onChange={(e) => handleInputChange(e)}
-                >
-                  <option value="">Select Trademark</option>
-                  {trademarks.map((trademark) => (
-                    <option value={trademark} key={trademark}>
-                      {trademark}
-                    </option>
-                  ))}
-                </Select>
+                <Text>{getProductId.trademark}</Text>
               </Box>
             </Box>
           </Box>
-          <Box textAlign="left" w={180}>
+          <Box display='flex' justifyContent='space-between' mt={5}>
+            <Box w={420}
+              borderRadius={10}
+              alignItems="center"
+              display="flex"
+              justifyContent="space-between">
+            <Box textAlign="left" w={180}>
             <FormLabel fontSize={20}>
               <strong>Category</strong>
+            </FormLabel>
+            <Text>{getProductId.categorie}</Text>
+          </Box>
+            </Box>
+            <Box w={420}
+              borderRadius={10}
+              alignItems="center"
+              display="flex"
+              justifyContent="space-between">
+            <Box textAlign="left" w={180}>
+            <FormLabel fontSize={20}>
+              <strong>Active</strong>
             </FormLabel>
             <Select
               bgColor="#fff"
               boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
                         -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
                         box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);"
-              name="categorie"
+              name="active"
               onChange={(e) => handleInputChange(e)}
             >
-              <option value="">Select Category</option>
-              {categories.map((category) => (
-                <option value={category} key={category}>
-                  {category}
+              <option value="">Select Active</option>
+              {active.map((a) => (
+                <option value={a} key={a}>
+                  {a}
                 </option>
               ))}
             </Select>
           </Box>
+            </Box>
+          </Box>
+
           <Box w="100%" textAlign="center" mt={5}>
             <Button w="100%" backgroundColor="#DAEB0F" type="submit">
-              Update
+              Update info
             </Button>
           </Box>
+        </form>
+        <form onSubmit={handleSubmit}>
+        <Flex alignItems='center' textAlign="left" mr={20} mt={5}>
+          {array20.map((i) => (
+                      <StockInput
+                        key={i.id}
+                        id={i.id}
+                        tallas={input.tallas}
+                        talla={input.tallas?.[i.content]}
+                        handleTalleChange={handleTalleChange}
+                        content={i.content}
+                        placeHolder={getProductId.tallas?.find(t => t.talla == i.content)?.stock ? getProductId.tallas?.find(t => t.talla == i.content)?.stock : 0  }
+                      />
+                    ))}
+          <Button position='relative' top={2} backgroundColor="#DAEB0F" alignItems='center' type='submit'>Update Tallas</Button>
+          </Flex>
         </form>
       </FormControl>
     </Box>

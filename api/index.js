@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 MONGODB();
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+  console.log(`Listening at http://localhost:${port}` );
 });
 
 module.exports = app;

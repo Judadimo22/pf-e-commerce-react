@@ -17,6 +17,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { HiLocationMarker, HiOutlineLocationMarker } from "react-icons/hi";
 import { BsTelephone } from "react-icons/bs";
 import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
+import Swal from "sweetalert2";
 
 
 
@@ -54,9 +55,6 @@ import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
             email: getUserId.email,
             lastname: getUserId.lastname,
             phone: getUserId.phone,
-            country: getUserId.country,
-            city: getUserId.city,
-            addres: getUserId.addres,
             name:getUserId.name,
             roll: getUserId.roll,
             active: getUserId.active
@@ -74,20 +72,25 @@ import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
 
     function handleSubmit(e){
         e.preventDefault();
-        alert("The user has been updated");
+        Swal.fire({
+            icon: 'success',
+            title: '¡Success!',
+            text: 'The user info has been updated',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Continue'
+          })
         dispatch(updateUser(id, input));
         setInput({
             email: getUserId.email,
             lastname: e.target.value,
             phone: getUserId.phone,
-            country: getUserId.country,
-            city: getUserId.city,
-            addres: getUserId.addres,
             name:e.target.value,
             roll: e.target.value,
             active: e.target.value
         })
     }
+
+    console.log(getUserId)
 
     const rol = ['admin', 'user'];
     const active = ['valid', 'invalid']
@@ -106,7 +109,9 @@ import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
                     <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
                         <Box textAlign='left' mr={20}>
                         <Text fontSize={20} fontWeight={1000}><strong>Country - City</strong></Text>
-                        <Text>{getUserId.country} - {getUserId.city}</Text>
+                        {getUserId.location?.length ? (
+                             <Text>{getUserId.location[getUserId.location?.length-1]?.country} - {getUserId.location[getUserId.location?.length-1]?.city}</Text>
+                        ) : null}
                         </Box>
                         <Box alignItems='center'>
                             <Icon fontSize={25}><TbMap2/></Icon>
@@ -127,7 +132,9 @@ import { AiOutlineControl ,AiOutlineCheckCircle} from "react-icons/ai";
                     <Box w={420}  shadow='md' borderRadius={10} backgroundColor='white' alignItems='center' display='flex' px={10} pt={10} pb={10} justifyContent='space-between'>
                         <Box textAlign='left' mr={20}>
                         <Text fontSize={20} fontWeight={1000}><strong>Address</strong></Text>
-                        <Text>{getUserId.addres}</Text>
+                        {getUserId.location?.length ? (
+                             <Text>{getUserId.location[getUserId.location?.length-1]?.addres}</Text>
+                        ) : null}
                         </Box>
                         <Box alignItems='center'>
                             <Icon fontSize={25}><HiLocationMarker/></Icon>

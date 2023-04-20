@@ -20,9 +20,9 @@ export const Cloth = (props) => {
   //   dispatch(getClothById(props.product._id))
   // }
 
-  const totalStock = props.product.tallas.reduce((total, talla) => {
-     return total + talla.stock;
-   }, 0);
+  const totalStock = props.product.tallas.length ? props.product.tallas.reduce((total, talla) => {
+     return total + talla?.stock;
+   }, 0) : 0;
 
   const Name = props.product.name
   const Price = props.product.price

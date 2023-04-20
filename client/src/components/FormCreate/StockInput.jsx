@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const StockInput = ({ id, content, handleTalleChange,talla }) => {
+const StockInput = ({ id, content, handleTalleChange,talla, placeHolder }) => {
     console.log(talla);
   return (
     <Flex flexDir="column" mr="9">
@@ -15,6 +15,7 @@ const StockInput = ({ id, content, handleTalleChange,talla }) => {
       </FormLabel>
       <NumberInput size="md" maxW={16} id={id} min={0}>
         <NumberInputField
+          placeholder={placeHolder}
           bgColor="#fff"
           boxShadow="-webkit-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);
                                     -moz-box-shadow: 1px 1px 2px 0.5px rgba(0,0,0,0.15);

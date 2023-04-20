@@ -6,9 +6,12 @@ const userSchema = require("../models/User");
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 
+
+
 const postOrder = async (req, res) => {
   try {
-    const idData = req.body.data.id;
+    const idData = await req.body.id;
+    console.log(idData);
     const shopping = await axios.get(
       `https://api.mercadopago.com/v1/payments/${idData}`,
       {
@@ -21,7 +24,7 @@ const postOrder = async (req, res) => {
     const userCompra = orderSchema(shopping.data);
 
     const newUserCompra = await new Order({
-      items: shopping.data.additional_info.items[0],
+      items: shopping.data.additional_info.items,
       id_pay: idData,
       date_approved: userCompra.date_approved,
       operation_type: userCompra.operation_type,
@@ -42,6 +45,7 @@ const postOrder = async (req, res) => {
       { order }
     );
     //////////////////////////////////////////////////////////
+    let nombre = users.map((e) => e.name);
     res.status(200).json(saveCompra);
 
     let transporter = nodemailer.createTransport({
@@ -58,11 +62,13 @@ const postOrder = async (req, res) => {
         from: '"TuTienda" <tu.Tienda.OnlineHenry@gmail.com>',
         to: newUserCompra.email,
         subject: "Compra con Exito",
-        text: `Querido usuario: ${users.name} Sus compras ya fueron programadas
+        text: `Querido ${nombre[0]} Sus compras ya fueron programadas
             \n Buys data:
-            \nProducto ${carSchema[0].brand} ${newUserCompra[0].order}\n Para cualquier consulta, póngase en contacto con <tu.Tienda.OnlineHenry@gmail.com>
+            \nProductos ${newUserCompra.items.map(
+              (e) => e.title
+            )} \n Para cualquier consulta, póngase en contacto con <tu.Tienda.OnlineHenry@gmail.com>
             \n Gracias por elegirnos
-            
+
           `,
       },
       (error, info) => {
@@ -77,7 +83,6 @@ const postOrder = async (req, res) => {
     console.log(error);
   }
 };
-
 const getOrder = async (req, res) => {
   try {
     const facturas = await orderSchema.find();
