@@ -73,7 +73,7 @@ const UserOrdersPage = () => {
           });
       }
     }, [user]);
-    if (userState.active !== "valid") window.location.href = "/banned";
+    if (userState.active === "invalid") window.location.href = "/banned";
 
   const orders = useSelector((state) => state.orders)
  const algo = orders.filter(o=>o.email == user.email)

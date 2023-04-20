@@ -39,7 +39,7 @@ useEffect(() => {
         });
     }
   }, [user]);
-  if (userState.active == "valid") window.location.href = "/";
+  if (userState.active === "valid") window.location.href = "/";
     return(
         <div style={{ 
             display: 'flex',
