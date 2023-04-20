@@ -19,14 +19,14 @@ const Questions = () => {
  
 
   return (
-    <Flex flexDir="column">
+    <Flex flexDir="column" display={{base:'block',md:'flex'}} >
       <HomeNavBar />
-      <Flex minH="90vh" flexDir="column" justifyContent="center" alignItems="center">
+      <Flex minH="90vh" flexDir="column" justifyContent="center" alignItems="center" mt={{base:12,md:0}}>
         <Flex flexDir="column" alignItems="flex-start" w="70%" m={10} >
           <Heading mb={3} >Frequently asked questions</Heading>
           <Text>FAQs: Answers to Commonly Asked Questions.</Text>
         </Flex>
-      <Box boxSize="1000px" h="100px" >
+      <Box boxSize={{base:'350px',md:"1000px"}} h="100px" pb={400} >
         <Accordion
           expanded={expanded === "panel1"}
           onChange={handleChange("panel1")}
