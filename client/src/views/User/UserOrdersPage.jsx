@@ -45,7 +45,7 @@ const UserOrdersPage = () => {
     },
   ];
   const orders = useSelector((state) => state.orders)
- const algo = orders.filter(o=>o.email == user.email)
+ const algo = orders.filter(o=>o?.email == user?.email)
  console.log(`algoalgoalgo` + algo)
   return (
     <>

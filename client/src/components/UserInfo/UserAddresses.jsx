@@ -36,7 +36,7 @@ const UserAddresses = () => {
 
   //------------------------------pagination----------------------------------------------
   const resultsPerPage = 4;
-  const numberOfResults = addresses.length;
+  const numberOfResults = addresses?.length;
   const numberOfPages = numberOfResults
     ? Math.ceil(numberOfResults / resultsPerPage)
     : 0;
@@ -163,8 +163,7 @@ const UserAddresses = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {addresses
-                  .slice(pageSliceStart, pageSliceEnd)
+                {addresses?.slice(pageSliceStart, pageSliceEnd)
                   .map((address) => (
                     <Tr key={address._id}>
                       <Td>{address.country}</Td>
