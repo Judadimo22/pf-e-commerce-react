@@ -69,17 +69,7 @@ const CartPage = () => {
     0
   );
 
-  const handleCheckout = () => {
-    {
-      isAuthenticated ? (
-        null//<MPButton id={cartItems} />
-      ) : (
-        <button onClick={handlerPay}>Buy</button>
-      );
-    }
-  };
-
-  console.log(handleCheckout());
+  const size = cartItems.size
 
   return (
     <>
@@ -88,16 +78,16 @@ const CartPage = () => {
         <Box mt={4} mb={1} mx="auto" maxW="800px">
           <Flex justify="space-between" alignItems="center" mb="6">
             <Text fontSize="3xl" fontWeight="bold">
-              Carrito de Compras
+            Shopping Cart
             </Text>
             <Link to="/home">
               <Button variant="solid" colorScheme="blue">
-                Seguir comprando
+              Continue shopping
               </Button>
             </Link>
           </Flex>
           {cartItems.length === 0 ? (
-            <Text>No hay productos en el carrito</Text>
+            <Text>There are no products in the cart</Text>
           ) : (
             <>
               {cartItems.map((item, index) => (
@@ -114,6 +104,7 @@ const CartPage = () => {
                 Total: ${totalPrice}.00
               </Text>
               <Grid mt="6">
+             
                 {/* <Button
                   mt={2}
                   mb={5}
@@ -123,6 +114,7 @@ const CartPage = () => {
                 >
                   Comprar
                 </Button> */}
+               
                 {isAuthenticated ? (
                   <MPButton id={cartItems} />
                 ) : (
@@ -133,7 +125,7 @@ const CartPage = () => {
                     colorScheme="green"
                     onClick={handlerPay}
                   >
-                    Comprar
+                    Buy
                   </Button>
                 )}
               </Grid>
