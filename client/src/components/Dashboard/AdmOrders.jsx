@@ -76,9 +76,8 @@ function OrderTrackingContainer() {
         <Thead>
           <Tr>
             <Th>Email</Th>
-            <Th>Name</Th>
-            <Th>Total amount</Th>
-            <Th>State</Th>
+            <Th display={{base:'none',md:'table-cell'}}>Total amount</Th>
+            <Th >State</Th>
           </Tr>
         </Thead>
         <Tbody>

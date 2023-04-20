@@ -23,10 +23,10 @@ function OrderTracking(props) {
   
   
             {/* ----------------------------------->*/}
-      <Td>{email}</Td>
-      <Td>{name}</Td>
-      <Td>{totalAmount}</Td>
-      <Td>{status}</Td>
+      <Td fontSize={{base:10,md:16}}>{email}</Td>
+      <Td  display={{base:'none',md:'table-cell'}}>{name}</Td>
+      <Td display={{base:'none',md:'table-cell'}}>{totalAmount}</Td>
+      <Td fontSize={{base:10,md:16}}>{status}</Td>
     </Tr>
   );
 }
