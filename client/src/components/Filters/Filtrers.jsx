@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ByCategorie from "./ByCategorie";
 import ByType from "./ByType";
 import ByTrademark from "./ByTrademark";
 import SortByPrice from "./SortByPrice";
 import { Box, Flex } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Filter, changeIndex, clearFilters } from "../../redux/actions";
 
 const Filtrers = () => {
+
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(clearFilters("all"))
+    dispatch(Filter());
+    dispatch(changeIndex(["all",-1]))
+  },[])
+
   return (
     <Box display={{ base:'flex',md:'block'}} flexWrap='wrap'>
       <div>
