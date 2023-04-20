@@ -15,7 +15,7 @@ import { getUserById } from "../../redux/actions";
 import { useParams } from "react-router-dom";
 import { FiPhone } from "react-icons/fi";
 import LoadingText from "./LoadingText";
-import InfoCard from './InfoCard'
+import InfoCard from "./InfoCard";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
 
 function UserInfo() {
@@ -46,18 +46,22 @@ function UserInfo() {
       <GridItem colSpan={4}>
         <Flex h="100%" width="100%" alignItems="flex-start">
           <Text color="#272727">
-            Manage your personal information, including country, phone number and email
+            Manage your personal information, including country, phone number
+            and email
           </Text>
         </Flex>
       </GridItem>
       <GridItem colSpan={4} />
-
-      <InfoCard
-        header="Country"
-        info={user.location[user.location?.length-1]?.country}
-        icon={TbMap2}
-        conditional={!user.location[user.location?.length-1]?.country}
-      />
+      {user.location?.length ? (
+        <InfoCard
+          header="Country"
+          info={user.location[user.location?.length - 1]?.country}
+          icon={TbMap2}
+          conditional={!user.location[user.location?.length - 1]?.country}
+        />
+      ) : (
+        <InfoCard header="Country" icon={TbMap2} />
+      )}
 
       <GridItem colSpan={1} />
 
