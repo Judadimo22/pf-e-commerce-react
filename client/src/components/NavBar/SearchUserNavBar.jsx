@@ -25,7 +25,7 @@ const SearchUserNavBar = () => {
         <Flex className={style.containerNavBar}>            
             <Link to="/home">
                 <div className={style.containerTitle}>
-                    <Text sx={{fontSize: "50px",fontFamily:"Alumni Sans, sans-serif",fontWeight:"1000",marginLeft:"40px"}} >Casual Couture</Text>
+                    <Text fontFamily="Alumni Sans, sans-serif" fontWeight={1000} fontSize={{base:'30px',md:'50px'}}>Casual Couture</Text>
                 </div>
             </Link>
             <SearchBarUser/>
