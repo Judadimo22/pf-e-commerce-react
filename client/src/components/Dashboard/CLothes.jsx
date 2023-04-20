@@ -39,9 +39,9 @@ export const Clothes = () => {
   return (
     <Box>
       <Link to='/admin/create'>
-      <Flex textAlign='center' justifyContent='center' py={2}>
+      <Flex textAlign='center' justifyContent='center' py={{base:0,md:2}}>
         <Button backgroundColor='#DAEB0F' pl={6}> 
-        <Text>Create new product</Text>
+        <Text fontSize={{base:12,md:16}}>Create new product</Text>
         <Icon position='relative' ml={2} top='2.5px' fontSize={20}><GrAddCircle/></Icon>
         </Button>
       </Flex>
@@ -52,8 +52,8 @@ export const Clothes = () => {
             <Tr>
               <Th justifyContent='center'>Image</Th>
               <Th>Name</Th>
-              <Th>Price</Th>
-              <Th>Stock</Th>
+              <Th display={{base:'none',md:'table-cell'}}>Price</Th>
+              <Th display={{base:'none',md:'table-cell'}}>Stock</Th>
             </Tr>
           </Thead>
           <Tbody>

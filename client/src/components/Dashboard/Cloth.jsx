@@ -35,12 +35,12 @@ export const Cloth = (props) => {
 
   return (
     
-    <Tr >
-      <Td><Image h={100} src={Img}/></Td>
-      <Td>{Name}</Td>
-      <Td>${Price}</Td>
-      <Td>{totalStock}</Td>
-      <Td>
+    <Tr>
+      <Td><Image h={{base:50,md:100}} src={Img}/></Td>
+      <Td fontSize={{base:10,md:16}}>{Name}</Td>
+      <Td display={{base:'none',md:'table-cell'}}>${Price}</Td>
+      <Td display={{base:'none',md:'table-cell'}}>{totalStock}</Td>
+      <Td position='relative' right={{base:'5%',md:0}}>
       <Link to={`/product/edit/${props.product._id}`}>
       <VscEdit/>
         </Link>
