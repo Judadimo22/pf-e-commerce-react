@@ -161,11 +161,13 @@ const HomeNavBar = () => {
             <LoginButton />
           )}
           <Link to="/cart">
-            <IconButton style={{backgroundColor:"#DAEB0F",color:"#272727"}} aria-label="cart">
-              <Badge style={{width:"30px",height:"30px",display:"flex",justifyContent:"center",alignItems:"center"}} badgeContent={cartLength} color="secondary">
+            <Box display={{base:'none', md:'block'}}>
+            <IconButton display={{base:'none',md:'block'}} style={{backgroundColor:"#DAEB0F",color:"#272727"}} aria-label="cart">
+              <Badge display={{base:'none',md:'block'}} style={{width:"30px",height:"30px",display:"flex",justifyContent:"center",alignItems:"center"}} badgeContent={cartLength} color="secondary">
                 <AiOutlineShoppingCart />
               </Badge>
             </IconButton>
+            </Box>
           </Link>
         </Flex>
         <Box display={{base:'block',md:'none'}}>
