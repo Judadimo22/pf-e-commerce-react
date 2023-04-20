@@ -47,7 +47,7 @@ function CrearProducto() {
     Swal.fire({
       icon: 'success',
       title: '¡Success!',
-      text: 'The product sizes has created',
+      text: 'The product has been created',
       confirmButtonColor: '#3085d6',
       confirmButtonText: 'Continue'
     })
